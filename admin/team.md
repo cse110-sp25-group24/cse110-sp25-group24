@@ -4,40 +4,112 @@
 
 - Team page should have team name, brand, any values that are important + roster of all team members (brief overview of each team member + link to personal GitHubs)
 
-### Noeh Parrales
+### Chris Enotiadis
 
-Hello! My name is Noeh Parrales. My
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
 
-### Aruthan Raveendr
-
-Hi! My name is Aruthan Raveendra. Here is a link to my (github page): https://aruthanr.github.io/About-Me/
-
-### Myat Thiha
-
-Hello! I am Myat Thiha.
-
-### Thanh-Long (T.L) Nguyen-Trong
-
-Hello! My naame is Thanh-Long but most people calll me T
+- x
+- x
+- x
 
 ### Alexis Vega
 
-### V
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
 
-Hello
-V si eman y
-neyugN tnecn
+- x
+- x
+- x
 
-### Eric So
+### Eric Song
 
-### YI
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
 
-no
+- x
+- x
+- x
 
-### Chris Enotiadis
+### Aruthan Raveendra
 
-Hello! I am Chris Enotiadis. Here is a link to my [github page]()
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Myat Thiha
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Noeh Parrales
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Thanh-Long Nguyen Trong
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Yilong Chen
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Phiroze Duggal
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
+
+### Vincent Nguyen
+
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
 
 ### William Widjaja
 
-Hello! I am William Widjaja. Here is a link to my [GitHub page](https://github.com/wwidjaja0/).
+Introduction:
+[Link to GitHub]()
+Fun facts about me:
+
+- x
+- x
+- x
