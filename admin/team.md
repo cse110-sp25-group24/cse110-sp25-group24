@@ -106,10 +106,10 @@ Fun facts about me:
 
 ### William Widjaja
 
-Introduction:
-[Link to GitHub]()
+Introduction: Hello! I’m Widjaja, a second-year undergraduate at UC San Diego, majoring in Computer Science. I’m actively expanding my knowledge base through both coursework and personal projects. In my free time I enjoy spending time with friends, family, or meeting new people, and I have recently taken an interest in cooking and poker. Feel free to reach out if you'd like to connect or collaborate.
+[Link to GitHub](https://github.com/wwidjaja0/)
 Fun facts about me:
 
-- x
-- x
-- x
+- Negative number of internships
+- Poker addict
+- Can whistle breathing in
