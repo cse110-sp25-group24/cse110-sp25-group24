@@ -66,13 +66,13 @@ Fun facts about me:
 
 ### Thanh-Long Nguyen Trong
 
-Introduction:
-[Link to GitHub]()
+Introduction: I am currently a 2nd year CS student at Muir. Excited to learn more about AGILE techniques.
+[Link to GitHub](https://github.com/thanhlongnt)
 Fun facts about me:
 
-- x
-- x
-- x
+- Part French
+- Severely Addicted to Brawl Stars
+- I am a big back
 
 ### Yilong Chen
 
