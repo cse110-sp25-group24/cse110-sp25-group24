@@ -56,13 +56,13 @@ Fun facts about me:
 
 ### Noeh Parrales
 
-Introduction:
-[Link to GitHub]()
+Introduction: Hello! My name is Noeh Parrales
+[Link to GitHub](https://github.com/noehparrales1)
 Fun facts about me:
 
-- x
-- x
-- x
+- Nicaraguense
+- Red 40 enthusiast
+- I like to play guitar
 
 ### Thanh-Long Nguyen Trong
 
