@@ -46,13 +46,13 @@ Fun facts about me:
 
 ### Myat Thiha
 
-Introduction:
-[Link to GitHub]()
-Fun facts about me:
+Introduction: Hello, I am Myat Thiha. I am a Computer Science major at UCSD. I came from Myanmar and I studied at Pasadena City College and transferred to UCSD in 2024. 
+[Myat-Thiha's Github](https://github.com/Myat-Thiha)
+Fun facts about me: 
 
-- x
-- x
-- x
+- I drove to Seattle from LA last summer
+- I play Dota2
+- I play basketball
 
 ### Noeh Parrales
 
