@@ -77,7 +77,7 @@ Fun facts about me:
 ### Yilong Chen
 
 Introduction: 你好! I am Yilong.
-[Link to GitHub](https://oshima-hina.github.io/page110/)
+[Link to GitHub](https://github.com/Oshima-Hina)
 Fun facts about me:
 
 - Mandarin speaker
