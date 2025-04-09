@@ -16,13 +16,13 @@ Fun facts about me:
 
 ### Alexis Vega
 
-Introduction:
-[Link to GitHub]()
-Fun facts about me:
+Introduction: Hello i'm Alexis a third year CS major!!
+[Link to GitHub](https://github.com/alexisvvega)
+Fun facts about me: 
 
-- x
-- x
-- x
+- I can braid my hair with one hand
+- Im a commuter (40 minute drive)
+- I played softball for 15 years
 
 ### Eric Song
 
