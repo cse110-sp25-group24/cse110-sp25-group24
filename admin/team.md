@@ -6,13 +6,13 @@
 
 ### Chris Enotiadis
 
-Introduction:
-[Link to GitHub]()
+Introduction: Hi! my name is Chris
+[Link to GitHub](https://github.com/Bisbouras)
 Fun facts about me:
 
-- x
-- x
-- x
+- Greek international student
+- 'professional' gamer
+- I want to write a fantasy novel
 
 ### Alexis Vega
 
