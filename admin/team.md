@@ -36,13 +36,13 @@ Fun facts about me:
 
 ### Aruthan Raveendra
 
-Introduction:
-[Link to GitHub]()
+Hi! My name is Aruthan Raveendra. I am a second year computer science major at UCSD Marshall college. I am passionate about software engineering and look forward to working in the industry.
+[Link to GitHub](https://aruthanr.github.io/About-Me/)
 Fun facts about me:
 
-- x
-- x
-- x
+- I have shaken hands with the Canadian Prime Minister.  
+- I am a big hockey fan. 
+- I am an Eagle Scout.
 
 ### Myat Thiha
 
