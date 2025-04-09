@@ -6,61 +6,70 @@
 
 Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell's Spring 2025 CSE 110 class.
 
-### Chris Enotiadis
+### Table of Contents:
 
-Introduction: Hi! my name is Chris
+- [BeeZee 24/7 Team Page!](#beezee-247-team-page)
+	- [Team Page](#team-page)
+		- [Table of Contents:](#table-of-contents)
+		- [Alexis Vega - Co-lead](#alexis-vega---co-lead)
+		- [Aruthan Raveendra](#aruthan-raveendra)
+		- [Chris Enotiadis](#chris-enotiadis)
+		- [Eric Song](#eric-song)
+		- [Myat Thiha](#myat-thiha)
+		- [Noeh Parrales](#noeh-parrales)
+		- [Phiroze Duggal](#phiroze-duggal)
+		- [Thanh-Long Nguyen Trong](#thanh-long-nguyen-trong)
+		- [Vincent Nguyen](#vincent-nguyen)
+		- [William Widjaja - Co-lead](#william-widjaja---co-lead)
+		- [Yilong Chen](#yilong-chen)
 
-[Link to GitHub](https://github.com/Bisbouras)
+Special thanks to our TA Devanshi Chadha for being supportive and bringing our team together.
 
-Fun facts about me:
+### Alexis Vega - Co-lead
 
-- Greek international student
-- 'professional' gamer
-- I want to write a fantasy novel
+Hello i'm Alexis a third year CS major!!
 
-### Alexis Vega
-
-Introduction: Hello i'm Alexis a third year CS major!!
-
-[Link to GitHub](https://github.com/alexisvvega)
-
-Fun facts about me:
+[Alexis' GitHub](https://github.com/alexisvvega)
 
 - I can braid my hair with one hand
 - Im a commuter (40 minute drive)
 - I played softball for 15 years
 
-### Eric Song
-
-Introduction: My name is Eric! I am a fourth year cognitive science major.
-
-[Link to GitHub](https://github.com/e7song)
-
-Fun facts about me:
-
-- I am top 22% in Tetris
-- I have two cats
-- I like to read
-
 ### Aruthan Raveendra
 
 Hi! My name is Aruthan Raveendra. I am a second year computer science major at UCSD Marshall college. I am passionate about software engineering and look forward to working in the industry.
 
-[Link to GitHub](https://aruthanr.github.io/About-Me/)
-
-Fun facts about me:
+[Aruthan's GitHub](https://github.com/aruthanr)
 
 - I have shaken hands with the Canadian Prime Minister.
 - I am a big hockey fan.
 - I am an Eagle Scout.
 
+### Chris Enotiadis
+
+Hi! my name is Chris
+
+[Chris' GitHub](https://github.com/Bisbouras)
+
+- Greek international student
+- 'professional' gamer
+- I want to write a fantasy novel
+
+### Eric Song
+
+My name is Eric! I am a fourth year cognitive science major.
+
+[Eric's GitHub](https://github.com/e7song)
+
+- I am top 22% in Tetris
+- I have two cats
+- I like to read
+
 ### Myat Thiha
 
-Introduction: Hello, I am Myat Thiha. I am a Computer Science major at UCSD. I came from Myanmar and I studied at Pasadena City College and transferred to UCSD in 2024.
+Hello, I am Myat Thiha. I am a Computer Science major at UCSD. I came from Myanmar and I studied at Pasadena City College and transferred to UCSD in 2024.
 
 [Myat-Thiha's Github](https://github.com/Myat-Thiha)
-
-Fun facts about me:
 
 - I drove to Seattle from LA last summer
 - I play Dota2
@@ -68,72 +77,62 @@ Fun facts about me:
 
 ### Noeh Parrales
 
-Introduction: Hello! My name is Noeh Parrales
+Hello! My name is Noeh Parrales
 
-[Link to GitHub](https://github.com/noehparrales1)
-
-Fun facts about me:
+[Noeh's GitHub](https://github.com/noehparrales1)
 
 - Nicaraguense
 - Red 40 enthusiast
 - I like to play guitar
 
-### Thanh-Long Nguyen Trong
+### Phiroze Duggal
 
-Introduction: I am currently a 2nd year CS student at Muir. Excited to learn more about AGILE techniques.
+Introduction:
 
-[Link to GitHub](https://github.com/thanhlongnt)
+[Phiroze's GitHub]()
 
 Fun facts about me:
+
+- x
+- x
+- x
+
+### Thanh-Long Nguyen Trong
+
+I am currently a 2nd year CS student at Muir. Excited to learn more about AGILE techniques.
+
+[TL's GitHub](https://github.com/thanhlongnt)
 
 - Part French
 - Severely Addicted to Brawl Stars
 - I am a big back
 
-### Yilong Chen
-
-Introduction: 你好! I am Yilong.
-
-[Link to GitHub](https://github.com/Oshima-Hina)
-
-Fun facts about me:
-
-- Mandarin speaker
-- Aviation enthusiast
-- International student
-
-### Phiroze Duggal
-
-Introduction:
-
-[Link to GitHub]()
-
-Fun facts about me:
-
-- x
-- x
-- x
-
 ### Vincent Nguyen
 
 Introduction:
 
-[Link to GitHub](https://github.com/vincentnguyen1090)
-
-Fun facts about me:
+[Vincent's GitHub](https://github.com/vincentnguyen1090)
 
 - I cook mid pasta
 - I'm a Lakers fan
 - I like to watch shows/movies
 
-### William Widjaja
+### William Widjaja - Co-lead
 
-Introduction: Hello! I’m Widjaja, a second-year undergraduate at UC San Diego, majoring in Computer Science.
+Hello! I’m Widjaja, a second-year undergraduate at UC San Diego, majoring in Computer Science.
 
-[Link to GitHub](https://github.com/wwidjaja0/)
+[Widjaja's GitHub](https://github.com/wwidjaja0/)
 
-Fun facts about me:
-
-- Negative # of internships
-- Poker addict
+- Negative internships
+- Loves poker
 - Can whistle breathing in
+
+### Yilong Chen
+
+你好! I am Yilong.
+
+[Yilong's GitHub](https://github.com/Oshima-Hina)
+
+- Mandarin speaker
+- Aviation enthusiast
+- International student
