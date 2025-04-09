@@ -76,13 +76,13 @@ Fun facts about me:
 
 ### Yilong Chen
 
-Introduction:
-[Link to GitHub]()
+Introduction: 你好! I am Yilong.
+[Link to GitHub](https://oshima-hina.github.io/page110/)
 Fun facts about me:
 
-- x
-- x
-- x
+- Mandarin speaker
+- Aviation enthusiast
+- International student
 
 ### Phiroze Duggal
 
