@@ -26,14 +26,13 @@ Fun facts about me:
 
 ### Eric Song
 
-Introduction:
-[Link to GitHub]()
-Fun facts about me:
+Introduction: My name is Eric! I am a fourth year cognitive science major. 
+[Link to GitHub](https://github.com/e7song)
+Fun facts about me: 
 
-- x
-- x
-- x
-
+- I am top 22% in Tetris
+- I have two cats
+- I like to read
 ### Aruthan Raveendra
 
 Hi! My name is Aruthan Raveendra. I am a second year computer science major at UCSD Marshall college. I am passionate about software engineering and look forward to working in the industry.
