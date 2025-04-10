@@ -76,7 +76,7 @@ Fun facts about me:
 
 ### Yilong Chen
 
-Introduction: 你好! I am Yilong.
+Introduction: 你好! I am Yilong, a third-year computer science major and an exchange student from Southeast University in China.
 [Link to GitHub](https://github.com/Oshima-Hina)
 Fun facts about me:
 
