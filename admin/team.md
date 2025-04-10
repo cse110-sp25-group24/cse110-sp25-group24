@@ -97,12 +97,12 @@ Fun facts about me:
 ### Vincent Nguyen
 
 Introduction:
-[Link to GitHub]()
+[https://github.com/vincentnguyen1090]()
 Fun facts about me:
 
-- x
-- x
-- x
+- I cook mid pasta
+- I'm a Lakers fan
+- I like to watch shows/movies
 
 ### William Widjaja
 
