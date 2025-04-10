@@ -9,19 +9,19 @@ Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell'
 ### Table of Contents:
 
 - [BeeZee 24/7 Team Page!](#beezee-247-team-page)
-	- [Team Page](#team-page)
-		- [Table of Contents:](#table-of-contents)
-		- [Alexis Vega - Co-lead](#alexis-vega---co-lead)
-		- [Aruthan Raveendra](#aruthan-raveendra)
-		- [Chris Enotiadis](#chris-enotiadis)
-		- [Eric Song](#eric-song)
-		- [Myat Thiha](#myat-thiha)
-		- [Noeh Parrales](#noeh-parrales)
-		- [Phiroze Duggal](#phiroze-duggal)
-		- [Thanh-Long Nguyen Trong](#thanh-long-nguyen-trong)
-		- [Vincent Nguyen](#vincent-nguyen)
-		- [William Widjaja - Co-lead](#william-widjaja---co-lead)
-		- [Yilong Chen](#yilong-chen)
+  - [Team Page](#team-page)
+    - [Table of Contents:](#table-of-contents)
+    - [Alexis Vega - Co-lead](#alexis-vega---co-lead)
+    - [Aruthan Raveendra](#aruthan-raveendra)
+    - [Chris Enotiadis](#chris-enotiadis)
+    - [Eric Song](#eric-song)
+    - [Myat Thiha](#myat-thiha)
+    - [Noeh Parrales](#noeh-parrales)
+    - [Phiroze Duggal](#phiroze-duggal)
+    - [Thanh-Long Nguyen Trong](#thanh-long-nguyen-trong)
+    - [Vincent Nguyen](#vincent-nguyen)
+    - [William Widjaja - Co-lead](#william-widjaja---co-lead)
+    - [Yilong Chen](#yilong-chen)
 
 Special thanks to our TA Devanshi Chadha for being supportive and bringing our team together.
 
@@ -109,7 +109,7 @@ I am currently a 2nd year CS student at Muir. Excited to learn more about AGILE 
 
 ### Vincent Nguyen
 
-Introduction:
+Hello, I'm Vincent and I'm a third year cs major.
 
 [Vincent's GitHub](https://github.com/vincentnguyen1090)
 
