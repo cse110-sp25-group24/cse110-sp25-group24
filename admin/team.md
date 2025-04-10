@@ -129,7 +129,7 @@ Hello! I’m Widjaja, a second-year undergraduate at UC San Diego, majoring in C
 
 ### Yilong Chen
 
-你好! I am Yilong.
+你好! I am Yilong, a third-year computer science major and an exchange student from Southeast University in China.
 
 [Yilong's GitHub](https://github.com/Oshima-Hina)
 
