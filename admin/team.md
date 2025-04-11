@@ -1,4 +1,4 @@
-# BeeZee 24/7 Team Page!
+# BeeZee 24/7 Team Page
 
 ## Team Page
 
@@ -6,22 +6,22 @@
 
 Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell's Spring 2025 CSE 110 class.
 
-### Table of Contents:
+### Table of Contents
 
-- [BeeZee 24/7 Team Page!](#beezee-247-team-page)
-	- [Team Page](#team-page)
-		- [Table of Contents:](#table-of-contents)
-		- [Alexis Vega - Co-lead](#alexis-vega---co-lead)
-		- [Aruthan Raveendra](#aruthan-raveendra)
-		- [Chris Enotiadis](#chris-enotiadis)
-		- [Eric Song](#eric-song)
-		- [Myat Thiha](#myat-thiha)
-		- [Noeh Parrales](#noeh-parrales)
-		- [Phiroze Duggal](#phiroze-duggal)
-		- [Thanh-Long Nguyen Trong](#thanh-long-nguyen-trong)
-		- [Vincent Nguyen](#vincent-nguyen)
-		- [William Widjaja - Co-lead](#william-widjaja---co-lead)
-		- [Yilong Chen](#yilong-chen)
+- [BeeZee 24/7 Team Page](#beezee-247-team-page)
+  - [Team Page](#team-page)
+    - [Table of Contents](#table-of-contents)
+    - [Alexis Vega - Co-lead](#alexis-vega---co-lead)
+    - [Aruthan Raveendra](#aruthan-raveendra)
+    - [Chris Enotiadis](#chris-enotiadis)
+    - [Eric Song](#eric-song)
+    - [Myat Thiha](#myat-thiha)
+    - [Noeh Parrales](#noeh-parrales)
+    - [Phiroze Duggal](#phiroze-duggal)
+    - [Thanh-Long Nguyen Trong](#thanh-long-nguyen-trong)
+    - [Vincent Nguyen](#vincent-nguyen)
+    - [William Widjaja - Co-lead](#william-widjaja---co-lead)
+    - [Yilong Chen](#yilong-chen)
 
 Special thanks to our TA Devanshi Chadha for being supportive and bringing our team together.
 
@@ -89,7 +89,7 @@ Hello! My name is Noeh Parrales
 
 Introduction:
 
-[Phiroze's GitHub]()
+[Phiroze's GitHub](pastelinkhere)
 
 Fun facts about me:
 
