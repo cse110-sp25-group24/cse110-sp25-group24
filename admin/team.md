@@ -2,7 +2,7 @@
 
 ## Team Page
 
-![BeeZee247Logo]()
+![BeeZee247Logo](/admin/branding/logo.png)
 
 Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell's Spring 2025 CSE 110 class.
 
