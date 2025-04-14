@@ -98,8 +98,6 @@ My name is Phiroze, I am a computer science major, 4th year!
 
 [Phiroze's GitHub](https://github.com/phrzdgal)
 
-Fun facts about me:
-
 - I like to read nonfiction.
 - I want to change the world.
 - I like travelling and learning about different cultures.
