@@ -25,6 +25,11 @@ Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell'
 
 Special thanks to our TA Devanshi Chadha for being supportive and bringing our team together.
 
+### Team Values:
+- Communicate
+- Be respectful
+- Be a good team player!
+
 ### Alexis Vega - Co-lead
 
 Hello i'm Alexis a third year CS major!!
