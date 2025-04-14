@@ -11,6 +11,7 @@ Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell'
 - [BeeZee 24/7 Team Page](#beezee-247-team-page)
   - [Team Page](#team-page)
     - [Table of Contents](#table-of-contents)
+    - [Team Values](#team-values)
     - [Alexis Vega - Co-lead](#alexis-vega---co-lead)
     - [Aruthan Raveendra](#aruthan-raveendra)
     - [Chris Enotiadis](#chris-enotiadis)
@@ -25,7 +26,8 @@ Hello! We are BeeZee 24/7 and we are busy bees working 24/7 in Professor Powell'
 
 Special thanks to our TA Devanshi Chadha for being supportive and bringing our team together.
 
-### Team Values:
+### Team Values
+
 - Communicate
 - Be respectful
 - Be a good team player!
@@ -99,8 +101,8 @@ My name is Phiroze, I am a computer science major, 4th year!
 Fun facts about me:
 
 - I like to read nonfiction.
-- I want to change the world. 
-- I like travelling and learning about different cultures. 
+- I want to change the world.
+- I like travelling and learning about different cultures.
 
 ### Thanh-Long Nguyen Trong
 
