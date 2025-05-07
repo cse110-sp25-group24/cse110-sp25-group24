@@ -27,12 +27,6 @@
 
 ### 5.2 Conflict Resolution
 
-| Risk                                 | Impact   | Likelihood | Mitigation                                  |
-|--------------------------------------|----------|------------|---------------------------------------------|
-| Key engineer departure               | High     | Medium     | Cross-train team, document architecture     |
-| Performance regressions in production| High     | Low        | Implement performance testing in pipeline   |
-| Scope creep                          | Medium   | High       | Enforce change control via sprint planning  |
-
 ---
 
 ## 6. Signature (individual)
