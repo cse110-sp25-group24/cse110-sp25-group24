@@ -107,3 +107,13 @@
 - Clearly communicate any grievances and only escalate once other avenues of communication are exhausted
 
 ---
+
+## 6. Signature (individual)
+
+By signing below, I agree to uphold this charter and revisit it at each quarterly review.
+
+| Name | Role | Date | Signature |
+| ---- | ---- | ---- | --------- |
+|      |      |      | -         |
+
+---
