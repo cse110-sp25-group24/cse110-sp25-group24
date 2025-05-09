@@ -114,6 +114,6 @@ By signing below, I agree to uphold this charter and revisit it at each quarterl
 
 | Name | Role | Date | Signature |
 | ---- | ---- | ---- | --------- |
-| Christos Enotiadis     |      |      | -         |
+| Christos Enotiadis     | Developer     | 5/8/2025     | -Christos Enotiadis         |
 
 ---
