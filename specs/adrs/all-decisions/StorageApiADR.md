@@ -1,14 +1,14 @@
 ---
 title: [Map API ADR] - [Concise Decision Name]
-status: Proposed
-date: 05-08-2025
-decision-makers: [William Widjaja, Alexis Vega]
+status: Drafting
+date: 05-010-2025
+decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen]
 ---
 
 ## Summary
 
 **One-sentence overview of the decision.**
-_(e.g., We will store card data in Firestore as JSON documents tied to user accounts.)_
+We will store card data in  as JSON documents tied to user accounts
 
 ---
 
@@ -100,7 +100,7 @@ openRequest.onsuccess = function (e) {
 
 ### Webstorage
 
-Homepage: <https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API>
+(Homepage)[https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API]
 
 * Good, because Simple and Intuitive API - Easy-to-use key/value interface with setItem, getItem, and removeItem.
 * Good, Built-in Browser Support - Widely supported across all modern browsers without requiring additional libraries.
@@ -109,13 +109,12 @@ Homepage: <https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API>
 
 ### Cookies
 
-Homepage: <https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies>
+(Homepage)[https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies]
 
 Example:
 
 ```
 document.cookie = "username=joe; expires=Fri, 31 Dec 2025 23:59:59 UTC; path=/";
-
 ```
 
 * Good: **Session Management**: Ideal for maintaining user sessions (e.g., login state, shopping carts).
