@@ -1,98 +1,92 @@
 ---
-title: [Map API ADR] - [Concise Decision Name]
+title: [Users/User Profiles ADR] - [Use JWT for Session and Access Management]
 status: Proposed
-date: 05-08-2025
-decision-makers: [William Widjaja, Alexis Vega]
+date: 05-10-2025
+decision-makers: [Myat Thiha, Noeh Parrales, Vincent Nguyen]
 ---
 
 ## Summary
 
 **One-sentence overview of the decision.**
-_(e.g., We will store card data in Firestore as JSON documents tied to user accounts.)_
+We will use JWT for user authentication to support public/private memory cards and a draft/save/publish workflow, with a user model that includes email, password, user_cards, and user_icon, all without external dependencies.
+
+![Image of user flowchart](userFlowChart.svg)
 
 ---
 
 ## Context and Problem Statement
 
-How to write readable test assertions?
-How to write readable test assertions for advanced tests?
+Users need a secure and intuitive way to authenticate themselves, manage their personal memory cards, and control who can view them. This includes the ability to view and edit only their own cards, toggle visibility between public and private, and publish selected cards to a shared map view. The system must ensure private data remains protected while allowing users flexible control over their content.
 
 ## Considered Options
 
-* Plain JUnit5
-* Hamcrest
-* AssertJ
+* JWT(JSON Web Token)
+* OAuth
+* SAML SSO
 
 ## Decision Outcome
 
-Chosen option: "Plain JUnit5", because comes out best (see "Pros and Cons of the Options" below).
+Chosen option: Custom access control system with JWT authentication and visibility flags managed in our own backend/database logic.
 
 ### Consequences
 
-* Good, because tests are more readable
-* Good, because more easy to write tests
-* Good, because more readable assertions
-* Bad, because more complicated testing leads to more complicated assertions
+* Good, because it enables stateless, scalable session management
+* Good, because we can implement custom access logic without relying on external tools
+* Good, test cases are more readable than OAuth and SAML
+* Good, test cases are easy to mock, easy to create test tokens
+* Bad, because we must manage token expiration and refresh manually
+* Bad, because we don’t offer third-party logins like “Sign in with Google” for now
+* Bad, because if a token is leaked, it can be used until it expires 
+
 
 ### Confirmation
 
-* Check project dependencies, JUnit5 should appear (and be the only test assertion library).
-* Collect experience with JUnit5 in sprint reviews and retrospectives: does the gained experience match the pros and cons evaluation below?
-* Decide whether and when to review the decision (this is the 'R' in the [ecADR definition of done](https://medium.com/olzzio/a-definition-of-done-for-architectural-decisions-426cf5a952b9) for ADs).
+* Confirm JWT is only authentication library in use
+* JWT tokens should be issued on login and verified for all protected endpoints
+* Code Review with other members: Do members find JWT easy to use and logic easy to implement, etc
+* Schedule a re-evaluation if JWT doesn’t scale well (authentication becomes a priority)
+* Test token creation, expiration, and invalid access attempts to ensure security of private/public visibility
+
 
 ## Pros and Cons of the Options
 
-### Plain JUnit5
+### JWT
 
-Homepage: <https://junit.org/junit5/docs/current/user-guide/>
-JabRef testing guidelines: <https://devdocs.jabref.org/getting-into-the-code/code-howtos#test-cases>
+Homepage: <https://www.npmjs.com/package/jsonwebtoken>
 
-Example:
+* Good, Auth logic and visibility enforcement live fully in your code
+* Good, we can include custom fields (e.g., userId, role, visibilityPref) in the token payload
+* Good, fewer dependencies and faster development time compared to OAuth or SAML
+* Bad, we must handle token expiration, refresh tokens, and secure storage (e.g., localStorage vs. httpOnly cookies).
+* Bad, users must create new credentials (no "Login with Google”)
+* Bad, improper signing, verification, or storage of tokens can lead to security vulnerabilities (e.g., token leakage, forgery).		
 
-```java
-String actual = markdownFormatter.format(source);
-assertTrue(actual.contains("Markup<br />"));
-assertTrue(actual.contains("<li>list item one</li>"));
-assertTrue(actual.contains("<li>list item 2</li>"));
-assertTrue(actual.contains("> rest"));
-assertFalse(actual.contains("\n"));
-```
 
-* Good, because Junit5 is "common Java knowledge"
-* Bad, because complex assertions tend to get hard to read
-* Bad, because no fluent API
+### OAuth
 
-### Hamcrest
+Homepage: <https://oauth.net/>
 
-Homepage: <https://github.com/hamcrest/JavaHamcrest>
+* Good, quick and easy for login users 
+Log in with existing accounts (Google, Github, etc.)
+* Good, has built in security features that handles token refresh and password recover
+* Good, trustworthy and less account management for us 
+* Bad, relies on third party API’s
+* Bad, more complex setting it up, configuring OAuth flows	
+* Bad, for the time limit set on use, can be overly complicated to implement 
 
-* Good, because offers advanced matchers (such as `contains`)
-* Bad, because not full fluent API
-* Bad, because entry barrier is increased
 
-### AssertJ
+### SAML
 
-Homepage: <https://joel-costigliola.github.io/assertj/>
+Homepage: <https://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html/>
 
-Example:
-
-```java
-assertThat(markdownFormatter.format(source))
-        .contains("Markup<br />")
-        .contains("<li>list item one</li>")
-        .contains("<li>list item 2</li>")
-        .contains("> rest")
-        .doesNotContain("\n");
-```
-
-* Good, because offers fluent assertions
-* Good, because allows partial string testing to focus on important parts
-* Good, because assertions are more readable
-* Bad, because not commonly used
-* Bad, because newcomers have to learn an additional language to express test cases
-* Bad, because entry barrier is increased
-* Bad, because expressions of test cases vary from unit test to unit test
+* Good, widely used in enterprise SSO environments
+* Good, it supports strong identity federation and works will with IdPs
+* Bad, SML-based format and harer to read/debug
+* Bad, tests is complex and requires external tools
+* Bad, unit tests are hard to construuct
+* Bad, the re-direct login flow complicates integration and setup
 
 ## More Information
 
-German comparison between Hamcrest and AssertJ: <https://www.sigs-datacom.de/uploads/tx_dmjournals/philipp_JS_06_15_gRfN.pdf>.
+Comparison between JWT and OAuth:
+<https://frontegg.com/blog/oauth-vs-jwt>.
