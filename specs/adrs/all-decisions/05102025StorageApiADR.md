@@ -1,6 +1,6 @@
 ---
-title: [Map API ADR] - [Concise Decision Name]
-status: Drafting
+title: [Storage Api ADR] - [Proposing IndexDB]
+status: Proposed
 date: 05-10-2025
 decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen]
 ---
@@ -8,7 +8,7 @@ decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen
 ## Summary
 
 **One-sentence overview of the decision.**
-We will store card data in  as JSON documents tied to user accounts
+We will store card data in  as JSON documents tied to user accounts in IndexDB.
 
 ---
 
