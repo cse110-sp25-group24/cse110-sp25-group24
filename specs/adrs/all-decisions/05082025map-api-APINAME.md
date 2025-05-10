@@ -7,7 +7,6 @@ decision-makers: [Myat Thiha, Noeh Parrales, Vincent Nguyen]
 
 ## Summary
 
-
 **One-sentence overview of the decision.**
 We will use JWT for user authentication to support public/private memory cards and a draft/save/publish workflow, with a user model that includes email, password, user_cards, and user_icon, all without external dependencies.
 
