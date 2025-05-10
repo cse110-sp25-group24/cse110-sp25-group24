@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|Noeh Parrales   | Developer/ Designer/ Documenter   |   5/7/2025   | - N.P     |
+| Name          | Role                            | Date     | Signature |
+| ------------- | ------------------------------- | -------- | --------- |
+| Noeh Parrales | Developer/ Designer/ Documenter | 5/7/2025 | - N.P     |
 
 ---

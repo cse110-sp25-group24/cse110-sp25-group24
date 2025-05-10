@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|      |      |      | -         |
+| Name           | Role                           | Date     | Signature |
+| -------------- | ------------------------------ | -------- | --------- |
+| Phiroze Duggal | Developer/ Designer/ Documente | 09/05/25 | - P.D.    |
 
 ---

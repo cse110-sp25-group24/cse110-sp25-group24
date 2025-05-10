@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|      |      |      | -         |
+| Name            | Role      | Date     | Signature |
+| --------------- | --------- | -------- | --------- |
+| William Widjaja | Team Lead | 5/8/2025 | -wwidjaja |
 
 ---

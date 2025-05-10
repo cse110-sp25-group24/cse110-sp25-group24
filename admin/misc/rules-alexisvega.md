@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|   Alexis Vega   |   Team Lead   |  05-07-2025    | - alexisvega        |
+| Name        | Role      | Date       | Signature    |
+| ----------- | --------- | ---------- | ------------ |
+| Alexis Vega | Team Lead | 05-07-2025 | - alexisvega |
 
 ---

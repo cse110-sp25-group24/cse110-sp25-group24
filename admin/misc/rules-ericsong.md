@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|   Eric Song   | Developer   | 05/07/2025     | E.S.         |
+| Name      | Role      | Date       | Signature |
+| --------- | --------- | ---------- | --------- |
+| Eric Song | Developer | 05/07/2025 | E.S.      |
 
 ---

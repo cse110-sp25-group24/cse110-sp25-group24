@@ -112,7 +112,7 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name                    | Role |   Date   | Signature |
+| Name                    | Role | Date     | Signature |
 | ----------------------- | ---- | -------- | --------- |
 | Thanh-Long Nguyen-Trong | Dev  | 05/07/25 | -tlnt     |
 

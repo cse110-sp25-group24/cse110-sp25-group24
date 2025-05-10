@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-| Vincent Nguyen     | Developer     | 5/7/2025     | - V.N.        |
+| Name           | Role      | Date     | Signature |
+| -------------- | --------- | -------- | --------- |
+| Vincent Nguyen | Developer | 5/7/2025 | - V.N.    |
 
 ---
