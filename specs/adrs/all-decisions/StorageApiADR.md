@@ -1,7 +1,7 @@
 ---
 title: [Map API ADR] - [Concise Decision Name]
 status: Drafting
-date: 05-010-2025
+date: 05-10-2025
 decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen]
 ---
 
@@ -13,9 +13,11 @@ We will store card data in  as JSON documents tied to user accounts
 ---
 
 ## Context and Problem Statement
+The main quesiton: How will we store files, songs, links, pictures, other information or data?
 
-How to write readable test assertions?
-How to write readable test assertions for advanced tests?
+This can be broken down into two requirements: storing structured data, such as title, description, date and time posted, and unstructured elements such as pictures, videos, and music.
+
+While we will do not need to store all examples above in the final product, we need to make sure that we _can_ store all the above in the event that we choose to include those features.
 
 ## Considered Options
 
@@ -95,8 +97,8 @@ openRequest.onsuccess = function (e) {
 ```
 
 * Good, because structured data uses objectStore with key paths and indexes, enabling efficient retrieval and filtering (e.g., by title).
+* Good, satisfies requirements of storing structured and unstructured elements
 * Bad, because complex assertions tend to get hard to read
-* Bad, because no fluent API
 
 ### Webstorage
 
@@ -105,7 +107,7 @@ openRequest.onsuccess = function (e) {
 * Good, because Simple and Intuitive API - Easy-to-use key/value interface with setItem, getItem, and removeItem.
 * Good, Built-in Browser Support - Widely supported across all modern browsers without requiring additional libraries.
 * Bad, Synchronous API - Blocks the main thread—can cause performance issues with large data.
-* Bad,Limited Capacity - Typically capped at 5–10 MB per origin—unsuitable for large datasets or files.
+* Bad, Limited Capacity - Typically capped at 5–10 MB per origin—unsuitable for large datasets or files.
 
 ### Cookies
 
@@ -123,9 +125,6 @@ document.cookie = "username=joe; expires=Fri, 31 Dec 2025 23:59:59 UTC; path=/";
 
 - Bad: **Performance Impact**  
   Sent with every request—even static resources—potentially slowing down page loads.
-
-- Bad: **Synchronous by Nature**  
-  Cookies are read/written synchronously in JavaScript, potentially blocking operations.
 
 - Bad: **Limited Storage Use Cases**  
   Poor fit for large or complex data structures (unlike `localStorage` or `IndexedDB`).
