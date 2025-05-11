@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="BykEv_djeUsVwdLHezBq" name="Page-1">
-        <mxGraphModel dx="1165" dy="2670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1456" dy="2787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,23 +10,19 @@
                 <mxCell id="2" value="Start" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;arcSize=50;fillColor=light-dark(#FFFFFF,#006666);" parent="1" vertex="1">
                     <mxGeometry x="410" y="-2140" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="6" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="390" y="-2010" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="3" value="GitHub Actions Triggered" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#003366);" parent="1" vertex="1">
                     <mxGeometry x="330" y="-2070" width="120" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="6" target="7" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="Checkout&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot;&gt;Repository&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#003366);" parent="1" vertex="1">
-                    <mxGeometry x="330" y="-2010" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7" target="8" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="Set Up Node Environment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#006600);" parent="1" vertex="1">
-                    <mxGeometry x="330" y="-1950" width="120" height="40" as="geometry"/>
+                    <mxGeometry x="330" y="-1980" width="120" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="8" target="9" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -195,7 +191,7 @@
                 <mxCell id="54" value="Developer fixes code and repushes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#660000);" parent="1" vertex="1">
                     <mxGeometry x="480" y="-1960" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="CI/CD Pipeline for BeeZee 24/7 Web Application Pull Requests" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="56" value="CI/CD Pipeline for BeeZee 24/7 Web Application Pull Requests" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="345" y="-2180" width="250" height="30" as="geometry"/>
                 </mxCell>
             </root>

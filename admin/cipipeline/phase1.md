@@ -1,4 +1,4 @@
-# Phase 1 Status: CI/CD Pipeline Overview
+# CI/CD Pipeline Overview
 
 ## Current Functional CI/CD Stages
 
@@ -9,27 +9,22 @@
 
 ### 2. GitHub Actions triggered on PR to main branch
 
-* **Status:** Partially Functional
+* **Status:** Fully Functional
 * **Details:** The GitHub Actions workflow is set to run on `pull_request` events targeting `main`. This initiates automated checks and tests.
 
-### 3. Checkout repository (`actions/checkout`)
+### 3. Set up Node.js environment (`actions/setup-node`)
 
-* **Status:** Planned
-* **Details:** The repository is checked out using the official GitHub Action. This step ensures that the codebase is available for formatting and testing.
-
-### 4. Set up Node.js environment (`actions/setup-node`)
-
-* **Status:** Planned
+* **Status:** Functional
 * **Details:** A specific Node.js version is installed and made available to ensure consistent runtime behavior across machines.
 
-### 5. Install dependencies (Prettier only)
+### 4. Install dependencies (Prettier only)
 
-* **Status:** Planned
+* **Status:** Fully Functional
 * **Details:** Only Prettier is installed via `npm ci` or `npm install --omit=dev` to keep dependencies minimal and reduce build time.
 
 ### 6. Run Prettier in check mode (`npx prettier . --check`)
 
-* **Status:** Planned
+* **Status:** Fully Functional
 * **Details:** This enforces consistent code style. The build fails if any file is not formatted correctly, which helps standardize codebase quality.
 
 ### 7. Run unit tests
@@ -40,7 +35,7 @@
   * **Frontend:** Jest will be configured to test UI components and logic.
   * **Backend:** Mocha/Chai will be used to validate REST APIs or server logic.
 
-### 8. Run integration or end-to-end tests (Cypress)
+### 8. Run integration or end-to-end tests (Maybe use Cypress)
 
 * **Status:** Planned  
 * **Next Steps:** Add Cypress configuration for UI interaction tests, such as user profile flows and card creation validation.
