@@ -36,8 +36,7 @@ Chosen option: Custom access control system with JWT authentication and visibili
 * Good, test cases are easy to mock, easy to create test tokens
 * Bad, because we must manage token expiration and refresh manually
 * Bad, because we don’t offer third-party logins like “Sign in with Google” for now
-* Bad, because if a token is leaked, it can be used until it expires 
-
+* Bad, because if a token is leaked, it can be used until it expires
 
 ### Confirmation
 
@@ -46,7 +45,6 @@ Chosen option: Custom access control system with JWT authentication and visibili
 * Code Review with other members: Do members find JWT easy to use and logic easy to implement, etc
 * Schedule a re-evaluation if JWT doesn’t scale well (authentication becomes a priority)
 * Test token creation, expiration, and invalid access attempts to ensure security of private/public visibility
-
 
 ## Pros and Cons of the Options
 
@@ -59,21 +57,19 @@ Homepage: <https://www.npmjs.com/package/jsonwebtoken>
 * Good, fewer dependencies and faster development time compared to OAuth or SAML
 * Bad, we must handle token expiration, refresh tokens, and secure storage (e.g., localStorage vs. httpOnly cookies).
 * Bad, users must create new credentials (no "Login with Google”)
-* Bad, improper signing, verification, or storage of tokens can lead to security vulnerabilities (e.g., token leakage, forgery).		
-
+* Bad, improper signing, verification, or storage of tokens can lead to security vulnerabilities (e.g., token leakage, forgery).
 
 ### OAuth
 
 Homepage: <https://oauth.net/>
 
-* Good, quick and easy for login users 
+* Good, quick and easy for login users
 Log in with existing accounts (Google, Github, etc.)
 * Good, has built in security features that handles token refresh and password recover
-* Good, trustworthy and less account management for us 
+* Good, trustworthy and less account management for us
 * Bad, relies on third party API’s
-* Bad, more complex setting it up, configuring OAuth flows	
-* Bad, for the time limit set on use, can be overly complicated to implement 
-
+* Bad, more complex setting it up, configuring OAuth flows
+* Bad, for the time limit set on use, can be overly complicated to implement
 
 ### SAML
 
