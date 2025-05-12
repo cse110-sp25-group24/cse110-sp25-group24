@@ -13,6 +13,7 @@ We will store card data in  as JSON documents tied to user accounts in IndexDB.
 ---
 
 ## Context and Problem Statement
+
 The main quesiton: How will we store files, songs, links, pictures, other information or data?
 
 This can be broken down into two requirements: storing structured data, such as title, description, date and time posted, and unstructured elements such as pictures, videos, and music.
@@ -102,7 +103,7 @@ openRequest.onsuccess = function (e) {
 
 ### Webstorage
 
-(Homepage)[https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API]
+[Homepage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 
 * Good, because Simple and Intuitive API - Easy-to-use key/value interface with setItem, getItem, and removeItem.
 * Good, Built-in Browser Support - Widely supported across all modern browsers without requiring additional libraries.
@@ -111,22 +112,28 @@ openRequest.onsuccess = function (e) {
 
 ### Cookies
 
-(Homepage)[https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies]
+[Homepage](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)
 
 Example:
 
-```
+```json
 document.cookie = "username=joe; expires=Fri, 31 Dec 2025 23:59:59 UTC; path=/";
 ```
 
-* Good: **Session Management**: Ideal for maintaining user sessions (e.g., login state, shopping carts).
-- Bad: **Small Size Limit**  
+* Good: **Session Management**
+
+  Ideal for maintaining user sessions (e.g., login state, shopping carts).
+
+* Bad: **Small Size Limit**
+
   Typically limited to ~4KB per cookie and a maximum number of cookies per domain (~50–100).
 
-- Bad: **Performance Impact**  
+* Bad: **Performance Impact**
+
   Sent with every request—even static resources—potentially slowing down page loads.
 
-- Bad: **Limited Storage Use Cases**  
+* Bad: **Limited Storage Use Cases**
+
   Poor fit for large or complex data structures (unlike `localStorage` or `IndexedDB`).
 
 ## More Information
