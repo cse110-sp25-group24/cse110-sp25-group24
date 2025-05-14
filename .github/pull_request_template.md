@@ -7,9 +7,11 @@ Description of change goes here... (REPLACE THIS)
 ## Changes
 
 `src/somefile` (REPLACE THIS)
+
 - change 1 (REPLACE THIS)
 
 `src/otherfile` (REPLACE THIS)
+
 - change 2 (REPLACE THIS)
 
 ## Screenshots / Testing / How Your Change Works
