@@ -8,7 +8,7 @@ decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen
 ## Summary
 
 **One-sentence overview of the decision.**
-We will store card data in  as JSON documents tied to user accounts in IndexDB.
+We will store card data in as JSON documents tied to user accounts in IndexDB.
 
 ---
 
@@ -22,10 +22,10 @@ While we will do not need to store all examples above in the final product, we n
 
 ## Considered Options
 
-* Cookies
-* WebStorage
-* IndexDB
-* Cache API
+- Cookies
+- WebStorage
+- IndexDB
+- Cache API
 
 ## Decision Outcome
 
@@ -33,18 +33,18 @@ Chosen option: "IndexDB", because comes out best (see "Pros and Cons of the Opti
 
 ### Consequences
 
-* Good, supports storage of structured and unstructured data
-* Good, much higher storage capacity than other local storage APIs (since we are restricted to only local dependencies)
-* Good, data isn't lost when the browser is closed
+- Good, supports storage of structured and unstructured data
+- Good, much higher storage capacity than other local storage APIs (since we are restricted to only local dependencies)
+- Good, data isn't lost when the browser is closed
 
-* Bad, while supported on many browsers, there are many different restrictions accross the browsers
-* Bad, writing clean and maintainable code using this API can be challenging
+- Bad, while supported on many browsers, there are many different restrictions accross the browsers
+- Bad, writing clean and maintainable code using this API can be challenging
 
 ### Confirmation
 
-* Check project dependencies, IndexDB should appear.
-* Collect experience with IndexDB in sprint reviews and retrospectives to determine if the gains pros and cons evaluation below?
-* Have a trial run with other teams in charge of determining datatypes of how to store location, images, and other needs.
+- Check project dependencies, IndexDB should appear.
+- Collect experience with IndexDB in sprint reviews and retrospectives to determine if the gains pros and cons evaluation below?
+- Have a trial run with other teams in charge of determining datatypes of how to store location, images, and other needs.
 
 ## Pros and Cons of the Options
 
@@ -60,7 +60,10 @@ const openRequest = indexedDB.open("InstaPostsDB", 1);
 openRequest.onupgradeneeded = function (e) {
   const db = e.target.result;
   if (!db.objectStoreNames.contains("posts")) {
-    const store = db.createObjectStore("posts", { keyPath: "id", autoIncrement: true });
+    const store = db.createObjectStore("posts", {
+      keyPath: "id",
+      autoIncrement: true,
+    });
     store.createIndex("title", "title", { unique: false });
   }
 };
@@ -94,21 +97,20 @@ openRequest.onsuccess = function (e) {
     reader.readAsDataURL(file); // This returns a base64 string
   });
 };
-
 ```
 
-* Good, because structured data uses objectStore with key paths and indexes, enabling efficient retrieval and filtering (e.g., by title).
-* Good, satisfies requirements of storing structured and unstructured elements
-* Bad, because complex assertions tend to get hard to read
+- Good, because structured data uses objectStore with key paths and indexes, enabling efficient retrieval and filtering (e.g., by title).
+- Good, satisfies requirements of storing structured and unstructured elements
+- Bad, because complex assertions tend to get hard to read
 
 ### Webstorage
 
 [Homepage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 
-* Good, because Simple and Intuitive API - Easy-to-use key/value interface with setItem, getItem, and removeItem.
-* Good, Built-in Browser Support - Widely supported across all modern browsers without requiring additional libraries.
-* Bad, Synchronous API - Blocks the main thread—can cause performance issues with large data.
-* Bad, Limited Capacity - Typically capped at 5–10 MB per origin—unsuitable for large datasets or files.
+- Good, because Simple and Intuitive API - Easy-to-use key/value interface with setItem, getItem, and removeItem.
+- Good, Built-in Browser Support - Widely supported across all modern browsers without requiring additional libraries.
+- Bad, Synchronous API - Blocks the main thread—can cause performance issues with large data.
+- Bad, Limited Capacity - Typically capped at 5–10 MB per origin—unsuitable for large datasets or files.
 
 ### Cookies
 
@@ -120,19 +122,19 @@ Example:
 document.cookie = "username=joe; expires=Fri, 31 Dec 2025 23:59:59 UTC; path=/";
 ```
 
-* Good: **Session Management**
+- Good: **Session Management**
 
   Ideal for maintaining user sessions (e.g., login state, shopping carts).
 
-* Bad: **Small Size Limit**
+- Bad: **Small Size Limit**
 
   Typically limited to ~4KB per cookie and a maximum number of cookies per domain (~50–100).
 
-* Bad: **Performance Impact**
+- Bad: **Performance Impact**
 
   Sent with every request—even static resources—potentially slowing down page loads.
 
-* Bad: **Limited Storage Use Cases**
+- Bad: **Limited Storage Use Cases**
 
   Poor fit for large or complex data structures (unlike `localStorage` or `IndexedDB`).
 

@@ -112,8 +112,8 @@
 
 By signing below, I agree to uphold this charter and revisit it at each quarterly review.
 
-| Name | Role | Date | Signature |
-| ---- | ---- | ---- | --------- |
-|Yilong|  Dev |  5/9 | Yilong    |
+| Name   | Role | Date | Signature |
+| ------ | ---- | ---- | --------- |
+| Yilong | Dev  | 5/9  | Yilong    |
 
 ---
