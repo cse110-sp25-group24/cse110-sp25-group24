@@ -1,120 +1,120 @@
 body {
-    font-family: Arial, sans-serif;
-    padding: 40px;
-    max-width: 600px;
-    margin: auto;
-  }
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+}
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-  h1 {
-    font-size: 28px;
-  }
+h1 {
+  font-size: 28px;
+}
 
-  button.save-btn {
-    background-color: black;
-    color: white;
-    padding: 10px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+button.save-btn {
+  background-color: black;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .upload-area {
-    border: 2px dashed #ccc;
-    padding: 30px;
-    text-align: center;
-    margin: 20px 0;
-    border-radius: 8px;
-  }
+.upload-area {
+  border: 2px dashed #ccc;
+  padding: 30px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 8px;
+}
 
-  .upload-area img {
-    width: 40px;
-    margin-bottom: 10px;
-  }
+.upload-area img {
+  width: 40px;
+  margin-bottom: 10px;
+}
 
-  .upload-area label {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 14px;
-    background-color: #f0f0f0;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+.upload-area label {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-  .upload-area input[type="file"] {
-    display: none;
-  }
+.upload-area input[type="file"] {
+  display: none;
+}
 
-  label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-  }
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
 
-  input[type="text"],
-  input[type="date"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-  }
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
 
-  textarea {
-    resize: vertical;
-    height: 100px;
-  }
+textarea {
+  resize: vertical;
+  height: 100px;
+}
 
-  .mood-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
+.mood-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
 
-  .mood-buttons button {
-    padding: 8px 14px;
-    border: none;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    cursor: pointer;
-  }
+.mood-buttons button {
+  padding: 8px 14px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
-  .icon-wrapper {
-    position: relative;
-  }
+.icon-wrapper {
+  position: relative;
+}
 
-  .icon-wrapper input {
-    padding-right: 40px;
-  }
+.icon-wrapper input {
+  padding-right: 40px;
+}
 
-  .icon-wrapper span {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
+.icon-wrapper span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 
-  fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 20px;
-  }
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
 
-  legend {
-    padding: 0;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+legend {
+  padding: 0;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
