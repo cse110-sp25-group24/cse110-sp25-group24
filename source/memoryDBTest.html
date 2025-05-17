@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IndexedDB Demo</title>
+    <style>
+      #controls {
+        text-align: center;
+        margin: 1em;
+      }
+      #controls button {
+        margin: 0 0.5em;
+        padding: 0.5em 1em;
+      }
+      #latest-post {
+        max-width: 400px;
+        margin: 2em auto;
+        padding: 1em;
+        border: 1px solid #ccc;
+      }
+      #latest-post img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <button id="generate-btn">Generate 5 New Posts</button>
+      <button id="refresh-btn">Show Latest Post</button>
+      <button id="clear-btn">Clear All Posts</button>
+      <!-- new -->
+    </div>
+
+    <div id="latest-post">
+      <!-- Latest post will be injected here -->
+    </div>
+
+    <script src="dataHandling.js"></script>
+  </body>
+</html>
