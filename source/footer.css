@@ -1,7 +1,7 @@
 .footer {
   background-color: #f8f8f8;
   border-top: 1px solid #ddd;
-  padding: 1rem ;
+  padding: 1rem;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -10,21 +10,16 @@
   height: 2.5rem;
 }
 
-.footer-content{
+.footer-content {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 .footer-links {
-   
-    margin-right: 3rem;
+  margin-right: 3rem;
 }
 
-.footer-links a{
-     margin-left: 12px;
+.footer-links a {
+  margin-left: 12px;
 }
-
-
-

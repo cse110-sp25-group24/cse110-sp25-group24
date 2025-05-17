@@ -28,9 +28,9 @@
 
 ## 🧠 Agenda
 
-1. Finalize group contract structure and begin drafting  
-2. Set up initial ADR and CI/CD folders  
-3. Discuss TA meeting feedback and upcoming sprint organization  
+1. Finalize group contract structure and begin drafting
+2. Set up initial ADR and CI/CD folders
+3. Discuss TA meeting feedback and upcoming sprint organization
 
 ---
 
@@ -40,10 +40,10 @@
 - Everyone contributed content; Eric is transferring notes to Markdown format
 - Cloned ADR template from Canvas and began team customization
 - Set up folder paths in GitHub repo for:
-  - `/admin/misc/rules.md`  
-  - `/specs/adrs/`  
-  - `/admin/cipipeline/`  
-- Created Miro board for designing CI/CD pipeline  
+  - `/admin/misc/rules.md`
+  - `/specs/adrs/`
+  - `/admin/cipipeline/`
+- Created Miro board for designing CI/CD pipeline
   - [CI/CD Miro Board](https://miro.com/app/board/uXjVI41SusE=/?share_link_id=576561649157)
 
 ---
@@ -51,7 +51,7 @@
 ## 📌 Decisions Made
 
 - Decided to implement TWTH meeting schedule:
-  - **Tues/Thurs:** Standup after CSE 110  
+  - **Tues/Thurs:** Standup after CSE 110
   - **Wednesday:** In-person project development
 - Each team member must:
   - Finalize and sign their contract (`rules-studentname.md`)
