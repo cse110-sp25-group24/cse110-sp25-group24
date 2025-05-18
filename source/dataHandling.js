@@ -1,122 +1,195 @@
-let db;
+// Store and Display a "Memory" using IndexedDB Issue # 30
 
+// making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", () => {
-  const request = indexedDB.open("PostDB", 1);
+  const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
 
+  // if database does not exist
   request.onupgradeneeded = (event) => {
-    db = event.target.result;
-    if (!db.objectStoreNames.contains("posts")) {
-      const store = db.createObjectStore("posts", {
+    const db = request.result;
+
+    console.log("initializing db"); // debugging message
+
+    if (!db.objectStoreNames.contains("memories")) {
+      const store = db.createObjectStore("memories", {
         keyPath: "post_id",
         autoIncrement: true,
       });
-      store.createIndex("by_id", "post_id");
+
+      store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
     }
   };
 
+  let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
+
+  // sanity checks for making sure the database is up
+
   request.onsuccess = (event) => {
     db = event.target.result;
-
-    // initial dummy posts
-    addPost({
-      title: "First Post",
-      description: "This is the very first dummy post.",
-      image: "https://via.placeholder.com/300x150?text=First",
-    });
-    addPost({
-      title: "Second Post",
-      description: "Another example post for the demo.",
-      image: "https://via.placeholder.com/300x150?text=Second",
-    });
-    addPost({
-      title: "Third Post",
-      description: "The most recent dummy post!",
-      image: "https://via.placeholder.com/300x150?text=Third",
-    });
-
-    // display the latest once on load
-    setTimeout(refreshLatestPost, 500);
-
-    // wire up the generate button
-    document.getElementById("generate-btn").addEventListener("click", () => {
-      generatePosts(5);
-      // after adding, show newest
-      setTimeout(refreshLatestPost, 300);
-    });
-
-    // wire up the refresh button
-    document
-      .getElementById("refresh-btn")
-      .addEventListener("click", refreshLatestPost);
+    console.log("db is up");
+    displayLatestMemory(db);
   };
 
   request.onerror = (event) => {
-    console.error("IndexedDB error:", event.target.error);
+    console.log("db err"); // works so far, seen
   };
+
+  // functions to hook up to the form for testing db functions
+  /**
+    Desired Content:
+    - display the most recent memory, placeholder if nothing submitted
+
+  */
+
+  const form = document.getElementById("post-form");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const title = data.get("title");
+    const description = data.get("description");
+    const image = data.get("image");
+    const imageURL = await fileToDataUrl(image);
+    const date = new Date();
+    const post = {
+      title: title,
+      description: description,
+      dateCreated: date,
+      image: imageURL,
+    };
+
+    addMemory(post, db).then(() => displayLatestMemory(db));
+    event.target.reset();
+  });
+  document.getElementById("delete-all").addEventListener("click", () => {
+    deleteAllMemories(db);
+  });
 });
 
-/** Adds a post object to the "posts" store. */
-function addPost(post) {
-  const tx = db.transaction("posts", "readwrite");
-  const store = tx.objectStore("posts");
-  const req = store.add(post);
-  req.onsuccess = () => console.log("Added post ID:", req.result);
-  req.onerror = () => console.error("Add error:", req.error);
-}
+async function displayLatestMemory(db) {
+  // getting the latest memory
+  // store is called memories
 
-/** Generates and adds N dummy posts in one go. */
-function generatePosts(count) {
-  for (let i = 1; i <= count; i++) {
-    addPost({
-      title: `Generated Post #${i}`,
-      description: `Automatically generated post number ${i}.`,
-      image: `https://via.placeholder.com/300x150?text=Gen+${i}`,
-    });
-  }
-}
+  // using promise in checking to see if there are posts
+  isEmptyDB(db).then((result) => {
+    const mainElement = document.querySelector("main");
 
-/** Retrieves the most recently added post (highest post_id). */
-function getLatestPost() {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("posts", "readonly");
-    const store = tx.objectStore("posts");
-    const cursorReq = store.openCursor(null, "prev");
-    cursorReq.onsuccess = () => {
-      const cursor = cursorReq.result;
-      resolve(cursor ? cursor.value : null);
-    };
-    cursorReq.onerror = () => reject(cursorReq.error);
+    mainElement.innerHTML = "";
+
+    if (result) {
+      // there are 0 posts
+
+      const placeholder = document.createElement("p");
+      placeholder.classList.add("placeholder");
+      placeholder.textContent = "No posts.";
+      mainElement.append(placeholder);
+    } else {
+      getLatestMemory(db).then((post) => {
+        console.log("snagging most recent memory");
+        // build the DOM
+        const card = document.createElement("article");
+        card.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>${post.description}</p>
+            <img src="${post.image}" alt="${
+          post.title
+        }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
+            <footer>Created: ${new Date(
+              post.dateCreated
+            ).toLocaleString()}</footer>
+          `;
+        mainElement.appendChild(card);
+      });
+    }
   });
 }
 
-/** Fetches & displays the newest post. */
-function refreshLatestPost() {
-  getLatestPost()
-    .then(displayPost)
-    .catch((err) => console.error("Fetch latest failed:", err));
-}
-
-/** Renders a post inside #latest-post */
-function displayPost(post) {
-  const container = document.getElementById("latest-post");
-  if (!post) {
-    container.textContent = "No posts found.";
-    return;
-  }
-  container.innerHTML = `
-    <h2>${post.title}</h2>
-    <p>${post.description}</p>
-    <img src="${post.image}" alt="${post.title}">
-  `;
-}
-
-/** Clears all entries in the "posts" store. */
-function clearAllPosts() {
+function isEmptyDB(db) {
   return new Promise((resolve, reject) => {
-    const tx = db.transaction("posts", "readwrite");
-    const store = tx.objectStore("posts");
-    const req = store.clear();
-    req.onsuccess = () => resolve();
-    req.onerror = () => reject(req.error);
+    const tx = db.transaction("memories", "readonly");
+    const store = tx.objectStore("memories");
+    const numPosts = store.count();
+
+    numPosts.onsuccess = () => {
+      console.log("zero posts");
+      resolve(numPosts.result === 0);
+    };
+
+    numPosts.onerror = () => {
+      console.log("error");
+      reject(numPosts.error);
+    };
+  });
+}
+
+function addMemory(post, db) {
+  // adding a memory to the database
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction("memories", "readwrite");
+    const store = tx.objectStore("memories");
+    const request = store.add(post);
+    request.onsuccess = () => {
+      const id = request.result;
+      console.log(`saved post ${id}`);
+      resolve(id);
+    };
+
+    request.onerror = () => {
+      console.log("error adding post");
+      reject(request.error);
+    };
+  });
+}
+
+function getLatestMemory(db) {
+  // just going to log the details to console atm
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction("memories", "readonly");
+    const store = tx.objectStore("memories").index("dateCreated");
+    const request = store.openCursor(null, "prev");
+    request.onsuccess = () => {
+      const cursor = request.result;
+      resolve(cursor ? cursor.value : null); // return the cursor's value if cursor is not null
+    };
+
+    request.onerror = () => {
+      reject(request.error);
+    };
+  });
+}
+
+function deleteAllMemories(db) {
+  if (db) {
+    db.close();
+  }
+  const deleteRequest = indexedDB.deleteDatabase("MemoryDB");
+
+  deleteRequest.onblocked = () => {
+    console.warn(
+      "Database deletion blocked: please close all other tabs using it."
+    );
+  };
+  deleteRequest.onerror = () => {
+    console.error("Error deleting database:", deleteRequest.error);
+  };
+  deleteRequest.onsuccess = () => {
+    console.log("Database deleted successfully.");
+    // reset? VERY rough
+    window.location.reload();
+  };
+}
+
+// reading the data as a URL
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    // starting a new filereader
+    const reader = new FileReader();
+
+    // startinghe promises
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+
+    // reading the file w default API --> is returned
+    reader.readAsDataURL(file);
   });
 }
