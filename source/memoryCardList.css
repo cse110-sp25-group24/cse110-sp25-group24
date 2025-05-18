@@ -1,14 +1,13 @@
-/* 基础设置 */
 body {
   margin: 0;
   font-family: sans-serif;
   background-color: #eee;
 }
 
-/* 模拟弹出层容器 */
+
 .memory-modal {
   position: fixed;
-  top: 60px; /* 可根据菜单高度调整 */
+  top: 60px; 
   left: 0;
   right: 0;
   bottom: 0;
@@ -20,14 +19,13 @@ body {
   z-index: 1000;
 }
 
-/* 卡片列表容器 */
+
 .card-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* 每张卡片 */
 .memory-card {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -38,7 +36,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
-/* 上方图片部分 */
+
 .thumbnail {
   width: 100%;
   height: 180px;
@@ -52,10 +50,10 @@ body {
 .thumbnail-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 保证图片填充整个区域并且不变形 */
+  object-fit: cover;
 }
 
-/* 文字内容部分 */
+
 .card-content {
   padding: 0.75rem 1rem;
   display: flex;
@@ -69,7 +67,7 @@ body {
   align-items: center;
   margin-bottom: 0.3rem;
 }
-/* 标签、日期、标题 */
+
 .category-tag {
   display: inline-block;
   background-color: #f4c542;
@@ -101,7 +99,6 @@ body {
   color: inherit;
 }
 
-/* 描述文字 */
 .description {
   font-size: 0.9rem;
   color: #444;
@@ -115,7 +112,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* 卡片底部图标 */
+
 .card-footer {
   display: flex;
   justify-content: space-around;
@@ -126,7 +123,7 @@ body {
   margin-top: auto;
 }
 
-/* 响应式处理 */
+
 @media (min-width: 768px) {
   .memory-modal {
     width: 400px;
@@ -143,7 +140,7 @@ body {
   display: none;
 }
 
-/* 绝对定位 X 按钮到右上角 */
+/* absolute location X*/
 .close-button {
   position: absolute;
   top: 1rem;
@@ -176,17 +173,17 @@ body {
   transition: stroke 0.2s, fill 0.2s;
 }
 
-/* 隐藏实心图标，显示空心图标 */
+
 .icon-btn .solid {
   display: none;
 }
 
 .icon-btn.active .outline {
-  display: none;  /* 隐藏空心图标 */
+  display: none;
 }
 
 .icon-btn.active .solid {
-  display: inline;  /* 显示实心图标 */
+  display: inline; 
 }
 
 
