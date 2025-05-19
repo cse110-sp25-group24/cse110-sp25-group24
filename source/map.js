@@ -14,7 +14,7 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
     alert("Please enter a valid API key.");
     return;
   }
-  
+
   const script = document.createElement("script");
   script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
   script.async = true;
@@ -23,11 +23,9 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
     alert("Failed to load Google Maps API. Check your API key.");
   };
 
-  document.getElementById("apiKeyInput").remove()
-  document.getElementById("apiKeyPrompt").remove()
-  document.getElementById("loadMapBtn").remove()
-
-
+  document.getElementById("apiKeyInput").remove();
+  document.getElementById("apiKeyPrompt").remove();
+  document.getElementById("loadMapBtn").remove();
 
   document.head.appendChild(script);
 });
