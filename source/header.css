@@ -1,1 +1,70 @@
 /* <!-- Implement Header Issue #24 --> */
+.header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 2rem;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+  }
+  
+  .nav a:hover {
+    color: #0077cc;
+  }
+  
+  /* Responsive: collapse nav into hamburger on small screens */
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f8f8f8;
+      width: 100%;
+      padding: 1rem;
+      border-top: 1px solid #ddd;
+    }
+  
+    .nav.active {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  }
+  
