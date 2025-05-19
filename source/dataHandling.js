@@ -78,7 +78,6 @@ async function displayLatestMemory(db) {
 
     if (result) {
       // there are 0 posts
-
       const placeholder = document.createElement("p");
       placeholder.classList.add("placeholder");
       placeholder.textContent = "No posts.";
@@ -92,10 +91,10 @@ async function displayLatestMemory(db) {
             <h2>${post.title}</h2>
             <p>${post.description}</p>
             <img src="${post.image}" alt="${
-          post.title
-        }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
+              post.title
+            }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
             <footer>Created: ${new Date(
-              post.dateCreated
+              post.dateCreated,
             ).toLocaleString()}</footer>
           `;
         mainElement.appendChild(card);
@@ -166,7 +165,7 @@ function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it."
+      "Database deletion blocked: please close all other tabs using it.",
     );
   };
   deleteRequest.onerror = () => {
