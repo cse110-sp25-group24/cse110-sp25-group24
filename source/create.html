@@ -3,9 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="form.css" />
     <title>Document</title>
   </head>
   <body>
-    <!-- Create New Card Form Issue #25 -->
+    <header>
+      <h1>Create New Memory Card</h1>
+      <button class="save-btn" type="submit" form="memory-form">
+        Save Memory
+      </button>
+    </header>
+    <form id="memory-form">
+      <section class="upload-area">
+        <img
+          src="https://img.icons8.com/ios/50/image--v1.png"
+          alt="upload icon"
+        />
+        <p>Drag and drop your photo here</p>
+        <label for="imageUpload">Browse Files</label>
+        <input type="file" id="imageUpload" accept="image/*" />
+      </section>
+
+      <fieldset>
+        <label for="location">Location</label>
+        <span class="icon-wrapper">
+          <input type="text" id="location" placeholder="Search location..." />
+          <span>📍</span>
+        </span>
+
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="Give your memory a title" />
+
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          placeholder="Share your experience..."
+        ></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Mood</legend>
+        <div class="mood-buttons">
+          <button type="button">Happy</button>
+          <button type="button">Excited</button>
+          <button type="button">Nostalgic</button>
+          <button type="button">Peaceful</button>
+          <button type="button">Inspired</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <label for="music">Add Music (Optional)</label>
+        <span class="icon-wrapper">
+          <input type="text" id="music" placeholder="Search for a song..." />
+          <span>🎵</span>
+        </span>
+
+        <label for="privacy">Privacy</label>
+        <select id="privacy">
+          <option>Public</option>
+          <option>Private</option>
+          <option>Friends Only</option>
+        </select>
+      </fieldset>
+    </form>
   </body>
 </html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Cards Slideout</title>
+    <link rel="stylesheet" href="memoryCardList.css" />
+  </head>
+  <body>
+    <!-- Open side bar -->
+    <button id="openModalBtn" class="open-button">📋 Open Memory List</button>
+
+    <!-- Memory Modal -->
+    <div id="memoryModal" class="memory-modal hidden">
+      <div class="modal-header">
+        <h3>Memory List</h3>
+        <button id="closeModalBtn" class="close-button" aria-label="关闭">
+          X
+        </button>
+      </div>
+      <div class="card-list">
+        <!-- Sample cards -->
+        <div class="memory-card" card_id="001">
+          <a href="/memory-detail.html" class="thumbnail">
+            <!-- LINK TO BE REPLACED -->
+            <img src="Kaname.jpg" alt="Memory Photo" class="thumbnail-image" />
+          </a>
+          <div class="card-content">
+            <div class="meta-row">
+              <span class="category-tag" data-category="Nostalgic"
+                >Nostalgic</span
+              >
+              <div class="metadata">April 15, 2025</div>
+            </div>
+            <h2 class="title">
+              <a href="/memory-detail.html">Sunset at Geisel Library</a>
+              <!-- LINK TO BE REPLACED -->
+            </h2>
+            <p class="description">
+              A beautiful sunset casting golden rays through the trees near the
+              library.
+            </p>
+            <div class="card-footer">
+              <!-- Musical note -->
+              <button class="icon-btn music" data-type="music" data-id="card1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#77DD77"
+                  class="size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M19.952 1.651a.75.75 0 0 1 .298.599V16.303a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.403-4.909l2.311-.66a1.5 1.5 0 0 0 1.088-1.442V6.994l-9 2.572v9.737a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.402-4.909l2.31-.66a1.5 1.5 0 0 0 1.088-1.442V5.25a.75.75 0 0 1 .544-.721l10.5-3a.75.75 0 0 1 .658.122Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <!-- Heart -->
+              <button class="icon-btn heart" data-type="heart" data-id="card1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f5553d"
+                  class="size-6"
+                >
+                  <path
+                    d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Bookmark -->
+              <button
+                class="icon-btn bookmark"
+                data-type="bookmark"
+                data-id="card1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                  />
+                </svg>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f1b710"
+                  class="size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card" data-card-id="002">
+          <a href="/memory-detail.html" class="thumbnail">
+            <!-- LINK TO BE REPLACED -->
+            <img
+              src="44920ret2.jpg"
+              alt="Memory Photo"
+              class="thumbnail-image"
+            />
+          </a>
+          <div class="card-content">
+            <div class="meta-row">
+              <span class="category-tag" data-category="Travel">Travel</span>
+              <div class="metadata">April 15, 2025</div>
+            </div>
+            <h2 class="title">
+              <!-- LINK TO BE REPLACED -->
+              <a href="/memory-detail.html"
+                >LOOOOOOOOOOOOOOOOOOOONG title
+                testtesttesttesttesttesttesttest</a
+              >
+            </h2>
+            <p class="description">
+              LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG
+              text
+              testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+            </p>
+            <div class="card-footer">
+              <!-- Musical note -->
+              <button class="icon-btn music" data-type="music" data-id="card2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#77DD77"
+                  class="size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M19.952 1.651a.75.75 0 0 1 .298.599V16.303a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.403-4.909l2.311-.66a1.5 1.5 0 0 0 1.088-1.442V6.994l-9 2.572v9.737a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.402-4.909l2.31-.66a1.5 1.5 0 0 0 1.088-1.442V5.25a.75.75 0 0 1 .544-.721l10.5-3a.75.75 0 0 1 .658.122Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <!-- Heart -->
+              <button class="icon-btn heart" data-type="heart" data-id="card2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f5553d"
+                  class="size-6"
+                >
+                  <path
+                    d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Bookmark -->
+              <button
+                class="icon-btn bookmark"
+                data-type="bookmark"
+                data-id="card2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                  />
+                </svg>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f1b710"
+                  class="size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card" card-id="003">
+          <a href="/memory-detail.html" class="thumbnail">
+            <!-- LINK TO BE REPLACED -->
+            <img
+              src="44920ret2.jpg"
+              alt="Memory Photo"
+              class="thumbnail-image"
+            />
+          </a>
+          <div class="card-content">
+            <div class="meta-row">
+              <span class="category-tag" data-category="Food">Food</span>
+              <div class="metadata">April 17, 2025</div>
+            </div>
+            <h2 class="title">
+              <!-- LINK TO BE REPLACED -->
+              <a href="/memory-detail.html">It's Delicious!!!!!</a>
+            </h2>
+            <p class="description">Some description</p>
+            <div class="card-footer">
+              <!-- Musical note -->
+              <button class="icon-btn music" data-type="music" data-id="card3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#77DD77"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M19.952 1.651a.75.75 0 0 1 .298.599V16.303a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.403-4.909l2.311-.66a1.5 1.5 0 0 0 1.088-1.442V6.994l-9 2.572v9.737a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.402-4.909l2.31-.66a1.5 1.5 0 0 0 1.088-1.442V5.25a.75.75 0 0 1 .544-.721l10.5-3a.75.75 0 0 1 .658.122Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+
+              <!-- Heart -->
+              <button class="icon-btn heart" data-type="heart" data-id="card3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f5553d"
+                >
+                  <path
+                    d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"
+                  />
+                </svg>
+              </button>
+
+              <!-- Bookmark -->
+              <button
+                class="icon-btn bookmark"
+                data-type="bookmark"
+                data-id="card3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon outline"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+                  />
+                </svg>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon solid hidden"
+                  viewBox="0 0 24 24"
+                  fill="#f1b710"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- More .memory-card Here -->
+      </div>
+    </div>
+
+    <script>
+      // Show or hide side bar
+      const modal = document.getElementById("memoryModal");
+      const openBtn = document.getElementById("openModalBtn");
+      const closeBtn = document.getElementById("closeModalBtn");
+
+      openBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".icon-btn").forEach((button) => {
+        const type = button.dataset.type;
+        const id = button.dataset.id;
+        const key = `memory:${id}:${type}`;
+
+        // Get status from localStorage
+        const isActive = localStorage.getItem(key) === "true";
+        if (isActive) {
+          button.classList.add("active");
+        }
+
+        // Change status when clicked
+        button.addEventListener("click", () => {
+          const nowActive = button.classList.toggle("active");
+          localStorage.setItem(key, nowActive);
+        });
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".category-tag").forEach((tag) => {
+        const type = tag.dataset.category.toLowerCase();
+
+        const colors = {
+          nostalgic: "#ff9d24",
+          travel: "#1be287",
+          food: "#ff247d",
+          music: "#2496ff",
+        };
+
+        if (colors[type]) {
+          tag.style.backgroundColor = colors[type];
+          tag.style.color = "white";
+        }
+      });
+    </script>
+  </body>
+</html>
