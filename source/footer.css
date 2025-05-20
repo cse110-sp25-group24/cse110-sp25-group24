@@ -1,1 +1,25 @@
-/* <!-- Implement Footer Issue #28 --> */
+.footer {
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 1rem;
+  color: #555;
+  height: 2.5rem;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-links {
+  margin-right: 3rem;
+}
+
+.footer-links a {
+  margin-left: 12px;
+}
