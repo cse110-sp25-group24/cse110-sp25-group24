@@ -3,23 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Implement Base Map Issue #32 -->
+    <link rel="stylesheet" href="footer.css" />
     <title>Document</title>
-
     <style>
       #map {
         height: 400px;
         width: 100%;
         margin-top: 10px;
-        display: none; /* hide initially */
+        display: none; 
       }
     </style>
   </head>
   <body>
-    <!-- Implement Header Issue #24 -->
-
-    <!-- Implement Base Map Issue #32 -->
-
     <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
     <input
       id="apiKeyInput"
@@ -31,11 +26,18 @@
 
     <div id="map"></div>
     <script src="map.js"></script>
-
-    <!-- "New Memory" Button & Button Styles Issue #31 -->
-
-    <!-- Memory Card - List Display Issue #26 -->
-
-    <!-- Implement Footer Issue #28 -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-left">
+          &copy; 2025 MemorySpot. All right reserved. - Made at UCSD by BeeZee
+          24/7
+        </p>
+        <div class="footer-links">
+          <a href="#">About </a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
