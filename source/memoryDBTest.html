@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IndexedDB Demo</title>
+    <script src="dataHandling.js"></script>
+  </head>
+  <body>
+    <main>
+      <!-- Most Recent! -->
+    </main>
+
+    <!-- Simple form upload for testing DB -->
+    <form id="post-form" enctype="multipart/form-data">
+      <fieldset>
+        <label for="title">Title</label><br />
+        <input type="text" id="title" name="title" required />
+      </fieldset>
+
+      <fieldset>
+        <label for="description">Description</label><br />
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+      </fieldset>
+
+      <fieldset>
+        <label for="image">Image Upload</label><br />
+        <input type="file" id="image" name="image" accept="image/*" required />
+      </fieldset>
+
+      <fieldset>
+        <button type="submit">Submit Post</button>
+        <button type="reset">Clear</button>
+      </fieldset>
+    </form>
+    <button id="delete-all">Delete All Memories</button>
+  </body>
+</html>
