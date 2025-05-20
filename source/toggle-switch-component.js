@@ -15,21 +15,21 @@ class ToggleSwitch {
       onLabel: options.onLabel || "On",
       initialState: options.initialState || false,
       onChange: options.onChange || (() => {}),
-      containerId: options.containerId || null
+      containerId: options.containerId || null,
     };
-    
+
     // State
     this.isOn = this.options.initialState;
-    
+
     // DOM elements
     this.container = null;
     this.toggleInput = null;
     this.offLabel = null;
     this.onLabel = null;
-    
+
     // Create the component
     this.createToggle();
-    
+
     // If containerId is provided, append to that container
     if (this.options.containerId) {
       const targetContainer = document.getElementById(this.options.containerId);
@@ -38,42 +38,44 @@ class ToggleSwitch {
       }
     }
   }
-  
+
   /**
    * Create the toggle switch DOM elements
    */
   createToggle() {
     // Create container
-    this.container = document.createElement('div');
-    this.container.className = 'toggle-container';
-    
+    this.container = document.createElement("div");
+    this.container.className = "toggle-container";
+
     // Create off label
-    this.offLabel = document.createElement('span');
-    this.offLabel.className = 'toggle-label off-label' + (this.isOn ? '' : ' active');
+    this.offLabel = document.createElement("span");
+    this.offLabel.className =
+      "toggle-label off-label" + (this.isOn ? "" : " active");
     this.offLabel.textContent = this.options.offLabel;
-    
+
     // Create toggle switch
-    const toggleSwitch = document.createElement('label');
-    toggleSwitch.className = 'toggle-switch';
-    
+    const toggleSwitch = document.createElement("label");
+    toggleSwitch.className = "toggle-switch";
+
     // Create checkbox input
-    this.toggleInput = document.createElement('input');
-    this.toggleInput.type = 'checkbox';
-    this.toggleInput.className = 'toggle-input';
+    this.toggleInput = document.createElement("input");
+    this.toggleInput.type = "checkbox";
+    this.toggleInput.className = "toggle-input";
     this.toggleInput.checked = this.isOn;
-    
+
     // Create slider
-    const toggleSlider = document.createElement('span');
-    toggleSlider.className = 'toggle-slider';
-    
+    const toggleSlider = document.createElement("span");
+    toggleSlider.className = "toggle-slider";
+
     // Create on label
-    this.onLabel = document.createElement('span');
-    this.onLabel.className = 'toggle-label on-label' + (this.isOn ? ' active' : '');
+    this.onLabel = document.createElement("span");
+    this.onLabel.className =
+      "toggle-label on-label" + (this.isOn ? " active" : "");
     this.onLabel.textContent = this.options.onLabel;
-    
+
     // Add event listener
-    this.toggleInput.addEventListener('change', this.handleToggle.bind(this));
-    
+    this.toggleInput.addEventListener("change", this.handleToggle.bind(this));
+
     // Assemble the component
     toggleSwitch.appendChild(this.toggleInput);
     toggleSwitch.appendChild(toggleSlider);
@@ -81,27 +83,27 @@ class ToggleSwitch {
     this.container.appendChild(toggleSwitch);
     this.container.appendChild(this.onLabel);
   }
-  
+
   /**
    * Handle toggle change
    * @param {Event} event - Change event
    */
   handleToggle(event) {
     this.isOn = event.target.checked;
-    
+
     // Update labels
     if (this.isOn) {
-      this.offLabel.classList.remove('active');
-      this.onLabel.classList.add('active');
+      this.offLabel.classList.remove("active");
+      this.onLabel.classList.add("active");
     } else {
-      this.offLabel.classList.add('active');
-      this.onLabel.classList.remove('active');
+      this.offLabel.classList.add("active");
+      this.onLabel.classList.remove("active");
     }
-    
+
     // Call onChange callback
     this.options.onChange(this.isOn);
   }
-  
+
   /**
    * Get the current state
    * @returns {boolean} Current state
@@ -109,7 +111,7 @@ class ToggleSwitch {
   getState() {
     return this.isOn;
   }
-  
+
   /**
    * Set the state
    * @param {boolean} state - New state
@@ -119,23 +121,23 @@ class ToggleSwitch {
     if (this.isOn !== state) {
       this.isOn = state;
       this.toggleInput.checked = state;
-      
+
       // Update labels
       if (this.isOn) {
-        this.offLabel.classList.remove('active');
-        this.onLabel.classList.add('active');
+        this.offLabel.classList.remove("active");
+        this.onLabel.classList.add("active");
       } else {
-        this.offLabel.classList.add('active');
-        this.onLabel.classList.remove('active');
+        this.offLabel.classList.add("active");
+        this.onLabel.classList.remove("active");
       }
-      
+
       // Trigger change event if requested
       if (triggerChange) {
         this.options.onChange(this.isOn);
       }
     }
   }
-  
+
   /**
    * Get the DOM element
    * @returns {HTMLElement} Toggle container element
@@ -143,16 +145,16 @@ class ToggleSwitch {
   getElement() {
     return this.container;
   }
-  
+
   /**
    * Append the toggle to a container
    * @param {HTMLElement|string} container - Container element or ID
    */
   appendTo(container) {
-    if (typeof container === 'string') {
+    if (typeof container === "string") {
       container = document.getElementById(container);
     }
-    
+
     if (container && container instanceof HTMLElement) {
       container.appendChild(this.container);
     }
@@ -250,9 +252,9 @@ input:checked + .toggle-slider:before {
 
 // Add styles to document
 function addToggleStyles() {
-  if (!document.getElementById('toggle-switch-styles')) {
-    const styleElement = document.createElement('style');
-    styleElement.id = 'toggle-switch-styles';
+  if (!document.getElementById("toggle-switch-styles")) {
+    const styleElement = document.createElement("style");
+    styleElement.id = "toggle-switch-styles";
     styleElement.textContent = toggleStyles;
     document.head.appendChild(styleElement);
   }
