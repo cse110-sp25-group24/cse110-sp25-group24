@@ -41,8 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   */
 
-  const form = document.getElementById("post-form");
+  const form = document.getElementById("memory-form");
 
+  /**
+   * Memory submission creation logic.
+   */
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const data = new FormData(form);
@@ -51,11 +54,15 @@ window.addEventListener("DOMContentLoaded", () => {
     const image = data.get("image");
     const imageURL = await fileToDataUrl(image);
     const date = new Date();
+    const locationTag = data.get("location");
+    // const moodTag =
     const post = {
       title: title,
       description: description,
       dateCreated: date,
       image: imageURL,
+      location: locationTag,
+      // mood: moodTag,
     };
 
     addMemory(post, db).then(() => displayLatestMemory(db));
@@ -66,6 +73,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/**
+ * This function is written to display the latest memory that has been uploaded
+ * to the IndexedDB MemoryDB.
+ *
+ * @param {IDBDatabase} db
+ */
 async function displayLatestMemory(db) {
   // getting the latest memory
   // store is called memories
@@ -94,7 +107,7 @@ async function displayLatestMemory(db) {
               post.title
             }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
             <footer>Created: ${new Date(
-              post.dateCreated,
+              post.dateCreated
             ).toLocaleString()}</footer>
           `;
         mainElement.appendChild(card);
@@ -103,6 +116,12 @@ async function displayLatestMemory(db) {
   });
 }
 
+/**
+ * This function checks the MemoryDB to see if it is empty or not.
+ *
+ * @param {IDBDatabase} db
+ * @returns {boolean} Returns `true` if db is empty, `false` if db is not empty.
+ */
 function isEmptyDB(db) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readonly");
@@ -121,6 +140,19 @@ function isEmptyDB(db) {
   });
 }
 
+/**
+ * This function adds a memory to the MemoryDB.
+ *
+ * @param {{
+ *   title: string,
+ *   description: string,
+ *   dateCreated: Date,
+ *   image: string,
+ *   location: string
+ * }} post
+ * @param {IDBDatabase} db
+ * @returns {Promise} Promise that resolves into a post being added.
+ */
 function addMemory(post, db) {
   // adding a memory to the database
   return new Promise((resolve, reject) => {
@@ -140,6 +172,12 @@ function addMemory(post, db) {
   });
 }
 
+/**
+ * This function gets the latest memory uploaded to the db (by date).
+ *
+ * @param {IDBDatabase} db
+ * @returns {Promise} Promise that resolves into the latest memory.
+ */
 function getLatestMemory(db) {
   // just going to log the details to console atm
   return new Promise((resolve, reject) => {
@@ -157,6 +195,11 @@ function getLatestMemory(db) {
   });
 }
 
+/**
+ * This function deletes all the memoryes currently being stored.
+ *
+ * @param {IDBDatabase} db The database being deleted.
+ */
 function deleteAllMemories(db) {
   if (db) {
     db.close();
@@ -165,7 +208,7 @@ function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it.",
+      "Database deletion blocked: please close all other tabs using it."
     );
   };
   deleteRequest.onerror = () => {
@@ -178,7 +221,12 @@ function deleteAllMemories(db) {
   };
 }
 
-// reading the data as a URL
+// // reading the data as a URL
+// /**
+//  *
+//  * @param {*} file
+//  * @returns {Promise}
+//  */
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     // starting a new filereader
