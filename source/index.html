@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="buttons.css" />
     <link rel="stylesheet" href="footer.css" />
     <title>Document</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <!-- Implement Header Issue #24 -->
@@ -27,8 +35,20 @@
         </nav>
       </div>
     </header>
+    
     <!-- Implement Base Map Issue #32 -->
+    <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
+    <input
+      id="apiKeyInput"
+      type="text"
+      placeholder="Enter API key here"
+      size="50"
+    />
+    <button id="loadMapBtn">Load Map</button>
 
+    <div id="map"></div>
+    <script src="map.js"></script>
+    
     <!-- "New Memory" Button & Button Styles Issue #31 -->
     <div class="top-bar">
       <a href="/create" class="app-button">Create a New Memory</a>
