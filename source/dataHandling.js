@@ -221,12 +221,12 @@ function deleteAllMemories(db) {
   };
 }
 
-// // reading the data as a URL
-// /**
-//  *
-//  * @param {*} file
-//  * @returns {Promise}
-//  */
+// reading the data as a URL
+/**
+ *
+ * @param {Blob} file
+ * @returns {Promise} Promise that resolves into the image data URL
+ */
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     // starting a new filereader
