@@ -103,23 +103,3 @@ legend {
   font-weight: bold;
   margin-bottom: 10px;
 }
-
-/* Replace this existing rule */
-.upload-area img {
-  width: 40px;
-  margin-bottom: 10px;
-}
-
-/* With this updated rule */
-.upload-area img {
-  width: 100px; /* Increased from 40px to 100px */
-  max-height: 150px;
-  object-fit: contain;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-}
-
-/* Also uncomment and use the styles you already have */
-.upload-area.has-image {
-  border-color: #77DD77;
-}
