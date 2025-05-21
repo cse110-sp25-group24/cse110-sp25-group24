@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="buttons.css" />
     <link rel="stylesheet" href="footer.css" />
     <title>Document</title>
     <style>
@@ -15,6 +16,27 @@
     </style>
   </head>
   <body>
+    <!-- Implement Header Issue #24 -->
+    <header class="header">
+      <div class="header-content">
+        <div class="brand">MemorySpot</div>
+        <button
+          class="hamburger"
+          aria-label="Toggle Navigation"
+          aria-expanded="false"
+        >
+          &#9776;
+        </button>
+        <nav class="nav">
+          <a href="#">Home</a>
+          <a href="#">Explore</a>
+          <a href="#">New Memory</a>
+          <a href="#">Profile</a>
+        </nav>
+      </div>
+    </header>
+    
+    <!-- Implement Base Map Issue #32 -->
     <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
     <input
       id="apiKeyInput"
@@ -26,6 +48,15 @@
 
     <div id="map"></div>
     <script src="map.js"></script>
+    
+    <!-- "New Memory" Button & Button Styles Issue #31 -->
+    <div class="top-bar">
+      <a href="/create" class="app-button">Create a New Memory</a>
+    </div>
+    
+    <!-- Memory Card - List Display Issue #26 -->
+    
+    <!-- Implement Footer Issue #28 -->
     <footer class="footer">
       <div class="footer-content">
         <p class="footer-left">
