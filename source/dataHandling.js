@@ -55,14 +55,14 @@ window.addEventListener("DOMContentLoaded", () => {
     const imageURL = await fileToDataUrl(image);
     const date = new Date();
     const locationTag = data.get("location");
-    // const moodTag =
+    const moodTags = data.getAll("mood");
     const post = {
       title: title,
       description: description,
       dateCreated: date,
       image: imageURL,
       location: locationTag,
-      // mood: moodTag,
+      mood: moodTags,
     };
 
     addMemory(post, db).then(() => displayLatestMemory(db));
