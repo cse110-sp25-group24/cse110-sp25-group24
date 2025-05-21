@@ -68,9 +68,23 @@ window.addEventListener("DOMContentLoaded", () => {
     addMemory(post, db).then(() => displayLatestMemory(db));
     event.target.reset();
   });
-  document.getElementById("delete-all").addEventListener("click", () => {
-    deleteAllMemories(db);
+  const imageInput = document.getElementById("imageUpload");
+  const imagePreview = document.getElementById("imagePreview");
+
+  imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      imagePreview.src = reader.result;
+    };
+    reader.readAsDataURL(file);
   });
+
+  // document.getElementById("delete-all").addEventListener("click", () => {
+  //   deleteAllMemories(db);
+  // });
 });
 
 /**
