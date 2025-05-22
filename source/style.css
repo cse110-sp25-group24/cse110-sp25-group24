@@ -2,3 +2,15 @@ html, body {
     height: 100%;
     margin: 0;
 }
+
+/* Fix horizonal scroll */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. 防止 body 内容超出可视区导致滚动 */
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-y: auto;
+}
