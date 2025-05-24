@@ -12,8 +12,8 @@ body {
   padding: 1rem 2rem;
   /* float: right; */
   position: fixed;
-  left: 100em;
-  z-index: 100;
+  right: 0em;
+  z-index: 10;
 }
 
 .app-button {

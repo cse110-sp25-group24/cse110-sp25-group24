@@ -42,6 +42,21 @@
     <!-- Open side bar -->
     <button id="openModalBtn" class="open-button">📋 Open Memory List</button>
 
+    <div id="container" class="hidden">
+      <h1>Map</h1>
+
+      <div class="toggle-container">
+        <span class="toggle-label map-label active">Off</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-input" />
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label list-label">On</span>
+      </div>
+    </div>
+
+    <script src="toggle-switch-component.js"></script>
+
     <!-- Memory Modal -->
     <div id="memoryModal" class="memory-modal hidden">
       <div class="modal-header">

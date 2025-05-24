@@ -3,6 +3,9 @@ function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
     zoom: 10,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false
   });
 
   document.getElementById("map").style.display = "block"; // Show map div
@@ -26,6 +29,8 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
   document.getElementById("apiKeyInput").remove();
   document.getElementById("apiKeyPrompt").remove();
   document.getElementById("loadMapBtn").remove();
+
+  document.getElementById("container").className = "";
 
   document.head.appendChild(script);
 });
