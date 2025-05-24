@@ -17,10 +17,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install Prettier
-        run: |
-          npm install --omit=dev prettier
+      - name: Install dependencies
+        working-directory: ./source
+        run: npm ci
 
       - name: Run Prettier Check
-        run: |
-          npx prettier . --check
+        working-directory: ./source
+        run: npx prettier . --check
