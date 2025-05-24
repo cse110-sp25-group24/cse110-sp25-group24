@@ -1,4 +1,20 @@
-# How to make changes to this repo
+# How to Contribute
+
+## Table of Contents
+
+- [How to Contribute](#how-to-contribute)
+  - [Table of Contents](#table-of-contents)
+  - [Environment Setup](#environment-setup)
+  - [Committing to the Codebase](#committing-to-the-codebase)
+
+## Environment Setup
+
+1. nvm install 22 | nvm use 22
+2. prettier
+3. jsdocs
+4. jest
+
+## Committing to the Codebase
 
 1. MAKE SURE YOU FIRST MAKE A NEW BRANCH LIKE `your_github_username-issue#`
 2. MAKE A NEW HTML/CSS FILE (if your issue does not have template files already) FOR YOUR WORK UNDER THE `source/` FOLDER
