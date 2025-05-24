@@ -7,9 +7,13 @@ body {
 }
 
 .top-bar {
-  display: flex;
-  justify-content: flex-end;
+  /* display: flex; */
+  /* justify-content: flex-end; */
   padding: 1rem 2rem;
+  /* float: right; */
+  position: fixed;
+  left: 100em;
+  z-index: 100;
 }
 
 .app-button {

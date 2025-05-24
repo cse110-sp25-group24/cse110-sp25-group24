@@ -182,4 +182,5 @@
 
 #openModalBtn {
   z-index: 10;
+  position: fixed;
 }
