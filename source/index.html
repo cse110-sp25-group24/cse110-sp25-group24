@@ -1,74 +1,74 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles/buttons.css" />
-		<link rel="stylesheet" href="styles/footer.css" />
-		<title>Document</title>
-		<style>
-			#map {
-				height: 400px;
-				width: 100%;
-				margin-top: 10px;
-				display: none;
-			}
-		</style>
-	</head>
-	<body>
-		<!-- Implement Header Issue #24 -->
-		<header class="header">
-			<div class="header-content">
-				<div class="brand">MemorySpot</div>
-				<button
-					class="hamburger"
-					aria-label="Toggle Navigation"
-					aria-expanded="false"
-				>
-					&#9776;
-				</button>
-				<nav class="nav">
-					<a href="#">Home</a>
-					<a href="#">Explore</a>
-					<a href="#">New Memory</a>
-					<a href="#">Profile</a>
-				</nav>
-			</div>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/buttons.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
+    <title>Document</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Implement Header Issue #24 -->
+    <header class="header">
+      <div class="header-content">
+        <div class="brand">MemorySpot</div>
+        <button
+          class="hamburger"
+          aria-label="Toggle Navigation"
+          aria-expanded="false"
+        >
+          &#9776;
+        </button>
+        <nav class="nav">
+          <a href="#">Home</a>
+          <a href="#">Explore</a>
+          <a href="#">New Memory</a>
+          <a href="#">Profile</a>
+        </nav>
+      </div>
+    </header>
 
-		<!-- Implement Base Map Issue #32 -->
-		<h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
-		<input
-			id="apiKeyInput"
-			type="text"
-			placeholder="Enter API key here"
-			size="50"
-		/>
-		<button id="loadMapBtn">Load Map</button>
+    <!-- Implement Base Map Issue #32 -->
+    <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
+    <input
+      id="apiKeyInput"
+      type="text"
+      placeholder="Enter API key here"
+      size="50"
+    />
+    <button id="loadMapBtn">Load Map</button>
 
-		<div id="map"></div>
-		<script src="scripts/map.js"></script>
+    <div id="map"></div>
+    <script src="scripts/map.js"></script>
 
-		<!-- "New Memory" Button & Button Styles Issue #31 -->
-		<div class="top-bar">
-			<a href="/create" class="app-button">Create a New Memory</a>
-		</div>
+    <!-- "New Memory" Button & Button Styles Issue #31 -->
+    <div class="top-bar">
+      <a href="/create" class="app-button">Create a New Memory</a>
+    </div>
 
-		<!-- Memory Card - List Display Issue #26 -->
+    <!-- Memory Card - List Display Issue #26 -->
 
-		<!-- Implement Footer Issue #28 -->
-		<footer class="footer">
-			<div class="footer-content">
-				<p class="footer-left">
-					&copy; 2025 MemorySpot. All right reserved. - Made at UCSD by BeeZee
-					24/7
-				</p>
-				<div class="footer-links">
-					<a href="#">About </a>
-					<a href="#">Contact</a>
-					<a href="#">Privacy</a>
-				</div>
-			</div>
-		</footer>
-	</body>
+    <!-- Implement Footer Issue #28 -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-left">
+          &copy; 2025 MemorySpot. All right reserved. - Made at UCSD by BeeZee
+          24/7
+        </p>
+        <div class="footer-links">
+          <a href="#">About </a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,11 +1,11 @@
 {
-	"source": {
-		"include": ["."],
-		"includePattern": ".+\\.js$"
-	},
-	"opts": {
-		"destination": "./docs",
-		"recurse": true,
-		"template": "default"
-	}
+  "source": {
+    "include": ["."],
+    "includePattern": ".+\\.js$"
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "default"
+  }
 }
