@@ -38,6 +38,8 @@ The `source/` folder contains all the HTML, CSS, and JavaScript files that make 
 
 ## Environment Setup
 
+> Note: If you already have a `node_modules/` folder in your project, move it into the `source/` folder.
+
 To set up your environment for contributing to this codebase, follow these steps:
 
 1. Make sure you have `git` installed on your machine. If not, Google `git` and install it.
@@ -83,9 +85,12 @@ To ensure consistent code formatting and documentation, we use Prettier, JSDocs,
 3. After installing, you can run the following commands to ensure everything is set up correctly:
 
    ```bash
-   npx prettier --check .
-   npx jsdoc -c jsdoc.json
-   npx jest --version
+   > npx prettier --version
+   3.5.3
+   > npx jsdoc --version
+   JSDoc 4.0.4 ...
+   > npx jest --version
+   29.7.0
    ```
 
 4. If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
