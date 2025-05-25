@@ -30,7 +30,7 @@
 
 ### 😠 **Mad (Frustrations)**
 
-- lack of actual filled standups (we don't have to meet we could j do slack messages like that one team). Afraid for grade but more importantly would help all of us stay in check with each other (0 votes)
+- lack of actual filled standups (we don't have to meet we could just do slack messages like that one team). Afraid for grade but more importantly would help all of us stay in check with each other (0 votes)
 - Seeing people not respond to each other on slack when trying to reach out to them (6 votes)
 - teammates embellishing their contribution (1 vote)
 - It's frustrating that I couldn't work on it as much as I wanted to because of other school work I had this week. (1 vote)
