@@ -44,7 +44,7 @@
 - **What I'm working on today/next:**  
   Working to fix any issues and the PR and make changes to the ADR
 - **What's blocking me:**  
-  Just some traveling that might interfere with meetings not work.
+  Just some traveling that might interfere with meetings.
 
 ### Chris Enotiadis
 
