@@ -96,7 +96,7 @@
 - **What I did since last standup:**
   Put together home front page
 - **What I'm working on today/next:**  
-  Figuring out a way to store map locations + maybe implementing toggle switch (is it rly necessary?)
+  Figuring out a way to store map locations + maybe implementing toggle switch (is it really necessary?)
 - **What's blocking me:**  
   "Big paper due tonight, teammates aren't communicative on discord. Teammates are big vibecoders, so code is currently a mess"
 
