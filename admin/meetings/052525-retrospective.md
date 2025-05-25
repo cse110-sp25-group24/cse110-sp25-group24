@@ -35,7 +35,7 @@
 - teammates embellishing their contribution (1 vote)
 - It's frustrating that I couldn't work on it as much as I wanted to because of other school work I had this week. (1 vote)
 - Not much was making me mad this run (0 votes)
-- It's a bit hard to integrate multiple css to unify the style (7 votes)
+- It's a bit hard to integrate multiple CSS files to unify the style (7 votes)
 - Just some confusion and a blocker for myself, nothing about the team's work made me mad (0 votes)
 - Nothing honestly (1 vote)
 - Lack of communication (4 votes)
