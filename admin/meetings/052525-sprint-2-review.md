@@ -35,7 +35,7 @@
 - **What I'm working on today/next:**  
   start setting up unit testing
 - **What's blocking me:**  
-  Just need to understand better how to actually set it up cause i did it forever ago and forgot how to set that up.
+  I need to refresh my understanding of the setup process because it has been a long time since I last configured it.
 
 ### Aruthan Raveendra
 
