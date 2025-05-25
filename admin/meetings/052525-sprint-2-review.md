@@ -67,7 +67,7 @@
 ### Myat Thiha
 
 - **What I did since last standup:**
-  Created the form page and worked together with Eric to add backend stuff to the form. Now the form can accept the data users type in and store in IndexDB.
+  Created the form page and worked together with Eric to add backend stuff to the form. Now the form can accept the data users type in and store in IndexedDB.
 - **What I'm working on today/next:**  
   I am thinking of linking/routing all the pages together (from main page -> create page -> main page).
 - **What's blocking me:**  
