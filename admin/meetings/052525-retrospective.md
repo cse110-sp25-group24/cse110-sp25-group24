@@ -1,6 +1,6 @@
 # BeeZee 24/7 - Sprint 2 Retrospective
 
-**Date:** May 24, 2025  
+**Date:** 2025-05-24  
 **Time:** 1:00 PM - 1:30 PM
 **Tool:** [Retrium](https://app.retrium.com/team-room/74a0c95e-b95c-4a1d-97a7-5ab5a9d62579/history/5d933d33-80d8-4ac0-bd59-69a9cccdc152)  
 **Facilitator:** William Widjaja / Alexis Vega
