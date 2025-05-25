@@ -1,14 +1,14 @@
 ---
 title: [Storage Api ADR] - [Proposing IndexDB]
 status: Proposed
-date: 05-10-2025
+date: 05-10-2025; Updated 5-25-25
 decision-makers: [Thanh-Long (T.L.) Nguyen-Trong, Aruthan Raveendra, Yilong Chen]
 ---
 
 ## Summary
 
 **One-sentence overview of the decision.**
-We will store card data in  as JSON documents tied to user accounts in IndexDB.
+We will store card data as JSON documents tied to user accounts in IndexedDB, using only local storage due to limitations in implementing a server-side backend.
 
 ---
 
@@ -38,6 +38,8 @@ Chosen option: "IndexDB", because comes out best (see "Pros and Cons of the Opti
 
 * Bad, while supported on many browsers, there are many different restrictions accross the browsers
 * Bad, writing clean and maintainable code using this API can be challenging
+* Bad, **Server-side storage was not viable** due to restrictions; while ideal for long-term persistence and multi-user sync, it requires setting up APIs, hosting, and authentication infrastructure, which goes beyond our static client-side implementation. NOTE: Functionality ran into some issues during implementation and the Team made the collective decision to not proceed with the server-side backend.
+
 
 ### Confirmation
 
