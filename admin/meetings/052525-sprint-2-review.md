@@ -80,7 +80,7 @@
 - **What I'm working on today/next:**  
   fixing the header styling making sure its consistent throughout all pages
 - **What's blocking me:**  
-  Yes i have a interview I want to prepare for.
+  Yes, I have an interview I want to prepare for.
 
 ### Phiroze Duggal
 
