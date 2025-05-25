@@ -42,7 +42,7 @@ function updateUI() {
 function switchView() {
   if (isToggleOn) {
     // Switch to memories list view by redirecting to memories.html
-    window.location.href = 'memories.html';
+    window.location.href = "memories.html";
   }
   // If toggle is off, we stay on the current page (map view)
 }
@@ -51,7 +51,7 @@ function switchView() {
 document.addEventListener("DOMContentLoaded", () => {
   // Check if current page is memories.html
   const currentPage = window.location.pathname;
-  if (currentPage.includes('memories.html')) {
+  if (currentPage.includes("memories.html")) {
     // If we're on memories.html, set toggle to ON
     toggleInput.checked = true;
     isToggleOn = true;

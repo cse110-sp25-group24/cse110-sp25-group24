@@ -1,14 +1,14 @@
 // // Implement Base Map Issue #32
 
-const API_KEY_STORAGE = 'googleMapsApiKLey';
+const API_KEY_STORAGE = "googleMapsApiKLey";
 
 document.addEventListener("DOMContentLoaded", () => {
-const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-const apiKeyInput = document.getElementById("apiKeyInput");
+  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+  const apiKeyInput = document.getElementById("apiKeyInput");
 
-if (savedApiKey && apiKeyInput) { 
-  apiKeyInput.value = savedApiKey;
-  loadMapBtn.click();
+  if (savedApiKey && apiKeyInput) {
+    apiKeyInput.value = savedApiKey;
+    loadMapBtn.click();
   }
 });
 
@@ -18,7 +18,7 @@ function initMap() {
     zoom: 10,
     mapTypeControl: false,
     streetViewControl: false,
-    fullscreenControl: false
+    fullscreenControl: false,
   });
 
   document.getElementById("map").style.display = "block"; // Show map div
