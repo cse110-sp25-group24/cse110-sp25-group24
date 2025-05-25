@@ -11,6 +11,14 @@
     />
   </head>
   <body>
+    <div class="toggle-container">
+      <span class="toggle-label map-label">Map View</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggle-input" checked />
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label list-label active">List View</span>
+    </div>
     <div class="container">
       <header class="page-header">
         <h1>My Memories</h1>
@@ -203,5 +211,26 @@
         </div>
       </main>
     </div>
+    <script>
+// Get DOM elements
+// Didn't wanna make a memories.js file since this is a simple toggle functionality -Chris
+const toggleInput = document.getElementById("toggle-input");
+const mapLabel = document.querySelector(".map-label");
+const listLabel = document.querySelector(".list-label");
+
+// Toggle change event listener
+toggleInput.addEventListener("change", () => {
+  const isToggleOn = toggleInput.checked;
+  
+  if (isToggleOn) {
+    // Update labels for List View (current state)
+    mapLabel.classList.remove("active");
+    listLabel.classList.add("active");
+  } else {
+    // Switch back to map view by redirecting to index.html
+    window.location.href = 'index.html';
+  }
+});
+</script>
   </body>
 </html>

@@ -1,6 +1,5 @@
 // Get DOM elements
 const toggleInput = document.getElementById("toggle-input");
-const statusDisplay = document.getElementById("status-display");
 const mapLabel = document.querySelector(".map-label");
 const listLabel = document.querySelector(".list-label");
 
@@ -11,6 +10,7 @@ let isToggleOn = false;
 toggleInput.addEventListener("change", () => {
   isToggleOn = toggleInput.checked;
   updateUI();
+  switchView();
 });
 
 // Function to update UI based on toggle state
@@ -38,3 +38,23 @@ function updateUI() {
     listLabel.classList.remove("active");
   }
 }
+
+function switchView() {
+  if (isToggleOn) {
+    // Switch to memories list view by redirecting to memories.html
+    window.location.href = 'memories.html';
+  }
+  // If toggle is off, we stay on the current page (map view)
+}
+
+// Check if we're on memories.html and set the toggle state accordingly
+document.addEventListener("DOMContentLoaded", () => {
+  // Check if current page is memories.html
+  const currentPage = window.location.pathname;
+  if (currentPage.includes('memories.html')) {
+    // If we're on memories.html, set toggle to ON
+    toggleInput.checked = true;
+    isToggleOn = true;
+    updateUI();
+  }
+});
