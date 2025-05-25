@@ -58,7 +58,7 @@
 - How well we are all working together despite it (probably) being most of our first times working in a group this big before (0 votes)
 - I think the sprint went really well and organized and glad everyone is here (0 votes)
 - That the project is moving forward and well. Looks really solid (0 votes)
-- Having more meetings = more attendance = less people behid on whats going on in the team (3 votes)
+- Having more meetings = more attendance = less people behind on what's going on in the team (3 votes)
 - was able to get something done (0 votes)
 
 ---
