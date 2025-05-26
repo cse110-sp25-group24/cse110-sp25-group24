@@ -1,52 +1,60 @@
 ---
 title: [Users/User Profiles ADR] - [Use JWT for Session and Access Management]
 status: Proposed
-date: 05-10-2025
+date: 05-25-2025
 decision-makers: [Myat Thiha, Noeh Parrales, Vincent Nguyen]
 ---
 
 ## Summary
 
 **One-sentence overview of the decision.**
-We will use JWT for user authentication to support public/private memory cards and a draft/save/publish workflow, with a user model that includes email, password, user_cards, and user_icon, all without external dependencies.
-
-![Image of user flowchart](userFlowChart.svg)
+We initially proposed using JWT for session and access management to support private/public memory cards and user accounts, but ultimately decided to **remove user authentication altogether** due to limited necessity and project scope.
 
 ---
 
 ## Context and Problem Statement
 
-Users need a secure and intuitive way to authenticate themselves, manage their personal memory cards, and control who can view them. This includes the ability to view and edit only their own cards, toggle visibility between public and private, and publish selected cards to a shared map view. The system must ensure private data remains protected while allowing users flexible control over their content.
+Originally, we identified a need for secure user authentication to allow people to manage personal memory cards, toggle visibility between public/private, and publish selected cards to a shared map. This required users to log in, store session tokens, and only view or edit their own cards.
+
+As we began implementing this feature, we encountered challenges in backend complexity due to IndexDB operating on the client side. We found it doesn't make sense to store user data in IndexDB as it's intended for local storage, and not suitable for managing authenticated user data across multiple devices.
 
 ## Considered Options
 
 - JWT(JSON Web Token)
 - OAuth
 - SAML SSO
+- No user authentication (final decision)
 
 ## Decision Outcome
 
-Chosen option: Custom access control system with JWT authentication and visibility flags managed in our own backend/database logic.
+Chosen option: **No user authentication**, all memory card content is managed anonymously or client-side without user accounts.
 
 ### Consequences
 
-- Good, because it enables stateless, scalable session management
-- Good, because we can implement custom access logic without relying on external tools
-- Good, test cases are more readable than OAuth and SAML
-- Good, test cases are easy to mock, easy to create test tokens
-- Bad, because we must manage token expiration and refresh manually
-- Bad, because we don’t offer third-party logins like “Sign in with Google” for now
-- Bad, because if a token is leaked, it can be used until it expires
+- Good, because the app is significantly simpler to implement and maintain
+- Good, no risk of token leakage, password security, or session vulnerabilities
+- Good, removes the need for backend auth endpoints and client-side token logic
+- Bad, users cannot privately save or manage personal cards across sessions
+- Bad, no publishing control tied to identity (e.g., card ownership)
+- Bad, future feature additions like commenting or profile pages will require redesign
+- Bad, users can't showcase photocards to other users and explore other users' memory cards
 
 ### Confirmation
 
-- Confirm JWT is only authentication library in use
-- JWT tokens should be issued on login and verified for all protected endpoints
-- Code Review with other members: Do members find JWT easy to use and logic easy to implement, etc
-- Schedule a re-evaluation if JWT doesn’t scale well (authentication becomes a priority)
-- Test token creation, expiration, and invalid access attempts to ensure security of private/public visibility
+- Removed all authentication logic (login page, JWT handlers, secure endpoints)
+- Simplified backend routes and frontend UX to remove user identity references
+- Verified that public/private card toggles are no longer applicable
+- Ensured card creation/editing works without user sessions
 
 ## Pros and Cons of the Options
+
+### No Authentication
+
+- Good, drastically reduces development and testing overhead
+- Good, avoids external dependencies and token management
+- Good, removes friction for new users — instant access
+- Bad, no user persistence (cards are either saved locally or public)
+- Bad, no account-based features like drafts, publishing, favorites, etc.
 
 ### JWT
 
@@ -64,7 +72,7 @@ Homepage: <https://www.npmjs.com/package/jsonwebtoken>
 Homepage: <https://oauth.net/>
 
 - Good, quick and easy for login users
-  Log in with existing accounts (Google, Github, etc.)
+- Log in with existing accounts (Google, Github, etc.)
 - Good, has built in security features that handles token refresh and password recover
 - Good, trustworthy and less account management for us
 - Bad, relies on third party API’s
@@ -83,6 +91,8 @@ Homepage: <https://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-over
 - Bad, the re-direct login flow complicates integration and setup
 
 ## More Information
+
+We attempted to integrate the login page and IndexedDB user logic, but we reassessed the need for authentication entirely. The decision was finalized after determining that anonymous users could still create, view, and share cards without requiring personal logins or accounts.
 
 Comparison between JWT and OAuth:
 <https://frontegg.com/blog/oauth-vs-jwt>.
