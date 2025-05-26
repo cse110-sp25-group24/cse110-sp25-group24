@@ -75,21 +75,6 @@ textarea {
   height: 100px;
 }
 
-.mood-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.mood-buttons button {
-  padding: 8px 14px;
-  border: none;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
 .icon-wrapper {
   position: relative;
 }
