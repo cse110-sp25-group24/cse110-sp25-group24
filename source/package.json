@@ -1,14 +1,14 @@
 {
-	"author": {
-		"name": "CSE 110 BeeZee 24/7"
-	},
-	"devDependencies": {
-		"jest": "^29.7.0",
-		"jsdoc": "^4.0.4",
-		"prettier": "^3.5.3"
-	},
-	"scripts": {
-		"test": "jest",
-		"docs": "jsdoc -c jsdoc.json"
-	}
+  "author": {
+    "name": "CSE 110 BeeZee 24/7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdoc": "^4.0.4",
+    "prettier": "^3.5.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "docs": "jsdoc -c jsdoc.json"
+  }
 }
