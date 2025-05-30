@@ -217,6 +217,7 @@ body {
 .memories-grid-container::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
+
 .toggle-container {
   display: flex;
   align-items: center;
@@ -312,3 +313,4 @@ input:checked + .toggle-slider:before {
     transform: translateX(18px);
   }
 }
+

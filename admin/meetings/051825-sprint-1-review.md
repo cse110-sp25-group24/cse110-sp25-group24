@@ -1,4 +1,4 @@
-# BeeZee 24/7 - Sprint Standup Notes
+# BeeZee 24/7 - Sprint 1 Standup Notes
 
 **Date:** 2025-05-18  
 **Time:** 4:30 PM  

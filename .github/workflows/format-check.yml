@@ -15,12 +15,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
-      - name: Install Prettier
-        run: |
-          npm install --omit=dev prettier
+      - name: Install dependencies
+        working-directory: ./source
+        run: npm ci
 
       - name: Run Prettier Check
-        run: |
-          npx prettier . --check
+        working-directory: ./source
+        run: npx prettier . --check

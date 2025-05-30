@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
@@ -19,6 +20,7 @@ function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
+
   });
 
   document.getElementById("map").style.display = "block"; // Show map div

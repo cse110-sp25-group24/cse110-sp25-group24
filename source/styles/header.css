@@ -1,5 +1,6 @@
 /* <!-- Implement Header Issue #24 --> */
 .header {
+
   height: 50px;
   background-color: #f8f8f8;
   box-sizing: border-box;
@@ -7,6 +8,7 @@
   padding: 0rem 2rem;
   display: flex;
   align-items: center;
+
   width: 100%;
   position: sticky;
   top: 0;
@@ -19,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   width: 100%;
 }
 
