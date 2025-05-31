@@ -2,7 +2,7 @@
 
 This will serve as the landing page for your project and should be updated as you add code, tests, documentation and other important artifacts.
 
-[How do I contribute/make changes to this repo?](./CONTRIBUTING.md)
+[PLEASE CLICK ME AND READ - CONTRIBUTING.md](./CONTRIBUTING.md)
 
 [Link to team page.](/admin/team.md)
 
