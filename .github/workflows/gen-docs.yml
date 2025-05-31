@@ -24,11 +24,3 @@ jobs:
       - name: Generate JSDoc
         working-directory: ./source
         run: npm run docs
-
-      # Optional: deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./source/docs
