@@ -9,6 +9,6 @@
   },
   "scripts": {
     "test": "jest",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -r scripts -d docs"
   }
 }
