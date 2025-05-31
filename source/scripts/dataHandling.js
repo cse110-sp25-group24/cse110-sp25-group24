@@ -72,7 +72,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const imagePreview = document.getElementById("imagePreview");
 
   imageInput.addEventListener("change", () => {
-    const file = imageInput.files[0];
+    const files = imageInput.files;
+
+     if (files.length > 1) {
+      alert("Please select only one image file.");
+      imageInput.value = ""; 
+      imagePreview.src = ""; 
+      return;
+    }
+
+    const file = files[0];
     if (!file) return;
 
     const reader = new FileReader();
@@ -81,10 +90,6 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     reader.readAsDataURL(file);
   });
-
-  // document.getElementById("delete-all").addEventListener("click", () => {
-  //   deleteAllMemories(db);
-  // });
 });
 
 /**
