@@ -49,3 +49,13 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   document.head.appendChild(script);
 });
+
+function addMarker(lat, lng, title = "") {
+  console.log("Attempting to add marker", lat, lng, title);
+
+  let marker = new google.maps.Marker({
+    position: new google.maps.LatLng(lat, lng),
+    map: map,
+    title: title,
+  });
+}
