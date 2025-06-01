@@ -8,7 +8,7 @@ map-buttons {
   justify-content: space-between;
 }
 
-button {
+map-buttons button {
   display: flex;
   position: relative;
   z-index: 1;
