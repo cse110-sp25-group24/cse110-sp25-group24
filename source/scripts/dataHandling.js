@@ -7,9 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // if database does not exist
   request.onupgradeneeded = (event) => {
     const db = request.result;
-
     console.log("initializing db"); // debugging message
-
     if (!db.objectStoreNames.contains("memories")) {
       const store = db.createObjectStore("memories", {
         keyPath: "post_id",

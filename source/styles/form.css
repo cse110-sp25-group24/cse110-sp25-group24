@@ -23,7 +23,7 @@ main {
 
 #memory-form {
   max-width: 600px;
-  width: 100%;             /* responsive width up to max-width */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
