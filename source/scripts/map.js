@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/**
+ * Callback function for Google Maps API to initialize the map.
+ * Sets up the map centered on San Diego with some controls disabled.
+ * Also adds a marker at the center point.
+ */
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
@@ -20,6 +25,8 @@ function initMap() {
     streetViewControl: false,
     fullscreenControl: false,
   });
+
+  addMarker(map, 32.8802, -117.2392);
 }
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
@@ -45,3 +52,20 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   document.head.appendChild(script);
 });
+
+/**
+ * Adds a marker to the specified map at given latitude and longitude.
+ * @param {google.maps.Map} map - The map instance to add the marker to.
+ * @param {number} lat - Latitude coordinate for the marker.
+ * @param {number} lng - Longitude coordinate for the marker.
+ * @param {string} [title=""] - Optional title text for the marker tooltip.
+ */
+function addMarker(map, lat, lng, title = "") {
+  console.log("Attempting to add marker", lat, lng, title);
+
+  let marker = new google.maps.Marker({
+    position: new google.maps.LatLng(lat, lng),
+    map: map,
+    title: title,
+  });
+}
