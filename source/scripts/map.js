@@ -20,8 +20,9 @@ function initMap() {
     streetViewControl: false,
     fullscreenControl: false,
   });
-
   document.getElementById("map").style.display = "block"; // Show map div
+
+  addMarker(map, 32.8802, -117.2392)
 }
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
@@ -50,7 +51,7 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
   document.head.appendChild(script);
 });
 
-function addMarker(lat, lng, title = "") {
+function addMarker(map, lat, lng, title = "") {
   console.log("Attempting to add marker", lat, lng, title);
 
   let marker = new google.maps.Marker({
@@ -59,3 +60,5 @@ function addMarker(lat, lng, title = "") {
     title: title,
   });
 }
+
+addMarker(map, 32.8802, -117.2392)
