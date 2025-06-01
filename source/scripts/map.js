@@ -20,9 +20,9 @@ function initMap() {
     streetViewControl: false,
     fullscreenControl: false,
   });
-  
+
   document.getElementById("map").style.display = "block"; // Show map div
-  addMarker(map, 32.8802, -117.2392)
+  addMarker(map, 32.8802, -117.2392);
 }
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
@@ -59,4 +59,4 @@ function addMarker(map, lat, lng, title = "") {
   });
 }
 
-addMarker(map, 32.8802, -117.2392)
+addMarker(map, 32.8802, -117.2392);

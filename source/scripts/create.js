@@ -1,14 +1,14 @@
 let autocomplete;
 
 function initAutocomplete() {
-  const input = document.getElementById('location');
+  const input = document.getElementById("location");
   autocomplete = new google.maps.places.Autocomplete(input, {
-    types: ['geocode'], // or use ['establishment'] or ['(regions)'] for different types of places
-    componentRestrictions: { country: 'us' }, // Restrict to US, remove if you want worldwide
-    fields: ['address_components', 'geometry', 'formatted_address'], // Limit returned data for efficiency
+    types: ["geocode"], // or use ['establishment'] or ['(regions)'] for different types of places
+    componentRestrictions: { country: "us" }, // Restrict to US, remove if you want worldwide
+    fields: ["address_components", "geometry", "formatted_address"], // Limit returned data for efficiency
   });
 
-  autocomplete.addListener('place_changed', onPlaceChanged);
+  autocomplete.addListener("place_changed", onPlaceChanged);
 }
 
 function onPlaceChanged() {
@@ -23,5 +23,5 @@ function onPlaceChanged() {
   console.log(place.formatted_address);
   console.log(place.geometry.location.lat());
   console.log(place.geometry.location.lng());
-  console.log(typeof(place))
+  console.log(typeof place);
 }
