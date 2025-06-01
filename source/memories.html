@@ -62,155 +62,52 @@
           </mood-filter>
         </memory-filters>
       </memory-header>
-      
+
+      <!-- everything in memories-grid-container should be dynamically generated -->
       <memories-grid-container>
         <memories-grid>
-          <memory-card>
-            <!-- this should be hidden in the sidebar in index.html -->
+          <memory-card card_id="${data.post_id}">
             <memory-photo>
-              <img id="" src="" alt="Image Not Found" />
+              <button
+                onclick="// showMemoryDetails(${data.post_id})"
+                class="memory-photo"
+              >
+                <img id="" src="" alt="Image Not Found" />
+              </button>
             </memory-photo>
             <card-content>
               <card-meta>
                 <!-- this should dynamically change colors -->
-                <card-mood id="mood">Mood</card-mood>
-                <card-date id="date">April 15, 2025</card-date>
+                <card-mood
+                  id="mood"
+                  mood-category="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                  ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                  Mood</card-mood
+                >
+                <card-date id="date">${data.dateCreated}</card-date>
                 <card-actions>
-                  <button id="edit-btn">✏️</button>
-                  <button id="delete-btn">🗑️</button>
+                  <button onclick="// edit in backend" id="edit-btn">✏️</button>
+                  <button onclick="// delete in backend" id="delete-btn">
+                    🗑️
+                  </button>
                 </card-actions>
               </card-meta>
-              <h2 id="title">Sunset at Geisel Library</h2>
+              <!-- Where would this lead? -->
+              <a href="${data.link}" target="_blank">
+                <h2 id="title">${data.title}</h2>
+              </a>
               <p id="description">
-                Found this amazing spot for studying with the perfect view of the
-                sunset...
+                ${data.description.length > 0 ? data.description : "No
+                description provided."}
               </p>
               <card-footer>
-                <span id="location">📍 San Diego, California, US</span>
+                <span id="location">📍 ${data.location}</span>
               </card-footer>
             </card-content>
           </memory-card>
-
-          <!-- Card 2 -->
-          <div class="memory-card">
-            <div class="memory-photo-placeholder">
-              <span>Memory Photo</span>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="mood happy">Happy</span>
-                <span class="date">April 12, 2025</span>
-                <div class="card-actions">
-                  <button class="icon-button edit-btn">✏️</button>
-                  <button class="icon-button delete-btn">🗑️</button>
-                </div>
-              </div>
-              <h2 class="title">Hidden Coffee Shop</h2>
-              <p class="description">
-                Discovered this cozy spot tucked away behind the engineering
-                building...
-              </p>
-              <div class="card-footer">
-                <span class="location">📍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="memory-card">
-            <div class="memory-photo-placeholder">
-              <span>Memory Photo</span>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="mood excited">Excited</span>
-                <span class="date">April 10, 2025</span>
-                <div class="card-actions">
-                  <button class="icon-button edit-btn">✏️</button>
-                  <button class="icon-button delete-btn">🗑️</button>
-                </div>
-              </div>
-              <h2 class="title">Secret Garden Path</h2>
-              <p class="description">
-                Found this beautiful garden path near the bioengineering building...
-              </p>
-              <div class="card-footer">
-                <span class="location">📍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Add more cards here to test scrolling -->
-          <!-- Card 4 -->
-          <div class="memory-card">
-            <div class="memory-photo-placeholder">
-              <span>Memory Photo</span>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="mood peaceful">Peaceful</span>
-                <span class="date">April 5, 2025</span>
-                <div class="card-actions">
-                  <button class="icon-button edit-btn">✏️</button>
-                  <button class="icon-button delete-btn">🗑️</button>
-                </div>
-              </div>
-              <h2 class="title">Quiet Library Corner</h2>
-              <p class="description">
-                A perfect hideaway for focused work and reading.
-              </p>
-              <div class="card-footer">
-                <span class="location">📍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="memory-card">
-            <div class="memory-photo-placeholder">
-              <span>Memory Photo</span>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="mood happy">Happy</span>
-                <span class="date">March 28, 2025</span>
-                <div class="card-actions">
-                  <button class="icon-button edit-btn">✏️</button>
-                  <button class="icon-button delete-btn">🗑️</button>
-                </div>
-              </div>
-              <h2 class="title">Park Picnic</h2>
-              <p class="description">Enjoying the sunny weather with friends.</p>
-              <div class="card-footer">
-                <span class="location">📍</span>
-              </div>
-            </div>
-          </div>
         </memories-grid>
       </memories-grid-container>
     </main>
-
-    <script>
-      // Get DOM elements
-      // Didn't wanna make a memories.js file since this is a simple toggle functionality -Chris
-      const toggleInput = document.getElementById("toggle-input");
-      const mapLabel = document.querySelector(".map-label");
-      const listLabel = document.querySelector(".list-label");
-
-      // Toggle change event listener
-      toggleInput.addEventListener("change", () => {
-        const isToggleOn = toggleInput.checked;
-
-        if (isToggleOn) {
-          // Update labels for List View (current state)
-          mapLabel.classList.remove("active");
-          listLabel.classList.add("active");
-        } else {
-          // Switch back to map view by redirecting to index.html
-          window.location.href = "index.html";
-        }
-      });
-    </script>
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>
