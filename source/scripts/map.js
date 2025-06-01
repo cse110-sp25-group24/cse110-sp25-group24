@@ -20,8 +20,6 @@ function initMap() {
     streetViewControl: false,
     fullscreenControl: false,
   });
-
-  document.getElementById("map").style.display = "block"; // Show map div
 }
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
@@ -44,8 +42,6 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
   document.getElementById("apiKeyInput").remove();
   document.getElementById("apiKeyPrompt").remove();
   document.getElementById("loadMapBtn").remove();
-
-  document.getElementById("container").className = "";
 
   document.head.appendChild(script);
 });

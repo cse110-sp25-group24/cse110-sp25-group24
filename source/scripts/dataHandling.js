@@ -7,9 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // if database does not exist
   request.onupgradeneeded = (event) => {
     const db = request.result;
-
     console.log("initializing db"); // debugging message
-
     if (!db.objectStoreNames.contains("memories")) {
       const store = db.createObjectStore("memories", {
         keyPath: "post_id",
@@ -104,7 +102,7 @@ async function displayLatestMemory(db) {
 
   // using promise in checking to see if there are posts
   isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("main");
+    const mainElement = document.querySelector("preview");
 
     mainElement.innerHTML = "";
 

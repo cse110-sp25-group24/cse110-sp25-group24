@@ -173,9 +173,3 @@
 .icon-btn.active .solid {
   display: inline;
 }
-
-#openModalBtn {
-  z-index: 10;
-  position: fixed;
-  top: 5vh;
-}
