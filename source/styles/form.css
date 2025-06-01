@@ -19,6 +19,8 @@ main {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  width: 100vw; 
+  height: auto;
 }
 
 #memory-form {
@@ -31,6 +33,27 @@ main {
   background-color: white; /* optional - to highlight form */
   border-radius: 8px; /* optional styling */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-area {
+  max-width: 100%;
+  height: 150px;
+}
+
+.bottom-half-form {
+  display: flex;
+  gap: 30px;
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mood-checkboxes {
+  display: flex;
 }
 
 header {
