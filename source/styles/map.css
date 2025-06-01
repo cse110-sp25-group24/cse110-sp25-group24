@@ -1,0 +1,26 @@
+map-buttons {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button {
+  display: flex;
+  position: relative;
+  z-index: 1;
+
+  padding: 0.75em 1.5em;
+  margin: 1em;
+
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: antiquewhite;
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/map.css" />
     <link rel="stylesheet" href="styles/memoryCardList.css" />
 
     <link
@@ -34,13 +35,6 @@
         <a href="memories.html">My Memories</a>
         <a href="create.html">Create</a>
       </nav>
-      <toggle-container>
-        <p>Map View</p>
-        <toggle-switch></toggle-switch>
-        <p>List View</p>
-      </toggle-container>
-
-      <script src="scripts/toggleView.js"></script>
     </header>
 
     <main style="flex: 1; width: 100vw; height: auto">
@@ -59,8 +53,6 @@
         size="50"
       />
       <button id="loadMapBtn">Load Map</button>
-
-      <!-- What's a better way to refactor this map? If we don't have CSS/JS work? -->
 
       <div id="map" style="flex: 1; position: relative; height: 100%"></div>
       <script src="scripts/map.js"></script>

@@ -34,16 +34,9 @@
         <a href="#">My Memories</a>
         <a href="create.html">Create</a>
       </nav>
-      <toggle-container>
-        <p>Map View</p>
-        <toggle-switch></toggle-switch>
-        <p>List View</p>
-      </toggle-container>
-
-      <script src="scripts/toggleView.js"></script>
     </header>
 
-    <main>
+    <main id="memories">
       <memory-header>
         <h1>My Memories</h1>
         <memory-filters>
@@ -65,11 +58,136 @@
               <option>Excited</option>
               <option>Sad</option>
               <option>Peaceful</option>
-              <!-- Add more moods as needed -->
             </select>
           </mood-filter>
         </memory-filters>
       </memory-header>
+      
+      <memories-grid-container>
+        <memories-grid>
+          <memory-card>
+            <!-- this should be hidden in the sidebar in index.html -->
+            <memory-photo>
+              <img id="" src="" alt="Image Not Found" />
+            </memory-photo>
+            <card-content>
+              <card-meta>
+                <!-- this should dynamically change colors -->
+                <card-mood id="mood">Mood</card-mood>
+                <card-date id="date">April 15, 2025</card-date>
+                <card-actions>
+                  <button id="edit-btn">✏️</button>
+                  <button id="delete-btn">🗑️</button>
+                </card-actions>
+              </card-meta>
+              <h2 id="title">Sunset at Geisel Library</h2>
+              <p id="description">
+                Found this amazing spot for studying with the perfect view of the
+                sunset...
+              </p>
+              <card-footer>
+                <span id="location">📍 San Diego, California, US</span>
+              </card-footer>
+            </card-content>
+          </memory-card>
+
+          <!-- Card 2 -->
+          <div class="memory-card">
+            <div class="memory-photo-placeholder">
+              <span>Memory Photo</span>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="mood happy">Happy</span>
+                <span class="date">April 12, 2025</span>
+                <div class="card-actions">
+                  <button class="icon-button edit-btn">✏️</button>
+                  <button class="icon-button delete-btn">🗑️</button>
+                </div>
+              </div>
+              <h2 class="title">Hidden Coffee Shop</h2>
+              <p class="description">
+                Discovered this cozy spot tucked away behind the engineering
+                building...
+              </p>
+              <div class="card-footer">
+                <span class="location">📍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="memory-card">
+            <div class="memory-photo-placeholder">
+              <span>Memory Photo</span>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="mood excited">Excited</span>
+                <span class="date">April 10, 2025</span>
+                <div class="card-actions">
+                  <button class="icon-button edit-btn">✏️</button>
+                  <button class="icon-button delete-btn">🗑️</button>
+                </div>
+              </div>
+              <h2 class="title">Secret Garden Path</h2>
+              <p class="description">
+                Found this beautiful garden path near the bioengineering building...
+              </p>
+              <div class="card-footer">
+                <span class="location">📍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more cards here to test scrolling -->
+          <!-- Card 4 -->
+          <div class="memory-card">
+            <div class="memory-photo-placeholder">
+              <span>Memory Photo</span>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="mood peaceful">Peaceful</span>
+                <span class="date">April 5, 2025</span>
+                <div class="card-actions">
+                  <button class="icon-button edit-btn">✏️</button>
+                  <button class="icon-button delete-btn">🗑️</button>
+                </div>
+              </div>
+              <h2 class="title">Quiet Library Corner</h2>
+              <p class="description">
+                A perfect hideaway for focused work and reading.
+              </p>
+              <div class="card-footer">
+                <span class="location">📍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="memory-card">
+            <div class="memory-photo-placeholder">
+              <span>Memory Photo</span>
+            </div>
+            <div class="card-content">
+              <div class="card-meta">
+                <span class="mood happy">Happy</span>
+                <span class="date">March 28, 2025</span>
+                <div class="card-actions">
+                  <button class="icon-button edit-btn">✏️</button>
+                  <button class="icon-button delete-btn">🗑️</button>
+                </div>
+              </div>
+              <h2 class="title">Park Picnic</h2>
+              <p class="description">Enjoying the sunny weather with friends.</p>
+              <div class="card-footer">
+                <span class="location">📍</span>
+              </div>
+            </div>
+          </div>
+        </memories-grid>
+      </memories-grid-container>
     </main>
 
     <script>
