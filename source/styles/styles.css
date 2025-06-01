@@ -89,10 +89,15 @@ button:hover {
   background-color: antiquewhite;
 }
 
+main {
+  flex: 1;
+  width: 100vw;
+  height: auto;
+}
+
 footer {
   display: flex;
   position: relative;
-  bottom: 0;
   width: 100%;
 
   align-items: center;
