@@ -3,18 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/form.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <!-- <link rel="stylesheet" href="styles/form.css" /> -->
     <script src="scripts/dataHandling.js"></script>
-    <title>Document</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="assets/site.webmanifest" />
+
+    <title>Create A Memory</title>
   </head>
   <body>
-    <main></main>
     <header>
+      <our-brand>
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </our-brand>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">My Memories</a>
+        <a href="create.html">Create</a>
+      </nav>
+      <toggle-container>
+        <p>Map View</p>
+        <toggle-switch></toggle-switch>
+        <p>List View</p>
+      </toggle-container>
+
+      <script src="scripts/toggleView.js"></script>
+    </header>
+    <main></main>
+    <div>
       <h1>Create New Memory Card</h1>
       <button class="save-btn" type="submit" form="memory-form">
         Save Memory
       </button>
-    </header>
+    </div>
     <form id="memory-form">
       <fieldset class="upload-area">
         <img

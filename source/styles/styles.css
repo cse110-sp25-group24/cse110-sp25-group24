@@ -1,0 +1,183 @@
+body {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+header {
+  display: flex;
+  position: relative;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  border-bottom: 5px solid #ddd;
+  padding: 0.5rem 2rem;
+
+  width: 100%;
+  z-index: 1000;
+  font-size: 1rem;
+  color: #333;
+}
+
+our-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+our-brand img {
+  width: 2em;
+  height: 2em;
+}
+
+our-brand h1 {
+  font-size: 1.5em;
+  margin: 0.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: lightskyblue;
+}
+
+map-buttons {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button {
+  display: flex;
+  position: relative;
+  z-index: 1;
+
+  padding: 0.75em 1.5em;
+  margin: 1em;
+
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: antiquewhite;
+}
+
+footer {
+  display: flex;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fffcfc;
+  box-sizing: border-box;
+  border-top: 5px solid #ddd;
+
+  font-size: 1em;
+}
+
+toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  padding: 0em 0.5em;
+  border-radius: 2em;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+}
+
+toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  --toggle-width: 51px;
+  --toggle-height: 31px;
+  --toggle-bg: #e3e3e5;
+  --toggle-bg-checked: #34c759;
+  --toggle-knob-size: 27px;
+  --toggle-knob-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  --toggle-radius: 34px;
+}
+
+toggle-switch .toggle-track {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background: var(--toggle-bg);
+  border-radius: var(--toggle-radius);
+  transition: background 0.4s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+toggle-switch[checked] .toggle-track {
+  background: var(--toggle-bg-checked);
+}
+
+toggle-switch .toggle-knob {
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  width: var(--toggle-knob-size);
+  height: var(--toggle-knob-size);
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: var(--toggle-knob-shadow);
+  transition: transform 0.4s;
+}
+
+toggle-switch[checked] .toggle-knob {
+  transform: translateX(20px);
+}
+
+/* Optional: label styling for accessibility */
+toggle-switch .toggle-label {
+  margin: 0 0.5em;
+  font-size: 16px;
+  font-weight: 500;
+  color: #86868b;
+  transition: color 0.3s;
+}
+toggle-switch .toggle-label.active {
+  color: #1d1d1f;
+}
+
+@media (max-width: 768px) {
+  our-brand h1 {
+    display: none;
+  }
+
+  toggle-container {
+    display: none;
+  }
+}
