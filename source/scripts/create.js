@@ -1,5 +1,10 @@
 let autocomplete;
 
+/**
+ * Initializes the Google Places Autocomplete widget on the input element with id "location".
+ * Configures autocomplete to restrict results to US geocoded addresses and limits the
+ * fields returned to optimize performance.
+ */
 function initAutocomplete() {
   const input = document.getElementById("location");
   autocomplete = new google.maps.places.Autocomplete(input, {
@@ -11,6 +16,10 @@ function initAutocomplete() {
   autocomplete.addListener("place_changed", onPlaceChanged);
 }
 
+/**
+ * Callback fired when the user selects a place from the autocomplete suggestions.
+ * It retrieves place details and logs relevant information, or warns if no geometry is available.
+ */
 function onPlaceChanged() {
   const place = autocomplete.getPlace();
 
