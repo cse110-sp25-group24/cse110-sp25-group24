@@ -104,7 +104,7 @@ async function displayLatestMemory(db) {
 
   // using promise in checking to see if there are posts
   isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("main");
+    const mainElement = document.querySelector("preivew");
 
     mainElement.innerHTML = "";
 
