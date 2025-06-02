@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/form.css" />
     <script src="scripts/dataHandling.js"></script>
 
@@ -30,9 +31,7 @@
 
     <title>Create A Memory</title>
   </head>
-
   <body>
-    <!-- Nav Bar -->
     <header>
       <nav>
         <a href="index.html">Home</a>
@@ -45,113 +44,88 @@
       </our-brand>
     </header>
 
-    <!-- Main Form -->
-    <!-- Should split this form into two separate cards so it fits the page -->
     <main>
-      <h1>Create New Memory Card</h1>
-      <form id="memory-form">
+      <form-container>
+        <form id="memory-form">
+          <h1>Make A New Memory</h1>
           <fieldset class="upload-area">
+            <!-- replace this eventually, put p in img to remove in JS -->
             <img
-              src="https://img.icons8.com/ios/50/image--v1.png"
-              alt="upload icon"
               id="imagePreview"
-            />
-            <p>Drag and drop your photo here</p>
+            >
+            <p>Drag and drop your photo here...</p></img>
             <label for="imageUpload">Browse Files</label>
             <input type="file" id="imageUpload" name="image" accept="image/*" />
           </fieldset>
-         
-        <div class="bottom-half-form">
-          <!-- CARD 1: Photo, Location, Title, Description -->
-          <section class="left-section">
-            <fieldset>
-              <label for="location">Location</label>
-              <span class="icon-wrapper">
+
+          <section class="form-sections">
+            <left-section>
+              <fieldset>
+                <label for="location">Location</label>
+                <span class="icon-wrapper">
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="Search location..."
+                  />
+                  <span>📍</span>
+                </span>
+
+                <label for="title">Title</label>
                 <input
                   type="text"
-                  id="location"
-                  name="location"
-                  placeholder="Search location..."
+                  id="title"
+                  name="title"
+                  placeholder="Give your memory a title"
                 />
-                <span>📍</span>
-              </span>
 
-              <label for="title">Title</label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="Give your memory a title"
-              />
+                <label for="description">Description</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Share your experience..."
+                ></textarea>
+              </fieldset>
+            </left-section>
 
-              <label for="description">Description</label>
-              <textarea
-                id="description"
-                name="description"
-                placeholder="Share your experience..."
-              ></textarea>
-            </fieldset>
+            <right-section>
+              <fieldset>
+                <label for="mood-text">Mood</label>
+                <input
+                  type="text"
+                  id="mood-text"
+                  name="mood-text"
+                  placeholder="How does this memory feel?"
+                />
+
+                <label for="music">Add Music (Optional)</label>
+                <span class="icon-wrapper">
+                  <input
+                    type="text"
+                    id="music"
+                    placeholder="Search for a song..."
+                  />
+                  <span>🎵</span>
+                </span>
+
+                <label for="privacy">Privacy</label>
+                <select id="privacy">
+                  <option>Public</option>
+                  <option>Private</option>
+                  <option>Friends Only</option>
+                </select>
+              </fieldset>
+            </right-section>
           </section>
-
-          <!-- CARD 2: Mood, Music, Privacy -->
-          <section class="right-section">
-            <fieldset>
-              <legend>Mood</legend>
-              <div class="mood-checkboxes">
-                <section>
-                  <label
-                    ><input type="checkbox" name="mood" value="Happy" /> Happy</label
-                  >
-                  <label
-                    ><input type="checkbox" name="mood" value="Excited" />
-                    Excited</label
-                  >
-                  <label
-                    ><input type="checkbox" name="mood" value="Nostalgic" />
-                    Nostalgic</label
-                  >
-                </section>
-                <section>
-                  <label
-                    ><input type="checkbox" name="mood" value="Peaceful" />
-                    Peaceful</label
-                  >
-                  <label
-                    ><input type="checkbox" name="mood" value="Inspired" />
-                    Inspired</label
-                  >
-                </section>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <label for="music">Add Music (Optional)</label>
-              <span class="icon-wrapper">
-                <input type="text" id="music" placeholder="Search for a song..." />
-                <span>🎵</span>
-              </span>
-
-              <label for="privacy">Privacy</label>
-              <select id="privacy">
-                <option>Public</option>
-                <option>Private</option>
-                <option>Friends Only</option>
-              </select>
-            </fieldset>
-          </section>
-        </div>  
-
-      </form>
-
-      <button class="save-btn" type="submit" form="memory-form">
-        Save Memory
-      </button>
+          <button class="save-btn" type="submit" form="memory-form">
+            Save Memory
+          </button>
+        </form>
+      </form-container>
     </main>
-
-    <!-- footer -->
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>
-
   </body>
 </html>

@@ -67,6 +67,9 @@ main {
   flex-direction: column;
   width: 100vw;
   height: auto;
+
+  flex: 1;
+  min-height: 0;
 }
 
 footer {

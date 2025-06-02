@@ -17,10 +17,10 @@ map-buttons button {
   margin: 1em;
 
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: antiquewhite;
+  background-color: darkgray;
 }
