@@ -104,6 +104,11 @@ async function displayLatestMemory(db) {
   isEmptyDB(db).then((result) => {
     const mainElement = document.querySelector("preview");
 
+    if (mainElement === null) {
+      console.error("Main element not found.");
+      return;
+    }
+
     mainElement.innerHTML = "";
 
     if (result) {

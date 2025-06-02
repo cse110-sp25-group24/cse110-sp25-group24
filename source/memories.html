@@ -25,25 +25,18 @@
   </head>
   <body>
     <header>
-      <our-brand>
-        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-        <h1>MemorySpot</h1>
-      </our-brand>
       <nav>
         <a href="index.html">Home</a>
         <a href="#">My Memories</a>
         <a href="create.html">Create</a>
       </nav>
-      <toggle-container>
-        <p>Map View</p>
-        <toggle-switch></toggle-switch>
-        <p>List View</p>
-      </toggle-container>
-
-      <script src="scripts/toggleView.js"></script>
+      <our-brand>
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </our-brand>
     </header>
 
-    <main>
+    <main id="memories">
       <memory-header>
         <h1>My Memories</h1>
         <memory-filters>
@@ -65,34 +58,56 @@
               <option>Excited</option>
               <option>Sad</option>
               <option>Peaceful</option>
-              <!-- Add more moods as needed -->
             </select>
           </mood-filter>
         </memory-filters>
       </memory-header>
+
+      <!-- everything in memories-grid-container should be dynamically generated -->
+      <memories-grid-container>
+        <memories-grid>
+          <memory-card cardid="${data.post_id}">
+            <memory-photo>
+              <button
+                onclick="// showMemoryDetails(${data.post_id})"
+                class="memory-photo"
+              >
+                <img id="" src="" alt="Image Not Found" />
+              </button>
+            </memory-photo>
+            <card-content>
+              <card-meta>
+                <!-- this should dynamically change colors -->
+                <card-mood
+                  id="mood"
+                  moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                  ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                  Mood</card-mood
+                >
+                <card-date id="date">${data.dateCreated}</card-date>
+                <card-actions>
+                  <button onclick="// edit in backend" id="edit-btn">✏️</button>
+                  <button onclick="// delete in backend" id="delete-btn">
+                    🗑️
+                  </button>
+                </card-actions>
+              </card-meta>
+              <!-- Where would this lead? -->
+              <a href="${data.link}" target="_blank">
+                <h2 id="title">${data.title}</h2>
+              </a>
+              <p id="description">
+                ${data.description.length > 0 ? data.description : "No
+                description provided."}
+              </p>
+              <card-footer>
+                <span id="location">📍 ${data.location}</span>
+              </card-footer>
+            </card-content>
+          </memory-card>
+        </memories-grid>
+      </memories-grid-container>
     </main>
-
-    <script>
-      // Get DOM elements
-      // Didn't wanna make a memories.js file since this is a simple toggle functionality -Chris
-      const toggleInput = document.getElementById("toggle-input");
-      const mapLabel = document.querySelector(".map-label");
-      const listLabel = document.querySelector(".list-label");
-
-      // Toggle change event listener
-      toggleInput.addEventListener("change", () => {
-        const isToggleOn = toggleInput.checked;
-
-        if (isToggleOn) {
-          // Update labels for List View (current state)
-          mapLabel.classList.remove("active");
-          listLabel.classList.add("active");
-        } else {
-          // Switch back to map view by redirecting to index.html
-          window.location.href = "index.html";
-        }
-      });
-    </script>
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>
