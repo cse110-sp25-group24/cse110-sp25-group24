@@ -58,13 +58,18 @@ function displayAllMemories(db) {
           const post = cursor.value;
           console.log(cnt);
           //create a card for the post
-          const card = document.createElement("div");
-          card.innerHTML = cardTemplate(post);
+          const card = document.createElement("memory-card");
+          card.setAttribute("card_id", post.post_id);
+          card.setAttribute("img", post.image);
+          card.setAttribute("img_alt", post.description || "memory image");
+          card.setAttribute("date", post.dateCreated);
+          card.setAttribute("mood", post.mood);
+          card.setAttribute("title", post.title);
+          card.setAttribute("link", post.link);
+          card.setAttribute("description", post.description);
+          card.setAttribute("location", post.location || "No Location Provided");
+
           display.appendChild(card);
-          //   let link = document.createElement("link");
-          //   link.setAttribute("rel", "stylesheet");
-          //   link.setAttribute("href", "styles/memoryCardListStyle.css");
-          //   this.shadowRoot.appendChild(link);
           cursor.continue();
         }
       };

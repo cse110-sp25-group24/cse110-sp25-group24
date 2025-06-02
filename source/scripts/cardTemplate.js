@@ -1,13 +1,10 @@
 export function cardTemplate(data) {
   return `
-
-          <memory-card cardid="${data.post_id}">
             <memory-photo>
               <button
-                onclick="// showMemoryDetails(${data.post_id})"
-                class="memory-photo"
-              >
-                <img id="" src="${data.image}" alt="${data.description}" />
+                onclick="// showMemoryDetails(${data.card_id})"
+                class="memory-photo">
+                <img id="" src="${data.img}" alt="${data.img_alt}" />
               </button>
             </memory-photo>
             <card-content>
@@ -19,7 +16,7 @@ export function cardTemplate(data) {
                   >
                   Mood</card-mood
                 >
-                <card-date id="date">${data.dateCreated}</card-date>
+                <card-date id="date">${data.date}</card-date>
                 <card-actions>
                   <button onclick="// edit in backend" id="edit-btn">✏️</button>
                   <button onclick="// delete in backend" id="delete-btn">
@@ -32,14 +29,12 @@ export function cardTemplate(data) {
                 <h2 id="title">${data.title}</h2>
               </a>
               <p id="description">
-                ${data.description.length > 0 ? data.description : "No Description Provided"}
+                ${data.description ? data.description : "No Description Provided"}
               </p>
               <card-footer>
-                <span id="location">📍 ${data.location}</span>
+                <span id="location">📍 ${data.location ? data.location: "No Location Provided"}</span>
               </card-footer>
             </card-content>
-          </memory-card>
-
     `;
 }
 
