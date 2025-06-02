@@ -66,7 +66,7 @@
       <!-- everything in memories-grid-container should be dynamically generated -->
       <memories-grid-container>
         <memories-grid>
-          <memory-card card_id="${data.post_id}">
+          <memory-card cardid="${data.post_id}">
             <memory-photo>
               <button
                 onclick="// showMemoryDetails(${data.post_id})"
@@ -80,7 +80,7 @@
                 <!-- this should dynamically change colors -->
                 <card-mood
                   id="mood"
-                  mood-category="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                  moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
                   ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                   Mood</card-mood
                 >
