@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/form.css" />
-    <script src="scripts/dataHandling.js"></script>
+    <script type="module" src="scripts/dataHandling.js"></script>
+    <script type="module" src="scripts/dataDisplay.js"></script>
 
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&libraries=places&callback=initAutocomplete"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA15NUBJnpEPb1wj8PjHNdbfP8Xnsyfmlg&libraries=places&callback=initAutocomplete"
       async
       defer
     ></script>
@@ -45,7 +46,7 @@
     </header>
 
     <main>
-      <form-container>
+      <memories-grid-container>
         <form id="memory-form">
           <h1>Make A New Memory</h1>
           <fieldset class="upload-area">
@@ -120,7 +121,7 @@
             Save Memory
           </button>
         </form>
-      </form-container>
+      </memories-grid-container>
     </main>
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
