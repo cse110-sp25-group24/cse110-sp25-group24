@@ -24,7 +24,7 @@
     <link rel="manifest" href="assets/site.webmanifest" />
 
     <!-- Script for custom elements -->
-    <script type="module" src="./scripts/cards.js"></script>
+    <script type="module" src="./cards.js"></script>
 
     <!-- Script for dynamically loading in assets -->
     <script type="module" src="./scripts/dataDisplay.js"></script>
@@ -67,7 +67,8 @@
 
       <memory-sidebar id="memoryModal" class="hidden">
         <sidebar-header>
-          <button id="closeModalBtn">X</button>
+          <h3>Memory List</h3>
+          <button id="closeModalBtn" class="close-button" aria-label="close">X</button>
         </sidebar-header>
           <!-- Memories are dynamically inserted here -->
           <memories-grid> </memories-grid>
