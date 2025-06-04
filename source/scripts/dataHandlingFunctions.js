@@ -63,7 +63,7 @@ export function displayLatestMemory(db) {
               post.title
             }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
             <footer>Created: ${new Date(
-              post.dateCreated
+              post.dateCreated,
             ).toLocaleString()}</footer>
           `;
         mainElement.appendChild(card);
@@ -168,7 +168,7 @@ export function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it."
+      "Database deletion blocked: please close all other tabs using it.",
     );
   };
   deleteRequest.onerror = () => {
@@ -189,10 +189,10 @@ export function deleteAllMemories(db) {
  */
 export function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
-     if (!(file instanceof Blob)) {
+    if (!(file instanceof Blob)) {
       return reject(new TypeError("Input must be a Blob"));
     }
-    
+
     // starting a new filereader
     const reader = new FileReader();
 
