@@ -1,7 +1,5 @@
 require("./mocks/indexedDBMock"); // loads and registers global mocks
-
-// Import AFTER defining the mock
-const {fileToDataUrl} = require("../scripts/dataHandlingFunctions")
+const { fileToDataUrl } = require("../scripts/dataHandlingFunctions")
 
 //** 
 //Test 1
