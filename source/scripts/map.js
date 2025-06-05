@@ -1,15 +1,23 @@
 // // Implement Base Map Issue #32
 
+let map = null;
+
 const API_KEY_STORAGE = "googleMapsApiKLey";
+
+function removeAPIInput(){
+  document.getElementById("apiKeyInput").remove();
+  document.getElementById("apiKeyPrompt").remove();
+  document.getElementById("loadMapBtn").remove();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-  const apiKeyInput = document.getElementById("apiKeyInput");
 
-  if (savedApiKey && apiKeyInput) {
-    apiKeyInput.value = savedApiKey;
-    loadMapBtn.click();
+  if (savedApiKey) {
+    loadMaps(savedApiKey);
   }
+
+  removeAPIInput();
 });
 
 /**
@@ -18,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Also adds a marker at the center point.
  */
 function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
     zoom: 10,
     mapTypeControl: false,
@@ -26,16 +34,25 @@ function initMap() {
     fullscreenControl: false,
   });
 
+  // add a for loop here to access all card info and get coords. 
   addMarker(map, 32.8802, -117.2392);
 }
 
-function getScript(apiKey) {
+// Given API key and a callback function (default is initMap), loads the map content onto  
+function loadMaps(apiKey, callBack='initMap') {
   let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
   script.async = true;
 
-  return script;
+  // need to improve this error handling.
+
+  script.onerror = () => {
+    alert("Failed to load Google Maps API. Check your API key.");
+  };
+
+  document.head.appendChild(script);
 }
+
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
   const apiKey = document.getElementById("apiKeyInput").value.trim();
@@ -46,21 +63,9 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  // const script = document.createElement("script");
-  // script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-  // script.async = true;
+  loadMaps(apiKey)
+  removeAPIInput();
 
-  let script = getScript(apiKey);
-
-  script.onerror = () => {
-    alert("Failed to load Google Maps API. Check your API key.");
-  };
-
-  document.getElementById("apiKeyInput").remove();
-  document.getElementById("apiKeyPrompt").remove();
-  document.getElementById("loadMapBtn").remove();
-
-  document.head.appendChild(script);
 });
 
 /**
@@ -73,9 +78,23 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 function addMarker(map, lat, lng, title = "") {
   console.log("Attempting to add marker", lat, lng, title);
 
-  let marker = new google.maps.Marker.AdvancedMarkerElement({
+  let marker = new google.maps.Marker({ // legacy code
     position: new google.maps.LatLng(lat, lng),
     map: map,
     title: title,
   });
+}
+
+function loadMaps(apiKey, callBack='initMap') {
+  let script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
+  script.async = true;
+
+  // need to improve this error handling.
+
+  script.onerror = () => {
+    alert("Failed to load Google Maps API. Check your API key.");
+  };
+
+  document.head.appendChild(script);
 }

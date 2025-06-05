@@ -1,5 +1,16 @@
 let autocomplete;
 
+const API_KEY_STORAGE = "googleMapsApiKLey";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+
+  if (savedApiKey) {
+    console.log(savedApiKey);
+    loadMaps(savedApiKey, 'initAutocomplete')
+  }
+});
+
 /**
  * Initializes the Google Places Autocomplete widget on the input element with id "location".
  * Configures autocomplete to restrict results to US geocoded addresses and limits the
@@ -33,4 +44,20 @@ function onPlaceChanged() {
   console.log(place.geometry.location.lat());
   console.log(place.geometry.location.lng());
   console.log(typeof place);
+
+  return place;
+}
+
+function loadMaps(apiKey, callBack='initMap') {
+  let script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
+  script.async = true;
+
+  // need to improve this error handling.
+
+  script.onerror = () => {
+    alert("Failed to load Google Maps API. Check your API key.");
+  };
+
+  document.head.appendChild(script);
 }
