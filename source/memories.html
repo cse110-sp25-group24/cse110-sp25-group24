@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/memories.css" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <script src="cards.js" defer></script>
 
     <link
       rel="icon"
@@ -67,7 +68,17 @@
           </mood-filter>
         </memory-filters>
       </memory-header>
+<!-- <script>
+  class MemoriesGrid extends HTMLElement {
+  connectedCallback() {
+    this.style.display = 'grid';
+    this.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+    this.style.gap = '1.5em';
+  }
+}
 
+customElements.define('memories-grid', MemoriesGrid);
+</script> -->
       <!-- everything in memories-grid-container should be dynamically generated -->
       <memories-grid-container>
         <memories-grid></memories-grid></memories-grid-container>

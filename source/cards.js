@@ -268,7 +268,7 @@ class MemoryCard extends HTMLElement {
               </div>
       </div>
       <h2 class="title">
-          <a href="${data.link}">Sunset at Geisel Library</a>
+          <a href="${data.link}">${data.title}</a>
       </h2>
       <p class="description">
           ${data.description}
@@ -430,17 +430,17 @@ class MemoriesGrid extends HTMLElement {
   const cardData = [
     {
       id: "001",
-      img: "Kaname.jpg",
+      img: "/source/Kaname.jpg",
       img_alt: "Memory photo",
       date: "April 15, 2025",
       category: "Nostalgic",
       link: "/memory-detail.html",
-      title: "Sunset at Geisel Library",
+      title: "This is Kaname Raana",
       description: "A beautiful sunset casting golden rays through the trees near the library."
     },
       {
       id: "002",
-      img: "Kaname.jpg",
+      img: "Kanme.jpg",
       img_alt: "Memory photo",
       date: "April 15, 2025",
       category: "Travel",
@@ -452,7 +452,7 @@ class MemoriesGrid extends HTMLElement {
     },    
     {
       id: "003",
-      img: "Kaname.jpg",
+      img: "Kanae.jpg",
       img_alt: "Memory photo",
       date: "April 15, 2025",
       category: "Food",
@@ -461,12 +461,22 @@ class MemoriesGrid extends HTMLElement {
       description: `LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG
                 text
                 testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt`
+    },
+    {
+      id: "004",
+      img: "Kanam.jpg",
+      img_alt: "Memory photo",
+      date: "April 99, 2025",
+      category: "Food",
+      link: "/memory-detail.html",
+      title: "4et at Geisel Library",
+      description: `tttttttttttttttttttttttttttttttttttttttttttttttttttttttt`
     }
     // More cards
   ];
 
-    const container = document.createElement("div");
-    container.classList.add("card-list");
+    // const container = document.createElement("div");
+    // container.classList.add("card-list");
 
     cardData.forEach(item => {
     const card = document.createElement("memory-card");
@@ -478,19 +488,10 @@ class MemoriesGrid extends HTMLElement {
     card.setAttribute("title", item.title);
     card.setAttribute("link", item.link);
     card.setAttribute("description", item.description);
-    container.appendChild(card);
+    this.shadowRoot.appendChild(card);
     });
 
-    this.shadowRoot.innerHTML = `
-      <style>
-        .card-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          padding: 10px;
-        }
-      </style>
-    `;
+
 
     this.shadowRoot.appendChild(container);
   }
