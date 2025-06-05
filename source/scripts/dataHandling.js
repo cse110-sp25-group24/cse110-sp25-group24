@@ -65,6 +65,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     addMemory(post, db).then(() => displayLatestMemory(db));
     event.target.reset();
+    addMarker(locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
   });
   const imageInput = document.getElementById("imageUpload");
   const imagePreview = document.getElementById("imagePreview");
