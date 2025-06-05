@@ -15,5 +15,5 @@ Each ADR will have a seperate document, but this will be the master document to 
 [5/10 - Storage API ADR](all-decisions/05102025StorageApiADR.md)
 
 - We will store card data in as JSON documents tied to user accounts in IndexDB. **Updated 5/25 to note removal of server-side storage** due to project constraints.
-[5/10 - User Profiles ADR](all-decisions/05102025UserProfilesADR.md)
+  [5/10 - User Profiles ADR](all-decisions/05102025UserProfilesADR.md)
 - We will use JWT for user authentication to support public/private memory cards and a draft/save/publish workflow, with a user model that includes email, password, `user_cards`, and `user_icon`, all without external dependencies. **Updated 5/25:** Decision revised — authentication was removed entirely due to IndexedDB/local-only limitations and scope reduction. All card data will be stored and managed anonymously on the client side.

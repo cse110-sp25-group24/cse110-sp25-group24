@@ -93,14 +93,13 @@
 
 ## 🚀 **Next Sprint Focus**
 
-- **Increase test coverage: unit tests, Jest, Puppeteer E2E, and integrate into CI/CD:** 
-   - (All devs, focus on components like cardTemplate.js, check with Eric/Myat)
-- **Delegate backend tasks based on availability and improve team coordination via async updates:** 
-   -  (Everyone: fill out Slack availability, TL to assign tasks accordingly)
+- **Increase test coverage: unit tests, Jest, Puppeteer E2E, and integrate into CI/CD:**
+  - (All devs, focus on components like cardTemplate.js, check with Eric/Myat)
+- **Delegate backend tasks based on availability and improve team coordination via async updates:**
+  - (Everyone: fill out Slack availability, TL to assign tasks accordingly)
 
 **Next Retrospective:** 6/07/2025
 
 **Artifacts:**
 
 - [Retrium Session Summary](https://app.retrium.com/team-room/74a0c95e-b95c-4a1d-97a7-5ab5a9d62579/history/1cb94850-68a8-4446-8f5c-e621e292b59a)
-

@@ -1,5 +1,7 @@
-:root{
-  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+:root {
+  --font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   --nav-background: #374869;
   --nav-text: #ffffff;
 }
@@ -67,8 +69,11 @@ nav a {
   transition: color 0.2s;
   font-weight: 650;
   padding: 0.25rem 0.5rem;
-  transition: color 0.2s, border 0.2s, background-color 0.2s;
-  border: 2px solid transparent; 
+  transition:
+    color 0.2s,
+    border 0.2s,
+    background-color 0.2s;
+  border: 2px solid transparent;
   border-radius: 5px;
 }
 
