@@ -29,6 +29,14 @@ function initMap() {
   addMarker(map, 32.8802, -117.2392);
 }
 
+function getScript(apiKey) {
+  let script = document.createElement("script");
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+  script.async = true;
+
+  return script;
+}
+
 document.getElementById("loadMapBtn").addEventListener("click", () => {
   const apiKey = document.getElementById("apiKeyInput").value.trim();
   if (!apiKey) {
@@ -38,9 +46,11 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  const script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-  script.async = true;
+  // const script = document.createElement("script");
+  // script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+  // script.async = true;
+
+  let script = getScript(apiKey);
 
   script.onerror = () => {
     alert("Failed to load Google Maps API. Check your API key.");
