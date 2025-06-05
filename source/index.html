@@ -27,18 +27,24 @@
   </head>
   <body>
     <header>
+      <a href="index.html" class="brand-link">
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
       <nav>
-        <a href="#">Home</a>
+        <a href="index.html">Home</a>
         <a href="memories.html">My Memories</a>
         <a href="create.html">Create</a>
       </nav>
-      <our-brand>
-        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-        <h1>MemorySpot</h1>
-      </our-brand>
     </header>
 
-    <main style="flex: 1; width: 100vw; height: auto">
+    <main>
       <map-buttons>
         <button id="memoryButton" onclick="location.href='create.html'">
           Create a New Memory
@@ -46,20 +52,22 @@
         <button id="openModalBtn" onclick="">📋 Open Memory List</button>
       </map-buttons>
 
-      <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
-      <input
-        id="apiKeyInput"
-        type="text"
-        placeholder="Enter API key here"
-        size="50"
-        style="position: relative; top: 100px; z-index: 1000"
-      />
-      <button id="loadMapBtn">Load Map</button>
+      <section class="api-key-box">
+        <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
+        <div class="api-key-content">
+          <input
+            id="apiKeyInput"
+            type="text"
+            placeholder="Enter API key here"
+          />
+          <button id="loadMapBtn">Load Map</button>
+        </div>
+      </section>
 
       <div id="map" style="flex: 1; position: relative; height: 100%"></div>
       <script src="scripts/map.js"></script>
 
-      <memory-sidebar id="memoryModal" class="hidden">
+      <aside id="memoryModal" class="hidden">
         <sidebar-header>
           <button id="closeModalBtn">X</button>
         </sidebar-header>
@@ -83,7 +91,7 @@
                     ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                     Mood</card-mood
                   >
-                  <card-date id="date">${data.dateCreated}</card-date>
+                  <time id="date">${data.dateCreated}</time>
                   <card-actions>
                     <button onclick="// edit in backend" id="edit-btn">
                       ✏️
@@ -124,7 +132,7 @@
                     ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                     Mood</card-mood
                   >
-                  <card-date id="date">${data.dateCreated}</card-date>
+                  <time id="date">${data.dateCreated}</time>
                   <card-actions>
                     <button onclick="// edit in backend" id="edit-btn">
                       ✏️
@@ -165,7 +173,7 @@
                     ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                     Mood</card-mood
                   >
-                  <card-date id="date">${data.dateCreated}</card-date>
+                  <time id="date">${data.dateCreated}</time>
                   <card-actions>
                     <button onclick="// edit in backend" id="edit-btn">
                       ✏️
@@ -206,7 +214,7 @@
                     ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                     Mood</card-mood
                   >
-                  <card-date id="date">${data.dateCreated}</card-date>
+                  <time id="date">${data.dateCreated}</time>
                   <card-actions>
                     <button onclick="// edit in backend" id="edit-btn">
                       ✏️
@@ -231,8 +239,9 @@
             </memory-card>
           </memories-grid>
         </memories-grid-container>
-      </memory-sidebar>
+      </aside>
     </main>
+
     <script>
       const modal = document.getElementById("memoryModal");
       const openBtn = document.getElementById("openModalBtn");
@@ -279,6 +288,13 @@
           tag.style.color = "white";
         }
       });
+      const loadMapBtn = document.getElementById("loadMapBtn");
+      const apiBox = document.querySelector(".api-key-box");
+
+      loadMapBtn.addEventListener("click", () => {
+        apiBox.classList.add("hidden"); 
+      });
+      
     </script>
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>

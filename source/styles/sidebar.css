@@ -1,4 +1,4 @@
-memory-sidebar {
+aside {
   display: flex;
   position: fixed;
   top: 64px;
@@ -8,7 +8,7 @@ memory-sidebar {
   z-index: 2;
 
   background: #ffffff;
-  box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -1em 1em #00000033;
 }
 
 sidebar-header {
@@ -35,7 +35,7 @@ sidebar-header button {
 }
 
 @media (max-width: 768px) {
-  memory-sidebar {
+  aside {
     position: fixed;
     top: 40px;
     bottom: 40px;
@@ -44,7 +44,7 @@ sidebar-header button {
     width: auto;
     height: auto;
     border-left: none;
-    box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1em 1em #00000033;
   }
 }
 

@@ -25,15 +25,15 @@
   </head>
   <body>
     <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="#">My Memories</a>
-        <a href="create.html">Create</a>
-      </nav>
-      <our-brand>
+      <a href="index.html" class="brand-link">
         <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
         <h1>MemorySpot</h1>
-      </our-brand>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="memories.html">My Memories</a>
+        <a href="create.html">Create</a>
+      </nav>
     </header>
 
     <main id="memories">
@@ -84,7 +84,7 @@
                   ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
                   Mood</card-mood
                 >
-                <card-date id="date">${data.dateCreated}</card-date>
+                <time id="date">${data.dateCreated}</time>
                 <card-actions>
                   <button onclick="// edit in backend" id="edit-btn">✏️</button>
                   <button onclick="// delete in backend" id="delete-btn">
