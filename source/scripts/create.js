@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedApiKey) {
     console.log(savedApiKey);
-    loadMaps(savedApiKey, 'initAutocomplete')
+    loadMaps(savedApiKey, 'places','initAutocomplete')
   }
 });
 
@@ -48,9 +48,9 @@ function onPlaceChanged() {
   return place;
 }
 
-function loadMaps(apiKey, callBack='initMap') {
+function loadMaps(apiKey, libraries='maps', callBack='initMap') {
   let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&callback=${callBack}`;
   script.async = true;
 
   // need to improve this error handling.

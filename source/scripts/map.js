@@ -39,9 +39,9 @@ function initMap() {
 }
 
 // Given API key and a callback function (default is initMap), loads the map content onto  
-function loadMaps(apiKey, callBack='initMap') {
+function loadMaps(apiKey, libraries='map',callBack='initMap') {
   let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&callback=${callBack}`;
   script.async = true;
 
   // need to improve this error handling.
