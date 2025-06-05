@@ -1,19 +1,23 @@
 import { cardTemplate } from "./cardTemplate.js";
 import { colors } from "./cardTemplate.js";
 
-class MemoryCard extends HTMLElement {
+class MemoryData extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
+    const rawDate = this.getAttribute("date");
+    const date = new Date(rawDate);
+    
     const data = {
-      id: this.getAttribute("card_id"),
+      card_id: this.getAttribute("card_id"),
       img: this.getAttribute("img"),
       img_alt: this.getAttribute("img_alt"),
       date: this.getAttribute("date"),
-      category: this.getAttribute("category"),
+      formatted_date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
+      mood: this.getAttribute("mood"),
       title: this.getAttribute("title"),
       link: this.getAttribute("link"),
       description: this.getAttribute("description"),
@@ -53,7 +57,7 @@ class MemoryCard extends HTMLElement {
   }
 }
 
-customElements.define("memory-card", MemoryCard);
+customElements.define("memory-data", MemoryData);
 
 // // Change to API later
 // const cardData = [

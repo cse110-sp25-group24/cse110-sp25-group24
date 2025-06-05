@@ -58,10 +58,12 @@ function displayAllMemories(db) {
           const post = cursor.value;
           console.log(cnt);
           //create a card for the post
-          const card = document.createElement("memory-card");
+          const card = document.createElement("memory-data");
           card.setAttribute("card_id", post.post_id);
           card.setAttribute("img", post.image);
           card.setAttribute("img_alt", post.description || "memory image");
+          // const temp=post.dateCreated.getFullYear();
+          // card.setAttribute("date", temp);
           card.setAttribute("date", post.dateCreated);
           card.setAttribute("mood", post.mood);
           card.setAttribute("title", post.title);
