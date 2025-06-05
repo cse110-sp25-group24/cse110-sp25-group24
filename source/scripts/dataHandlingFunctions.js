@@ -44,7 +44,7 @@ function displayLatestMemory(db) {
               post.title
             }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
             <footer>Created: ${new Date(
-              post.dateCreated
+              post.dateCreated,
             ).toLocaleString()}</footer>
           `;
         mainElement.appendChild(card);
@@ -117,7 +117,7 @@ function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it."
+      "Database deletion blocked: please close all other tabs using it.",
     );
   };
   deleteRequest.onerror = () => {
@@ -204,5 +204,5 @@ module.exports = {
   deleteAllMemories,
   fileToDataUrl,
   retrieveMemory,
-  deleteMemory
+  deleteMemory,
 };

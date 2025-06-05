@@ -5,10 +5,10 @@
  * objectStore().index("dataCreated")
  * openCursour(null, "prev")
  * IDBCursor
-**/
+ **/
 
 require("./mocks/indexedDBMock"); // loads and registers global mocks
-const { getLatestMemory } = require("../scripts/dataHandlingFunctions")
+const { getLatestMemory } = require("../scripts/dataHandlingFunctions");
 
 // Test 1 - returns the latest memory by date
 describe("getLatestMemory", () => {
