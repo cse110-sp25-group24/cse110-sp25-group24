@@ -1,4 +1,4 @@
-require("./mocks/indexedDBMock"); 
+require("./mocks/indexedDBMock");
 const { deleteMemory } = require("../scripts/dataHandlingFunctions");
 
 // Create DB for test that throws error if shouldfail is true

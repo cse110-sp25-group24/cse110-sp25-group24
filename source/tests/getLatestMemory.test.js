@@ -1,4 +1,4 @@
-require("./mocks/indexedDBMock"); 
+require("./mocks/indexedDBMock");
 const { getLatestMemory } = require("../scripts/dataHandlingFunctions");
 
 // Test 1 - returns the latest memory by date

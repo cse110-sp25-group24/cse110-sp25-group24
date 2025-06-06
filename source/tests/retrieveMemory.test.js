@@ -1,4 +1,4 @@
-require("./mocks/indexedDBMock"); 
+require("./mocks/indexedDBMock");
 const { retrieveMemory } = require("../scripts/dataHandlingFunctions");
 
 describe("retrieveMemory", () => {
