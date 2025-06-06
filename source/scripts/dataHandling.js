@@ -1,5 +1,6 @@
 import * as dhf from "./dataHandlingFunctions.js";
-import { getPlace } from "./create.js";
+import { getPlace, initCreate} from "./create.js";
+// import { getPlace, initCreate } from "./map.js"
 
 // making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", () => {
@@ -104,4 +105,21 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     reader.readAsDataURL(file);
   });
+
+  // Load data from local storage
+  const userData = JSON.parse(localStorage.getItem('userData'));
+
+  if (userData) {
+      document.getElementById("imagePreview").src = userData.imgSrc;
+      document.getElementById("title").value = userData.cardId;
+      document.getElementById("description").value = userData.descriptionText;
+      document.getElementById("mood-text").value = userData.mood;
+      // document.getElementById("music").value = userData.music;
+      // alert(userData.imgSrc);
+      
+      // Delete local storage after use
+      localStorage.removeItem('userData');
+  } 
+
+  initCreate()
 });

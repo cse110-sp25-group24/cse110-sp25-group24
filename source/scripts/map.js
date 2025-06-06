@@ -1,51 +1,97 @@
 import { getAllLocations } from "/source/scripts/dataHandlingFunctions.js";
 // Implement Base Map Issue #32
 
-let map = null;
+/*---------Global Variables---------*/
 
+let map = null;
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-document.addEventListener("DOMContentLoaded", init)
-document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
+let autocomplete;
+let place;
 
+/*---------General Google Maps API functions---------*/
 
-function init(){
-  const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
+export function loadGoogleMaps(apiKey, lib ='', removeInput=true) {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${lib}`;
+    script.async = true;
+    script.defer = true;
 
-  // if database does not exist
-  request.onupgradeneeded = (event) => {
-    const db = request.result;
+    script.onload = () => {
+      resolve();
+    };
 
-    console.log("initializing db"); // debugging message
+    script.onerror = () => {
+      reject(new Error("Failed to load Google Maps API"));
+    };
 
-    if (!db.objectStoreNames.contains("memories")) {
-      const store = db.createObjectStore("memories", {
-        keyPath: "post_id",
-        autoIncrement: true,
-      });
-
-      store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
+    if (removeInput){
+      document.head.appendChild(script);
+      document.getElementById("apiKeyInput").remove();
+      document.getElementById("apiKeyPrompt").remove();
+      document.getElementById("loadMapBtn").remove();
     }
-  };
 
-  let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
+  });
+}
 
-  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+export function insertAPIKey() {
+  const apiKey = document.getElementById("apiKeyInput").value.trim();
+  if (!apiKey) {
+    alert("Please enter a valid API key.");
+    return;
+  }
 
-  request.onsuccess = (event) => {
-    db = event.target.result;
-    console.log("db is up, displaying all the memories on the map");
-    if (savedApiKey) {
-      loadGoogleMaps(savedApiKey).then(() => {
-        initMap();
-        populateMap(map, db);
-      });
-    }
-  };
+  localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  request.onerror = (event) => {
-    console.log("db err for the map"); // works so far, seen
-  };
+  loadGoogleMaps(apiKey).then(() => {
+    initMap();
+    populateMap(map, db);
+  });
+}
+
+/*---------------Map Specific Functions---------------*/
+
+export async function initMapDisplay(){
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
+
+    // if database does not exist
+    request.onupgradeneeded = (event) => {
+      const db = request.result;
+
+      console.log("initializing db"); // debugging message
+
+      if (!db.objectStoreNames.contains("memories")) {
+        const store = db.createObjectStore("memories", {
+          keyPath: "post_id",
+          autoIncrement: true,
+        });
+
+        store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
+      }
+    };
+
+    let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
+
+    const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+
+    request.onsuccess = (event) => {
+      db = event.target.result;
+      console.log("db is up, displaying all the memories on the map");
+      if (savedApiKey) {
+        loadGoogleMaps(savedApiKey).then(() => {
+          initMap();
+          populateMap(map, db);
+        });
+      }
+    };
+
+    request.onerror = (event) => {
+      console.log("db err for the map"); // works so far, seen
+    };
+  })
 }
 
 /**
@@ -53,7 +99,6 @@ function init(){
  * Sets up the map centered on San Diego with some controls disabled.
  * Also adds a marker at the center point.
  *
- * @param {IDBDatabase} db
  */
 function initMap() {
   console.log("INITIALIZING MAP");
@@ -75,44 +120,6 @@ function populateMap(map, db) {
       console.table(marker);
       addMarker(map, lat, long, title);
     }
-  });
-}
-
-function loadGoogleMaps(apiKey) {
-  return new Promise((resolve, reject) => {
-    let script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
-    script.async = true;
-    script.defer = true;
-
-    script.onload = () => {
-      resolve();
-    };
-
-    script.onerror = () => {
-      reject(new Error("Failed to load Google Maps API"));
-    };
-
-    document.head.appendChild(script);
-
-    document.getElementById("apiKeyInput").remove();
-    document.getElementById("apiKeyPrompt").remove();
-    document.getElementById("loadMapBtn").remove();
-  });
-}
-
-function insertAPIKey() {
-  const apiKey = document.getElementById("apiKeyInput").value.trim();
-  if (!apiKey) {
-    alert("Please enter a valid API key.");
-    return;
-  }
-
-  localStorage.setItem(API_KEY_STORAGE, apiKey);
-
-  loadGoogleMaps(apiKey).then(() => {
-    initMap();
-    populateMap(map, db);
   });
 }
 
@@ -139,4 +146,52 @@ function addMarker(map, lat, lng, title = "") {
   //   map: map,
   //   title: title,
   // });
+}
+
+/*---------------Auto-Complete functions---------------*/
+
+export function initCreate(){
+  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+
+  if (savedApiKey) {
+    console.log(savedApiKey);
+    loadGoogleMaps(savedApiKey, 'places').then(() => {
+      initAutocomplete();
+    });
+  }
+}
+
+/**
+ * Initializes the Google Places Autocomplete widget on the input element with id "location".
+ * Configures autocomplete to restrict results to US geocoded addresses and limits the
+ * fields returned to optimize performance.
+ */
+function initAutocomplete() {
+  const input = document.getElementById("location");
+  autocomplete = new google.maps.places.Autocomplete(input, {
+    types: ["geocode"], // or use ['establishment'] or ['(regions)'] for different types of places
+    componentRestrictions: { country: "us" }, // Restrict to US, remove if you want worldwide
+    fields: ["address_components", "geometry", "formatted_address"], // Limit returned data for efficiency
+  });
+
+  autocomplete.addListener("place_changed", onPlaceChanged);
+}
+
+/**
+ * Callback fired when the user selects a place from the autocomplete suggestions.
+ * It retrieves place details and logs relevant information, or warns if no geometry is available.
+ */
+function onPlaceChanged() {
+  place = autocomplete.getPlace();
+
+  if (!place.geometry) {
+    // User entered something that was not suggested
+    console.log("No details available for input: '" + place.name + "'");
+    return;
+  }
+
+  console.log(place.formatted_address);
+  console.log(place.geometry.location.lat());
+  console.log(place.geometry.location.lng());
+  console.log(typeof place);
 }

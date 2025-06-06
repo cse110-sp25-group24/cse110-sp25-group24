@@ -29,7 +29,9 @@
     <!-- Script for dynamically loading in assets -->
     <script type="module" src="./scripts/dataDisplay.js"></script>
     <!-- <script type="module" src="./scripts/dataHandlingFunctions.js"></script> -->
-    
+
+    <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/map.js"></script>    
 
     <title>MemorySpot</title>
   </head>
@@ -65,7 +67,6 @@
       <button id="loadMapBtn">Load Map</button>
 
       <div id="map" style="flex: 1; position: relative; height: 100%"></div>
-      <script type="module" src="scripts/map.js"></script>
 
       <memory-sidebar id="memoryModal" class="hidden">
         <sidebar-header>
@@ -76,7 +77,7 @@
           <memories-grid> </memories-grid>
       </memory-sidebar>
     </main>
-    <script>
+    <!-- <script>
       const modal = document.getElementById("memoryModal");
       const openBtn = document.getElementById("openModalBtn");
       const closeBtn = document.getElementById("closeModalBtn");
@@ -122,7 +123,7 @@
           tag.style.color = "white";
         }
       });
-    </script>
+    </script> -->
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>

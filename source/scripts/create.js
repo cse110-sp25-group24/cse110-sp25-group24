@@ -3,7 +3,7 @@ let place;
 
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initCreate(){
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
 
   if (savedApiKey) {
@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
       initAutocomplete();
     });
   }
-});
+}
 
 /**
  * Initializes the Google Places Autocomplete widget on the input element with id "location".
  * Configures autocomplete to restrict results to US geocoded addresses and limits the
  * fields returned to optimize performance.
  */
-export function initAutocomplete() {
+function initAutocomplete() {
   const input = document.getElementById("location");
   autocomplete = new google.maps.places.Autocomplete(input, {
     types: ["geocode"], // or use ['establishment'] or ['(regions)'] for different types of places
@@ -67,21 +67,6 @@ function loadGoogleMaps(apiKey, libraries) {
     document.head.appendChild(script);
   });
 }
-
-// Load data from local storage
-const userData = JSON.parse(localStorage.getItem('userData'));
-
-if (userData) {
-    document.getElementById("imagePreview").src = userData.imgSrc;
-    document.getElementById("title").value = userData.cardId;
-    document.getElementById("description").value = userData.descriptionText;
-    document.getElementById("mood-text").value = userData.mood;
-    // document.getElementById("music").value = userData.music;
-    // alert(userData.imgSrc);
-    
-    // Delete local storage after use
-    localStorage.removeItem('userData');
-  } 
 
 export function getPlace() {
   return place;
