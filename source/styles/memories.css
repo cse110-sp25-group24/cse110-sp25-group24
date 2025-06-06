@@ -1,219 +1,184 @@
-/* General body styling */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  background-color: #f4f7f6;
-  color: #333;
-  line-height: 1.6;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-/* Header styling */
-.page-header {
+memory-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+
+  padding: 1em 2em;
+
+  border-bottom: 1px solid #ddd;
 }
 
-.page-header h1 {
-  margin: 0;
-  font-size: 2em;
-  color: #333;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: #f0f0f0;
-  padding: 8px 12px;
-  border-radius: 20px;
-}
-
-.search-bar i {
-  margin-right: 8px;
-  color: #666;
-}
-
-.search-bar input[type="search"] {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  padding: 5px;
-  font-size: 0.9em;
-}
-
-.mood-filter select {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  font-size: 0.9em;
-  cursor: pointer;
-}
-
-/* Memories Grid Container - for scrolling */
-.memories-grid-container {
-  max-height: 70vh; /* Adjust as needed, or use a fixed pixel height */
-  overflow-y: auto; /* Enables vertical scrolling */
-  padding-right: 10px; /* To prevent scrollbar from overlapping content */
-}
-
-/* Styling for the grid of memory cards */
-.memories-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(300px, 1fr)
-  ); /* Responsive grid */
-  gap: 20px;
-}
-
-/* Individual memory card styling */
-.memory-card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  overflow: hidden; /* Ensures content fits within rounded corners */
-  display: flex;
-  flex-direction: column;
-}
-
-.memory-photo-placeholder {
-  background-color: #e9ecef;
-  height: 200px; /* Adjust as needed */
+memory-filters {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6c757d;
-  font-size: 1.1em;
+  gap: 1.5em;
+  flex-wrap: wrap;
 }
 
-.card-content {
-  padding: 15px;
-  flex-grow: 1; /* Allows content to fill available space */
-  display: flex;
-  flex-direction: column;
-}
-
-.card-meta {
+search-bar {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  font-size: 0.85em;
-  color: #555;
+  background-color: #f0f0f0;
+  padding: 0.5em 1em;
+  border-radius: 2em;
 }
 
-.mood {
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-weight: bold;
-  margin-right: 10px;
-  color: #fff;
+search-bar input {
+  padding: 0.25em;
+  font-size: 1em;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
-.nostalgic {
-  background-color: #6c757d;
-}
-.happy {
-  background-color: #28a745;
-}
-.excited {
-  background-color: #ffc107;
-  color: #333;
-}
-.sad {
-  background-color: #007bff;
-}
-.peaceful {
-  background-color: #17a2b8;
+mood-filter select {
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 1em;
+  cursor: pointer;
 }
 
-.date {
-  margin-right: auto; /* Pushes actions to the right */
-  color: #666;
+memories-grid-container {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1em;
 }
 
-.card-actions {
+memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5em;
+}
+
+memory-card {
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  overflow: hidden;
+
+  border: 1px solid #ddd;
+  border-radius: 1em;
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.05);
 }
 
-.icon-button {
+memory-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  overflow: hidden;
+
+  background-color: #ddd;
+}
+
+memory-photo button {
+  width: 100%;
+  height: 100%;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 5px;
-  color: #666;
-  font-size: 0.9em;
 }
 
-.icon-button:hover {
-  color: #333;
+memory-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+
+  text-align: center;
 }
 
-.title {
-  font-size: 1.25em;
-  margin: 0 0 8px 0;
-  color: #333;
+card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75em;
 }
 
-.description {
+card-meta {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+}
+
+card-mood {
+  margin-right: 0.5em;
+  padding: 0.25em 0.5em;
+
+  border-radius: 1em;
+  background-color: black;
+
+  font-weight: bold;
+  color: white;
+}
+
+card-date {
+  margin-right: auto;
+}
+
+card-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25em;
+}
+
+card-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  padding: 0.25em;
+  font-size: 1em;
+  border-radius: 0.5em;
+}
+
+card-actions button:hover {
+  background: #ddd;
+}
+
+h2 {
+  margin: 0;
+  font-weight: normal;
+}
+
+memory-card p {
+  margin: 0;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+
   font-size: 0.9em;
   color: #555;
-  margin-bottom: 15px;
-  flex-grow: 1; /* Allows description to take up available space */
 }
 
-.card-footer {
+card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto;
+  padding-top: 1em;
+
   font-size: 0.85em;
-  color: #777;
-  border-top: 1px solid #f0f0f0;
-  padding-top: 10px;
-  margin-top: auto; /* Pushes footer to the bottom */
+  color: #555;
+  border-top: 1px solid #ddd;
 }
 
-.card-footer .music i,
-.card-footer .location i {
-  margin-right: 5px;
+memories-grid-container::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
-/* Scrollbar styling (optional, for WebKit browsers) */
-.memories-grid-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.memories-grid-container::-webkit-scrollbar-track {
+memories-grid-container::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 10px;
+  border-radius: 2em;
 }
 
-.memories-grid-container::-webkit-scrollbar-thumb {
+memories-grid-container::-webkit-scrollbar-thumb {
   background: #ccc;
-  border-radius: 10px;
+  border-radius: 2em;
 }
 
-.memories-grid-container::-webkit-scrollbar-thumb:hover {
+memories-grid-container::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }

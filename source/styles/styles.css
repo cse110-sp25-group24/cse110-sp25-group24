@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+header {
+  display: flex;
+  position: relative;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  border-bottom: 5px solid #ddd;
+  padding: 0.5rem 2rem;
+
+  width: 100%;
+  z-index: 1000;
+  font-size: 1rem;
+  color: #333;
+}
+
+our-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+our-brand img {
+  width: 2em;
+  height: 2em;
+}
+
+our-brand h1 {
+  font-size: 1.5em;
+  margin: 0.5rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: lightskyblue;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: auto;
+
+  flex: 1;
+  min-height: 0;
+}
+
+footer {
+  display: flex;
+  position: relative;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+  background-color: #fffcfc;
+  box-sizing: border-box;
+  border-top: 5px solid #ddd;
+
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  our-brand h1 {
+    display: none;
+  }
+}

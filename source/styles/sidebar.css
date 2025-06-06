@@ -1,0 +1,53 @@
+memory-sidebar {
+  display: flex;
+  position: fixed;
+  top: 64px;
+  bottom: 50px;
+  right: 0;
+  padding: 1em;
+  z-index: 2;
+
+  background: #ffffff;
+  box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
+}
+
+sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  position: fixed;
+  right: 0;
+  z-index: 100;
+}
+
+sidebar-header button {
+  display: flex;
+  position: relative;
+  z-index: 1;
+
+  padding: 0.75em 1.5em;
+  margin: 1em;
+
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  memory-sidebar {
+    position: fixed;
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    border-left: none;
+    box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
+  }
+}
+
+.hidden {
+  display: none;
+}
