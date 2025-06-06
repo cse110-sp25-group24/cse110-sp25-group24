@@ -1,4 +1,5 @@
 import * as dhf from "./dataHandlingFunctions.js";
+import { getPlace } from "./create.js";
 
 // making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", () => {
