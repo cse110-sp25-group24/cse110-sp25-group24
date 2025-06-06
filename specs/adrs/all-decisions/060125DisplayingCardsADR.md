@@ -21,7 +21,7 @@ Enable real-time creation, display, and deletion of memory cards with visual rep
 
 ## Context and Problem Statement
 
-Currently we have stored memories card filled out through the form in IndexDB and have dataDisplay.js handling to inject the innerHTML to memories.html using the cardTemplate.js. Our goal is to be able to dynamically create, display and delete the memories cards. We have implemented the backend functions of retreiving and deleting specific cards associated with their card ids. What changes to has to be make in cardTemplate.js for better UI in My Memories page? 
+Currently we have stored memories card filled out through the form in IndexDB and have dataDisplay.js handling to inject the innerHTML to memories.html using the cardTemplate.js. Our goal is to be able to dynamically create, display and delete the memories cards. We have implemented the backend functions of retreiving and deleting specific cards associated with their card ids. What changes to has to be make in cardTemplate.js for better UI in My Memories page?
 
 ## Considered Options
 
@@ -29,8 +29,8 @@ Currently we have stored memories card filled out through the form in IndexDB an
 - reflect cardTemplate.js with change attributes in MemoryCard (cards.js)
 
 ## Decision Outcome
- 
-We decided to use MemoryCard and reference to make changes to reflect new template in cardTemplate.js. We will then use those reflected new template in dataDisplay.js. 
+
+We decided to use MemoryCard and reference to make changes to reflect new template in cardTemplate.js. We will then use those reflected new template in dataDisplay.js.
 
 ### Consequences
 
