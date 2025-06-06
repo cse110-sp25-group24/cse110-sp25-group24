@@ -15,13 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedApiKey) {
     loadMaps(savedApiKey);
+
   }
 
-  // removeAPIInput();
-  document.getElementById("apiKeyInput").remove();
-  document.getElementById("apiKeyPrompt").remove();
-  document.getElementById("loadMapBtn").remove();
-  
+  // removeAPIInput();  
 });
 
 /**
@@ -55,6 +52,10 @@ function loadMaps(apiKey, libraries='',callBack='initMap') {
   };
 
   document.head.appendChild(script);
+  document.getElementById("apiKeyInput").remove();
+  document.getElementById("apiKeyPrompt").remove();
+  document.getElementById("loadMapBtn").remove();
+  
 }
 
 
@@ -69,10 +70,6 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   loadMaps(apiKey)
   // removeAPIInput();
-  document.getElementById("apiKeyInput").remove();
-  document.getElementById("apiKeyPrompt").remove();
-  document.getElementById("loadMapBtn").remove();
-
 });
 
 /**
