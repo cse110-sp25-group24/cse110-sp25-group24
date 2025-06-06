@@ -1,12 +1,4 @@
-/**
- * Unit Tests for getLatestMemory(db)
- *
- * Need to mock part of IndexedDB's API like:
- * objectStore().index("dataCreated")
- * openCursour(null, "prev")
- **/
-
-require("./mocks/indexedDBMock"); // loads and registers global mocks
+require("./mocks/indexedDBMock"); 
 const { getLatestMemory } = require("../scripts/dataHandlingFunctions");
 
 // Test 1 - returns the latest memory by date

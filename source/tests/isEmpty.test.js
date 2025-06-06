@@ -1,8 +1,7 @@
 const { isEmptyDB } = require("../scripts/dataHandlingFunctions");
 
 describe("isEmptyDB", () => {
-  // checks if it returns true when there are no posts in the DB
-  //Test 1
+  //Test 1 - checks if it returns true when there are no posts in the DB
   it("should resolve to true when there are no posts", async () => {
     const mockCount = {
       onsuccess: null,
@@ -27,10 +26,7 @@ describe("isEmptyDB", () => {
     expect(result).toBe(true);
   });
 
-  /**
-   *  // checks if it returns false when there are posts in the DB
-   * Test 2
-   */
+  // Test 2 - checks if it returns false when there are posts in the DB
   it("should resolve to false when there are posts", async () => {
     const mockCount = {
       onsuccess: null,
@@ -55,10 +51,7 @@ describe("isEmptyDB", () => {
     expect(result).toBe(false);
   });
 
-  /**
-   *   // checks if it rejects when there’s an error in counting
-   * Test 3
-   */
+  // Test 3 - checks if it rejects when there’s an error in counting
   it("should reject on error", async () => {
     const mockCount = {
       onsuccess: null,

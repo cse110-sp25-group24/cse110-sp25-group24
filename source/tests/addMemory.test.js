@@ -1,8 +1,8 @@
-require("./mocks/indexedDBMock"); // loads the mock IndexedDB classes
+require("./mocks/indexedDBMock"); 
 const { addMemory } = require("../scripts/dataHandlingFunctions");
 
 describe("addMemory", () => {
-  // Test 1: Valid post adds and returns new ID
+  // Test 1 - Valid post adds and returns new ID
   it("should add a post and return the ID", async () => {
     const mockPost = {
       title: "Hellooo",
@@ -17,7 +17,7 @@ describe("addMemory", () => {
     expect(result).toBe(1);
   });
 
-  //  Test 2: Reject if adding the post fails
+  // Test 2 - Reject if adding the post fails
   it("should reject if adding fails", async () => {
     const failingStore = new global.IDBObjectStore();
     failingStore.add = function () {
@@ -37,7 +37,7 @@ describe("addMemory", () => {
     );
   });
 
-  //Test 3: Multiple post
+  // Test 3 - Multiple post
   it("should add multiple post and return incrementing Id number", async () => {
     const memory = new global.IDBObjectStore();
     const db = {
@@ -52,7 +52,7 @@ describe("addMemory", () => {
     expect(id2).toBe(2);
   });
 
-  //Test 4: missing information
+  // Test 4 - missing information
   it("should still add a post even with some fields missing", async () => {
     const mockPost = {
       title: "title",

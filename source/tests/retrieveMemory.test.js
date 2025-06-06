@@ -1,14 +1,4 @@
-/**
- * Unit Tests for retrieveMemory(post_id, db)
- *
- * Need to mock part of IndexedDB's API like:
- * IDBDatabase.transaction
- * IDBTransaction.objectStore()
- * IDBObjectStore.get()
- * IDBRequest for async to get result
- **/
-
-require("./mocks/indexedDBMock"); // loads and registers global mocks
+require("./mocks/indexedDBMock"); 
 const { retrieveMemory } = require("../scripts/dataHandlingFunctions");
 
 describe("retrieveMemory", () => {
