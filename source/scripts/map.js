@@ -112,7 +112,10 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  loadGoogleMaps(apiKey);
+  loadGoogleMaps(apiKey).then(() => {
+    initMap();
+    populateMap(map, db);
+  });
   // removeAPIInput();
 });
 
