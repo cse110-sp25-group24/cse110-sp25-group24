@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/form.css" />
-    <script type="module" src="scripts/dataHandling.js"></script>
+    <script src="scripts/dataHandling.js"></script>
 
-    <script type="module" src="scripts/create.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&libraries=places&callback=initAutocomplete"
+      async
+      defer
+    ></script>
+    <script src="scripts/create.js"></script>
 
     <link
       rel="icon"
@@ -117,7 +122,6 @@
         </form>
       </form-container>
     </main>
-
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>

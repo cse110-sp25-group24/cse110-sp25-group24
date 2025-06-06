@@ -6,8 +6,7 @@ memory-sidebar {
   right: 0;
   padding: 1em;
   z-index: 2;
-  width: 400px;
-  overflow-y: auto;
+
   background: #ffffff;
   box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
 }
@@ -35,7 +34,7 @@ sidebar-header button {
   transition: background-color 0.3s ease;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   memory-sidebar {
     position: fixed;
     top: 40px;
@@ -44,7 +43,6 @@ sidebar-header button {
     right: 0;
     width: auto;
     height: auto;
-    overflow-y: auto;
     border-left: none;
     box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.2);
   }

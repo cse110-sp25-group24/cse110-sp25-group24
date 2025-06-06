@@ -88,7 +88,7 @@ footer {
   font-size: 1em;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
   our-brand h1 {
     display: none;
   }
