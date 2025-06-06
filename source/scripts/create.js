@@ -68,6 +68,23 @@ function loadGoogleMaps(apiKey, libraries) {
   });
 }
 
+// Load data from local storage
+const userData = JSON.parse(localStorage.getItem('userData'));
+
+if (userData) {
+
+    
+    document.getElementById("imagePreview").src = userData.imgSrc;
+    document.getElementById("title").value = userData.cardId;
+    document.getElementById("description").value = userData.descriptionText;
+    document.getElementById("mood-text").value = userData.mood;
+    // document.getElementById("music").value = userData.music;
+    // alert(userData.imgSrc);
+    
+    // Delete local storage after use
+    localStorage.removeItem('userData');
+  } 
+
 export function getPlace() {
   return place;
 }

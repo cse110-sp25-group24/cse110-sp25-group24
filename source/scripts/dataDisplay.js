@@ -103,9 +103,12 @@ function deleteListener(cardElement, id, db) {
   if (deleteBtn) {
     // console.log("Inside Here");
     deleteBtn.addEventListener("click", () => {
-      deleteMemory(id, db);
-      cardElement.remove(); // Remove from DOM
-      console.log(`Deleted memory with id: ${id}`);
+      const confirmed = window.confirm("Are you sure you want to delete this memory?");
+      if (confirmed) {
+        deleteMemory(id, db);
+        cardElement.remove(); // Remove from DOM
+        console.log(`Deleted memory with id: ${id}`);
+      }
     });
   }
 }

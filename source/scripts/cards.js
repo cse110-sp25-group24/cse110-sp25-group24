@@ -54,6 +54,26 @@ class MemoryData extends HTMLElement {
         localStorage.setItem(key, nowActive);
       });
     });
+
+
+      const button = this.shadowRoot.querySelector("a#editBtn")
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const card = this.shadowRoot.querySelector(".memory-card");
+        const cardId = card.getAttribute("card_id");
+        const img = card.querySelector('img');
+        const imgSrc = img ? img.getAttribute('src') : null;
+        const moodSpan = card.querySelector('.category-tag');
+        const mood = moodSpan.getAttribute('data-category');
+        const description = card.querySelector('.description');
+        const descriptionText = description.textContent.trim()
+        // 存到 localStorage
+        localStorage.setItem("userData", JSON.stringify({ imgSrc,cardId,mood,descriptionText }));
+
+        // // 跳转
+        window.location.href = button.href;
+      });
+    
   }
 }
 
