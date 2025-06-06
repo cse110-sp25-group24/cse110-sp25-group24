@@ -4,7 +4,6 @@
  * Need to mock part of IndexedDB's API like:
  * objectStore().index("dataCreated")
  * openCursour(null, "prev")
- * IDBCursor
  **/
 
 require("./mocks/indexedDBMock"); // loads and registers global mocks
