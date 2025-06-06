@@ -12,13 +12,6 @@ const API_KEY_STORAGE = "googleMapsApiKLey";
 // }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-  if (savedApiKey) {
-    loadGoogleMaps(savedApiKey).then(() => {
-      initMap();
-    });
-  }
-
   const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
 
   // if database does not exist
@@ -39,16 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
 
+  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
+
   request.onsuccess = (event) => {
     db = event.target.result;
     console.log("db is up, displaying all the memories on the map");
-    getAllLocations(db).then((coords) => {
-      // coords list from the memories stored in db
-      for (let marker of coords) {
-        const [lat, long, title] = marker;
-        addMarker(lat, long);
-      }
-    });
+    if (savedApiKey) {
+      loadGoogleMaps(savedApiKey).then(() => {
+        initMap(db);
+      });
+    }
   };
 
   request.onerror = (event) => {
@@ -60,8 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
  * Callback function for Google Maps API to initialize the map.
  * Sets up the map centered on San Diego with some controls disabled.
  * Also adds a marker at the center point.
+ *
+ * @param {IDBDatabase} db
  */
-function initMap() {
+function initMap(db) {
+  console.log("INITIALIZING MAP");
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
     zoom: 10,
@@ -70,9 +66,15 @@ function initMap() {
     fullscreenControl: false,
   });
 
-  // add a for loop here to access all card info and get coords.
-
-  // console.log(map)
+  console.log("POPULATING MAP");
+  getAllLocations(db).then((coords) => {
+    // coords list from the memories stored in db
+    for (let marker of coords) {
+      const [lat, long, title] = marker;
+      console.table(marker);
+      addMarker(map, lat, long, title);
+    }
+  });
 }
 
 function loadGoogleMaps(apiKey) {
