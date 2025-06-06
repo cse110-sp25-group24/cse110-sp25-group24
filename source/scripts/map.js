@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("db is up, displaying all the memories on the map");
     if (savedApiKey) {
       loadGoogleMaps(savedApiKey).then(() => {
-        initMap(db);
+        initMap();
         populateMap(map, db);
       });
     }
