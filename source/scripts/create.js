@@ -72,8 +72,6 @@ function loadGoogleMaps(apiKey, libraries) {
 const userData = JSON.parse(localStorage.getItem('userData'));
 
 if (userData) {
-
-    
     document.getElementById("imagePreview").src = userData.imgSrc;
     document.getElementById("title").value = userData.cardId;
     document.getElementById("description").value = userData.descriptionText;

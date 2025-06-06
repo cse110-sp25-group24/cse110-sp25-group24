@@ -5,13 +5,11 @@ let map = null;
 
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-// function removeAPIInput(){
-//   document.getElementById("apiKeyInput").remove();
-//   document.getElementById("apiKeyPrompt").remove();
-//   document.getElementById("loadMapBtn").remove();
-// }
+document.addEventListener("DOMContentLoaded", init)
+document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
 
-document.addEventListener("DOMContentLoaded", () => {
+
+function init(){
   const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
 
   // if database does not exist
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   request.onerror = (event) => {
     console.log("db err for the map"); // works so far, seen
   };
-});
+}
 
 /**
  * Callback function for Google Maps API to initialize the map.
@@ -103,7 +101,7 @@ function loadGoogleMaps(apiKey) {
   });
 }
 
-document.getElementById("loadMapBtn").addEventListener("click", () => {
+function insertAPIKey() {
   const apiKey = document.getElementById("apiKeyInput").value.trim();
   if (!apiKey) {
     alert("Please enter a valid API key.");
@@ -116,8 +114,7 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
     initMap();
     populateMap(map, db);
   });
-  // removeAPIInput();
-});
+}
 
 /**
  * Adds a marker to the specified map at given latitude and longitude.
