@@ -59,29 +59,6 @@ export function addMemory(post, db) {
 }
 
 /**
- * This function gets the latest memory uploaded to the db (by date).
- *
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into the latest memory.
- */
-export function getLatestMemory(db) {
-  // just going to log the details to console atm
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories").index("dateCreated");
-    const request = store.openCursor(null, "prev");
-    request.onsuccess = () => {
-      const cursor = request.result;
-      resolve(cursor ? cursor.value : null); // return the cursor's value if cursor is not null
-    };
-
-    request.onerror = () => {
-      reject(request.error);
-    };
-  });
-}
-
-/**
  * This function deletes all the memoryes currently being stored.
  *
  * @param {IDBDatabase} db The database being deleted.
