@@ -1,10 +1,9 @@
 memory-header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   padding: 1em 2em;
-  border-bottom: 1px solid #dddddd;
 }
 
 memory-filters {
@@ -15,15 +14,15 @@ memory-filters {
   flex-wrap: wrap;
 }
 
-search-bar {
+search{
   display: flex;
   align-items: center;
   background-color: #f0f0f0;
-  padding: 0.5em 1em;
-  border-radius: 2em;
+  padding: 0.5em 2.5em;
+  border-radius: 1em;
 }
 
-search-bar input {
+search input {
   padding: 0.25em;
   font-size: 1em;
   border: none;
@@ -33,7 +32,7 @@ search-bar input {
 
 mood-filter select {
   padding: 0.5em 1em;
-  border-radius: 2em;
+  border-radius: 1em;
   border: 1px solid #dddddd;
   background-color: #ffffff;
   font-size: 1em;
@@ -174,3 +173,4 @@ memories-grid-container::-webkit-scrollbar-thumb {
 memories-grid-container::-webkit-scrollbar-thumb:hover {
   background: #aaaaaa;
 }
+
