@@ -1,4 +1,4 @@
-// Store and Display a "Memory" using IndexedDB Issue # 30
+import * as dhf from "./dataHandlingFunctions.js";
 
 // making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", () => {
@@ -7,7 +7,9 @@ window.addEventListener("DOMContentLoaded", () => {
   // if database does not exist
   request.onupgradeneeded = (event) => {
     const db = request.result;
+
     console.log("initializing db"); // debugging message
+
     if (!db.objectStoreNames.contains("memories")) {
       const store = db.createObjectStore("memories", {
         keyPath: "post_id",
@@ -18,14 +20,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
-
+  let db;
   // sanity checks for making sure the database is up
 
   request.onsuccess = (event) => {
     db = event.target.result;
     console.log("db is up");
-    displayLatestMemory(db);
+    // displayLatestMemory(db); outdated 5/31/25
   };
 
   request.onerror = (event) => {
@@ -50,10 +51,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const title = data.get("title");
     const description = data.get("description");
     const image = data.get("image");
-    const imageURL = await fileToDataUrl(image);
+    const imageURL = await dhf.fileToDataUrl(image);
     const date = new Date();
     const locationTag = data.get("location");
-    const moodTags = data.getAll("mood");
+    const moodTags = data.get("mood-text");
     const post = {
       title: title,
       description: description,
@@ -67,11 +68,11 @@ window.addEventListener("DOMContentLoaded", () => {
     place = autocomplete.getPlace();
     console.log("lat:", place.geometry.location.lat());
     console.log("long:", place.geometry.location.lng());
-
-    addMemory(post, db).then(() => displayLatestMemory(db));
+    dhf.addMemory(post, db); //.then(() => displayLatestMemory(db));
     event.target.reset();
     // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
   });
+
   const imageInput = document.getElementById("imageUpload");
   const imagePreview = document.getElementById("imagePreview");
 
@@ -95,241 +96,3 @@ window.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 });
-
-/**
- * This function is written to display the latest memory that has been uploaded
- * to the IndexedDB MemoryDB.
- *
- * @param {IDBDatabase} db
- */
-async function displayLatestMemory(db) {
-  // getting the latest memory
-  // store is called memories
-
-  // using promise in checking to see if there are posts
-  isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("preview");
-
-    if (mainElement === null) {
-      console.error("Main element not found.");
-      return;
-    }
-
-    mainElement.innerHTML = "";
-
-    if (result) {
-      // there are 0 posts
-      const placeholder = document.createElement("p");
-      placeholder.classList.add("placeholder");
-      placeholder.textContent = "No posts.";
-      mainElement.append(placeholder);
-    } else {
-      getLatestMemory(db).then((post) => {
-        console.log("snagging most recent memory");
-        // build the DOM
-        const card = document.createElement("article");
-        card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.description}</p>
-            <img src="${post.image}" alt="${
-              post.title
-            }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
-            <footer>Created: ${new Date(
-              post.dateCreated,
-            ).toLocaleString()}</footer>
-          `;
-        mainElement.appendChild(card);
-      });
-    }
-  });
-}
-
-/**
- * This function checks the MemoryDB to see if it is empty or not.
- *
- * @param {IDBDatabase} db
- * @returns {boolean} Returns `true` if db is empty, `false` if db is not empty.
- */
-function isEmptyDB(db) {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories");
-    const numPosts = store.count();
-
-    numPosts.onsuccess = () => {
-      console.log("zero posts");
-      resolve(numPosts.result === 0);
-    };
-
-    numPosts.onerror = () => {
-      console.log("error");
-      reject(numPosts.error);
-    };
-  });
-}
-
-/**
- * This function adds a memory to the MemoryDB.
- *
- * @param {{
- *   title: string,
- *   description: string,
- *   dateCreated: Date,
- *   image: string,
- *   location: string
- * }} post
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into a post being added.
- */
-function addMemory(post, db) {
-  // adding a memory to the database
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readwrite");
-    const store = tx.objectStore("memories");
-    const request = store.add(post);
-    request.onsuccess = () => {
-      const id = request.result;
-      console.log(`saved post ${id}`);
-      resolve(id);
-    };
-
-    request.onerror = () => {
-      console.log("error adding post");
-      reject(request.error);
-    };
-  });
-}
-
-/**
- * This function gets the latest memory uploaded to the db (by date).
- *
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into the latest memory.
- */
-function getLatestMemory(db) {
-  // just going to log the details to console atm
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories").index("dateCreated");
-    const request = store.openCursor(null, "prev");
-    request.onsuccess = () => {
-      const cursor = request.result;
-      resolve(cursor ? cursor.value : null); // return the cursor's value if cursor is not null
-    };
-
-    request.onerror = () => {
-      reject(request.error);
-    };
-  });
-}
-
-/**
- * This function deletes all the memoryes currently being stored.
- *
- * @param {IDBDatabase} db The database being deleted.
- */
-function deleteAllMemories(db) {
-  if (db) {
-    db.close();
-  }
-  const deleteRequest = indexedDB.deleteDatabase("MemoryDB");
-
-  deleteRequest.onblocked = () => {
-    console.warn(
-      "Database deletion blocked: please close all other tabs using it.",
-    );
-  };
-  deleteRequest.onerror = () => {
-    console.error("Error deleting database:", deleteRequest.error);
-  };
-  deleteRequest.onsuccess = () => {
-    console.log("Database deleted successfully.");
-    // reset? VERY rough
-    window.location.reload();
-  };
-}
-
-// reading the data as a URL
-/**
- *
- * @param {Blob} file
- * @returns {Promise} Promise that resolves into the image data URL
- */
-function fileToDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    // starting a new filereader
-    const reader = new FileReader();
-
-    // startinghe promises
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(reader.error);
-
-    // reading the file w default API --> is returned
-    reader.readAsDataURL(file);
-  });
-}
-
-
-let autocomplete;
-
-const API_KEY_STORAGE = "googleMapsApiKLey";
-
-document.addEventListener("DOMContentLoaded", () => {
-  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-
-  if (savedApiKey) {
-    console.log(savedApiKey);
-    loadMaps(savedApiKey, 'places','initAutocomplete')
-  }
-});
-
-/**
- * Initializes the Google Places Autocomplete widget on the input element with id "location".
- * Configures autocomplete to restrict results to US geocoded addresses and limits the
- * fields returned to optimize performance.
- */
-function initAutocomplete() {
-  const input = document.getElementById("location");
-  autocomplete = new google.maps.places.Autocomplete(input, {
-    types: ["geocode"], // or use ['establishment'] or ['(regions)'] for different types of places
-    componentRestrictions: { country: "us" }, // Restrict to US, remove if you want worldwide
-    fields: ["address_components", "geometry", "formatted_address"], // Limit returned data for efficiency
-  });
-
-  autocomplete.addListener("place_changed", onPlaceChanged);
-}
-
-/**
- * Callback fired when the user selects a place from the autocomplete suggestions.
- * It retrieves place details and logs relevant information, or warns if no geometry is available.
- */
-function onPlaceChanged() {
-  const place = autocomplete.getPlace();
-
-  if (!place.geometry) {
-    // User entered something that was not suggested
-    console.log("No details available for input: '" + place.name + "'");
-    return;
-  }
-
-  console.log(place.formatted_address);
-  console.log(place.geometry.location.lat());
-  console.log(place.geometry.location.lng());
-  console.log(typeof place);
-
-  return place;
-}
-
-function loadMaps(apiKey, libraries='', callBack='initMap') {
-  let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&callback=${callBack}`;
-  script.async = true;
-
-  // need to improve this error handling.
-
-  script.onerror = () => {
-    alert("Failed to load Google Maps API. Check your API key.");
-  };
-
-  document.head.appendChild(script);
-}
