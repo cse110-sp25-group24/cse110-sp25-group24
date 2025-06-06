@@ -4,11 +4,11 @@ let map = null;
 
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-function removeAPIInput(){
-  document.getElementById("apiKeyInput").remove();
-  document.getElementById("apiKeyPrompt").remove();
-  document.getElementById("loadMapBtn").remove();
-}
+// function removeAPIInput(){
+//   document.getElementById("apiKeyInput").remove();
+//   document.getElementById("apiKeyPrompt").remove();
+//   document.getElementById("loadMapBtn").remove();
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadMaps(savedApiKey);
   }
 
-  removeAPIInput();
+  // removeAPIInput();
 });
 
 /**
@@ -64,7 +64,10 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
   loadMaps(apiKey)
-  removeAPIInput();
+  // removeAPIInput();
+  document.getElementById("apiKeyInput").remove();
+  document.getElementById("apiKeyPrompt").remove();
+  document.getElementById("loadMapBtn").remove();
 
 });
 
