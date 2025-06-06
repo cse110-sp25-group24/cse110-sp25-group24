@@ -58,6 +58,7 @@ class MemoryData extends HTMLElement {
 
       const button = this.shadowRoot.querySelector("a#editBtn")
       button.addEventListener("click", (e) => {
+        // Prevent redirecting to save card info
         e.preventDefault();
         const card = this.shadowRoot.querySelector(".memory-card");
         const cardId = card.getAttribute("card_id");
@@ -67,10 +68,10 @@ class MemoryData extends HTMLElement {
         const mood = moodSpan.getAttribute('data-category');
         const description = card.querySelector('.description');
         const descriptionText = description.textContent.trim()
-        // 存到 localStorage
+        // Save card info into localStorage
         localStorage.setItem("userData", JSON.stringify({ imgSrc,cardId,mood,descriptionText }));
 
-        // // 跳转
+        // Redirect to new page so the new page can read saved card info
         window.location.href = button.href;
       });
     
@@ -78,61 +79,3 @@ class MemoryData extends HTMLElement {
 }
 
 customElements.define("memory-data", MemoryData);
-
-// // Change to API later
-// const cardData = [
-//   {
-//     id: "001",
-//     img: "Kaname.jpg",
-//     img_alt: "Memory photo",
-//     date: "April 15, 2025",
-//     category: "Nostalgic",
-//     link: "/memory-detail.html",
-//     title: "Sunset at Geisel Library",
-//     description:
-//       "A beautiful sunset casting golden rays through the trees near the library.",
-//   },
-//   {
-//     id: "002",
-//     img: "Kaname.jpg",
-//     img_alt: "Memory photo",
-//     date: "April 15, 2025",
-//     category: "Travel",
-//     link: "/memory-detail.html",
-//     title: "Sunset at Geisel Library",
-//     description: `LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG
-//               text
-//               testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt`,
-//   },
-//   {
-//     id: "003",
-//     img: "Kaname.jpg",
-//     img_alt: "Memory photo",
-//     date: "April 15, 2025",
-//     category: "Food",
-//     link: "/memory-detail.html",
-//     title: "Sunset at Geisel Library",
-//     description: `LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG
-//               text
-//               testtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt`,
-//   },
-//   // More cards
-// ];
-
-// // Insert
-// window.addEventListener("DOMContentLoaded", () => {
-//   const container = document.querySelector(".card-list");
-//   // alert(1);
-//   cardData.forEach((item) => {
-//     const card = document.createElement("memory-card");
-//     card.setAttribute("card_id", item.id);
-//     card.setAttribute("img", item.img);
-//     card.setAttribute("img_alt", item.img_alt);
-//     card.setAttribute("date", item.date);
-//     card.setAttribute("category", item.category);
-//     card.setAttribute("title", item.title);
-//     card.setAttribute("link", item.link);
-//     card.setAttribute("description", item.description);
-//     container.appendChild(card);
-//   });
-// });
