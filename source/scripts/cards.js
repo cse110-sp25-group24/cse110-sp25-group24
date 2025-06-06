@@ -62,6 +62,8 @@ class MemoryData extends HTMLElement {
         e.preventDefault();
         const card = this.shadowRoot.querySelector(".memory-card");
         const cardId = card.getAttribute("card_id");
+        const title = card.querySelector('.title a');
+        const titleText = title.textContent;
         const img = card.querySelector('img');
         const imgSrc = img ? img.getAttribute('src') : null;
         const moodSpan = card.querySelector('.category-tag');
@@ -69,7 +71,7 @@ class MemoryData extends HTMLElement {
         const description = card.querySelector('.description');
         const descriptionText = description.textContent.trim()
         // Save card info into localStorage
-        localStorage.setItem("userData", JSON.stringify({ imgSrc,cardId,mood,descriptionText }));
+        localStorage.setItem("userData", JSON.stringify({ imgSrc,cardId,titleText,mood,descriptionText }));
 
         // Redirect to new page so the new page can read saved card info
         window.location.href = button.href;

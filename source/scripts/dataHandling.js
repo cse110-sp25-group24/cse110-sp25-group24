@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (userData) {
       document.getElementById("imagePreview").src = userData.imgSrc;
-      document.getElementById("title").value = userData.cardId;
+      document.getElementById("title").value = userData.titleText;
       document.getElementById("description").value = userData.descriptionText;
       document.getElementById("mood-text").value = userData.mood;
       // document.getElementById("music").value = userData.music;
