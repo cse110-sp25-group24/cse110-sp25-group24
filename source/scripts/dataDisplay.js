@@ -1,5 +1,6 @@
 import { cardTemplate } from "/source/scripts/cardTemplate.js";
 import { isEmptyDB } from "/source/scripts/dataHandlingFunctions.js";
+import { deleteMemory } from "/source/scripts/dataHandlingFunctions.js";
 
 // Store and Display a "Memory" using IndexedDB Issue # 30
 
@@ -72,6 +73,9 @@ function displayAllMemories(db) {
           card.setAttribute("location", post.location || "No Location Provided");
 
           display.appendChild(card);
+          setTimeout(() => {
+            deleteListener(card, post.post_id, db);
+          }, 0);
           cursor.continue();
         }
       };
@@ -81,4 +85,24 @@ function displayAllMemories(db) {
       };
     }
   });
+}
+
+/**
+ * This function adds a delete listener to the card element.
+ * 
+ * @param {*} cardElement to remove from DOM
+ * @param {*} id to delete from IndexedDB
+ * @param {*} db Database instance
+ */
+function deleteListener(cardElement, id, db){
+  const deleteBtn = cardElement.shadowRoot.querySelector(".delete-btn");
+  console.log("deleteBtn", deleteBtn);
+  if(deleteBtn){
+    console.log("Inside Here");
+    deleteBtn.addEventListener("click", () => {
+      deleteMemory(id, db);
+      cardElement.remove(); // Remove from DOM
+      console.log(`Deleted memory with id: ${id}`);
+    });
+  }
 }
