@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const moodTags = data.get("mood-text");
 
     // console.log("Location:", locationTag);
-    let place = autocomplete.getPlace();
+    let place = getPlace();
     // console.log("lat:", place.geometry.location.lat());
     // console.log("long:", place.geometry.location.lng());
 

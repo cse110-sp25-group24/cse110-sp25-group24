@@ -1,3 +1,4 @@
+import { getAllLocations } from "./dataHandlingFunctions.js";
 // Implement Base Map Issue #32
 
 let map = null;
@@ -17,6 +18,42 @@ document.addEventListener("DOMContentLoaded", () => {
       initMap();
     }); 
   }
+
+  const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
+
+  // if database does not exist
+  request.onupgradeneeded = (event) => {
+    const db = request.result;
+
+    console.log("initializing db"); // debugging message
+
+    if (!db.objectStoreNames.contains("memories")) {
+      const store = db.createObjectStore("memories", {
+        keyPath: "post_id",
+        autoIncrement: true,
+      });
+
+      store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
+    }
+  };
+
+  let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
+
+  request.onsuccess = (event) => {
+    db = event.target.result;
+    console.log("db is up, displaying all the memories on the map");
+    getAllLocations(db).then((coords) => { // coords list from the memories stored in db
+      for (let marker of coords) {
+        console.log(marker);
+        console.log("LKASJDKASD");
+      }
+
+    })
+  };
+
+  request.onerror = (event) => {
+    console.log("db err for the map"); // works so far, seen
+  };
 });
 
 /**
@@ -34,9 +71,8 @@ function initMap() {
   });
 
   // add a for loop here to access all card info and get coords. 
-  addMarker(map, 32.8802, -117.2392);
 
-  console.log(map)
+  // console.log(map)
 }
 
 function loadGoogleMaps(apiKey) {
