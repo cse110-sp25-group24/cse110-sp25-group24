@@ -1,75 +1,75 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="styles/memories.css" />
-		<link rel="stylesheet" href="styles/styles.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/memories.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
 
-		<link
-			rel="icon"
-			type="image/png"
-			href="assets/favicon-96x96.png"
-			sizes="96x96"
-		/>
-		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-		<link rel="shortcut icon" href="assets/favicon.ico" />
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="assets/apple-touch-icon.png"
-		/>
-		<link rel="manifest" href="assets/site.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="assets/site.webmanifest" />
 
-		<title>My Memories</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<a href="index.html">Home</a>
-				<a href="#">My Memories</a>
-				<a href="create.html">Create</a>
-			</nav>
-			<our-brand>
-				<img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-				<h1>MemorySpot</h1>
-			</our-brand>
-		</header>
+    <title>My Memories</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#">My Memories</a>
+        <a href="create.html">Create</a>
+      </nav>
+      <our-brand>
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </our-brand>
+    </header>
 
-		<main id="memories">
-			<memory-header>
-				<h1>My Memories</h1>
-				<memory-filters>
-					<search>
-						<search-bar>
-							<label for="memory-search">&#x1F50D;</label>
-							<input
-								type="search"
-								id="memory-search"
-								placeholder="Search Memories..."
-							/>
-						</search-bar>
-					</search>
-					<mood-filter>
-						<select>
-							<option selected>All Moods</option>
-							<option>Nostalgic</option>
-							<option>Happy</option>
-							<option>Excited</option>
-							<option>Sad</option>
-							<option>Peaceful</option>
-						</select>
-					</mood-filter>
-				</memory-filters>
-			</memory-header>
+    <main id="memories">
+      <memory-header>
+        <h1>My Memories</h1>
+        <memory-filters>
+          <search>
+            <search-bar>
+              <label for="memory-search">&#x1F50D;</label>
+              <input
+                type="search"
+                id="memory-search"
+                placeholder="Search Memories..."
+              />
+            </search-bar>
+          </search>
+          <mood-filter>
+            <select>
+              <option selected>All Moods</option>
+              <option>Nostalgic</option>
+              <option>Happy</option>
+              <option>Excited</option>
+              <option>Sad</option>
+              <option>Peaceful</option>
+            </select>
+          </mood-filter>
+        </memory-filters>
+      </memory-header>
 
-			<!-- everything in memories-grid-container should be dynamically generated -->
-			<memories-grid-container>
-				<memories-grid></memories-grid>
-			</memories-grid-container>
-		</main>
-		<footer>
-			<p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
-		</footer>
-	</body>
+      <!-- everything in memories-grid-container should be dynamically generated -->
+      <memories-grid-container>
+        <memories-grid></memories-grid>
+      </memories-grid-container>
+    </main>
+    <footer>
+      <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
+    </footer>
+  </body>
 </html>
