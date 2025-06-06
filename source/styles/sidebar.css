@@ -7,6 +7,8 @@ aside {
   padding: 1em;
   z-index: 2;
 
+  justify-content: center;
+
   background: #ffffff;
   box-shadow: 0 -1em 1em #00000033;
 }
