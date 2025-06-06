@@ -1,7 +1,7 @@
 const { isEmptyDB } = require("../scripts/dataHandlingFunctions");
 
 describe("isEmptyDB", () => {
-  //Test 1 - checks if it returns true when there are no posts in the DB
+  // Test 1 - checks if it returns true when there are no posts in the DB
   it("should resolve to true when there are no posts", async () => {
     const mockCount = {
       onsuccess: null,
@@ -74,7 +74,7 @@ describe("isEmptyDB", () => {
 
     await expect(isEmptyDB(mockDB)).rejects.toThrow("count failed");
   });
-  //test 4
+
   it("should reject if db is null or undefined", async () => {
     await expect(isEmptyDB(null)).rejects.toThrow();
     await expect(isEmptyDB(undefined)).rejects.toThrow();
