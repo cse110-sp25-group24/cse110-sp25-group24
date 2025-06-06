@@ -145,7 +145,7 @@ export function retrieveMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-
+    console.log(post_id)
     // grabbing the post
     const request = store.get(post_id);
 

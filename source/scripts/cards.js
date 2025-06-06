@@ -1,5 +1,6 @@
 import { cardTemplate } from "./cardTemplate.js";
 import { colors } from "./cardTemplate.js";
+import { retrieveMemory } from './dataHandlingFunctions.js';
 
 class MemoryData extends HTMLElement {
   constructor() {
@@ -60,6 +61,7 @@ class MemoryData extends HTMLElement {
       button.addEventListener("click", (e) => {
         // Prevent redirecting to save card info
         e.preventDefault();
+        
         const card = this.shadowRoot.querySelector(".memory-card");
         const cardId = card.getAttribute("card_id");
         const title = card.querySelector('.title a');
