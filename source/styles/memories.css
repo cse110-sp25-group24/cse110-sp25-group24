@@ -14,7 +14,7 @@ memory-filters {
   flex-wrap: wrap;
 }
 
-search{
+search {
   display: flex;
   align-items: center;
   background-color: #f0f0f0;
@@ -173,4 +173,3 @@ memories-grid-container::-webkit-scrollbar-thumb {
 memories-grid-container::-webkit-scrollbar-thumb:hover {
   background: #aaaaaa;
 }
-
