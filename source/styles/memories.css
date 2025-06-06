@@ -75,11 +75,12 @@ memory-photo button {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 memory-photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   text-align: center;
 }
