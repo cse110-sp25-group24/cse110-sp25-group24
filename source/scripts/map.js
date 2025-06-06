@@ -39,7 +39,7 @@ function initMap() {
 }
 
 // Given API key and a callback function (default is initMap), loads the map content onto  
-function loadMaps(apiKey, libraries='map',callBack='initMap') {
+function loadMaps(apiKey, libraries='',callBack='initMap') {
   let script = document.createElement("script");
   script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&callback=${callBack}`;
   script.async = true;
@@ -83,18 +83,11 @@ function addMarker(map, lat, lng, title = "") {
     map: map,
     title: title,
   });
-}
 
-function loadMaps(apiKey, callBack='initMap') {
-  let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${callBack}`;
-  script.async = true;
-
-  // need to improve this error handling.
-
-  script.onerror = () => {
-    alert("Failed to load Google Maps API. Check your API key.");
-  };
-
-  document.head.appendChild(script);
+  // try to implement advanced advanced marker element by tn
+  // let marker =  google.maps.marker.AdvancedMarkerElement({ // legacy code
+  //   position: new google.maps.LatLng(lat, lng),
+  //   map: map,
+  //   title: title,
+  // });
 }
