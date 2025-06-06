@@ -1,4 +1,4 @@
-// // Implement Base Map Issue #32
+// Implement Base Map Issue #32
 
 let map = null;
 
@@ -12,13 +12,11 @@ const API_KEY_STORAGE = "googleMapsApiKLey";
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-
   if (savedApiKey) {
-    loadMaps(savedApiKey);
-
+    loadGoogleMaps(savedApiKey).then(() => {
+      initMap();
+    }); 
   }
-
-  // removeAPIInput();  
 });
 
 /**
@@ -37,27 +35,32 @@ function initMap() {
 
   // add a for loop here to access all card info and get coords. 
   addMarker(map, 32.8802, -117.2392);
+
+  console.log(map)
 }
 
-// Given API key and a callback function (default is initMap), loads the map content onto  
-function loadMaps(apiKey, libraries='',callBack='initMap') {
-  let script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}&callback=${callBack}`;
-  script.async = true;
+function loadGoogleMaps(apiKey) {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+    script.async = true;
+    script.defer = true;
 
-  // need to improve this error handling.
+    script.onload = () => {
+      resolve();
+    };
 
-  script.onerror = () => {
-    alert("Failed to load Google Maps API. Check your API key.");
-  };
+    script.onerror = () => {
+      reject(new Error("Failed to load Google Maps API"));
+    };
 
-  document.head.appendChild(script);
-  document.getElementById("apiKeyInput").remove();
-  document.getElementById("apiKeyPrompt").remove();
-  document.getElementById("loadMapBtn").remove();
-  
+    document.head.appendChild(script);
+
+    document.getElementById("apiKeyInput").remove();
+    document.getElementById("apiKeyPrompt").remove();
+    document.getElementById("loadMapBtn").remove();
+  });
 }
-
 
 document.getElementById("loadMapBtn").addEventListener("click", () => {
   const apiKey = document.getElementById("apiKeyInput").value.trim();
@@ -68,7 +71,7 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  loadMaps(apiKey)
+  loadGoogleMaps(apiKey)
   // removeAPIInput();
 });
 
