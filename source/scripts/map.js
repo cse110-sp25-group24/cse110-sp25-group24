@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (savedApiKey) {
       loadGoogleMaps(savedApiKey).then(() => {
         initMap(db);
+        populateMap(map, db);
       });
     }
   };
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
  *
  * @param {IDBDatabase} db
  */
-function initMap(db) {
+function initMap() {
   console.log("INITIALIZING MAP");
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
@@ -65,7 +66,9 @@ function initMap(db) {
     streetViewControl: false,
     fullscreenControl: false,
   });
+}
 
+function populateMap(map, db) {
   console.log("POPULATING MAP");
   getAllLocations(db).then((coords) => {
     // coords list from the memories stored in db
