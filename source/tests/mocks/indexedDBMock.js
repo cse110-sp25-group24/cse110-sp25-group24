@@ -36,6 +36,18 @@ global.IDBObjectStore = class {
   index(indexName) {
     return new global.IDBIndex(this.data);
   }
+  add(post) {
+    // Generate a fake unique ID by counting how many posts already exist.
+    const id = Object.keys(this.data).length + 1;
+
+    // Save the post to the in-memory mock "database"
+    this.data[id] = post;
+
+    // Create a fake IDBRequest that simulates async IndexedDB behavior.
+    const request = new global.IDBRequest(id); // result = id
+
+    return request;
+  }
 };
 
 // request object that basically simulates the indexdb async delete
