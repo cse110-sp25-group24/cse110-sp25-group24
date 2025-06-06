@@ -55,20 +55,28 @@ window.addEventListener("DOMContentLoaded", () => {
     const date = new Date();
     const locationTag = data.get("location");
     const moodTags = data.get("mood-text");
+
+    // console.log("Location:", locationTag);
+    let place = autocomplete.getPlace();
+    // console.log("lat:", place.geometry.location.lat());
+    // console.log("long:", place.geometry.location.lng());
+
+
+    const long = place.geometry.location.lng() + Math.random() * 0.0003;
+    const lat = place.geometry.location.lat() + Math.random() * 0.0003;
+
     const post = {
       title: title,
       description: description,
       dateCreated: date,
       image: imageURL,
       location: locationTag,
+      longitude: long,
+      latitude: lat,
       mood: moodTags,
     };
-
-    console.log("Location:", locationTag);
-    place = autocomplete.getPlace();
-    console.log("lat:", place.geometry.location.lat());
-    console.log("long:", place.geometry.location.lng());
     dhf.addMemory(post, db); //.then(() => displayLatestMemory(db));
+    console.table(post); // for debugging, post data is displayed in
     event.target.reset();
     // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
   });
