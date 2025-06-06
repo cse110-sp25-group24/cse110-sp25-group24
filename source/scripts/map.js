@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // removeAPIInput();
+  document.getElementById("apiKeyInput").remove();
+  document.getElementById("apiKeyPrompt").remove();
+  document.getElementById("loadMapBtn").remove();
+  
 });
 
 /**
