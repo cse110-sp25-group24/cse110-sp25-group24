@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   request.onerror = (event) => {
-    console.log("db err"); // works so far, seen
+    console.error("db err"); // works so far, seen
   };
 });
 
@@ -57,7 +57,7 @@ function displayAllMemories(db) {
         if (cursor) {
           cnt += 1;
           const post = cursor.value;
-          console.log(cnt);
+          // console.log(cnt);
           //create a card for the post
           const card = document.createElement("memory-data");
           card.setAttribute("card_id", post.post_id);
@@ -70,7 +70,10 @@ function displayAllMemories(db) {
           card.setAttribute("title", post.title);
           card.setAttribute("link", post.link);
           card.setAttribute("description", post.description);
-          card.setAttribute("location", post.location || "No Location Provided");
+          card.setAttribute(
+            "location",
+            post.location || "No Location Provided"
+          );
 
           display.appendChild(card);
           setTimeout(() => {
@@ -81,7 +84,7 @@ function displayAllMemories(db) {
       };
 
       request.onerror = () => {
-        console.log("unable to open cursor");
+        console.error("unable to open cursor");
       };
     }
   });
@@ -89,16 +92,16 @@ function displayAllMemories(db) {
 
 /**
  * This function adds a delete listener to the card element.
- * 
+ *
  * @param {*} cardElement to remove from DOM
  * @param {*} id to delete from IndexedDB
  * @param {*} db Database instance
  */
-function deleteListener(cardElement, id, db){
+function deleteListener(cardElement, id, db) {
   const deleteBtn = cardElement.shadowRoot.querySelector(".delete-btn");
-  console.log("deleteBtn", deleteBtn);
-  if(deleteBtn){
-    console.log("Inside Here");
+  // console.log("deleteBtn", deleteBtn);
+  if (deleteBtn) {
+    // console.log("Inside Here");
     deleteBtn.addEventListener("click", () => {
       deleteMemory(id, db);
       cardElement.remove(); // Remove from DOM

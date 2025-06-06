@@ -1,4 +1,4 @@
-import { getAllLocations } from "./dataHandlingFunctions.js";
+import { getAllLocations } from "/source/scripts/dataHandlingFunctions.js";
 // Implement Base Map Issue #32
 
 let map = null;
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedApiKey) {
     loadGoogleMaps(savedApiKey).then(() => {
       initMap();
-    }); 
+    });
   }
 
   const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
   request.onsuccess = (event) => {
     db = event.target.result;
     console.log("db is up, displaying all the memories on the map");
-    getAllLocations(db).then((coords) => { // coords list from the memories stored in db
+    getAllLocations(db).then((coords) => {
+      // coords list from the memories stored in db
       for (let marker of coords) {
-        console.log(marker);
-        console.log("LKASJDKASD");
+        const [lat, long, title] = marker;
+        addMarker(lat, long);
       }
-
-    })
+    });
   };
 
   request.onerror = (event) => {
@@ -70,7 +70,7 @@ function initMap() {
     fullscreenControl: false,
   });
 
-  // add a for loop here to access all card info and get coords. 
+  // add a for loop here to access all card info and get coords.
 
   // console.log(map)
 }
@@ -107,7 +107,7 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  loadGoogleMaps(apiKey)
+  loadGoogleMaps(apiKey);
   // removeAPIInput();
 });
 
@@ -121,7 +121,8 @@ document.getElementById("loadMapBtn").addEventListener("click", () => {
 function addMarker(map, lat, lng, title = "") {
   console.log("Attempting to add marker", lat, lng, title);
 
-  let marker = new google.maps.Marker({ // legacy code
+  let marker = new google.maps.Marker({
+    // legacy code
     position: new google.maps.LatLng(lat, lng),
     map: map,
     title: title,

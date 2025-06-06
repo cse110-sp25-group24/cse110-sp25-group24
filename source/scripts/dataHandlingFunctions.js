@@ -206,13 +206,13 @@ export function deleteMemory(post_id, db) {
  * @returns {Promise} resolves into the list of the following: latitude, longitude, and title [(lat, long, title), ...]
  */
 export function getAllLocations(db) {
+  let coords = [];
   return new Promise((resolve, reject) => {
     try {
       isEmptyDB(db).then((empty) => {
         if (empty) {
-          resolve([]); // return empty coords
+          resolve(coords); // return empty coords
         } else {
-          let coords = [];
           let tx = db.transaction("memories", "readonly");
           let store = tx.objectStore("memories");
           let request = store.openCursor(null, "next");
@@ -224,9 +224,10 @@ export function getAllLocations(db) {
               const post = cursor.value;
               coords.push([post.latitude, post.longitude, post.title]);
               cursor.continue();
+            } else {
+              resolve(coords); // pushing out the coordinates
             }
           };
-
           request.onerror = (event) => {
             console.error("MemoryDB cursor failed:", event.target.error);
           };
