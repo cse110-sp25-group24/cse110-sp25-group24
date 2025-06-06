@@ -1,3 +1,8 @@
+:root {
+  --font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
 memory-header {
   display: flex;
   justify-content: space-between;
@@ -42,13 +47,21 @@ mood-filter select {
 memories-grid-container {
   min-height: 0;
   overflow-y: auto;
-  padding: 1em;
+  padding: -1em;
 }
 
 memories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5em;
+}
+
+.list-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333333;
+  font-family: var(--font-family);
+  margin: 0.5em 0em 0em 0em;
 }
 
 memory-card {
