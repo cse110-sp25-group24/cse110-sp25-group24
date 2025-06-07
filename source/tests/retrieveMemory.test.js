@@ -1,5 +1,5 @@
-import "./mocks/indexedDBMock";
-import { retrieveMemory } from "../scripts/dataHandlingFunctions";
+const { IDBDatabase } = require("./mocks/indexedDBMock.js");
+const { retrieveMemory } = require("../scripts/dataHandlingFunctions.js");
 
 describe("retrieveMemory", () => {
   // Test 1 - Retrieve an existing memory from the store
@@ -8,7 +8,7 @@ describe("retrieveMemory", () => {
     const mockData = {
       1: { title: "Memory 1", post_id: 1 },
     };
-    const db = new global.IDBDatabase(mockData);
+    const db = new IDBDatabase(mockData);
 
     const result = await retrieveMemory(1, db);
     expect(result).toEqual({ title: "Memory 1", post_id: 1 });
@@ -16,7 +16,7 @@ describe("retrieveMemory", () => {
 
   // Test 2 - Handles a missing memory (should reject with null)
   it("returns null if memory does not exist", async () => {
-    const db = new global.IDBDatabase({}); //empty store
+    const db = new IDBDatabase({}); //empty store
     await expect(retrieveMemory(69, db)).rejects.toBeNull();
   });
 

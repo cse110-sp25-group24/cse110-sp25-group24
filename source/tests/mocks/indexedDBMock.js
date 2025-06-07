@@ -164,3 +164,14 @@ global.IDBTransaction = class {
     return this.store;
   }
 };
+
+module.exports = {
+  IDBTrans: global.IDBTrans,
+  IDBObjectStore: global.IDBObjectStore,
+  IDBRequest: global.IDBRequest,
+  FileReader: global.FileReader,
+  IDBCursor: global.IDBCursor,
+  IDBIndex: global.IDBIndex,
+  IDBDatabase: global.IDBDatabase,
+  IDBTransaction: global.IDBTransaction,
+};
