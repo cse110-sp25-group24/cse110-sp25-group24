@@ -9,6 +9,7 @@ aside {
 	z-index: 2;
 
 	justify-content: center;
+	align-items: center;
 
 	background: #ffffff;
 	box-shadow: 0 -1em 1em #00000033;
@@ -16,11 +17,10 @@ aside {
 
 sidebar-header {
 	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1rem;
 
-	position: relative;
-	right: 0;
 	z-index: 100;
 }
 
