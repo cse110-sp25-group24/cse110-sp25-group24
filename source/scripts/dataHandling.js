@@ -1,4 +1,6 @@
 import * as dhf from "./dataHandlingFunctions.js";
+import { getPlace, initCreate } from "./create.js";
+// import { getPlace, initCreate } from "./map.js"
 
 // making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", () => {
@@ -55,17 +57,29 @@ window.addEventListener("DOMContentLoaded", () => {
     const date = new Date();
     const locationTag = data.get("location");
     const moodTags = data.get("mood-text");
+
+    // console.log("Location:", locationTag);
+    let place = getPlace();
+    // console.log("lat:", place.geometry.location.lat());
+    // console.log("long:", place.geometry.location.lng());
+
+    const long = place.geometry.location.lng() + Math.random() * 0.0003;
+    const lat = place.geometry.location.lat() + Math.random() * 0.0003;
+
     const post = {
       title: title,
       description: description,
       dateCreated: date,
       image: imageURL,
       location: locationTag,
+      longitude: long,
+      latitude: lat,
       mood: moodTags,
     };
-
     dhf.addMemory(post, db); //.then(() => displayLatestMemory(db));
+    console.table(post); // for debugging, post data is displayed in
     event.target.reset();
+    // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
   });
 
   const imageInput = document.getElementById("imageUpload");
@@ -90,4 +104,21 @@ window.addEventListener("DOMContentLoaded", () => {
     };
     reader.readAsDataURL(file);
   });
+
+  // Load data from local storage
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
+  if (userData) {
+    document.getElementById("imagePreview").src = userData.imgSrc;
+    document.getElementById("title").value = userData.titleText;
+    document.getElementById("description").value = userData.descriptionText;
+    document.getElementById("mood-text").value = userData.mood;
+    // document.getElementById("music").value = userData.music;
+    // alert(userData.imgSrc);
+
+    // Delete local storage after use
+    localStorage.removeItem("userData");
+  }
+
+  initCreate();
 });

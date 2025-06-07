@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/form.css" />
+
     <script type="module" src="scripts/dataHandling.js"></script>
-    <script type="module" src="scripts/dataDisplay.js"></script>
+    <script type="module" src="scripts/create.js"></script>
 
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=API_KEY_HERE&libraries=places&callback=initAutocomplete"
+      src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&libraries=places&callback=initAutocomplete"
       async
       defer
     ></script>
@@ -34,19 +35,25 @@
   </head>
   <body>
     <header>
+      <a href="index.html" class="brand-link">
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
       <nav>
         <a href="index.html">Home</a>
         <a href="memories.html">My Memories</a>
-        <a href="#">Create</a>
+        <a href="create.html">Create</a>
       </nav>
-      <our-brand>
-        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-        <h1>MemorySpot</h1>
-      </our-brand>
     </header>
 
     <main>
-      <memories-grid-container>
+      <form-container>
         <form id="memory-form">
           <h1>Make A New Memory</h1>
           <fieldset class="upload-area">
@@ -121,9 +128,8 @@
             Save Memory
           </button>
         </form>
-      </memories-grid-container>
+      </form-container>
     </main>
-
     <footer>
       <p>&copy; 2025 MemorySpot - BeeZee 24/7</p>
     </footer>

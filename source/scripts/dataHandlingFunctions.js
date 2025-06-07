@@ -1,78 +1,4 @@
 /**
- * This function is written to display all the memories from date descending.
- *
- * @param {IDBDatabase} db Database instance
- */
-export function displayAllMemories(db) {
-  isEmptyDB(db).then((empty) => {
-    const display = document.querySelector("memory-display");
-    if (empty) {
-      display.innerHTML = `<p> placeholder </p>`;
-    } else {
-      const tx = db.transaction("memories", "readonly");
-      const store = tx.objectStore("memories").index("dateCreated");
-      const request = store.openCursor(null, "prev");
-      request.onsuccess = () => {
-        if (cursor) {
-          const post = cursor.value;
-          //create a card for the post
-          const card = cardTemplate(post);
-          display.appendChild(card);
-          cursor.continue();
-        }
-      };
-
-      request.onerror = () => {
-        console.log("unable to open cursor");
-      };
-    }
-  });
-}
-
-/**
- * This function is written to display the latest memory that has been uploaded
- * to the IndexedDB MemoryDB.
- *
- * @param {IDBDatabase} db
- */
-export function displayLatestMemory(db) {
-  // getting the latest memory
-  // store is called memories
-
-  // using promise in checking to see if there are posts
-  isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("main");
-
-    mainElement.innerHTML = "";
-
-    if (result) {
-      // there are 0 posts
-      const placeholder = document.createElement("p");
-      placeholder.classList.add("placeholder");
-      placeholder.textContent = "No posts.";
-      mainElement.append(placeholder);
-    } else {
-      getLatestMemory(db).then((post) => {
-        console.log("snagging most recent memory");
-        // build the DOM
-        const card = document.createElement("article");
-        card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.description}</p>
-            <img src="${post.image}" alt="${
-              post.title
-            }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
-            <footer>Created: ${new Date(
-              post.dateCreated,
-            ).toLocaleString()}</footer>
-          `;
-        mainElement.appendChild(card);
-      });
-    }
-  });
-}
-
-/**
  * This function checks the MemoryDB to see if it is empty or not.
  *
  * @param {IDBDatabase} db
@@ -133,29 +59,6 @@ export function addMemory(post, db) {
 }
 
 /**
- * This function gets the latest memory uploaded to the db (by date).
- *
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into the latest memory.
- */
-export function getLatestMemory(db) {
-  // just going to log the details to console atm
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories").index("dateCreated");
-    const request = store.openCursor(null, "prev");
-    request.onsuccess = () => {
-      const cursor = request.result;
-      resolve(cursor ? cursor.value : null); // return the cursor's value if cursor is not null
-    };
-
-    request.onerror = () => {
-      reject(request.error);
-    };
-  });
-}
-
-/**
  * This function deletes all the memoryes currently being stored.
  *
  * @param {IDBDatabase} db The database being deleted.
@@ -189,10 +92,6 @@ export function deleteAllMemories(db) {
  */
 export function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
-    if (!(file instanceof Blob)) {
-      return reject(new TypeError("Input must be a Blob"));
-    }
-
     // starting a new filereader
     const reader = new FileReader();
 
@@ -223,7 +122,7 @@ export function retrieveMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-
+    console.log(post_id);
     // grabbing the post
     const request = store.get(post_id);
 
@@ -274,5 +173,45 @@ export function deleteMemory(post_id, db) {
       console.log("error deleting post");
       reject(request.error);
     };
+  });
+}
+
+/**
+ * This function handles grabbing all the longitudes and latitudes.
+ *
+ * @param {IDBDatabase} db MemoryDB
+ * @returns {Promise} resolves into the list of the following: latitude, longitude, and title [(lat, long, title), ...]
+ */
+export function getAllLocations(db) {
+  let coords = [];
+  return new Promise((resolve, reject) => {
+    try {
+      isEmptyDB(db).then((empty) => {
+        if (empty) {
+          resolve(coords); // return empty coords
+        } else {
+          let tx = db.transaction("memories", "readonly");
+          let store = tx.objectStore("memories");
+          let request = store.openCursor(null, "next");
+
+          // iterating logic
+          request.onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+              const post = cursor.value;
+              coords.push([post.latitude, post.longitude, post.title]);
+              cursor.continue();
+            } else {
+              resolve(coords); // pushing out the coordinates
+            }
+          };
+          request.onerror = (event) => {
+            console.error("MemoryDB cursor failed:", event.target.error);
+          };
+        }
+      });
+    } catch (err) {
+      reject(err);
+    }
   });
 }
