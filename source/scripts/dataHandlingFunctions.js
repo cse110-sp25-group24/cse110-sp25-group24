@@ -99,6 +99,8 @@ export function fileToDataUrl(file) {
     // starting a new filereader
     const reader = new FileReader();
 
+    console.log(reader.result)
+
     // startinghe promises
     reader.onload = () => resolve(reader.result);
     reader.onerror = () => reject(reader.error);
