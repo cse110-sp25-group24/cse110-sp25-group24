@@ -14,7 +14,7 @@ export class IDBTrans {
   objectStore(name) {
     return new IDBObjectStore();
   }
-};
+}
 
 // Stimulates an object store (e.g. a table in IndexedDB)
 // represents memories table, needs delete to return a request object
@@ -48,7 +48,7 @@ export class IDBObjectStore {
 
     return request;
   }
-};
+}
 
 // request object that basically simulates the indexdb async delete
 export class IDBRequest {
@@ -72,7 +72,7 @@ export class IDBRequest {
   simulateFailure() {
     this.shouldFail = true;
   }
-};
+}
 
 // mock implementation of the FileReader class for testing
 // creating a fake FileReader
@@ -101,14 +101,14 @@ export class FileReader {
 
     return fileReaderSimulator;
   }
-};
+}
 
 // Mock IDBCursor
 export class IDBCursor {
   constructor(value) {
     this.value = value;
   }
-};
+}
 
 // Mock IDBIndex
 export class IDBIndex {
@@ -138,7 +138,7 @@ export class IDBIndex {
 
     return request;
   }
-};
+}
 
 // Stimulates IndexedDB database object
 export class IDBDatabase {
@@ -151,7 +151,7 @@ export class IDBDatabase {
     // Returns a mock transaction object that gives access to an object store
     return new IDBTransaction(new IDBObjectStore(this.data));
   }
-};
+}
 
 // Stimulates a transaction object returned by db.transaction()
 export class IDBTransaction {
@@ -163,4 +163,4 @@ export class IDBTransaction {
     // Mimics tx.objectStore("memories")
     return this.store;
   }
-};
+}

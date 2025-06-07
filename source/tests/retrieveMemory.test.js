@@ -1,5 +1,5 @@
-import { IDBDatabase } from "./mocks/indexedDBMock.js"
-import { retrieveMemory } from "../scripts/dataHandlingFunctions.js"
+import { IDBDatabase } from "./mocks/indexedDBMock.js";
+import { retrieveMemory } from "../scripts/dataHandlingFunctions.js";
 
 describe("retrieveMemory", () => {
   // Test 1 - Retrieve an existing memory from the store

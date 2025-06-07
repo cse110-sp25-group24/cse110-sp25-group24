@@ -1,5 +1,9 @@
-import {IDBDatabase, IDBObjectStore, IDBRequest} from "./mocks/indexedDBMock.js"
-import { addMemory } from "../scripts/dataHandlingFunctions.js"
+import {
+  IDBDatabase,
+  IDBObjectStore,
+  IDBRequest,
+} from "./mocks/indexedDBMock.js";
+import { addMemory } from "../scripts/dataHandlingFunctions.js";
 
 describe("addMemory", () => {
   // Test 1 - Valid post adds and returns new ID

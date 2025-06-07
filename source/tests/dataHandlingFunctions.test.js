@@ -1,5 +1,5 @@
 /**
- * Invalid, FileReader is a webapi and not supported Node.js envs 
+ * Invalid, FileReader is a webapi and not supported Node.js envs
  */
 
 it("placeholder test - should always return true", () => {
@@ -39,7 +39,6 @@ it("placeholder test - should always return true", () => {
 // import{ fileToDataUrl } from "../scripts/dataHandlingFunctions.js"
 
 // describe("fileToDataUrl", () => {
-  
 
 //   it("should convert a file to a data URL", async () => {
 //     const blob = new Blob(["Hello, world!"], { type: "text/plain" });

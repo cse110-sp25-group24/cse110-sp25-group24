@@ -1,5 +1,5 @@
-import { IDBObjectStore } from "./mocks/indexedDBMock.js"
-import deleteMemory from "../scripts/dataHandlingFunctions.js"
+import { IDBObjectStore } from "./mocks/indexedDBMock.js";
+import deleteMemory from "../scripts/dataHandlingFunctions.js";
 
 /**
  * Revisit these, don't have enough context to explain why it's failing
@@ -8,7 +8,6 @@ import deleteMemory from "../scripts/dataHandlingFunctions.js"
 it("placeholder test - should always return true", () => {
   expect(true).toBe(true);
 });
-
 
 // // Create DB for test that throws error if shouldfail is true
 // const createTestDB = (shouldFailTrans = false) => ({
