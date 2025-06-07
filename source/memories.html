@@ -21,19 +21,29 @@
     />
     <link rel="manifest" href="assets/site.webmanifest" />
 
+    <!--Data Display Script-->
+    <script type="module" src="./scripts/cards.js"></script>
+    <script type="module" src="scripts/dataDisplay.js"></script>
+
     <title>My Memories</title>
   </head>
   <body>
     <header>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="#">My Memories</a>
-        <a href="create.html">Create</a>
-      </nav>
-      <our-brand>
+      <a href="index.html" class="brand-link">
         <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
         <h1>MemorySpot</h1>
-      </our-brand>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="memories.html">My Memories</a>
+        <a href="create.html">Create</a>
+      </nav>
     </header>
 
     <main id="memories">
@@ -41,14 +51,12 @@
         <h1>My Memories</h1>
         <memory-filters>
           <search>
-            <search-bar>
-              <label for="memory-search">&#x1F50D;</label>
-              <input
-                type="search"
-                id="memory-search"
-                placeholder="Search Memories..."
-              />
-            </search-bar>
+            <label for="memory-search">&#x1F50D;</label>
+            <input
+              type="search"
+              id="memory-search"
+              placeholder="Search Memories..."
+            />
           </search>
           <mood-filter>
             <select>
@@ -65,7 +73,7 @@
 
       <!-- everything in memories-grid-container should be dynamically generated -->
       <memories-grid-container>
-        <memories-grid></memories-grid>
+        <memories-grid> </memories-grid>
       </memories-grid-container>
     </main>
     <footer>

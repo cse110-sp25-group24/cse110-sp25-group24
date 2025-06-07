@@ -1,59 +1,10 @@
-function displayAllMemories(db) {
-  isEmptyDB(db).then((empty) => {
-    const display = document.querySelector("memory-display");
-    if (empty) {
-      display.innerHTML = `<p> placeholder </p>`;
-    } else {
-      const tx = db.transaction("memories", "readonly");
-      const store = tx.objectStore("memories").index("dateCreated");
-      const request = store.openCursor(null, "prev");
-      request.onsuccess = () => {
-        const cursor = request.result;
-        if (cursor) {
-          const post = cursor.value;
-          const card = cardTemplate(post);
-          display.appendChild(card);
-          cursor.continue();
-        }
-      };
-      request.onerror = () => {
-        console.log("unable to open cursor");
-      };
-    }
-  });
-}
-
-function displayLatestMemory(db) {
-  isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("main");
-    mainElement.innerHTML = "";
-
-    if (result) {
-      const placeholder = document.createElement("p");
-      placeholder.classList.add("placeholder");
-      placeholder.textContent = "No posts.";
-      mainElement.append(placeholder);
-    } else {
-      getLatestMemory(db).then((post) => {
-        console.log("snagging most recent memory");
-        const card = document.createElement("article");
-        card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.description}</p>
-            <img src="${post.image}" alt="${
-              post.title
-            }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
-            <footer>Created: ${new Date(
-              post.dateCreated,
-            ).toLocaleString()}</footer>
-          `;
-        mainElement.appendChild(card);
-      });
-    }
-  });
-}
-
-function isEmptyDB(db) {
+/**
+ * This function checks the MemoryDB to see if it is empty or not.
+ *
+ * @param {IDBDatabase} db
+ * @returns {boolean} Returns `true` if db is empty, `false` if db is not empty.
+ */
+export function isEmptyDB(db) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readonly");
     const store = tx.objectStore("memories");
@@ -75,7 +26,21 @@ function isEmptyDB(db) {
   });
 }
 
-function addMemory(post, db) {
+/**
+ * This function adds a memory to the MemoryDB.
+ *
+ * @param {{
+ *   title: string,
+ *   description: string,
+ *   dateCreated: Date,
+ *   image: string,
+ *   location: string
+ * }} post
+ * @param {IDBDatabase} db
+ * @returns {Promise} Promise that resolves into a post being added.
+ */
+export function addMemory(post, db) {
+  // adding a memory to the database
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readwrite");
     const store = tx.objectStore("memories");
@@ -93,23 +58,12 @@ function addMemory(post, db) {
   });
 }
 
-function getLatestMemory(db) {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories").index("dateCreated");
-    const request = store.openCursor(null, "prev");
-    request.onsuccess = () => {
-      const cursor = request.result;
-      resolve(cursor ? cursor.value : null);
-    };
-
-    request.onerror = () => {
-      reject(request.error);
-    };
-  });
-}
-
-function deleteAllMemories(db) {
+/**
+ * This function deletes all the memoryes currently being stored.
+ *
+ * @param {IDBDatabase} db The database being deleted.
+ */
+export function deleteAllMemories(db) {
   if (db) {
     db.close();
   }
@@ -125,25 +79,41 @@ function deleteAllMemories(db) {
   };
   deleteRequest.onsuccess = () => {
     console.log("Database deleted successfully.");
+    // reset? VERY rough
     window.location.reload();
   };
 }
 
-function fileToDataUrl(file) {
+// reading the data as a URL
+/**
+ *
+ * @param {Blob} file
+ * @returns {Promise} Promise that resolves into the image data URL
+ */
+export function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
-    if (!(file instanceof Blob)) {
-      return reject(new TypeError("Input must be a Blob"));
-    }
-
+    // starting a new filereader
     const reader = new FileReader();
+
+    // startinghe promises
     reader.onload = () => resolve(reader.result);
     reader.onerror = () => reject(reader.error);
+
+    // reading the file w default API --> is returned
     reader.readAsDataURL(file);
   });
 }
 
-function retrieveMemory(post_id, db) {
+/**
+ * This function retrieves a specific memory that was stored.
+ *
+ * @param {int} post_id Primary key
+ * @param {IDBDatabase} db Database instance
+ * @returns {Promise} Resolves into the memory or failure message
+ */
+export function retrieveMemory(post_id, db) {
   return new Promise((resolve, reject) => {
+    // opening a read-only transaction
     let tx;
     let store;
     try {
@@ -152,12 +122,14 @@ function retrieveMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-
+    console.log(post_id);
+    // grabbing the post
     const request = store.get(post_id);
 
     request.onsuccess = () => {
       const memory = request.result;
       if (memory === undefined) {
+        // no memory
         console.log("could not find the memory!");
         reject(null);
       } else {
@@ -166,14 +138,23 @@ function retrieveMemory(post_id, db) {
       }
     };
 
+    // could not use the get function
     request.onerror = () => {
       reject(request.error);
     };
   });
 }
 
-function deleteMemory(post_id, db) {
+/**
+ * This function deletes a specific memory that was stored
+ *
+ * @param {int} post_id
+ * @param {IDBDatabase} db Database instance
+ * @returns {Promise} Resolves into true/false for successful deletion
+ */
+export function deleteMemory(post_id, db) {
   return new Promise((resolve, reject) => {
+    // opening a read-write transaction
     let tx;
     let store;
     try {
@@ -182,7 +163,7 @@ function deleteMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-
+    // deleting the post
     const request = store.delete(post_id);
     request.onsuccess = () => {
       console.log(`deleted post #${post_id}`);
@@ -195,14 +176,42 @@ function deleteMemory(post_id, db) {
   });
 }
 
-module.exports = {
-  displayAllMemories,
-  displayLatestMemory,
-  isEmptyDB,
-  addMemory,
-  getLatestMemory,
-  deleteAllMemories,
-  fileToDataUrl,
-  retrieveMemory,
-  deleteMemory,
-};
+/**
+ * This function handles grabbing all the longitudes and latitudes.
+ *
+ * @param {IDBDatabase} db MemoryDB
+ * @returns {Promise} resolves into the list of the following: latitude, longitude, and title [(lat, long, title), ...]
+ */
+export function getAllLocations(db) {
+  let coords = [];
+  return new Promise((resolve, reject) => {
+    try {
+      isEmptyDB(db).then((empty) => {
+        if (empty) {
+          resolve(coords); // return empty coords
+        } else {
+          let tx = db.transaction("memories", "readonly");
+          let store = tx.objectStore("memories");
+          let request = store.openCursor(null, "next");
+
+          // iterating logic
+          request.onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+              const post = cursor.value;
+              coords.push([post.latitude, post.longitude, post.title]);
+              cursor.continue();
+            } else {
+              resolve(coords); // pushing out the coordinates
+            }
+          };
+          request.onerror = (event) => {
+            console.error("MemoryDB cursor failed:", event.target.error);
+          };
+        }
+      });
+    } catch (err) {
+      reject(err);
+    }
+  });
+}

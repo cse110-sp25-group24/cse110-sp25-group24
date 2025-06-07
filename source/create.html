@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/form.css" />
-    <script src="scripts/dataHandling.js"></script>
+
+    <script type="module" src="scripts/dataHandling.js"></script>
+    <script type="module" src="scripts/create.js"></script>
 
     <script
       src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&libraries=places&callback=initAutocomplete"
@@ -33,15 +35,21 @@
   </head>
   <body>
     <header>
+      <a href="index.html" class="brand-link">
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
       <nav>
         <a href="index.html">Home</a>
         <a href="memories.html">My Memories</a>
-        <a href="#">Create</a>
+        <a href="create.html">Create</a>
       </nav>
-      <our-brand>
-        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-        <h1>MemorySpot</h1>
-      </our-brand>
     </header>
 
     <main>
