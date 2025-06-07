@@ -63,8 +63,6 @@ function displayAllMemories(db) {
           card.setAttribute("card_id", post.post_id);
           card.setAttribute("img", post.image);
           card.setAttribute("img_alt", post.description || "memory image");
-          // const temp=post.dateCreated.getFullYear();
-          // card.setAttribute("date", temp);
           card.setAttribute("date", post.dateCreated);
           card.setAttribute("mood", post.mood);
           card.setAttribute("title", post.title);
@@ -98,10 +96,10 @@ function displayAllMemories(db) {
  * @param {*} db Database instance
  */
 function deleteListener(cardElement, id, db) {
-  const deleteBtn = cardElement.shadowRoot.querySelector(".delete-btn");
-  // console.log("deleteBtn", deleteBtn);
+  const deleteBtn = cardElement.shadowRoot.querySelector("#delete-btn");
+  console.log("deleteBtn", deleteBtn);
   if (deleteBtn) {
-    // console.log("Inside Here");
+    console.log("Inside Here");
     deleteBtn.addEventListener("click", () => {
       const confirmed = window.confirm("Are you sure you want to delete this memory?");
       if (confirmed) {

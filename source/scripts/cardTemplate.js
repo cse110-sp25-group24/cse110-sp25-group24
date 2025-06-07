@@ -1,4 +1,5 @@
 export function cardTemplate(data) {
+    console.log("cardTemplate data", data);
 	return `
     <memory-card cardid="${data.post_id}">
       <memory-photo>
@@ -18,7 +19,7 @@ export function cardTemplate(data) {
           >
             ${data.mood.length > 0 ? data.mood[0] : "none"}
           </card-mood>
-          <card-date id="date">${data.dateCreated}</card-date>
+          <card-date id="date">${data.formatted_date}</card-date>
           <card-actions>
             <button onclick="// edit in backend" id="edit-btn">✏️</button>
             <button onclick="// delete in backend" id="delete-btn">🗑️</button>
