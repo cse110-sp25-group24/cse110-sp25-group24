@@ -16,9 +16,7 @@ document.getElementById("imageUpload").addEventListener("change", changeImg)
 async function init() {
   db = await initDB();
 
-  const form = document.getElementById("memory-form");
-
-  postId = await fillForm(db, form);
+  postId = await fillForm(db);
 
   console.log("Curr lat", lat);
   console.log("Curr lat", long);
@@ -88,18 +86,19 @@ async function submitForm(event){
     console.table(post); // for debugging, post data is displayed in
     event.target.reset();
     
-    // remember to set postId = none once you leave submit the form
-
     window.location.href = "index.html";
 }
 
 
-async function fillForm(db, form) {
+async function fillForm(db) {
   postId = localStorage.getItem("postId");
   if (postId != null) {
+      const form = document.getElementById("memory-form");
+      
       postId = parseInt(postId);
       console.log("Post Id:", postId);
       localStorage.removeItem("postId");
+      
       let memory  = await retrieveMemory(postId, db);
       console.log(memory);
       form.elements["location"].value = memory.location;
@@ -110,6 +109,7 @@ async function fillForm(db, form) {
 
       lat = memory.latitude;
       long = memory.longitude;
+
       return postId;
   } 
   else {

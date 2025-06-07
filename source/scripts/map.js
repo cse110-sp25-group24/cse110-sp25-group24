@@ -6,9 +6,6 @@ import { getAllLocations } from "/source/scripts/dataHandlingFunctions.js";
 let map = null;
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-let autocomplete;
-let place;
-
 /*---------General Google Maps API functions---------*/
 
 export function loadGoogleMaps(apiKey, lib = "", removeInput = true) {
@@ -144,63 +141,9 @@ function addMarker(map, lat, lng, title = "") {
 
   // placing marker
 
+  // to-do: add marker interactivity if possible
   const marker = new google.maps.marker.AdvancedMarkerElement({
     map: map,
     position: { lat, lng },
   });
-
-  // try to implement advanced advanced marker element by tn
-  // let marker =  google.maps.marker.AdvancedMarkerElement({ // legacy code
-  //   position: new google.maps.LatLng(lat, lng),
-  //   map: map,
-  //   title: title,
-  // });
-}
-
-/*---------------Auto-Complete functions---------------*/
-
-export function initCreate() {
-  const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-
-  if (savedApiKey) {
-    console.log(savedApiKey);
-    loadGoogleMaps(savedApiKey, "places").then(() => {
-      initAutocomplete();
-    });
-  }
-}
-
-/**
- * Initializes the Google Places Autocomplete widget on the input element with id "location".
- * Configures autocomplete to restrict results to US geocoded addresses and limits the
- * fields returned to optimize performance.
- */
-function initAutocomplete() {
-  const input = document.getElementById("location");
-  autocomplete = new google.maps.places.Autocomplete(input, {
-    types: ["geocode"], // or use ['establishment'] or ['(regions)'] for different types of places
-    componentRestrictions: { country: "us" }, // Restrict to US, remove if you want worldwide
-    fields: ["address_components", "geometry", "formatted_address"], // Limit returned data for efficiency
-  });
-
-  autocomplete.addListener("place_changed", onPlaceChanged);
-}
-
-/**
- * Callback fired when the user selects a place from the autocomplete suggestions.
- * It retrieves place details and logs relevant information, or warns if no geometry is available.
- */
-function onPlaceChanged() {
-  place = autocomplete.getPlace();
-
-  if (!place.geometry) {
-    // User entered something that was not suggested
-    console.log("No details available for input: '" + place.name + "'");
-    return;
-  }
-
-  console.log(place.formatted_address);
-  console.log(place.geometry.location.lat());
-  console.log(place.geometry.location.lng());
-  console.log(typeof place);
 }
