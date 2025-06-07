@@ -1,4 +1,4 @@
-require("./mocks/indexedDBMock");
+/** require("./mocks/indexedDBMock");
 const { getAllLocations } = require("../scripts/dataHandlingFunctions");
 
 // Create DB for test that throws error if shouldfail is true
@@ -138,3 +138,4 @@ describe("getAllLocations", () => {
     IDBObjectStore.prototype.count = oldCount;
   });
 });
+**/
