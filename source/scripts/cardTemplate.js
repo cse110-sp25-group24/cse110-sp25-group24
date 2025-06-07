@@ -23,8 +23,8 @@ export function createMemoryPhoto(data) {
 /**
  * Generates the HTML for the metadata section of a card.
  * @param {Object} data - The data for the memory card.
- * @param {string[]} data.mood - The mood categories for the memory.
- * @param {string} data.dateCreated - The creation date of the memory.
+ * @param {string} data.mood - The mood categories for the memory.
+ * @param {string} data.formatted_date - The creation date of the memory.
  * @returns {string} The HTML string for the metadata section.
  */
 export function createCardMeta(data) {
@@ -32,11 +32,11 @@ export function createCardMeta(data) {
     <card-meta>
       <card-mood
         id="mood"
-        moodcategory="${data.mood.length > 0 ? data.mood[0] : "none"}"
+        moodcategory="${data.mood ? data.mood : "none"}"
       >
-        ${data.mood.length > 0 ? data.mood[0] : "none"}
+        ${data.mood ? data.mood : "none"}
       </card-mood>
-      <card-date id="date">${data.dateCreated}</card-date>
+      <card-date id="date">${data.formatted_date}</card-date>
       <card-actions>
         <button onclick="// edit in backend" id="edit-btn">✏️</button>
         <button onclick="// delete in backend" id="delete-btn">🗑️</button>
@@ -58,9 +58,7 @@ export function createCardContent(data) {
 	return `
     <card-content>
       ${createCardMeta(data)}
-      <a href="${data.link}" target="_blank">
-        <h2 id="title">${data.title}</h2>
-      </a>
+      <h2 id="title">${data.title}</h2>
       <p id="description">
         ${data.description.length > 0 ? data.description : "No description provided."}
       </p>
@@ -78,7 +76,7 @@ export function createCardContent(data) {
  */
 export function cardTemplate(data) {
 	return `
-    <memory-card cardid="${data.post_id}">
+    <memory-card postid="${data.post_id}">
       ${createMemoryPhoto(data)}
       ${createCardContent(data)}
     </memory-card>
