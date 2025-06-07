@@ -28,7 +28,7 @@ global.FileReader = class {
 };
 
 // Import AFTER defining the mock
-import { fileToDataUrl } from "../scripts/dataHandlingFunctions.js";
+const { fileToDataUrl } = require("../scripts/dataHandlingFunctions.js");
 
 describe("fileToDataUrl", () => {
   it("should convert a file to a data URL", async () => {

@@ -1,5 +1,5 @@
-import "./mocks/indexedDBMock";
-import { fileToDataUrl } from "../scripts/dataHandlingFunctions";
+const { FileReader } = require("./mocks/indexedDBMock.js");
+const { fileToDataUrl } = require("../scripts/dataHandlingFunctions.js");
 
 //Test 1 - This test checks if the function correctly turns a text file into a base64 string
 describe("fileToDataUrl", () => {

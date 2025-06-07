@@ -1,5 +1,5 @@
-import "./mocks/indexedDBMock";
-import { deleteMemory } from "../scripts/dataHandlingFunctions";
+const { IDBObjectStore } = require("./mocks/indexedDBMock.js");
+const { deleteMemory } = require("../scripts/dataHandlingFunctions.js");
 
 // Create DB for test that throws error if shouldfail is true
 const createTestDB = (shouldFailTrans = false) => ({

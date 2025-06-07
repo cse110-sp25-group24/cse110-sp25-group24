@@ -1,5 +1,9 @@
-import "./mocks/indexedDBMock";
-import { addMemory } from "../scripts/dataHandlingFunctions";
+const {
+  IDBDatabase,
+  IDBObjectStore,
+  IDBRequest,
+} = require("./mocks/indexedDBMock.js");
+const { addMemory } = require("../scripts/dataHandlingFunctions.js");
 
 describe("addMemory", () => {
   // Test 1 - Valid post adds and returns new ID
@@ -12,16 +16,16 @@ describe("addMemory", () => {
       location: "La Jolla",
     };
 
-    const mockDB = new global.IDBDatabase();
+    const mockDB = new IDBDatabase();
     const result = await addMemory(mockPost, mockDB);
     expect(result).toBe(1);
   });
 
   // Test 2 - Reject if adding the post fails
   it("should reject if adding fails", async () => {
-    const failingStore = new global.IDBObjectStore();
+    const failingStore = new IDBObjectStore();
     failingStore.add = function () {
-      const request = new global.IDBRequest();
+      const request = new IDBRequest();
       request.simulateFailure(); // triggers error
       return request;
     };
@@ -39,7 +43,7 @@ describe("addMemory", () => {
 
   // Test 3 - Multiple post
   it("should add multiple post and return incrementing Id number", async () => {
-    const memory = new global.IDBObjectStore();
+    const memory = new IDBObjectStore();
     const db = {
       transaction: () => ({
         objectStore: () => memory,
@@ -59,7 +63,7 @@ describe("addMemory", () => {
       dateCreated: new Date(),
     };
 
-    const mockDB = new global.IDBDatabase();
+    const mockDB = new IDBDatabase();
     const result = await addMemory(mockPost, mockDB);
     expect(result).toBe(1);
   });
