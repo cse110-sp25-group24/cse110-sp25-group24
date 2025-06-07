@@ -1,4 +1,8 @@
-const { IDBDatabase, IDBObjectStore, IDBRequest } = require("./mocks/indexedDBMock.js");
+const {
+  IDBDatabase,
+  IDBObjectStore,
+  IDBRequest,
+} = require("./mocks/indexedDBMock.js");
 const { addMemory } = require("../scripts/dataHandlingFunctions.js");
 
 describe("addMemory", () => {

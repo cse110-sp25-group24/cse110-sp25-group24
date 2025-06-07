@@ -220,4 +220,12 @@ function getAllLocations(db) {
   });
 }
 
-module.exports = { isEmptyDB, addMemory, deleteAllMemories, fileToDataUrl, retrieveMemory, deleteMemory, getAllLocations };
+module.exports = {
+  isEmptyDB,
+  addMemory,
+  deleteAllMemories,
+  fileToDataUrl,
+  retrieveMemory,
+  deleteMemory,
+  getAllLocations,
+};
