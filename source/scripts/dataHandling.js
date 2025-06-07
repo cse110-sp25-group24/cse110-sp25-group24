@@ -80,6 +80,8 @@ window.addEventListener("DOMContentLoaded", () => {
     console.table(post); // for debugging, post data is displayed in
     event.target.reset();
     // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
+    window.location.href = "index.html";
+
   });
 
   const imageInput = document.getElementById("imageUpload");
