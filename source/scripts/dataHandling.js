@@ -54,11 +54,23 @@ async function submitForm(event){
     const data = new FormData(form);
     const title = data.get("title");
     const description = data.get("description");
-    const image = data.get("image");
-    const imageURL = await dhf.fileToDataUrl(image);
+
     const date = new Date();
     const locationTag = data.get("location");
     const moodTags = data.get("mood-text");
+
+    const image = data.get("image");
+    let imageURL;
+
+    console.log("Img", image)
+
+    if (image != null) {
+      // New image file selected -> convert to dataURL
+      imageURL = await dhf.fileToDataUrl(image);
+    } else {
+      // No new image selected -> keep existing image from preview
+      imageURL = document.getElementById("imagePreview").src;
+    }
 
     let place = getPlace();
 
@@ -67,8 +79,8 @@ async function submitForm(event){
 
     // if you changed the place
     if (place != null) {
-      lat = place.geometry.location.lat() + Math.random() * 0.0003;
-      long = place.geometry.location.lng() + Math.random() * 0.0003;
+      lat = place.geometry.location.lat() + (Math.random() * 0.0003);
+      long = place.geometry.location.lng() + (Math.random() * 0.0003);
     }
 
     const post = {
@@ -86,7 +98,7 @@ async function submitForm(event){
     console.table(post); // for debugging, post data is displayed in
     event.target.reset();
     
-    window.location.href = "index.html";
+    // window.location.href = "index.html";
 }
 
 
