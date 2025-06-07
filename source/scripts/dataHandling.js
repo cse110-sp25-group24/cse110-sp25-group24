@@ -59,17 +59,18 @@ async function submitForm(event){
     const locationTag = data.get("location");
     const moodTags = data.get("mood-text");
 
-    const image = data.get("image");
+    const imageInput = document.getElementById("imageUpload");
+    const imagePreview = document.getElementById("imagePreview");
     let imageURL;
 
-    console.log("Img", image)
-
-    if (image != null) {
-      // New image file selected -> convert to dataURL
-      imageURL = await dhf.fileToDataUrl(image);
+    console.log("Img", imageInput)
+    //If the user picked a new image, convert and save it 
+    if (imageInput.files && imageInput.files.length > 0) {
+      
+      imageURL = await dhf.fileToDataUrl(imageInput.files[0]);
     } else {
-      // No new image selected -> keep existing image from preview
-      imageURL = document.getElementById("imagePreview").src;
+    //if not just use the original image we backed up 
+      imageURL = imagePreview.dataset.original || imagePreview.src;    
     }
 
     let place = getPlace();
@@ -117,7 +118,10 @@ async function fillForm(db) {
       form.elements["title"].value = memory.title;
       form.elements["description"].value = memory.description;
       form.elements["mood-text"].value = memory.mood;
+      //show the saved image in the preview 
       document.getElementById("imagePreview").src = memory.image;
+      //also keep a backup of that image in the case the user doesn't upload a new one
+      document.getElementById("imagePreview").dataset.original = memory.image;
 
       lat = memory.latitude;
       long = memory.longitude;
