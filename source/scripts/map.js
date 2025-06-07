@@ -31,6 +31,8 @@ export function loadGoogleMaps(apiKey, lib ='', removeInput=true) {
       document.getElementById("apiKeyInput").remove();
       document.getElementById("apiKeyPrompt").remove();
       document.getElementById("loadMapBtn").remove();
+      document.getElementById("api-key-box").remove();
+      // document.getElementByClassName("api-key-box").remove()
     }
 
   });
