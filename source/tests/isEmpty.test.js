@@ -1,4 +1,5 @@
-const { isEmptyDB } = require("../scripts/dataHandlingFunctions");
+import "./mocks/indexedDBMock";
+import { isEmptyDB } from "../scripts/dataHandlingFunctions";
 
 describe("isEmptyDB", () => {
   // Test 1 - checks if it returns true when there are no posts in the DB

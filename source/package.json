@@ -10,6 +10,7 @@
     "jsdoc": "^4.0.4",
     "prettier": "^3.5.3"
   },
+  "type": "module",
   "scripts": {
     "test": "jest",
     "docs": "jsdoc -r scripts -d docs"
