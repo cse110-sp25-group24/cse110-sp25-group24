@@ -45,7 +45,7 @@ export function insertAPIKey() {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  loadGoogleMaps(apiKey).then(() => {
+  loadGoogleMaps(apiKey, 'marker').then(() => {
     initMap();
     populateMap(map, db);
   });
@@ -81,7 +81,7 @@ export async function initMapDisplay(){
       db = event.target.result;
       console.log("db is up, displaying all the memories on the map");
       if (savedApiKey) {
-        loadGoogleMaps(savedApiKey).then(() => {
+        loadGoogleMaps(savedApiKey, "marker").then(() => {
           initMap();
           populateMap(map, db);
         });
@@ -108,6 +108,7 @@ function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
+    mapId: 'f47c32b1338834821e79fe83',
   });
 }
 
@@ -133,11 +134,18 @@ function populateMap(map, db) {
 function addMarker(map, lat, lng, title = "") {
   console.log("Attempting to add marker", lat, lng, title);
 
-  let marker = new google.maps.Marker({
-    // legacy code
-    position: new google.maps.LatLng(lat, lng),
+  // let marker = new google.maps.Marker({
+  //   // legacy code
+  //   position: new google.maps.LatLng(lat, lng),
+  //   map: map,
+  //   title: title,
+  // });
+
+  // placing marker
+
+  const marker = new google.maps.marker.AdvancedMarkerElement({
     map: map,
-    title: title,
+    position: { lat, lng },
   });
 
   // try to implement advanced advanced marker element by tn
