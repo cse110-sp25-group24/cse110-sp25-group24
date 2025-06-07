@@ -45,6 +45,7 @@ export function addMemory(post, db) {
     const tx = db.transaction("memories", "readwrite");
     const store = tx.objectStore("memories");
     const request = store.add(post);
+
     request.onsuccess = () => {
       const id = request.result;
       console.log(`saved post ${id}`);
@@ -52,7 +53,7 @@ export function addMemory(post, db) {
     };
 
     request.onerror = () => {
-      console.log("error adding post");
+      console.error("error adding post");
       reject(request.error);
     };
   });
@@ -130,7 +131,7 @@ export function retrieveMemory(post_id, db) {
       const memory = request.result;
       if (memory === undefined) {
         // no memory
-        console.log("could not find the memory!");
+        console.error("could not find the memory!");
         reject(null);
       } else {
         console.log(`retrieved post #${post_id}`);
@@ -170,9 +171,49 @@ export function deleteMemory(post_id, db) {
       resolve(true);
     };
     request.onerror = () => {
-      console.log("error deleting post");
+      console.error("error deleting post");
       reject(request.error);
     };
+  });
+}
+/**
+ * This function loads the form with PostId
+ *
+ * @param {int} post_id
+ * @param {IDBDatabase} db Database instance
+ * @returns {Promise} Resolves into true/false for loading
+ */
+export function loadForm(post_id, db) {
+  // adding a memory to the database
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction("memories", "readwrite");
+    const store = tx.objectStore("memories");
+    // to be implemented
+    
+  });
+}
+
+
+
+/**
+ * This function edits a specific memory that was stored
+ *
+ * @param {int} post_id
+ * @param {IDBDatabase} db Database instance
+ * @returns {Promise} Resolves into true/false for successful edit
+ */
+export function editMemory(post_id, db) {
+  return new Promise((resolve, reject) => {
+    // opening a read-write transaction
+    let tx;
+    let store;
+    try {
+      tx = db.transaction("memories", "readwrite");
+      store = tx.objectStore("memories");
+    } catch (err) {
+      reject(err);
+    }
+    // to be implemented
   });
 }
 

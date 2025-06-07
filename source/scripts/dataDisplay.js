@@ -76,6 +76,7 @@ function displayAllMemories(db) {
           display.appendChild(card);
           setTimeout(() => {
             deleteListener(card, post.post_id, db);
+            editListener(card, post.post_id, db);
           }, 0);
           cursor.continue();
         }
@@ -109,6 +110,28 @@ function deleteListener(cardElement, id, db) {
         cardElement.remove(); // Remove from DOM
         console.log(`Deleted memory with id: ${id}`);
       }
+    });
+  }
+}
+
+/**
+ * This function adds an edit listener on the card element.
+ *
+ * @param {*} cardElement to edit from DOM
+ * @param {*} id to edit from IndexedDB
+ * @param {*} db Database instance
+ */
+function editListener(cardElement, id, db) {
+  const editBtn = cardElement.shadowRoot.querySelector("#edit-btn");
+  console.log("editBtn", editBtn);
+  if (editBtn) {
+    console.log("Inside Here");
+    editBtn.addEventListener("click", () => {
+      // store post id into local storage
+      localStorage.setItem("postId", id);
+      window.location.href = "create.html";
+      //editMemory(id, db);
+      console.log(`Edited memory with id: ${id}`);
     });
   }
 }
