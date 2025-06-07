@@ -1,6 +1,6 @@
 //mock implementation of the FileReader class for testing
 //creating a fake FileReader
-global.FileReader = class {
+export class FileReader {
   constructor() {
     this.onload = null;
     this.onerror = null;
@@ -28,7 +28,7 @@ global.FileReader = class {
 };
 
 // Import AFTER defining the mock
-const { fileToDataUrl } = require("../scripts/dataHandlingFunctions.js");
+import{ fileToDataUrl } from "../scripts/dataHandlingFunctions.js"
 
 describe("fileToDataUrl", () => {
   it("should convert a file to a data URL", async () => {

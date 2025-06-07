@@ -4,7 +4,7 @@
  * @param {IDBDatabase} db
  * @returns {boolean} Returns `true` if db is empty, `false` if db is not empty.
  */
-function isEmptyDB(db) {
+export function isEmptyDB(db) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readonly");
     const store = tx.objectStore("memories");
@@ -39,7 +39,7 @@ function isEmptyDB(db) {
  * @param {IDBDatabase} db
  * @returns {Promise} Promise that resolves into a post being added.
  */
-function addMemory(post, db) {
+export function addMemory(post, db) {
   // adding a memory to the database
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readwrite");
@@ -63,7 +63,7 @@ function addMemory(post, db) {
  *
  * @param {IDBDatabase} db The database being deleted.
  */
-function deleteAllMemories(db) {
+export function deleteAllMemories(db) {
   if (db) {
     db.close();
   }
@@ -90,7 +90,7 @@ function deleteAllMemories(db) {
  * @param {Blob} file
  * @returns {Promise} Promise that resolves into the image data URL
  */
-function fileToDataUrl(file) {
+export function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     if (!(file instanceof Blob)) {
       reject(new Error("Input must be a Blob or File"));
@@ -115,7 +115,7 @@ function fileToDataUrl(file) {
  * @param {IDBDatabase} db Database instance
  * @returns {Promise} Resolves into the memory or failure message
  */
-function retrieveMemory(post_id, db) {
+export function retrieveMemory(post_id, db) {
   return new Promise((resolve, reject) => {
     // opening a read-only transaction
     let tx;
@@ -156,7 +156,7 @@ function retrieveMemory(post_id, db) {
  * @param {IDBDatabase} db Database instance
  * @returns {Promise} Resolves into true/false for successful deletion
  */
-function deleteMemory(post_id, db) {
+export function deleteMemory(post_id, db) {
   return new Promise((resolve, reject) => {
     // opening a read-write transaction
     let tx;
@@ -186,7 +186,7 @@ function deleteMemory(post_id, db) {
  * @param {IDBDatabase} db MemoryDB
  * @returns {Promise} resolves into the list of the following: latitude, longitude, and title [(lat, long, title), ...]
  */
-function getAllLocations(db) {
+export function getAllLocations(db) {
   let coords = [];
   return new Promise((resolve, reject) => {
     try {
@@ -219,13 +219,3 @@ function getAllLocations(db) {
     }
   });
 }
-
-module.exports = {
-  isEmptyDB,
-  addMemory,
-  deleteAllMemories,
-  fileToDataUrl,
-  retrieveMemory,
-  deleteMemory,
-  getAllLocations,
-};
