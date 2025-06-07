@@ -17,9 +17,9 @@ const createTestDBWithData = (mockData = {}) => {
 };
 
 describe("getAllLocations", () => {
-    let consoleSpy;
+  let consoleSpy;
 
-     beforeEach(() => {
+  beforeEach(() => {
     consoleSpy = jest.spyOn(console, "error").mockImplementation();
   });
 
@@ -30,25 +30,25 @@ describe("getAllLocations", () => {
 
   it("should return coordinates from memories", async () => {
     const mockData = {
-        1: { latitude: 32.7157, longitude: -117.1611, title: "Balboa Park" },
-      2: { latitude: 32.6401, longitude: -117.0844, title: "Coronado Beach" }
+      1: { latitude: 32.7157, longitude: -117.1611, title: "Balboa Park" },
+      2: { latitude: 32.6401, longitude: -117.0844, title: "Coronado Beach" },
     };
     const testDB = createTestDBWithData(mockData);
 
     const oldCount = IDBObjectStore.prototype.count;
-    IDBObjectStore.prototype.count = function() {
+    IDBObjectStore.prototype.count = function () {
       const request = new IDBRequest(Object.keys(this.data).length);
       return request;
     };
 
     // Override openCursor to iterate through our mock data
     const oldOpenCursor = IDBObjectStore.prototype.openCursor;
-    IDBObjectStore.prototype.openCursor = function() {
+    IDBObjectStore.prototype.openCursor = function () {
       const dataValues = Object.values(this.data);
       let index = 0;
-      
+
       const request = new IDBRequest();
-      
+
       const processNext = () => {
         if (index < dataValues.length) {
           const mockCursor = {
@@ -56,7 +56,7 @@ describe("getAllLocations", () => {
             continue: () => {
               index++;
               setTimeout(processNext, 0);
-            }
+            },
           };
           request.result = mockCursor;
           request.onsuccess?.({ target: request });
@@ -65,18 +65,18 @@ describe("getAllLocations", () => {
           request.onsuccess?.({ target: request });
         }
       };
-      
+
       setTimeout(processNext, 0);
       return request;
     };
 
     const result = await getAllLocations(testDB);
-    
+
     expect(result).toEqual([
       [32.7157, -117.1611, "Balboa Park"],
-      [32.6401, -117.0844, "Coronado Beach"]
+      [32.6401, -117.0844, "Coronado Beach"],
     ]);
-    
+
     IDBObjectStore.prototype.openCursor = oldOpenCursor;
     IDBObjectStore.prototype.count = oldCount;
   });
@@ -90,9 +90,9 @@ describe("getAllLocations", () => {
     IDBObjectStore.prototype.count = () => new IDBRequest(0);
 
     const result = await getAllLocations(testDB);
-    
+
     expect(result).toEqual([]);
-    
+
     IDBObjectStore.prototype.count = oldCount;
   });
 
@@ -101,13 +101,15 @@ describe("getAllLocations", () => {
     const testDB = createTestDB(true);
 
     await expect(getAllLocations(testDB)).rejects.toEqual(
-      new Error("Transaction failed")
+      new Error("Transaction failed"),
     );
   });
 
   // Test 4 - cursor request fails
   it("should log error when cursor request fails", async () => {
-    const testDB = createTestDBWithData({ 1: { latitude: 32.7767, longitude: -117.0736, title: "Gaslamp Quarter" } });
+    const testDB = createTestDBWithData({
+      1: { latitude: 32.7767, longitude: -117.0736, title: "Gaslamp Quarter" },
+    });
 
     // Mock count method for isEmptyDB to return non-zero
     const oldCount = IDBObjectStore.prototype.count;
@@ -126,17 +128,13 @@ describe("getAllLocations", () => {
     };
 
     await getAllLocations(testDB);
-    
-    expect(consoleSpy).toHaveBeenCalledWith("MemoryDB cursor failed:", expect.any(Error));
-    
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "MemoryDB cursor failed:",
+      expect.any(Error),
+    );
+
     IDBObjectStore.prototype.openCursor = oldOpenCursor;
     IDBObjectStore.prototype.count = oldCount;
   });
 });
-
-    
-  
-
-
-
-
