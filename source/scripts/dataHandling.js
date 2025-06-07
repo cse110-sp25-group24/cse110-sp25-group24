@@ -3,35 +3,56 @@ import { getPlace, initCreate } from "./create.js";
 import { retrieveMemory } from "./dataHandlingFunctions.js";
 
 let postId;
-
 let lat = null;
 let long = null;
+let db = null;
 
 // import { getPlace, initCreate } from "./map.js"
 // making sure all the content is loaded before handling the DB
-window.addEventListener("DOMContentLoaded", async () => {
-  let db = await initDB();
+window.addEventListener("DOMContentLoaded", init);
+document.getElementById("memory-form").addEventListener("submit", submitForm)
+document.getElementById("imageUpload").addEventListener("change", changeImg)
 
-  // functions to hook up to the form for testing db functions
-  /**
-    Desired Content:
-    - display the most recent memory, placeholder if nothing submitted
-  */
+async function init() {
+  db = await initDB();
 
   const form = document.getElementById("memory-form");
 
   postId = await fillForm(db, form);
 
-  console.log(lat);
-  console.log(long);
-
+  console.log("Curr lat", lat);
+  console.log("Curr lat", long);
   console.log("PostID:", postId);
 
-  /**
-   * Memory submission creation logic.
-   */
-  form.addEventListener("submit", async (event) => {
+  initCreate();
+}
+
+function changeImg(){
+  const imageInput = document.getElementById("imageUpload");
+  const imagePreview = document.getElementById("imagePreview");
+  const files = imageInput.files;
+
+  if (files.length > 1) {
+    alert("Please select only one image file.");
+    imageInput.value = "";
+    imagePreview.src = "";
+    return;
+  }
+
+  const file = files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    imagePreview.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+
+}
+
+async function submitForm(event){
     event.preventDefault();
+    let form = document.getElementById("memory-form");
     const data = new FormData(form);
     const title = data.get("title");
     const description = data.get("description");
@@ -52,7 +73,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       long = place.geometry.location.lng() + Math.random() * 0.0003;
     }
 
-
     const post = {
       title: title,
       description: description,
@@ -67,39 +87,11 @@ window.addEventListener("DOMContentLoaded", async () => {
     dhf.addMemory(post, db, postId); //.then(() => displayLatestMemory(db));
     console.table(post); // for debugging, post data is displayed in
     event.target.reset();
-    // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
     
     // remember to set postId = none once you leave submit the form
 
-    // window.location.href = "index.html";
-
-  });
-
-  const imageInput = document.getElementById("imageUpload");
-  const imagePreview = document.getElementById("imagePreview");
-
-  imageInput.addEventListener("change", () => {
-    const files = imageInput.files;
-
-    if (files.length > 1) {
-      alert("Please select only one image file.");
-      imageInput.value = "";
-      imagePreview.src = "";
-      return;
-    }
-
-    const file = files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      imagePreview.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  initCreate();
-});
+    window.location.href = "index.html";
+}
 
 
 async function fillForm(db, form) {
@@ -118,8 +110,9 @@ async function fillForm(db, form) {
 
       lat = memory.latitude;
       long = memory.longitude;
-    return postId;
-  } else {
+      return postId;
+  } 
+  else {
     lat = null;
     long = null;
     return null;
@@ -148,8 +141,8 @@ async function initDB() {
     };
 
     let db;
+    
     // sanity checks for making sure the database is up
-
     request.onsuccess = (event) => {
       db = event.target.result;
       console.log("db is up");
