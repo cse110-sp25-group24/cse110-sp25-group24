@@ -126,7 +126,6 @@ function editListener(cardElement, id, db) {
       // store post id into local storage
       localStorage.setItem("postId", id);
       window.location.href = "create.html";
-      //editMemory(id, db);
       console.log(`Edited memory with id: ${id}`);
     });
   }

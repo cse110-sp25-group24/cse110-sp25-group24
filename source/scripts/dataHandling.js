@@ -111,7 +111,6 @@ async function submitForm(event) {
  * @param {IDBDatabase} db The database to retrieve the memory from.
  * @returns {number|null} The postId if editing, or null if creating a new memory.
  */
-
 async function fillForm(db) {
   postId = localStorage.getItem("postId");
   if (postId != null) {
