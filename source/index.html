@@ -27,48 +27,227 @@
   </head>
   <body>
     <header>
+      <a href="index.html" class="brand-link">
+        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
+        <h1>MemorySpot</h1>
+      </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="hamburger-menu">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
       <nav>
-        <a href="#">Home</a>
+        <a href="index.html">Home</a>
         <a href="memories.html">My Memories</a>
         <a href="create.html">Create</a>
       </nav>
-      <our-brand>
-        <img src="assets/favicon-96x96.png" alt="MemorySpot Logo" />
-        <h1>MemorySpot</h1>
-      </our-brand>
     </header>
 
-    <main style="flex: 1; width: 100vw; height: auto">
+    <main>
       <map-buttons>
         <button id="memoryButton" onclick="location.href='create.html'">
-          Create a New Memory
+          + Create a New Memory
         </button>
-        <button id="openModalBtn" onclick="">📋 Open Memory List</button>
+        <button id="openModalBtn" onclick="">Open Memory List</button>
       </map-buttons>
 
-      <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
-      <input
-        id="apiKeyInput"
-        type="text"
-        placeholder="Enter API key here"
-        size="50"
-        style="position: relative; top: 100px; z-index: 1000"
-      />
-      <button id="loadMapBtn">Load Map</button>
+      <section class="api-key-box">
+        <h2 id="apiKeyPrompt">Enter Your Google Maps API Key</h2>
+        <div class="api-key-content">
+          <input
+            id="apiKeyInput"
+            type="text"
+            placeholder="Enter API key here"
+          />
+          <button id="loadMapBtn">Load Map</button>
+        </div>
+      </section>
 
       <div id="map" style="flex: 1; position: relative; height: 100%"></div>
       <script type="module" src="scripts/map.js"></script>
       <script type="module" src="scripts/index.js"></script>
 
-      <memory-sidebar id="memoryModal" class="hidden">
+      <aside id="memoryModal" class="hidden">
         <sidebar-header>
-          <button id="closeModalBtn">X</button>
+          <p class="list-title">Recent Memories</p>
+          <button id="closeModalBtn"><img src="./assets/exit.svg " /></button>
         </sidebar-header>
         <memories-grid-container>
-          <memories-grid> </memories-grid>
+          <memories-grid>
+            <memory-card cardid="${data.post_id}">
+              <memory-photo>
+                <button
+                  onclick="// showMemoryDetails(${data.post_id})"
+                  class="memory-photo"
+                >
+                  <img
+                    id=""
+                    src="./assets/placeholder.jpg"
+                    alt="Image Not Found"
+                  />
+                </button>
+              </memory-photo>
+              <card-content>
+                <card-meta>
+                  <!-- this should dynamically change colors -->
+                  <card-mood
+                    id="mood"
+                    moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                    ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                    Mood</card-mood
+                  >
+                  <time id="date">${data.dateCreated}</time>
+                  <card-actions>
+                    <button onclick="// edit in backend" id="edit-btn">
+                      ✏️
+                    </button>
+                    <button onclick="// delete in backend" id="delete-btn">
+                      🗑️
+                    </button>
+                  </card-actions>
+                </card-meta>
+                <!-- Where would this lead? -->
+                <a href="${data.link}" target="_blank">
+                  <h2 id="title">${data.title}</h2>
+                </a>
+                <p id="description">
+                  ${data.description.length > 0 ? data.description : "No
+                  description provided."}
+                </p>
+                <card-footer>
+                  <span id="location">📍 ${data.location}</span>
+                </card-footer>
+              </card-content>
+            </memory-card>
+            <memory-card cardid="${data.post_id}">
+              <memory-photo>
+                <button
+                  onclick="// showMemoryDetails(${data.post_id})"
+                  class="memory-photo"
+                >
+                  <img id="" src="" alt="Image Not Found" />
+                </button>
+              </memory-photo>
+              <card-content>
+                <card-meta>
+                  <!-- this should dynamically change colors -->
+                  <card-mood
+                    id="mood"
+                    moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                    ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                    Mood</card-mood
+                  >
+                  <time id="date">${data.dateCreated}</time>
+                  <card-actions>
+                    <button onclick="// edit in backend" id="edit-btn">
+                      ✏️
+                    </button>
+                    <button onclick="// delete in backend" id="delete-btn">
+                      🗑️
+                    </button>
+                  </card-actions>
+                </card-meta>
+                <!-- Where would this lead? -->
+                <a href="${data.link}" target="_blank">
+                  <h2 id="title">${data.title}</h2>
+                </a>
+                <p id="description">
+                  ${data.description.length > 0 ? data.description : "No
+                  description provided."}
+                </p>
+                <card-footer>
+                  <span id="location">📍 ${data.location}</span>
+                </card-footer>
+              </card-content>
+            </memory-card>
+            <memory-card cardid="${data.post_id}">
+              <memory-photo>
+                <button
+                  onclick="// showMemoryDetails(${data.post_id})"
+                  class="memory-photo"
+                >
+                  <img id="" src="" alt="Image Not Found" />
+                </button>
+              </memory-photo>
+              <card-content>
+                <card-meta>
+                  <!-- this should dynamically change colors -->
+                  <card-mood
+                    id="mood"
+                    moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                    ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                    Mood</card-mood
+                  >
+                  <time id="date">${data.dateCreated}</time>
+                  <card-actions>
+                    <button onclick="// edit in backend" id="edit-btn">
+                      ✏️
+                    </button>
+                    <button onclick="// delete in backend" id="delete-btn">
+                      🗑️
+                    </button>
+                  </card-actions>
+                </card-meta>
+                <!-- Where would this lead? -->
+                <a href="${data.link}" target="_blank">
+                  <h2 id="title">${data.title}</h2>
+                </a>
+                <p id="description">
+                  ${data.description.length > 0 ? data.description : "No
+                  description provided."}
+                </p>
+                <card-footer>
+                  <span id="location">📍 ${data.location}</span>
+                </card-footer>
+              </card-content>
+            </memory-card>
+            <memory-card cardid="${data.post_id}">
+              <memory-photo>
+                <button
+                  onclick="// showMemoryDetails(${data.post_id})"
+                  class="memory-photo"
+                >
+                  <img id="" src="" alt="Image Not Found" />
+                </button>
+              </memory-photo>
+              <card-content>
+                <card-meta>
+                  <!-- this should dynamically change colors -->
+                  <card-mood
+                    id="mood"
+                    moodcategory="${data.mood.length > 0 ? data.mood[0] : 'none'}"
+                    ><!--${data.mood.length > 0 ? data.mood[0] : "none"}-->
+                    Mood</card-mood
+                  >
+                  <time id="date">${data.dateCreated}</time>
+                  <card-actions>
+                    <button onclick="// edit in backend" id="edit-btn">
+                      ✏️
+                    </button>
+                    <button onclick="// delete in backend" id="delete-btn">
+                      🗑️
+                    </button>
+                  </card-actions>
+                </card-meta>
+                <!-- Where would this lead? -->
+                <a href="${data.link}" target="_blank">
+                  <h2 id="title">${data.title}</h2>
+                </a>
+                <p id="description">
+                  ${data.description.length > 0 ? data.description : "No
+                  description provided."}
+                </p>
+                <card-footer>
+                  <span id="location">📍 ${data.location}</span>
+                </card-footer>
+              </card-content>
+            </memory-card>
+          </memories-grid>
         </memories-grid-container>
-      </memory-sidebar>
+      </aside>
     </main>
+
     <script>
       const modal = document.getElementById("memoryModal");
       const openBtn = document.getElementById("openModalBtn");
@@ -114,6 +293,12 @@
           tag.style.backgroundColor = colors[type];
           tag.style.color = "white";
         }
+      });
+      const loadMapBtn = document.getElementById("loadMapBtn");
+      const apiBox = document.querySelector(".api-key-box");
+
+      loadMapBtn.addEventListener("click", () => {
+        apiBox.classList.add("hidden");
       });
     </script>
     <footer>

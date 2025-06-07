@@ -1,12 +1,15 @@
+:root {
+  --font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
 memory-header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-
   padding: 1em 2em;
-
-  border-bottom: 1px solid #ddd;
 }
 
 memory-filters {
@@ -17,18 +20,17 @@ memory-filters {
   flex-wrap: wrap;
 }
 
-search-bar {
+search {
   display: flex;
   align-items: center;
   background-color: #f0f0f0;
-  padding: 0.5em 1em;
-  border-radius: 2em;
+  padding: 0.5em 2.5em;
+  border-radius: 1em;
 }
 
-search-bar input {
+search input {
   padding: 0.25em;
   font-size: 1em;
-
   border: none;
   outline: none;
   background-color: transparent;
@@ -36,9 +38,9 @@ search-bar input {
 
 mood-filter select {
   padding: 0.5em 1em;
-  border-radius: 2em;
-  border: 1px solid #ddd;
-  background-color: #fff;
+  border-radius: 1em;
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
   font-size: 1em;
   cursor: pointer;
 }
@@ -46,7 +48,7 @@ mood-filter select {
 memories-grid-container {
   min-height: 0;
   overflow-y: auto;
-  padding: 1em;
+  padding: 1rem;
 }
 
 memories-grid {
@@ -55,14 +57,21 @@ memories-grid {
   gap: 1.5em;
 }
 
+.list-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333333;
+  font-family: var(--font-family);
+  margin: 0.5em 0em 0em 0em;
+}
+
 memory-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
   border: 1px solid #ddd;
   border-radius: 1em;
-  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.05);
+  box-shadow: 0.25em 0.25em 0.5em #0000000d;
 }
 
 memory-photo {
@@ -71,8 +80,7 @@ memory-photo {
   justify-content: center;
   height: 200px;
   overflow: hidden;
-
-  background-color: #ddd;
+  background-color: #dddddd;
 }
 
 memory-photo button {
@@ -81,13 +89,13 @@ memory-photo button {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 memory-photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-
   text-align: center;
 }
 
@@ -106,15 +114,13 @@ card-meta {
 card-mood {
   margin-right: 0.5em;
   padding: 0.25em 0.5em;
-
   border-radius: 1em;
-  background-color: black;
-
+  background-color: #000000;
   font-weight: bold;
-  color: white;
+  color: #ffffff;
 }
 
-card-date {
+time {
   margin-right: auto;
 }
 
@@ -135,7 +141,7 @@ card-actions button {
 }
 
 card-actions button:hover {
-  background: #ddd;
+  background: #dddddd;
 }
 
 h2 {
@@ -149,7 +155,7 @@ memory-card p {
   padding-bottom: 1em;
 
   font-size: 0.9em;
-  color: #555;
+  color: #555555;
 }
 
 card-footer {
@@ -160,8 +166,8 @@ card-footer {
   padding-top: 1em;
 
   font-size: 0.85em;
-  color: #555;
-  border-top: 1px solid #ddd;
+  color: #555555;
+  border-top: 1px solid #dddddd;
 }
 
 memories-grid-container::-webkit-scrollbar {
@@ -175,10 +181,10 @@ memories-grid-container::-webkit-scrollbar-track {
 }
 
 memories-grid-container::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #cccccc;
   border-radius: 2em;
 }
 
 memories-grid-container::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  background: #aaaaaa;
 }

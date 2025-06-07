@@ -37,6 +37,7 @@ When we click a card in grid view, we want to see a full description, a large pi
 ### Positive
 
 - One HTML for one card
+
   - More intuitive, can customize each card's style.
 
 - Reuse the create card page
