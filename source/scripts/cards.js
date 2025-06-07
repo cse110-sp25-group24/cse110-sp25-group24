@@ -1,5 +1,4 @@
 import { cardTemplate } from "./cardTemplate.js";
-import { colors } from "./cardTemplate.js";
 import { retrieveMemory } from './dataHandlingFunctions.js';
 
 class MemoryData extends HTMLElement {
