@@ -2,7 +2,6 @@ test("true", () => {
   expect(true).toBe(true);
 });
 
-
 /** require("./mocks/indexedDBMock");
 const { getAllLocations } = require("../scripts/dataHandlingFunctions");
 
