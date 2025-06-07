@@ -11,7 +11,7 @@ let place;
 
 /*---------General Google Maps API functions---------*/
 
-export function loadGoogleMaps(apiKey, lib ='', removeInput=true) {
+export function loadGoogleMaps(apiKey, lib = "", removeInput = true) {
   return new Promise((resolve, reject) => {
     let script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${lib}`;
@@ -26,7 +26,7 @@ export function loadGoogleMaps(apiKey, lib ='', removeInput=true) {
       reject(new Error("Failed to load Google Maps API"));
     };
 
-    if (removeInput){
+    if (removeInput) {
       document.head.appendChild(script);
       document.getElementById("apiKeyInput").remove();
       document.getElementById("apiKeyPrompt").remove();
@@ -34,7 +34,6 @@ export function loadGoogleMaps(apiKey, lib ='', removeInput=true) {
       document.getElementById("api-key-box").remove();
       // document.getElementByClassName("api-key-box").remove()
     }
-
   });
 }
 
@@ -47,7 +46,7 @@ export function insertAPIKey() {
 
   localStorage.setItem(API_KEY_STORAGE, apiKey);
 
-  loadGoogleMaps(apiKey, 'marker').then(() => {
+  loadGoogleMaps(apiKey, "marker").then(() => {
     initMap();
     populateMap(map, db);
   });
@@ -55,7 +54,7 @@ export function insertAPIKey() {
 
 /*---------------Map Specific Functions---------------*/
 
-export async function initMapDisplay(){
+export async function initMapDisplay() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
 
@@ -93,7 +92,7 @@ export async function initMapDisplay(){
     request.onerror = (event) => {
       console.log("db err for the map"); // works so far, seen
     };
-  })
+  });
 }
 
 /**
@@ -110,7 +109,7 @@ function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
-    mapId: 'f47c32b1338834821e79fe83',
+    mapId: "f47c32b1338834821e79fe83",
   });
 }
 
@@ -160,12 +159,12 @@ function addMarker(map, lat, lng, title = "") {
 
 /*---------------Auto-Complete functions---------------*/
 
-export function initCreate(){
+export function initCreate() {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
 
   if (savedApiKey) {
     console.log(savedApiKey);
-    loadGoogleMaps(savedApiKey, 'places').then(() => {
+    loadGoogleMaps(savedApiKey, "places").then(() => {
       initAutocomplete();
     });
   }

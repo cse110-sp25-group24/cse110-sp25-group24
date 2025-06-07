@@ -71,7 +71,7 @@ export function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it."
+      "Database deletion blocked: please close all other tabs using it.",
     );
   };
   deleteRequest.onerror = () => {
@@ -122,7 +122,7 @@ export function retrieveMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-    console.log(post_id)
+    console.log(post_id);
     // grabbing the post
     const request = store.get(post_id);
 

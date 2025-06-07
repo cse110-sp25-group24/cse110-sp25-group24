@@ -1,5 +1,5 @@
 import { cardTemplate } from "./cardTemplate.js";
-import { retrieveMemory } from './dataHandlingFunctions.js';
+import { retrieveMemory } from "./dataHandlingFunctions.js";
 
 class MemoryData extends HTMLElement {
   constructor() {
@@ -10,18 +10,18 @@ class MemoryData extends HTMLElement {
   connectedCallback() {
     const rawDate = this.getAttribute("date");
     const date = new Date(rawDate);
-    
+
     const data = {
       card_id: this.getAttribute("card_id"), // weird
       img: this.getAttribute("img"), // weird
       img_alt: this.getAttribute("img_alt"), // weird...
       date: this.getAttribute("date"),
-      formatted_date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
+      formatted_date: `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
       mood: this.getAttribute("mood"),
       title: this.getAttribute("title"),
       link: this.getAttribute("link"), // weird
-      description: this.getAttribute("description"), // 
-      location: this.getAttribute("location") || "No Location Provided"
+      description: this.getAttribute("description"), //
+      location: this.getAttribute("location") || "No Location Provided",
     };
 
     this.shadowRoot.innerHTML = cardTemplate(data);

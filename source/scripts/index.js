@@ -3,7 +3,6 @@ import { initMapDisplay, insertAPIKey } from "./map.js";
 window.addEventListener("DOMContentLoaded", init);
 document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
 
-
 async function init() {
   // Show or hide side bar
   const modal = document.getElementById("memoryModal");
@@ -50,7 +49,6 @@ async function init() {
       tag.style.backgroundColor = colors[type];
       tag.style.color = "white";
     }
-
   });
   initMapDisplay();
 }

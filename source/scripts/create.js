@@ -3,12 +3,12 @@ let place;
 
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
-export function initCreate(){
+export function initCreate() {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
 
   if (savedApiKey) {
     console.log(savedApiKey);
-    loadGoogleMaps(savedApiKey, 'places').then(() => {
+    loadGoogleMaps(savedApiKey, "places").then(() => {
       initAutocomplete();
     });
   }

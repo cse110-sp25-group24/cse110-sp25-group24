@@ -7,8 +7,8 @@
  * @returns {string} The HTML string for the memory photo section.
  */
 export function createMemoryPhoto(data) {
-	console.log("cardTemplate data", data);
-	return `
+  console.log("cardTemplate data", data);
+  return `
     <memory-photo>
       <button
         onclick="// showMemoryDetails(${data.post_id})"
@@ -28,7 +28,7 @@ export function createMemoryPhoto(data) {
  * @returns {string} The HTML string for the metadata section.
  */
 export function createCardMeta(data) {
-	return `
+  return `
     <card-meta>
       <card-mood
         id="mood"
@@ -55,7 +55,7 @@ export function createCardMeta(data) {
  * @returns {string} The HTML string for the content section.
  */
 export function createCardContent(data) {
-	return `
+  return `
     <card-content>
       ${createCardMeta(data)}
       <h2 id="title">${data.title}</h2>
@@ -75,7 +75,7 @@ export function createCardContent(data) {
  * @returns {string} The HTML string for the memory card.
  */
 export function cardTemplate(data) {
-	return `
+  return `
     <memory-card postid="${data.post_id}">
       ${createMemoryPhoto(data)}
       ${createCardContent(data)}
