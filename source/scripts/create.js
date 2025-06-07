@@ -49,7 +49,6 @@ function onPlaceChanged() {
   console.log(typeof place);
 }
 
-
 // dupe method, try to refactor if possible
 async function loadGoogleMaps(apiKey, libraries) {
   return new Promise((resolve, reject) => {

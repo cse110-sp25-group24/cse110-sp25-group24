@@ -39,21 +39,22 @@ export function isEmptyDB(db) {
  * @param {IDBDatabase} db
  * @returns {Promise} Promise that resolves into a post being added.
  */
-export function addMemory(post, db, post_id) { // change name to save memory? 
+export function addMemory(post, db, post_id) {
+  // change name to save memory?
   // adding a memory to the database
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readwrite");
     const store = tx.objectStore("memories");
     let request;
-    console.log("Post:", post)
-    console.log("Post Id:", post_id)
+    console.log("Post:", post);
+    console.log("Post Id:", post_id);
 
     if (post_id != null) {
-      console.log("here!")
+      console.log("here!");
       post.post_id = post_id;
       request = store.put(post);
     } else {
-      console.log("there!")
+      console.log("there!");
       request = store.add(post);
     }
 
@@ -187,7 +188,6 @@ export function deleteMemory(post_id, db) {
     };
   });
 }
-
 
 /**
  * This function handles grabbing all the longitudes and latitudes.
