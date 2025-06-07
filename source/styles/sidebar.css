@@ -1,62 +1,62 @@
 aside {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	top: 60px;
-	bottom: 50px;
-	right: 0;
-	padding: 1em;
-	z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 60px;
+  bottom: 50px;
+  right: 0;
+  padding: 1em;
+  z-index: 2;
 
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
 
-	background: #ffffff;
-	box-shadow: 0 -1em 1em #00000033;
+  background: #ffffff;
+  box-shadow: 0 -1em 1em #00000033;
 }
 
 sidebar-header {
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	padding: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
 
-	z-index: 100;
+  z-index: 100;
 }
 
 sidebar-header button {
-	display: flex;
-	position: relative;
-	z-index: 1;
+  display: flex;
+  position: relative;
+  z-index: 1;
 
-	margin: 1em;
-	background-color: #f5716c;
+  margin: 1em;
+  background-color: #f5716c;
 
-	cursor: pointer;
-	border-radius: 6px;
-	border: none;
-	transition: background-color 0.3s ease;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 sidebar-header img {
-	width: 3em;
-	height: 3em;
+  width: 3em;
+  height: 3em;
 }
 
 @media (max-width: 768px) {
-	aside {
-		position: fixed;
-		top: 40px;
-		bottom: 40px;
-		left: 0;
-		right: 0;
-		width: auto;
-		height: auto;
-		border-left: none;
-		box-shadow: 0 -1em 1em #00000033;
-	}
+  aside {
+    position: fixed;
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    border-left: none;
+    box-shadow: 0 -1em 1em #00000033;
+  }
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
