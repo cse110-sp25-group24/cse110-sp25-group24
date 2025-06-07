@@ -48,11 +48,12 @@ export function addMemory(post, db, post_id) { // change name to save memory?
     console.log("Post:", post)
     console.log("Post Id:", post_id)
 
-    // let postId = post.post_id;
-
-    if (post.post_id != null) {
-      request = store.put(post, post_id);
+    if (post_id != null) {
+      console.log("here!")
+      post.post_id = post_id;
+      request = store.put(post);
     } else {
+      console.log("there!")
       request = store.add(post);
     }
 

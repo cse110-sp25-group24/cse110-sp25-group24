@@ -2,11 +2,14 @@ import * as dhf from "./dataHandlingFunctions.js";
 import { getPlace, initCreate } from "./create.js";
 import { retrieveMemory } from "./dataHandlingFunctions.js";
 
-// import { getPlace, initCreate } from "./map.js"
 let postId;
+
+let lat = null;
+let long = null;
+
+// import { getPlace, initCreate } from "./map.js"
 // making sure all the content is loaded before handling the DB
 window.addEventListener("DOMContentLoaded", async () => {
-
   let db = await initDB();
 
   // functions to hook up to the form for testing db functions
@@ -15,13 +18,12 @@ window.addEventListener("DOMContentLoaded", async () => {
     - display the most recent memory, placeholder if nothing submitted
   */
 
-  // this relies on page constantly reloading. can't use service workers
-  // to fill in the form from db
-
-
   const form = document.getElementById("memory-form");
 
   postId = await fillForm(db, form);
+
+  console.log(lat);
+  console.log(long);
 
   console.log("PostID:", postId);
 
@@ -39,13 +41,17 @@ window.addEventListener("DOMContentLoaded", async () => {
     const locationTag = data.get("location");
     const moodTags = data.get("mood-text");
 
-    // console.log("Location:", locationTag);
     let place = getPlace();
-    // console.log("lat:", place.geometry.location.lat());
-    // console.log("long:", place.geometry.location.lng());
 
-    const long = place.geometry.location.lng() + Math.random() * 0.0003;
-    const lat = place.geometry.location.lat() + Math.random() * 0.0003;
+    console.log(place)
+
+
+    // if you changed the place
+    if (place != null) {
+      lat = place.geometry.location.lat() + Math.random() * 0.0003;
+      long = place.geometry.location.lng() + Math.random() * 0.0003;
+    }
+
 
     const post = {
       title: title,
@@ -65,7 +71,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     
     // remember to set postId = none once you leave submit the form
 
-    window.location.href = "index.html";
+    // window.location.href = "index.html";
 
   });
 
@@ -92,49 +98,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     reader.readAsDataURL(file);
   });
 
-  // Load data from local storage
-  const userData = JSON.parse(localStorage.getItem("userData"));
-
-  if (userData) {
-    document.getElementById("imagePreview").src = userData.imgSrc;
-    document.getElementById("title").value = userData.titleText;
-    document.getElementById("description").value = userData.descriptionText;
-    document.getElementById("mood-text").value = userData.mood;
-    // document.getElementById("music").value = userData.music;
-    // alert(userData.imgSrc);
-
-    // Delete local storage after use
-    localStorage.removeItem("userData");
-  }
-
   initCreate();
 });
 
 
-  // check local storage
-  // let postId
-  // if (post id exists in local storage) {
-  //  postId = local storage content
-  //  delete local storage content
-  //  retriveMemory()
-  //  return postId
-  //  use form object below
-  //  fill out form obj above and fill out all atributes inside form
-  // }
-  // else {
-  //  postId = none
-  //  return postId
-  // }
-  // remember to set postId = none once you leave submit the form
-
-/*
-  // or by name via the form’s elements collection:
-  const form = document.getElementById('user-form');
-  form.elements['name'].value      = 'Jane Doe';
-  form.elements['email'].value     = 'jane@example.com';
-  form.elements['bio'].value       = 'Loves hiking & code.';
-  form.elements['subscribe'].checked = true;
-*/
 async function fillForm(db, form) {
   postId = localStorage.getItem("postId");
   if (postId != null) {
@@ -148,8 +115,13 @@ async function fillForm(db, form) {
       form.elements["description"].value = memory.description;
       form.elements["mood-text"].value = memory.mood;
       document.getElementById("imagePreview").src = memory.image;
+
+      lat = memory.latitude;
+      long = memory.longitude;
     return postId;
   } else {
+    lat = null;
+    long = null;
     return null;
   }
 }
