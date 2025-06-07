@@ -144,9 +144,7 @@ async function fillForm(db, form) {
       form.elements["title"].value = memory.title;
       form.elements["description"].value = memory.description;
       form.elements["mood-text"].value = memory.mood;
-      form.elements["imagePreview"].value = memory.img;
-
-
+      document.getElementById("imagePreview").src = memory.image;
   }
 }
 
