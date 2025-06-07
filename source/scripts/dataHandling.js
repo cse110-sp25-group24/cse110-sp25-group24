@@ -21,7 +21,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   const form = document.getElementById("memory-form");
 
-  postId = fillForm(db, form);
+  postId = await fillForm(db, form);
+
+  console.log("PostID:", postId);
 
   /**
    * Memory submission creation logic.
@@ -55,7 +57,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       latitude: lat,
       mood: moodTags,
     };
-    dhf.addMemory(post, db); //.then(() => displayLatestMemory(db));
+  
+    dhf.addMemory(post, db, postId); //.then(() => displayLatestMemory(db));
     console.table(post); // for debugging, post data is displayed in
     event.target.reset();
     // addMarker(window.map, locationTag.geometry.location.lat(), locationTag.geometry.location.lng(), title);
@@ -145,6 +148,9 @@ async function fillForm(db, form) {
       form.elements["description"].value = memory.description;
       form.elements["mood-text"].value = memory.mood;
       document.getElementById("imagePreview").src = memory.image;
+    return postId;
+  } else {
+    return null;
   }
 }
 

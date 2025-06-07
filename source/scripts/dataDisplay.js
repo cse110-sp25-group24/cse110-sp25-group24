@@ -98,9 +98,7 @@ function displayAllMemories(db) {
  */
 function deleteListener(cardElement, id, db) {
   const deleteBtn = cardElement.shadowRoot.querySelector("#delete-btn");
-  console.log("deleteBtn", deleteBtn);
   if (deleteBtn) {
-    console.log("Inside Here");
     deleteBtn.addEventListener("click", () => {
       const confirmed = window.confirm(
         "Are you sure you want to delete this memory?",
@@ -123,9 +121,7 @@ function deleteListener(cardElement, id, db) {
  */
 function editListener(cardElement, id, db) {
   const editBtn = cardElement.shadowRoot.querySelector("#edit-btn");
-  console.log("editBtn", editBtn);
   if (editBtn) {
-    console.log("Inside Here");
     editBtn.addEventListener("click", () => {
       // store post id into local storage
       localStorage.setItem("postId", id);
