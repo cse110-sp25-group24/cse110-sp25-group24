@@ -5,8 +5,12 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "jsdoc": "^4.0.4",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "babel-jest": "^30.0.0-beta.3"
   },
+  "type": "module",
   "scripts": {
     "test": "jest",
     "docs": "jsdoc -r scripts -d docs"

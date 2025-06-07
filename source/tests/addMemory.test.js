@@ -1,5 +1,5 @@
-require("./mocks/indexedDBMock");
-const { addMemory } = require("../scripts/dataHandlingFunctions");
+import "./mocks/indexedDBMock";
+import { addMemory } from "../scripts/dataHandlingFunctions";
 
 describe("addMemory", () => {
   // Test 1 - Valid post adds and returns new ID
