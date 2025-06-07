@@ -92,6 +92,10 @@ export function deleteAllMemories(db) {
  */
 export function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
+    if (!(file instanceof Blob)) {
+      reject(new Error("Input must be a Blob or File"));
+      return;
+    }
     // starting a new filereader
     const reader = new FileReader();
 

@@ -1,5 +1,5 @@
-require("./mocks/indexedDBMock");
-const { retrieveMemory } = require("../scripts/dataHandlingFunctions");
+import "./mocks/indexedDBMock";
+import { retrieveMemory } from "../scripts/dataHandlingFunctions";
 
 describe("retrieveMemory", () => {
   // Test 1 - Retrieve an existing memory from the store
