@@ -11,7 +11,7 @@
 
 // create IndexedDB memory for test
 export class IDBTrans {
-  objectStore(name) {
+  objectStore() {
     return new IDBObjectStore();
   }
 }
@@ -82,11 +82,11 @@ export class IDBObjectStore {
     return request;
   }
 
-  delete(key) {
+  delete() {
     return new IDBRequest();
   }
 
-  index(indexName) {
+  index() {
     return new IDBIndex(this.data);
   }
   add(post) {
@@ -169,7 +169,7 @@ export class IDBIndex {
     this.data = data;
   }
 
-  openCursor(_, direction) {
+  openCursor() {
     // Compute descending by dateCreated
     const values = Object.values(this.data).sort(
       (a, b) => b.dateCreated - a.dateCreated,
@@ -199,7 +199,7 @@ export class IDBDatabase {
     this.data = data; // key-value pairs for in-memory simulation
   }
 
-  transaction(storeName, mode) {
+  transaction() {
     // Simulates db.transaction("memories", "readonly");
     // Returns a mock transaction object that gives access to an object store
     return new IDBTransaction(new IDBObjectStore(this.data));
@@ -212,7 +212,7 @@ export class IDBTransaction {
     this.store = store;
   }
 
-  objectStore(name) {
+  objectStore() {
     // Mimics tx.objectStore("memories")
     return this.store;
   }
