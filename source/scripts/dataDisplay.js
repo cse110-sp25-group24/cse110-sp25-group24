@@ -1,6 +1,6 @@
-import { cardTemplate } from "/source/scripts/cardTemplate.js";
-import { isEmptyDB } from "/source/scripts/dataHandlingFunctions.js";
-import { deleteMemory } from "/source/scripts/dataHandlingFunctions.js";
+import { cardTemplate } from "./cardTemplate.js";
+import { isEmptyDB } from "./dataHandlingFunctions.js";
+import { deleteMemory } from "./dataHandlingFunctions.js";
 
 // Store and Display a "Memory" using IndexedDB Issue # 30
 
@@ -76,6 +76,7 @@ function displayAllMemories(db) {
           display.appendChild(card);
           setTimeout(() => {
             deleteListener(card, post.post_id, db);
+            editListener(card, post.post_id, db);
           }, 0);
           cursor.continue();
         }
@@ -97,9 +98,7 @@ function displayAllMemories(db) {
  */
 function deleteListener(cardElement, id, db) {
   const deleteBtn = cardElement.shadowRoot.querySelector("#delete-btn");
-  console.log("deleteBtn", deleteBtn);
   if (deleteBtn) {
-    console.log("Inside Here");
     deleteBtn.addEventListener("click", () => {
       const confirmed = window.confirm(
         "Are you sure you want to delete this memory?",
@@ -109,6 +108,25 @@ function deleteListener(cardElement, id, db) {
         cardElement.remove(); // Remove from DOM
         console.log(`Deleted memory with id: ${id}`);
       }
+    });
+  }
+}
+
+/**
+ * This function adds an edit listener on the card element.
+ *
+ * @param {*} cardElement to edit from DOM
+ * @param {*} id to edit from IndexedDB
+ * @param {*} db Database instance
+ */
+function editListener(cardElement, id, db) {
+  const editBtn = cardElement.shadowRoot.querySelector("#edit-btn");
+  if (editBtn) {
+    editBtn.addEventListener("click", () => {
+      // store post id into local storage
+      localStorage.setItem("postId", id);
+      window.location.href = "create.html";
+      console.log(`Edited memory with id: ${id}`);
     });
   }
 }

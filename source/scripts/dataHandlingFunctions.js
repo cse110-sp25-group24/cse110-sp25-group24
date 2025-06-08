@@ -39,12 +39,25 @@ export function isEmptyDB(db) {
  * @param {IDBDatabase} db
  * @returns {Promise} Promise that resolves into a post being added.
  */
-export function addMemory(post, db) {
+export function addMemory(post, db, post_id) {
+  // change name to save memory?
   // adding a memory to the database
   return new Promise((resolve, reject) => {
     const tx = db.transaction("memories", "readwrite");
     const store = tx.objectStore("memories");
-    const request = store.add(post);
+    let request;
+    console.log("Post:", post);
+    console.log("Post Id:", post_id);
+
+    if (post_id != null) {
+      console.log("here!");
+      post.post_id = post_id;
+      request = store.put(post);
+    } else {
+      console.log("there!");
+      request = store.add(post);
+    }
+
     request.onsuccess = () => {
       const id = request.result;
       console.log(`saved post ${id}`);
@@ -52,7 +65,7 @@ export function addMemory(post, db) {
     };
 
     request.onerror = () => {
-      console.log("error adding post");
+      console.error("error adding post");
       reject(request.error);
     };
   });
@@ -136,7 +149,7 @@ export function retrieveMemory(post_id, db) {
       const memory = request.result;
       if (memory === undefined) {
         // no memory
-        console.log("could not find the memory!");
+        console.error("could not find the memory!");
         reject(null);
       } else {
         console.log(`retrieved post #${post_id}`);
@@ -176,7 +189,7 @@ export function deleteMemory(post_id, db) {
       resolve(true);
     };
     request.onerror = () => {
-      console.log("error deleting post");
+      console.error("error deleting post");
       reject(request.error);
     };
   });

@@ -49,7 +49,8 @@ function onPlaceChanged() {
   console.log(typeof place);
 }
 
-function loadGoogleMaps(apiKey, libraries) {
+// dupe method, try to refactor if possible
+async function loadGoogleMaps(apiKey, libraries) {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=${libraries}`;
