@@ -103,6 +103,8 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
+  console.table(post);
+
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
@@ -114,11 +116,11 @@ async function submitForm(event) {
       window.location.href = "index.html";
     } else {
       // post not received by MemoryDB
-      console.error("this is where we would put a fallback");
+      console.error("this is where we would put a fallback--post not added in");
     }
   } else {
     // post is not valid to submit
-    console.error("this is where we would put a fallback");
+    console.error("this is where we would put a fallback--post not valid");
   }
 }
 
