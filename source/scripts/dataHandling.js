@@ -106,11 +106,16 @@ async function submitForm(event) {
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
-    dhf.addMemory(post, db, postId);
-    console.table(post); // for debugging, post data is displayed in
-
-    event.target.reset(); // resets form to the original state
-    window.location.href = "index.html";
+    const newPost = dhf.addMemory(post, db, postId);
+    if (newPost) {
+      console.log(`new post ${newPost} made`);
+      console.table(post); // for debugging, post data is displayed in
+      event.target.reset(); // resets form to the original state
+      window.location.href = "index.html";
+    } else {
+      // post not received by MemoryDB
+      console.error("this is where we would put a fallback");
+    }
   } else {
     // post is not valid to submit
     console.error("this is where we would put a fallback");
