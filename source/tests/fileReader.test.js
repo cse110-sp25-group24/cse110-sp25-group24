@@ -1,4 +1,4 @@
-import { MockFileReader } from "./mocks/indexedDBMock";
+import { MockFileReader } from "./mocks/indexedDBMock.js";
 import { fileToDataUrl } from "../scripts/dataHandlingFunctions.js";
 
 beforeAll(() => {
