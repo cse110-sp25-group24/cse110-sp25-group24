@@ -106,7 +106,6 @@ async function submitForm(event) {
   console.table(post); // for debugging, post data is displayed in
   event.target.reset();
   window.location.href = "index.html";
-
 }
 /**
  *This function loads an existing memory into the form for editing.
