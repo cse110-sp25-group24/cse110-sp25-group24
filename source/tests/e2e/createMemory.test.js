@@ -65,7 +65,7 @@ async function stopServer() {
       page.$$eval('button', (buttons) => {buttons[0].click();}),
     ]);
 
-    console.log(`Navigated to: ${createNav.url()}`);
+    console.log(`Create memory button redirects to: ${createNav.url()}`);
 
     // 3. Wait for form and fill it out
     await page.waitForSelector('#memory-form');
@@ -79,29 +79,27 @@ async function stopServer() {
     await imageInput.uploadFile(path.resolve(__dirname, 'image.png'));
 
     // 4. Submit the form and wait for redirect
-    await Promise.all([
+    const [submitNav] = await Promise.all([
       page.waitForNavigation(),
-      page.click('.save-btn'),
+      page.$$eval('button', (buttons) => {buttons[0].click();}),
     ]);
 
-    // 5. Navigate to memories.html
-    await page.goto(memoriesPage);
+    console.log(`Submit button redirects to: ${submitNav.url()}`);
 
-    console.log('Navigated to memories page');
+    // 5. Navigate to memories.html
+    const [memoryNav] = await Promise.all([
+      page.waitForNavigation(),
+      page.$$eval('a', (a) => {a[2].click();}),
+    ]);
+
+    console.log(`My Memories header redirects to: ${memoryNav.url()}`);
 
     // 6. Check if memory is present in the UI
-    // const cards = await page.evaluate(async () => {
-    //   const grid = await page.$('memories-grid');
-    //   if (!grid) {
-    //   return 'memories-grid element not found';
-    //   }
-    //   const shadow = await grid.getProperty('shadowRoot');
-    //   if (!shadow) {
-    //   return 'shadowRoot not found on memories-grid';
-    //   }
-    //   return Array.from(shadow.querySelectorAll('*')).map(el => el.outerHTML);
-    // });
-    // console.log('Shadow DOM elements in memories-grid:', cards);
+    const grid = await page.$('memory-data');
+    const shadow = await grid.getProperty('shadowRoot');
+
+    const memoryVisible = await shadow.$$eval('*', elements => elements.map(el => el.outerHTML));
+    console.log('Memory data in UI:', memoryVisible);
 
     await new Promise(resolve => setTimeout(resolve, 20000));
 
