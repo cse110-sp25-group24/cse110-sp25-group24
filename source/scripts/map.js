@@ -1,4 +1,4 @@
-import { getAllLocations } from "/source/scripts/dataHandlingFunctions.js";
+import { getAllLocations } from "./dataHandlingFunctions.js";
 // Implement Base Map Issue #32
 
 /*---------Global Variables---------*/

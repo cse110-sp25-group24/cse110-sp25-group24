@@ -1,6 +1,6 @@
-import { cardTemplate } from "/source/scripts/cardTemplate.js";
-import { isEmptyDB } from "/source/scripts/dataHandlingFunctions.js";
-import { deleteMemory } from "/source/scripts/dataHandlingFunctions.js";
+import { cardTemplate } from "./cardTemplate.js";
+import { isEmptyDB } from "./dataHandlingFunctions.js";
+import { deleteMemory } from "./dataHandlingFunctions.js";
 
 // Store and Display a "Memory" using IndexedDB Issue # 30
 
