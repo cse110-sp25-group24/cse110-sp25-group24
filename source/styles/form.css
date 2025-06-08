@@ -132,13 +132,21 @@ textarea {
   box-sizing: border-box;
   padding: 0.5rem 0 0 0.5rem;
   resize: vertical;
-  height: 11.3rem;
+  height: 12.5rem;
 
   border-radius: 0.5rem;
   border: 1px solid #ddd;
 
   font-family: inherit;
   font-size: 1rem;
+}
+
+.input-note {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
 }
 
 button {

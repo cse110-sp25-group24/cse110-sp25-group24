@@ -73,6 +73,7 @@ memory-card {
   border: 1px solid #ddd;
   border-radius: 1em;
   box-shadow: 0.25em 0.25em 0.5em #0000000d;
+  position: relative;
 }
 
 memory-photo {
@@ -104,6 +105,8 @@ card-content {
   display: flex;
   flex-direction: column;
   padding: 0.75em;
+  flex: 1; 
+  min-height: 0;
 }
 
 card-meta {
@@ -157,6 +160,15 @@ memory-card p {
 
   font-size: 0.9em;
   color: #555555;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.5em; 
+  line-height: 1.5em; 
+  word-break: break-word; 
 }
 
 card-footer {
@@ -169,6 +181,7 @@ card-footer {
   font-size: 0.85em;
   color: #555555;
   border-top: 1px solid #dddddd;
+  margin-top: auto;
 }
 
 memories-grid-container::-webkit-scrollbar {
