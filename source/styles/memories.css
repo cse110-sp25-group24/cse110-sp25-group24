@@ -66,6 +66,7 @@ memories-grid {
 }
 
 memory-card {
+  height: 420px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
