@@ -102,7 +102,7 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
-  dhf.addMemory(post, db, postId);
+  await dhf.addMemory(post, db, postId);
   console.table(post); // for debugging, post data is displayed in
   event.target.reset();
   window.location.href = "index.html";
