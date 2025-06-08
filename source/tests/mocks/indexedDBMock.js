@@ -10,15 +10,15 @@
  **/
 
 // create IndexedDB memory for test
-global.IDBTrans = class {
+export class IDBTrans {
   objectStore(name) {
     return new IDBObjectStore();
   }
-};
+}
 
 // Stimulates an object store (e.g. a table in IndexedDB)
 // represents memories table, needs delete to return a request object
-global.IDBObjectStore = class {
+export class IDBObjectStore {
   constructor(data = {}) {
     this.data = data; // mock in-memory store
   }
@@ -26,15 +26,15 @@ global.IDBObjectStore = class {
   get(key) {
     // Mimics store.get(post_id)
     const result = this.data[key];
-    return new global.IDBRequest(result);
+    return new IDBRequest(result);
   }
 
   delete(key) {
-    return new global.IDBRequest();
+    return new IDBRequest();
   }
 
   index(indexName) {
-    return new global.IDBIndex(this.data);
+    return new IDBIndex(this.data);
   }
   add(post) {
     // Generate a fake unique ID by counting how many posts already exist.
@@ -44,14 +44,14 @@ global.IDBObjectStore = class {
     this.data[id] = post;
 
     // Create a fake IDBRequest that simulates async IndexedDB behavior.
-    const request = new global.IDBRequest(id); // result = id
+    const request = new IDBRequest(id); // result = id
 
     return request;
   }
-};
+}
 
 // request object that basically simulates the indexdb async delete
-global.IDBRequest = class {
+export class IDBRequest {
   constructor(result = undefined) {
     this.result = result;
     this.onsuccess = null;
@@ -72,11 +72,11 @@ global.IDBRequest = class {
   simulateFailure() {
     this.shouldFail = true;
   }
-};
+}
 
 // mock implementation of the FileReader class for testing
 // creating a fake FileReader
-global.FileReader = class {
+export class FileReader {
   constructor() {
     this.onload = null;
     this.onerror = null;
@@ -101,17 +101,17 @@ global.FileReader = class {
 
     return fileReaderSimulator;
   }
-};
+}
 
 // Mock IDBCursor
-global.IDBCursor = class {
+export class IDBCursor {
   constructor(value) {
     this.value = value;
   }
-};
+}
 
 // Mock IDBIndex
-global.IDBIndex = class {
+export class IDBIndex {
   constructor(data) {
     this.data = data;
   }
@@ -122,7 +122,7 @@ global.IDBIndex = class {
       (a, b) => b.dateCreated - a.dateCreated,
     );
     // Create cursor object for first result
-    const result = values.length > 0 ? new global.IDBCursor(values[0]) : null;
+    const result = values.length > 0 ? new IDBCursor(values[0]) : null;
 
     // fake IDBRequest Object returned by openCursor()
     const request = {
@@ -138,10 +138,10 @@ global.IDBIndex = class {
 
     return request;
   }
-};
+}
 
 // Stimulates IndexedDB database object
-global.IDBDatabase = class {
+export class IDBDatabase {
   constructor(data = {}) {
     this.data = data; // key-value pairs for in-memory simulation
   }
@@ -149,12 +149,12 @@ global.IDBDatabase = class {
   transaction(storeName, mode) {
     // Simulates db.transaction("memories", "readonly");
     // Returns a mock transaction object that gives access to an object store
-    return new global.IDBTransaction(new global.IDBObjectStore(this.data));
+    return new IDBTransaction(new IDBObjectStore(this.data));
   }
-};
+}
 
 // Stimulates a transaction object returned by db.transaction()
-global.IDBTransaction = class {
+export class IDBTransaction {
   constructor(store) {
     this.store = store;
   }
@@ -163,15 +163,4 @@ global.IDBTransaction = class {
     // Mimics tx.objectStore("memories")
     return this.store;
   }
-};
-
-module.exports = {
-  IDBTrans: global.IDBTrans,
-  IDBObjectStore: global.IDBObjectStore,
-  IDBRequest: global.IDBRequest,
-  FileReader: global.FileReader,
-  IDBCursor: global.IDBCursor,
-  IDBIndex: global.IDBIndex,
-  IDBDatabase: global.IDBDatabase,
-  IDBTransaction: global.IDBTransaction,
-};
+}

@@ -1,9 +1,9 @@
-const {
+import {
   IDBDatabase,
   IDBObjectStore,
   IDBRequest,
-} = require("./mocks/indexedDBMock.js");
-const { addMemory } = require("../scripts/dataHandlingFunctions.js");
+} from "./mocks/indexedDBMock.js";
+import { addMemory } from "../scripts/dataHandlingFunctions.js";
 
 describe("addMemory", () => {
   // Test 1 - Valid post adds and returns new ID

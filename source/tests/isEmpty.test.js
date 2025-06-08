@@ -1,4 +1,4 @@
-const { isEmptyDB } = require("../scripts/dataHandlingFunctions.js");
+import { isEmptyDB } from "../scripts/dataHandlingFunctions.js";
 
 describe("isEmptyDB", () => {
   // Test 1 - checks if it returns true when there are no posts in the DB
