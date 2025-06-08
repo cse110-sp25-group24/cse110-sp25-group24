@@ -7,7 +7,7 @@
   - [Understanding the Codebase](#understanding-the-codebase)
   - [Environment Setup](#environment-setup)
     - [Installing Node.js and NVM](#installing-nodejs-and-nvm)
-    - [Installing Prettier, JSDocs, and Jest](#installing-prettier-jsdocs-and-jest)
+    - [Installing Prettier, JSDocs, Jest, and Babel](#installing-prettier-jsdocs-and-jest--babel)
   - [Committing to the Codebase](#committing-to-the-codebase)
 
 ## Understanding the Codebase
@@ -66,9 +66,9 @@ To set up your environment for contributing to this codebase, follow these steps
    nvm use 22
    ```
 
-### Installing Prettier, JSDocs, and Jest
+### Installing Prettier, JSDocs, and Jest + Babel
 
-To ensure consistent code formatting and documentation, we use Prettier, JSDocs, and Jest in our project. Follow these steps to set them up:
+To ensure consistent code formatting and documentation, we use Prettier, JSDocs, Jest, and Babel in our project. Follow these steps to set them up:
 
 1. Make sure you are in the source of the project directory (where `package.json` is located).
 
@@ -79,7 +79,7 @@ To ensure consistent code formatting and documentation, we use Prettier, JSDocs,
 2. Install the necessary packages:
 
    ```bash
-   npm install --save-dev prettier jsdoc jest
+   npm install --save-dev prettier jsdoc jest @babel/core @babel/preset-env babel-jest
    ```
 
 3. After installing, you can run the following commands to ensure everything is set up correctly:
@@ -91,6 +91,8 @@ To ensure consistent code formatting and documentation, we use Prettier, JSDocs,
    JSDoc [version_number]
    > npx jest --version
    [version_number]
+   > npx babel --version
+   Babel [version_number]
    ```
 
 4. If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
