@@ -73,6 +73,7 @@ async function submitForm(event) {
   let imageURL;
 
   console.log("Img", imageInput);
+
   //If the user picked a new image, convert and save it
   if (imageInput.files && imageInput.files.length > 0) {
     imageURL = await dhf.fileToDataUrl(imageInput.files[0]);
@@ -102,11 +103,71 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
-  dhf.addMemory(post, db, postId);
-  console.table(post); // for debugging, post data is displayed in
-  event.target.reset();
-  window.location.href = "index.html";
+  if (confirmSafety(post)) {
+    // post is valid to submit
+    // future considerations; should really clear the form only when the post is successfully added
+    dhf.addMemory(post, db, postId);
+    console.table(post); // for debugging, post data is displayed in
+
+    event.target.reset(); // resets form to the original state
+    window.location.href = "index.html";
+  } else {
+    // post is not valid to submit
+    console.error("this is where we would put a fallback");
+  }
 }
+
+/**
+ * This function validates the memory being submitted
+ *
+ * @param {object} post This is the memory being submitted
+ * @returns {boolean} True if the post is valid, False if the post is not valid
+ */
+
+function confirmSafety(post) {
+  try {
+    // required safety checks
+    if (
+      !(
+        post.image && // image is required
+        post.title && // title is required
+        post.dateCreated && // date is required
+        post.location && // location requirements
+        post.latitude &&
+        post.longitude &&
+        post.mood // mood is required
+      )
+    ) {
+      console.table(post);
+      console.log("required check failed");
+      return false;
+    }
+    console.log("required check passed");
+    // length safety checks
+    if (
+      post.title.length <= 50 &&
+      post.description.length <= 500 &&
+      post.mood.length <= 20
+    ) {
+      console.log("length passed");
+      // double checking
+      console.table({
+        titleLength: post.title.length,
+        descriptionLength: post.description.length,
+        moodLength: post.mood.length,
+      });
+      return true;
+    } else {
+      console.error("length failed");
+      return false;
+    }
+  } catch (err) {
+    // error--input mismatch, trouble validating post, etc.
+    console.err(err);
+    return false;
+  }
+}
+
 /**
  *This function loads an existing memory into the form for editing.
  * @param {IDBDatabase} db The database to retrieve the memory from.

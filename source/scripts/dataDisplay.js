@@ -35,6 +35,11 @@ window.addEventListener("DOMContentLoaded", () => {
   request.onerror = (event) => {
     console.error("db err"); // works so far, seen
   };
+
+  // event listeners to do the filtering logic
+  const searchBar = document.getElementById("memory-search");
+  const moodBar = document.getElementById("mood-search");
+  
 });
 
 /**
@@ -70,7 +75,7 @@ function displayAllMemories(db) {
           card.setAttribute("description", post.description);
           card.setAttribute(
             "location",
-            post.location || "No Location Provided",
+            post.location || "No Location Provided"
           );
 
           display.appendChild(card);
@@ -101,7 +106,7 @@ function deleteListener(cardElement, id, db) {
   if (deleteBtn) {
     deleteBtn.addEventListener("click", () => {
       const confirmed = window.confirm(
-        "Are you sure you want to delete this memory?",
+        "Are you sure you want to delete this memory?"
       );
       if (confirmed) {
         deleteMemory(id, db);
