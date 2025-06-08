@@ -7,6 +7,8 @@ aside {
   right: 0;
   padding: 1em;
   z-index: 2;
+  width: 350px;
+  overflow: hidden;
 
   justify-content: flex-start;
   align-items: center;
@@ -50,10 +52,31 @@ sidebar-header img {
     bottom: 40px;
     left: 0;
     right: 0;
-    width: auto;
+    width: 100%;
     height: auto;
     border-left: none;
     box-shadow: 0 -1em 1em #00000033;
+    padding: 0.5em;
+  }
+
+  memories-grid {
+    grid-template-columns: 1fr; 
+  }
+
+  memory-card {
+    width: 100%;
+    height: auto;
+  }
+
+  memory-photo {
+    height: auto;
+    aspect-ratio: 16 / 9; 
+  }
+
+  memory-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
