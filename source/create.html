@@ -77,19 +77,10 @@
                   id="title"
                   name="title"
                   placeholder="Give your memory a title"
+                  maxlength="20"
                 />
+                <small class="input-note">20 characters max</small>
 
-                <label for="description">Description</label>
-                <textarea
-                  id="description"
-                  name="description"
-                  placeholder="Share your experience..."
-                ></textarea>
-              </fieldset>
-            </left-section>
-
-            <right-section>
-              <fieldset>
                 <label for="mood-text">Mood</label>
                 <input
                   type="text"
@@ -97,23 +88,17 @@
                   name="mood-text"
                   placeholder="How does this memory feel?"
                 />
+              </fieldset>
+            </left-section>
 
-                <label for="music">Add Music (Optional)</label>
-                <span class="icon-wrapper">
-                  <input
-                    type="text"
-                    id="music"
-                    placeholder="Search for a song..."
-                  />
-                  <span>🎵</span>
-                </span>
-
-                <label for="privacy">Privacy</label>
-                <select id="privacy">
-                  <option>Public</option>
-                  <option>Private</option>
-                  <option>Friends Only</option>
-                </select>
+            <right-section>
+              <fieldset>
+                <label for="description">Description</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Share your experience..."
+                ></textarea>
               </fieldset>
             </right-section>
           </section>
