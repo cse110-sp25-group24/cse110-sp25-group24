@@ -7,7 +7,7 @@ decision-makers: [Yilong Chen, Eric Song, Myat Thiha]
 
 ## Summary
 
-Our goal is to implement card detail view.
+This ADR propose an implementation of card detail and card editing view.
 
 ## Context and Problem Statement
 
