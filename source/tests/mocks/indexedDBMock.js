@@ -29,6 +29,59 @@ export class IDBObjectStore {
     return new IDBRequest(result);
   }
 
+  openCursor() {
+    const dataValues = Object.values(this.data);
+    let index = 0;
+    let request = new IDBRequest();
+
+    // We need to keep track of the cursor object
+    const cursor = {
+      continue: () => {
+        index++;
+        if (index < dataValues.length) {
+          const currentCursor = {
+            value: dataValues[index],
+            continue: cursor.continue,
+          };
+          request.result = currentCursor;
+          setTimeout(() => {
+            request.onsuccess?.({ target: request });
+          }, 0);
+        } else {
+          request.result = null;
+          setTimeout(() => {
+            request.onsuccess?.({ target: request });
+          }, 0);
+        }
+      },
+    };
+
+    if (dataValues.length > 0) {
+      cursor.value = dataValues[index];
+      request.result = cursor;
+      setTimeout(() => {
+        request.onsuccess?.({ target: request });
+      }, 0);
+    } else {
+      request.result = null;
+      setTimeout(() => {
+        request.onsuccess?.({ target: request });
+      }, 0);
+    }
+    return request;
+  }
+
+  count() {
+    const request = new IDBRequest();
+    request.result = Object.keys(this.data).length;
+
+    setTimeout(() => {
+      request.onsuccess?.({ target: request });
+    }, 0);
+
+    return request;
+  }
+
   delete(key) {
     return new IDBRequest();
   }
