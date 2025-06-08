@@ -1,5 +1,9 @@
-import { FileReader } from "./mocks/indexedDBMock.js";
+import { MockFileReader } from "./mocks/indexedDBMock";
 import { fileToDataUrl } from "../scripts/dataHandlingFunctions.js";
+
+beforeAll(() => {
+  global.FileReader = MockFileReader;
+});
 
 // Test 1 - This test checks if the function correctly turns a text file into a base64 string
 describe("fileToDataUrl", () => {

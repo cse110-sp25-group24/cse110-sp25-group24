@@ -129,7 +129,7 @@ export class IDBRequest {
 
 // mock implementation of the FileReader class for testing
 // creating a fake FileReader
-global.FileReader = class {
+export class MockFileReader {
   constructor() {
     this.onload = null;
     this.onerror = null;
@@ -154,7 +154,7 @@ global.FileReader = class {
 
     return fileReaderSimulator;
   }
-};
+}
 
 // Mock IDBCursor
 export class IDBCursor {
