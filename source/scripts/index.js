@@ -1,7 +1,35 @@
+/**
+ * Imports utility functions from map.js:
+ * - initMapDisplay: initializes the map display.
+ * - insertAPIKey: handles user input of an API key.
+ */
 import { initMapDisplay, insertAPIKey } from "./map.js";
-// Run the init() function when the page has loaded
+
+/**
+ * Runs the `init` function when the DOM is fully loaded.
+ */
 window.addEventListener("DOMContentLoaded", init);
+
+
+/**
+ * Adds a click event listener to the "Load Map" button
+ * to insert the API key.
+ */
 document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
+
+/**
+ * Initializes the page's interactive behavior.
+ *
+ * Responsibilities:
+ * - Manages showing/hiding a modal window.
+ * - Loads button states from localStorage and enables toggling.
+ * - Colors category tags based on their type.
+ * - Initializes the map display.
+ *
+ * @async
+ * @function
+ * @returns {Promise<void>}
+ */
 
 async function init() {
   // Show or hide side bar
