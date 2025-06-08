@@ -60,7 +60,7 @@ sidebar-header img {
   }
 
   memories-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   memory-card {
@@ -70,7 +70,7 @@ sidebar-header img {
 
   memory-photo {
     height: auto;
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 9;
   }
 
   memory-photo img {
