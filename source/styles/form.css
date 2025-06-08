@@ -192,3 +192,16 @@ form-container::-webkit-scrollbar-thumb:hover {
     flex: initial;
   }
 }
+
+select#mood {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #737373;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+}

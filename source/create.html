@@ -54,7 +54,14 @@
             <img id="imagePreview" />
             <p>Drag and drop your photo here...</p>
             <label for="imageUpload">Browse Files</label>
-            <input type="file" id="imageUpload" name="image" accept="image/*" />
+            <!-- safety check for file type -->
+            <input
+              type="file"
+              id="imageUpload"
+              name="image"
+              accept="image/*"
+              required
+            />
           </fieldset>
 
           <section class="form-sections">
@@ -67,23 +74,30 @@
                     id="location"
                     name="location"
                     placeholder="Search location..."
+                    required
                   />
                   <span>📍</span>
                 </span>
 
+                <!-- max length of title is 50 characters -->
                 <label for="title">Title</label>
                 <input
                   type="text"
                   id="title"
                   name="title"
                   placeholder="Give your memory a title"
+                  maxlength="50"
+                  required
                 />
 
                 <label for="description">Description</label>
+
+                <!-- max length of description is 500 characters; description is not required -->
                 <textarea
                   id="description"
                   name="description"
                   placeholder="Share your experience..."
+                  maxlength="500"
                 ></textarea>
               </fieldset>
             </left-section>
@@ -91,14 +105,20 @@
             <right-section>
               <fieldset>
                 <label for="mood-text">Mood</label>
-                <input
-                  type="text"
-                  id="mood-text"
-                  name="mood-text"
-                  placeholder="How does this memory feel?"
-                />
+                <select id="mood-text" name="mood-text" required>
+                  <option disabled selected value="">
+                    How does this memory feel?
+                  </option>
+                  <option>Nostalgic</option>
+                  <option>Happy</option>
+                  <option>Excited</option>
+                  <option>Sad</option>
+                  <option>Peaceful</option>
+                  <option>Neutral</option>
+                </select>
 
-                <label for="music">Add Music (Optional)</label>
+                <!-- this feature is deprecated, slated for deletion -->
+                <!-- <label for="music">Add Music (Optional)</label>
                 <span class="icon-wrapper">
                   <input
                     type="text"
@@ -106,14 +126,15 @@
                     placeholder="Search for a song..."
                   />
                   <span>🎵</span>
-                </span>
+                </span> -->
 
-                <label for="privacy">Privacy</label>
+                <!-- this feature is deprecated, slated for deletion -->
+                <!-- <label for="privacy">Privacy</label>
                 <select id="privacy">
                   <option>Public</option>
                   <option>Private</option>
                   <option>Friends Only</option>
-                </select>
+                </select> -->
               </fieldset>
             </right-section>
           </section>
