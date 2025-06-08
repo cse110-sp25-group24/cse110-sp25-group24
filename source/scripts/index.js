@@ -1,5 +1,7 @@
+import { initMapDisplay, insertAPIKey } from "./map.js";
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
+document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
 
 async function init() {
   // Show or hide side bar
@@ -48,4 +50,5 @@ async function init() {
       tag.style.color = "white";
     }
   });
+  initMapDisplay();
 }

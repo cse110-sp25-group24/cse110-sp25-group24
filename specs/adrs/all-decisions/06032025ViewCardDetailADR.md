@@ -16,7 +16,6 @@ When we click a card in grid view, we want to see a full description, a large pi
 - How to display the card detail
 - How to edit/delete cards
 
-
 ## Considered Options
 
 ### One HTML for one card
@@ -28,11 +27,9 @@ When we click a card in grid view, we want to see a full description, a large pi
 - When a user clicks a card in grid view, we actually go back to the create card page, but fill details for that card in it, so user can actually view the card detail, and can edit it if they like. Probably different portal leads to different functionality (clicking the edit button allows edit privilege, clicking the title will go to a view-only page)
 
 
-
-
 ## Decision Outcome
 
-### Reuse create card page
+### Reuse create card page - Decision
 
 - Since it's easier to implement, we are considering using this method to display card details.
 
@@ -50,15 +47,14 @@ When we click a card in grid view, we want to see a full description, a large pi
 
 ### Negative
 
--  One HTML for one card
+- One HTML for one card
   - Creating too many files, hard to track
+  
 - Reuse the create card page
   - View is relatively restricted(same as create card view)
 
-
 ### Confirmation
 
-- 
+
 
 ## Other Examples
-

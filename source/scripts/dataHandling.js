@@ -1,264 +1,184 @@
-// Store and Display a "Memory" using IndexedDB Issue # 30
+import * as dhf from "./dataHandlingFunctions.js";
+import { getPlace, initCreate } from "./create.js";
+import { retrieveMemory } from "./dataHandlingFunctions.js";
 
-// making sure all the content is loaded before handling the DB
-window.addEventListener("DOMContentLoaded", () => {
-  const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
+let postId;
+let lat = null;
+let long = null;
+let db = null;
 
-  // if database does not exist
-  request.onupgradeneeded = (event) => {
-    const db = request.result;
-    console.log("initializing db"); // debugging message
-    if (!db.objectStoreNames.contains("memories")) {
-      const store = db.createObjectStore("memories", {
-        keyPath: "post_id",
-        autoIncrement: true,
-      });
+window.addEventListener("DOMContentLoaded", init);
+document.getElementById("memory-form").addEventListener("submit", submitForm);
+document.getElementById("imageUpload").addEventListener("change", changeImg);
 
-      store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
-    }
-  };
+/**
+ * This function sets up the database, loads form data, and initializes location input.
+ */
 
-  let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
+async function init() {
+  db = await initDB();
 
-  // sanity checks for making sure the database is up
+  postId = await fillForm(db);
 
-  request.onsuccess = (event) => {
-    db = event.target.result;
-    console.log("db is up");
-    displayLatestMemory(db);
-  };
+  console.log("Curr lat", lat);
+  console.log("Curr lat", long);
+  console.log("PostID:", postId);
 
-  request.onerror = (event) => {
-    console.log("db err"); // works so far, seen
-  };
+  initCreate();
+}
+/**
+ * This function previews the uploaded image and makes sure only one file is selected.
+ */
 
-  // functions to hook up to the form for testing db functions
-  /**
-    Desired Content:
-    - display the most recent memory, placeholder if nothing submitted
-
-  */
-
-  const form = document.getElementById("memory-form");
-
-  /**
-   * Memory submission creation logic.
-   */
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const title = data.get("title");
-    const description = data.get("description");
-    const image = data.get("image");
-    const imageURL = await fileToDataUrl(image);
-    const date = new Date();
-    const locationTag = data.get("location");
-    const moodTags = data.getAll("mood");
-    const post = {
-      title: title,
-      description: description,
-      dateCreated: date,
-      image: imageURL,
-      location: locationTag,
-      mood: moodTags,
-    };
-
-    addMemory(post, db).then(() => displayLatestMemory(db));
-    event.target.reset();
-  });
+function changeImg() {
   const imageInput = document.getElementById("imageUpload");
   const imagePreview = document.getElementById("imagePreview");
+  const files = imageInput.files;
 
-  imageInput.addEventListener("change", () => {
-    const files = imageInput.files;
-
-    if (files.length > 1) {
-      alert("Please select only one image file.");
-      imageInput.value = "";
-      imagePreview.src = "";
-      return;
-    }
-
-    const file = files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      imagePreview.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-});
-
-/**
- * This function is written to display the latest memory that has been uploaded
- * to the IndexedDB MemoryDB.
- *
- * @param {IDBDatabase} db
- */
-async function displayLatestMemory(db) {
-  // getting the latest memory
-  // store is called memories
-
-  // using promise in checking to see if there are posts
-  isEmptyDB(db).then((result) => {
-    const mainElement = document.querySelector("preview");
-
-    if (mainElement === null) {
-      console.error("Main element not found.");
-      return;
-    }
-
-    mainElement.innerHTML = "";
-
-    if (result) {
-      // there are 0 posts
-      const placeholder = document.createElement("p");
-      placeholder.classList.add("placeholder");
-      placeholder.textContent = "No posts.";
-      mainElement.append(placeholder);
-    } else {
-      getLatestMemory(db).then((post) => {
-        console.log("snagging most recent memory");
-        // build the DOM
-        const card = document.createElement("article");
-        card.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.description}</p>
-            <img src="${post.image}" alt="${
-              post.title
-            }" style="max-width:150px; height:auto; display:block; margin:0.5em 0;"/>
-            <footer>Created: ${new Date(
-              post.dateCreated,
-            ).toLocaleString()}</footer>
-          `;
-        mainElement.appendChild(card);
-      });
-    }
-  });
-}
-
-/**
- * This function checks the MemoryDB to see if it is empty or not.
- *
- * @param {IDBDatabase} db
- * @returns {boolean} Returns `true` if db is empty, `false` if db is not empty.
- */
-function isEmptyDB(db) {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories");
-    const numPosts = store.count();
-
-    numPosts.onsuccess = () => {
-      console.log("zero posts");
-      resolve(numPosts.result === 0);
-    };
-
-    numPosts.onerror = () => {
-      console.log("error");
-      reject(numPosts.error);
-    };
-  });
-}
-
-/**
- * This function adds a memory to the MemoryDB.
- *
- * @param {{
- *   title: string,
- *   description: string,
- *   dateCreated: Date,
- *   image: string,
- *   location: string
- * }} post
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into a post being added.
- */
-function addMemory(post, db) {
-  // adding a memory to the database
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readwrite");
-    const store = tx.objectStore("memories");
-    const request = store.add(post);
-    request.onsuccess = () => {
-      const id = request.result;
-      console.log(`saved post ${id}`);
-      resolve(id);
-    };
-
-    request.onerror = () => {
-      console.log("error adding post");
-      reject(request.error);
-    };
-  });
-}
-
-/**
- * This function gets the latest memory uploaded to the db (by date).
- *
- * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into the latest memory.
- */
-function getLatestMemory(db) {
-  // just going to log the details to console atm
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories").index("dateCreated");
-    const request = store.openCursor(null, "prev");
-    request.onsuccess = () => {
-      const cursor = request.result;
-      resolve(cursor ? cursor.value : null); // return the cursor's value if cursor is not null
-    };
-
-    request.onerror = () => {
-      reject(request.error);
-    };
-  });
-}
-
-/**
- * This function deletes all the memoryes currently being stored.
- *
- * @param {IDBDatabase} db The database being deleted.
- */
-function deleteAllMemories(db) {
-  if (db) {
-    db.close();
+  if (files.length > 1) {
+    alert("Please select only one image file.");
+    imageInput.value = "";
+    imagePreview.src = "";
+    return;
   }
-  const deleteRequest = indexedDB.deleteDatabase("MemoryDB");
 
-  deleteRequest.onblocked = () => {
-    console.warn(
-      "Database deletion blocked: please close all other tabs using it.",
-    );
+  const file = files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    imagePreview.src = reader.result;
   };
-  deleteRequest.onerror = () => {
-    console.error("Error deleting database:", deleteRequest.error);
-  };
-  deleteRequest.onsuccess = () => {
-    console.log("Database deleted successfully.");
-    // reset? VERY rough
-    window.location.reload();
-  };
+  reader.readAsDataURL(file);
 }
 
-// reading the data as a URL
 /**
- *
- * @param {Blob} file
- * @returns {Promise} Promise that resolves into the image data URL
+ *This function handles form submission and saves or updates the memory in the database.
+ * @param {Event} event The form submission event.
  */
-function fileToDataUrl(file) {
+
+async function submitForm(event) {
+  event.preventDefault();
+  let form = document.getElementById("memory-form");
+  const data = new FormData(form);
+  const title = data.get("title");
+  const description = data.get("description");
+
+  const date = new Date();
+  const locationTag = data.get("location");
+  const moodTags = data.get("mood-text");
+
+  const imageInput = document.getElementById("imageUpload");
+  const imagePreview = document.getElementById("imagePreview");
+  let imageURL;
+
+  console.log("Img", imageInput);
+  //If the user picked a new image, convert and save it
+  if (imageInput.files && imageInput.files.length > 0) {
+    imageURL = await dhf.fileToDataUrl(imageInput.files[0]);
+  } else {
+    //if not just use the original image we backed up
+    imageURL = imagePreview.dataset.original || imagePreview.src;
+  }
+
+  let place = getPlace();
+
+  console.log(place);
+
+  // if you changed the place
+  if (place != null) {
+    lat = place.geometry.location.lat() + Math.random() * 0.0003;
+    long = place.geometry.location.lng() + Math.random() * 0.0003;
+  }
+
+  const post = {
+    title: title,
+    description: description,
+    dateCreated: date,
+    image: imageURL,
+    location: locationTag,
+    longitude: long,
+    latitude: lat,
+    mood: moodTags,
+  };
+
+  dhf.addMemory(post, db, postId);
+  console.table(post); // for debugging, post data is displayed in
+  event.target.reset();
+  window.location.href = "index.html";
+}
+/**
+ *This function loads an existing memory into the form for editing.
+ * @param {IDBDatabase} db The database to retrieve the memory from.
+ * @returns {number|null} The postId if editing, or null if creating a new memory.
+ */
+async function fillForm(db) {
+  postId = localStorage.getItem("postId");
+  if (postId != null) {
+    const form = document.getElementById("memory-form");
+
+    postId = parseInt(postId);
+    console.log("Post Id:", postId);
+    localStorage.removeItem("postId");
+
+    let memory = await retrieveMemory(postId, db);
+    console.log(memory);
+    form.elements["location"].value = memory.location;
+    form.elements["title"].value = memory.title;
+    form.elements["description"].value = memory.description;
+    form.elements["mood-text"].value = memory.mood;
+    //show the saved image in the preview
+    document.getElementById("imagePreview").src = memory.image;
+    //also keep a backup of that image in the case the user doesn't upload a new one
+    document.getElementById("imagePreview").dataset.original = memory.image;
+
+    lat = memory.latitude;
+    long = memory.longitude;
+
+    return postId;
+  } else {
+    lat = null;
+    long = null;
+    return null;
+  }
+}
+
+/**
+ * This function initializes the IndexedDB and creates object stores if needed.
+ *
+ * @returns {Promise<IDBDatabase>} A promise that resolves with the database instance.
+ */
+async function initDB() {
   return new Promise((resolve, reject) => {
-    // starting a new filereader
-    const reader = new FileReader();
+    const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
 
-    // startinghe promises
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(reader.error);
+    // if database does not exist
+    request.onupgradeneeded = (event) => {
+      const db = request.result;
 
-    // reading the file w default API --> is returned
-    reader.readAsDataURL(file);
+      console.log("initializing db");
+
+      if (!db.objectStoreNames.contains("memories")) {
+        const store = db.createObjectStore("memories", {
+          keyPath: "post_id",
+          autoIncrement: true,
+        });
+
+        store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
+      }
+    };
+
+    let db;
+
+    request.onsuccess = (event) => {
+      db = event.target.result;
+      console.log("db is up");
+      resolve(db);
+    };
+
+    request.onerror = (event) => {
+      console.error("db err");
+      reject(event.target.error);
+    };
   });
 }
