@@ -11,7 +11,7 @@
 
 // create IndexedDB memory for test
 export class IDBTrans {
-  objectStore(name) {
+  objectStore() {
     return new IDBObjectStore();
   }
 }
@@ -29,11 +29,64 @@ export class IDBObjectStore {
     return new IDBRequest(result);
   }
 
-  delete(key) {
+  openCursor() {
+    const dataValues = Object.values(this.data);
+    let index = 0;
+    let request = new IDBRequest();
+
+    // We need to keep track of the cursor object
+    const cursor = {
+      continue: () => {
+        index++;
+        if (index < dataValues.length) {
+          const currentCursor = {
+            value: dataValues[index],
+            continue: cursor.continue,
+          };
+          request.result = currentCursor;
+          setTimeout(() => {
+            request.onsuccess?.({ target: request });
+          }, 0);
+        } else {
+          request.result = null;
+          setTimeout(() => {
+            request.onsuccess?.({ target: request });
+          }, 0);
+        }
+      },
+    };
+
+    if (dataValues.length > 0) {
+      cursor.value = dataValues[index];
+      request.result = cursor;
+      setTimeout(() => {
+        request.onsuccess?.({ target: request });
+      }, 0);
+    } else {
+      request.result = null;
+      setTimeout(() => {
+        request.onsuccess?.({ target: request });
+      }, 0);
+    }
+    return request;
+  }
+
+  count() {
+    const request = new IDBRequest();
+    request.result = Object.keys(this.data).length;
+
+    setTimeout(() => {
+      request.onsuccess?.({ target: request });
+    }, 0);
+
+    return request;
+  }
+
+  delete() {
     return new IDBRequest();
   }
 
-  index(indexName) {
+  index() {
     return new IDBIndex(this.data);
   }
   add(post) {
@@ -76,7 +129,7 @@ export class IDBRequest {
 
 // mock implementation of the FileReader class for testing
 // creating a fake FileReader
-export class FileReader {
+export class MockFileReader {
   constructor() {
     this.onload = null;
     this.onerror = null;
@@ -116,7 +169,7 @@ export class IDBIndex {
     this.data = data;
   }
 
-  openCursor(_, direction) {
+  openCursor() {
     // Compute descending by dateCreated
     const values = Object.values(this.data).sort(
       (a, b) => b.dateCreated - a.dateCreated,
@@ -146,7 +199,7 @@ export class IDBDatabase {
     this.data = data; // key-value pairs for in-memory simulation
   }
 
-  transaction(storeName, mode) {
+  transaction() {
     // Simulates db.transaction("memories", "readonly");
     // Returns a mock transaction object that gives access to an object store
     return new IDBTransaction(new IDBObjectStore(this.data));
@@ -159,7 +212,7 @@ export class IDBTransaction {
     this.store = store;
   }
 
-  objectStore(name) {
+  objectStore() {
     // Mimics tx.objectStore("memories")
     return this.store;
   }
