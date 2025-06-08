@@ -71,6 +71,8 @@ const memoriesPage = `file:${path.resolve(__dirname, '../../memories.html')}`;
   // Go to the memories display page
   await page.goto(memoriesPage);
 
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   // Wait for memory cards to be displayed
   await page.waitForSelector('memories-grid', { timeout: 3000 });
 
