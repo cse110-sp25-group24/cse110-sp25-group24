@@ -103,8 +103,6 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
-  console.table(post);
-
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
