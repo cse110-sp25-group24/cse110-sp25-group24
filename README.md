@@ -61,4 +61,6 @@ npm test    # Run unit tests
 - Aruthan Raveendra
 - Noeh Parrales
 - Chris Enotiadis
+- William Widjaja
+- Myat Thiha
 
