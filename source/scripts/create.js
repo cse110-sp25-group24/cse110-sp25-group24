@@ -1,7 +1,7 @@
-/* File below implements creating a memory page. 
+/* File below implements creating a memory page.
  * File loads Google Maps Places API, allows user to type in a location,
- * and stores location information for the card. 
-*/
+ * and stores location information for the card.
+ */
 
 let autocomplete;
 let place; //location picked by user
@@ -10,7 +10,7 @@ const API_KEY_STORAGE = "googleMapsApiKLey";
 
 /**
  * Function run upon loading the page -- API key saved in localStorage
- * is sought after, then initAutocomplete() is run to hook up address search 
+ * is sought after, then initAutocomplete() is run to hook up address search
  * box
  */
 export function initCreate() {
@@ -56,16 +56,16 @@ function onPlaceChanged() {
 
   console.log(place.formatted_address);
   //latitudanal and longitudanal coordiantes saved specifically
-  console.log(place.geometry.location.lat()); 
+  console.log(place.geometry.location.lat());
   console.log(place.geometry.location.lng());
   console.log(typeof place);
 }
 
 /**
- * @param {any} apiKey 
- * @param {any} libraries 
+ * @param {any} apiKey
+ * @param {any} libraries
  * Function loads Google Maps if it isn't already loaded.
- * Potential refactoring needed 
+ * Potential refactoring needed
  */
 async function loadGoogleMaps(apiKey, libraries) {
   return new Promise((resolve, reject) => {

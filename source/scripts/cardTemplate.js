@@ -72,7 +72,7 @@ export function createCardContent(data) {
 }
 
 /**
- * Generates the complete HTML for a memory card calling on above helpers. 
+ * Generates the complete HTML for a memory card calling on above helpers.
  * @param {Object} data - The data for the memory card.
  * @returns {string} The HTML string for the memory card.
  */
