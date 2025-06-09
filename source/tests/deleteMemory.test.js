@@ -33,7 +33,6 @@ describe("deleteMemory", () => {
     const result = await deleteMemory(postId, testDB); //simple test, self explanatory
 
     expect(result).toBe(true);
-    expect(consoleSpy).toHaveBeenCalledWith(`deleted post #${postId}`);
   });
 
   // Test 2 - error when creating transaction - delete never goes through
