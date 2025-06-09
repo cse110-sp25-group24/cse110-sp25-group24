@@ -52,6 +52,5 @@ async function init() {
       tag.style.color = "white";
     }
   });
-  console.log("?PEEEPEE");
   initMapDisplay();
 }

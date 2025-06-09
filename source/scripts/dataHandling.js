@@ -7,9 +7,7 @@ let lat = null;
 let long = null;
 let db = null;
 
-window.addEventListener("DOMContentLoaded", init);
-document.getElementById("memory-form").addEventListener("submit", submitForm);
-document.getElementById("imageUpload").addEventListener("change", changeImg);
+window.addEventListener("DOMContentLoaded", await init);
 
 /**
  * This function sets up the database, loads form data, and initializes location input.
@@ -17,7 +15,8 @@ document.getElementById("imageUpload").addEventListener("change", changeImg);
 
 async function init() {
   db = await initDB();
-
+  document.getElementById("memory-form").addEventListener("submit", submitForm);
+  document.getElementById("imageUpload").addEventListener("change", changeImg);
   postId = await fillForm(db);
 
   console.log("Curr lat", lat);
