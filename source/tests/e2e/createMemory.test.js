@@ -101,6 +101,34 @@ async function stopServer() {
     const memoryVisible = await shadow.$$eval('*', elements => elements.map(el => el.outerHTML));
     console.log('Memory data in UI:', memoryVisible);
 
+     // 7. Check for specific fields in memory card
+    const fieldChecks = await shadow.$$eval('*', elements => {
+      const content = elements.map(el => el.textContent).join(' ').toLowerCase();
+
+      return {
+        hasTitle: content.includes('test memory title'),
+        hasDescription: content.includes('this is a test description'),
+        hasLocation: content.includes('test location'),
+        hasMood: content.includes('happy'),
+        allMatch:
+          content.includes('test memory title') &&
+          content.includes('this is a test description') &&
+          content.includes('test location') &&
+          content.includes('happy')
+      };
+    });
+
+     if (fieldChecks.allMatch) {
+      console.log('✅ All memory fields correctly displayed in the UI!');
+    } else {
+      console.log('⚠️ Some fields are missing:');
+      if (!fieldChecks.hasTitle) console.log('❌ Missing: Title');
+      if (!fieldChecks.hasDescription) console.log('❌ Missing: Description');
+      if (!fieldChecks.hasLocation) console.log('❌ Missing: Location');
+      if (!fieldChecks.hasMood) console.log('❌ Missing: Mood');
+    }
+
+
     await new Promise(resolve => setTimeout(resolve, 20000));
 
     await console.log(memoryVisible
