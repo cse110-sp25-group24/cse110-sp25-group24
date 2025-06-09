@@ -1,19 +1,17 @@
-# 📍 MemoryMap — A Card-Based Location Sharing Web App
+# 📍 MemorySpot — A Card-Based Location Sharing Web App
 
 ## 🧠 Overview
 
-MemoryMap allows users to create memory “cards” that include location data, descriptions, and images. These are displayed on a map and are able to be shared with others of the app
-in a fashion similar to social media.
+MemorySpot allows users to create memory `cards` that include location data, descriptions, and images. These cards are displayed in conjunction with a map filled with markers to associate a `memory` with a `spot`.
 
 ---
 
 ## 🚀 Features
 
-- 📸 Add and display memory cards with title, image, and geolocation
-- 🗺 View all cards pinned on a shared map
-- 🔍 Filter/search memory cards
-- 📴 Potential Offline support via service worker (PWA)
-- 📱 Responsive design for desktop & ideally for mobile in future
+- 📸 Add, update, and delete cards with title, image, description, mood, and geolocation
+- 🗺 View all cards with pins on a shared map
+- 🔍 Filter memory cards
+- 📱 Responsive design for desktop & mobile
 
 ---
 
@@ -22,9 +20,9 @@ in a fashion similar to social media.
 ```bash
 git clone https://github.com/cse110-sp25-group24/cse110-sp25-group24.git
 cd cse110-sp25-group24/source
-npm install
-npm test    # Run unit tests
 ```
+
+and run on live server. Or, checkout our deployed page [here](https://cse110-sp25-group24.github.io/cse110-sp25-group24/)
 
 ---
 
@@ -33,22 +31,21 @@ npm test    # Run unit tests
 | Layer     | Tools / Libraries                     |
 | --------- | ------------------------------------- |
 | Front-End | HTML, CSS, JavaScript                 |
-| APIs      | Google Maps API (Places & Geocoding)  |
-| Storage   | IndexedDB + localStorage              |
-| Testing   | Jest                                  |
-| DevOps    | GitHub Actions (CI), ESLint, Prettier |
+| APIs      | Google Maps API                       |
+| Storage   | IndexedDB + LocalStorage              |
+| Testing   | Jest + Babel + Puppeteer              |
+| DevOps    | GitHub Actions, Prettier              |
 
 ---
 
 ## 🤝 Contributing
-
-[Contributing File](./CONTRIBUTING.md)
+To learn how to contribute, click [here](./CONTRIBUTING.md)
 
 --
 
 ## 🧾 Documentation
 
-[Link to team page.](/admin/team.md)
+[Link to all method documentation.](https://cse110-sp25-group24.github.io/cse110-sp25-group24/docs/)
 
 ---
 
@@ -57,9 +54,9 @@ npm test    # Run unit tests
 A few basic commands for running tests:
 
 1. Ensure `npm install` is run to install all dependencies first.
-2. To run a single test file, enter and run `npm test fileName.test.js` where 'fileName' is the test file you wish to run.
-3. To run all test files at once, enter and run `npx jest`.
-4. In case of end-to-end or 'e2e' tests that are implemented now or in the future, run `npm run test:ete`.
+2. To run a single test file, enter and run `npm test fileName.js` where 'fileName' is the test file you wish to run.
+3. In case of end-to-end ('e2e') tests, run `npm run test:e2e`.
+4. To run all test files at once, enter and run `npx jest`.
 
 ---
 
