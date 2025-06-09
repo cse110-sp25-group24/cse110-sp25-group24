@@ -1,6 +1,10 @@
+/* 
+Core visual part for constructing and saving memory cards
+*/
 import { cardTemplate } from "./cardTemplate.js";
 import { retrieveMemory } from "./dataHandlingFunctions.js";
 
+// Custom MemoryData tag utilizing Shadow DOM
 class MemoryData extends HTMLElement {
   constructor() {
     super();
@@ -24,7 +28,7 @@ class MemoryData extends HTMLElement {
       location: this.getAttribute("location") || "No Location Provided",
     };
 
-    this.shadowRoot.innerHTML = cardTemplate(data);
+    this.shadowRoot.innerHTML = cardTemplate(data); // Card rendering from import
 
     let link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
@@ -43,13 +47,13 @@ class MemoryData extends HTMLElement {
       const id = button.dataset.id;
       const key = `memory:${id}:${type}`;
 
-      // Get status from localStorage
+      // Get status from localStorage checking if key is active
       const isActive = localStorage.getItem(key) === "true";
       if (isActive) {
         button.classList.add("active");
       }
 
-      // Change status when clicked
+      // Change status when clicked & store to localStorage
       button.addEventListener("click", () => {
         const nowActive = button.classList.toggle("active");
         localStorage.setItem(key, nowActive);

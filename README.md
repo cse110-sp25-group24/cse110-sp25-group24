@@ -1,8 +1,59 @@
-# cse110-sp25-group24 
-## 📍 MemoryMap — A Card-Based Location Sharing Web App
-Contributors:
-- Phiroze Duggal
+# 📍 MemoryMap — A Card-Based Location Sharing Web App
+
+## 🧠 Overview
+
+MemoryMap allows users to create memory “cards” that include location data, descriptions, and images. These are displayed on a map and are able to be shared with others of the app 
+in a fashion similar to social media. 
+
+---
+
+## 🚀 Features
+
+- 📸 Add and display memory cards with title, image, and geolocation 
+- 🗺 View all cards pinned on a shared map
+- 🔍 Filter/search memory cards
+- 📴 Potential Offline support via service worker (PWA)
+- 📱 Responsive design for desktop & ideally for mobile in future
+  
+---
+
+## 🧪 Running the App locally: 
+
+```bash
+git clone https://github.com/cse110-sp25-group24/cse110-sp25-group24.git
+cd cse110-sp25-group24/source
+npm install
+npm test    # Run unit tests
+```
+---
+
+## 📦 Tech Stack
+
+| Layer        | Tools / Libraries                               |
+|--------------|-------------------------------------------------|
+| Front-End    | HTML, CSS, JavaScript                           |
+| APIs         | Google Maps API (Places & Geocoding)            |
+| Storage      | IndexedDB + localStorage                        |
+| Testing      | Jest                                            |
+| DevOps       | GitHub Actions (CI), ESLint, Prettier           |
+
+---
+
+## 🤝 Contributing
+
+[Contributing File](./CONTRIBUTING.md)
+
+-- 
+
+## 🧾 Documentation
+
+[Link to team page.](/admin/team.md)
+
+--- 
+
+## 👥 Team Members
 - Yilong Chen
+- Phiroze Duggal
 - Vincent Nguyen
 - Eric Song
 - Alexis Vega
@@ -11,35 +62,3 @@ Contributors:
 - Noeh Parrales
 - Chris Enotiadis
 
-## 🧠 Overview
-MemoryMap allows users to create memory “cards” that include location data, descriptions, and images. These are displayed on a map and are able to be shared with others of the app 
-in a fashion similar to social media. 
-
-## 🚀 Features
-- Add and display memory cards with title, image, and geolocation 
-- View all cards pinned on a shared map
-- Filter/search memory cards
-- Potential Offline support via service worker (PWA)
-- Mobile responsive design
-
-## 📦 Tech Stack
-- HTML, CSS, JavaScript
-- Google Maps API (geolocation)
-- Service Workers + localStorage / IndexedDB
-- Jest (for unit testing)
-- GitHub Actions (CI/CD)
-
-## 🧪 Running the App
-Clone the repo and open in VS Code:
-
-```bash
-git clone https://github.com/cse110-sp25-group24/cse110-sp25-group24.git
-cd cse110-sp25-group24 
-
-[PLEASE CLICK ME AND READ - CONTRIBUTING.md](./CONTRIBUTING.md)
-
-[Link to team page.](/admin/team.md)
-
-[Link to meeting notes in Google Docs.](https://docs.google.com/document/d/1f9ZLMGJCS6-3FiUDJU-ifnQMtGt3XDVBmZI8NAr7wgM/edit?usp=sharing)
-
-[Link to status video 1.](https://youtu.be/RckxGnDM8vM)
