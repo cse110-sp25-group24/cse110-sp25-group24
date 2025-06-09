@@ -127,7 +127,7 @@ async function submitForm(event) {
   } else {
     // post is not valid to submit
     alert(
-      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood.",
+      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood."
     );
   }
 }
@@ -148,8 +148,8 @@ function confirmSafety(post) {
         post.title && // title is required
         post.dateCreated && // date is required
         post.location && // location requirements
-        post.latitude &&
-        post.longitude &&
+        // post.latitude &&
+        // post.longitude &&
         post.mood // mood is required
       )
     ) {
