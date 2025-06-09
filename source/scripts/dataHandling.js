@@ -103,11 +103,6 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
-  await dhf.addMemory(post, db, postId);
-  console.table(post); // for debugging, post data is displayed in
-  event.target.reset();
-  window.location.href = "index.html";
-
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
@@ -126,7 +121,7 @@ async function submitForm(event) {
   } else {
     // post is not valid to submit
     alert(
-      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood.",
+      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood."
     );
   }
 }
