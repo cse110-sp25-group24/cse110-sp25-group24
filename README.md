@@ -1,30 +1,35 @@
 # 📍 MemorySpot — A Card-Based Location Sharing Web App
 
-## 🧠 Overview
+## Project Overview
 
-MemorySpot allows users to create memory `cards` that include location data, descriptions, and images. These cards are displayed in conjunction with a map filled with markers to associate a `memory` with a `spot`.
+This project was made for our CSE 110: Software Engineering Spring 2025 Course, under supervision of our Professor, Thomas Powell, and our TA, Devanshi Chadha. All developpers on this project were randomly assigned into this group in order for us to practice the AGILE practices that we learned in class. Since our experiences in development differ widely, the course staff have decided to restrict our project to **`LOCAL FIRST`** built with `Native Web-app Components` for a `CRUD` web-app.
+
+Due to the time constraints of this course, we were not able to fully all our intended features, most dissaponintingly using service workers to cache our application in case of a network cut-off. However, we have laid the foundation to do by choosing technologies that enable graceful degradation (for our crucial app features to function).
 
 ---
 
+## Application Overview
+**MemorySpot** allows users to create memory `cards` that include location data, descriptions, and images. These cards are displayed in conjunction with a map filled with markers to associate a `memory` with a `spot`.
+
 ## 🚀 Features
 
-- 📸 Add, update, and delete cards with title, image, description, mood, and geolocation
-- 🗺 View all cards with pins on a shared map
-- 🔍 Filter memory cards
+- 📸 `Create`, `update`, and `delete` cards with title, image, description, mood, and geolocation
+- 🗺 View (`read`) all cards with or without a shared map with markers
+- 🔍 Filter memory cards based off of moods
 - 📱 Responsive design for desktop & mobile
 
 ---
 
-## 🧪 Running the App locally:
+## 🧪 Running the App:
 
 ```bash
 git clone https://github.com/cse110-sp25-group24/cse110-sp25-group24.git
 cd cse110-sp25-group24/source
 ```
 
-and run on live server. Or, checkout our deployed page [here](https://cse110-sp25-group24.github.io/cse110-sp25-group24/)
+and run on `live server` extension starting at `source/index.html`. Or, checkout our deployed page [here](https://cse110-sp25-group24.github.io/cse110-sp25-group24/)
 
-Since this project is restricted to native web components, we as a team have decided that you will need your own Google Map API key for security reasons. For more information on this decision, please reference this [ADR](./specs/adrs/all-decisions/06062025APIKeyADR.md). Due to time constraints of the project, we were not able to follow through with our vision. 
+Since this project is restricted to `native web components`, we as a team have decided that you will need your own `Google Map API` key for security reasons. For more information on this decision, please reference this [ADR](./specs/adrs/all-decisions/06062025APIKeyADR.md). (Due to time constraints of the project, we were not able to follow through with our vision) 
 
  If you would like an API key, you can do one of the following: 
 
@@ -46,18 +51,22 @@ Then, enable the the following APIs:
 
 ## 📦 Tech Stack
 
-| Layer     | Tools / Libraries                     |
-| --------- | ------------------------------------- |
-| Front-End | HTML, CSS, JavaScript                 |
-| APIs      | Google Maps API                       |
-| Storage   | IndexedDB + LocalStorage              |
-| Testing   | Jest + Babel + Puppeteer              |
-| DevOps    | GitHub Actions, Prettier              |
+| Layer     | Tools / Libraries                         |
+| --------- | ----------------------------------------- |
+| Front-End | HTML, CSS, JavaScript                     |
+| APIs      | Google Maps API                           |
+| Storage   | IndexedDB + LocalStorage (LOCAL FIRST!)   |
+| Testing   | Jest + Babel + Puppeteer                  |
+| DevOps    | GitHub Actions, Prettier                  |
 
 ---
 
+Note: Node dependencies are not required to run the app, but are required for linting and testing in our CI/CD pipeline. 
+
 ## 🤝 Contributing
 To learn how to contribute, click [here](./CONTRIBUTING.md)
+
+Note: we appologise for the large amount of tech debt and inconsistency in our efforts. This is a diverse team with a wide range of relevant skills in development and working experience. While some may have prefered to be 10x devs we wanted to allow the opportunity for our less experienced members to have a chance to learn and contribute; some devs seized this learning opportunity while others had different priorities, which led to procrastination of the project. 
 
 --
 
@@ -78,16 +87,16 @@ A few basic commands for running tests:
 
 ---
 
-## 👥 Team Members
+## 👥 Team Members & Roles
 
-- Yilong Chen
-- Phiroze Duggal
-- Vincent Nguyen
-- Eric Song
-- Alexis Vega
-- Thanh-Long Nguyen Trong (TL)
-- Aruthan Raveendra
-- Noeh Parrales
-- Chris Enotiadis
-- William Widjaja
-- Myat Thiha
+- William Widjaja (Co-Lead): Fullstack + QA + DevOps
+- Alexis Vega (Co-lead): UI/UX Designer + Front-end
+- Thanh-Long Nguyen Trong (TL): Fullstack + QA + DevOps
+- Eric Song: Backend
+- Myat Thiha: Backend
+- Aruthan Raveendra: Backend
+- Vincent Nguyen: QA
+- Noeh Parrales: Front-end + QA
+- Chris Enotiadis: Front-end + QA
+- Yilong Chen: Backend
+- Phiroze Duggal 
