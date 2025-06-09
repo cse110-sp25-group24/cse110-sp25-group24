@@ -201,7 +201,7 @@ form-container::-webkit-scrollbar-thumb:hover {
   }
 }
 
-select#mood {
+select#mood-text {
   width: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
