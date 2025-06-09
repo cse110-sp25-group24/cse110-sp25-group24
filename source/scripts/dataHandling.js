@@ -59,7 +59,6 @@ function changeImg() {
  */
 
 async function submitForm(event) {
-  console.log("REACHED LINE 62");
   event.preventDefault();
   let form = document.getElementById("memory-form");
   const data = new FormData(form);
@@ -105,7 +104,6 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
-  console.log("REACHED 107");
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
@@ -124,7 +122,7 @@ async function submitForm(event) {
   } else {
     // post is not valid to submit
     alert(
-      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood."
+      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood.",
     );
   }
 }
