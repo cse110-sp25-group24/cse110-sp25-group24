@@ -46,7 +46,7 @@ describe("E2E Test: Create Memory", () => {
   test("should create a new memory and display it in the UI", async () => {
     await startServer();
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     try {
