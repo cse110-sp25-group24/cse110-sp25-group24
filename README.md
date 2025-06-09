@@ -51,6 +51,16 @@ npm test    # Run unit tests
 
 --- 
 
+## Running Tests / Instructions
+
+A few basic commands for running tests:
+1. Ensure `npm install` is run to install all dependencies first.
+2. To run a single test file, enter and run `npm test fileName.test.js` where 'fileName' is the test file you wish to run.
+3. To run all test files at once, enter and run `npx jest`.
+4. In case of end-to-end or 'e2e' tests that are implemented now or in the future, run `npm run test:ete`. 
+
+---
+
 ## 👥 Team Members
 - Yilong Chen
 - Phiroze Duggal

@@ -31,7 +31,7 @@
  - Agile - Retrospective
 
 # Agenda Part 1: Standup Up (55 minutes)
-# Agenda Part 2: Retrospective (20-30 minutes)
+# Agenda Part 2: Retroactive (20-30 minutes)
 
 # Notes: 
 - End to end testing check in with TL
