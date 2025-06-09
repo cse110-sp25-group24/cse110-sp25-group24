@@ -37,7 +37,7 @@ export function isEmptyDB(db) {
  *   location: string
  * }} post
  * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into a post being added.
+ * @returns {Promise} Promise that resolves into a post being added--this would be the post id.
  */
 export function addMemory(post, db, post_id) {
   // change name to save memory?
@@ -58,15 +58,14 @@ export function addMemory(post, db, post_id) {
       request = store.add(post);
     }
 
-    request.onsuccess = () => {
-      const id = request.result;
+    request.onsuccess = async () => {
+      const id = await request.result;
       console.log(`saved post ${id}`);
       resolve(id);
     };
-
-    request.onerror = () => {
+    request.onerror = async () => {
       console.error("error adding post");
-      reject(request.error);
+      reject(await request.error);
     };
   });
 }
