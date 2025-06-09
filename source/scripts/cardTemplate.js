@@ -1,11 +1,13 @@
 /**
  * Generates the HTML for the memory photo section of a card.
+ * Builds top part of card and displays it with image.
  * @param {Object} data - The data for the memory card.
  * @param {string} data.post_id - The unique ID of the memory post.
  * @param {string} data.img - The URL of the image.
  * @param {string} [data.img_alt] - The alt text for the image.
  * @returns {string} The HTML string for the memory photo section.
  */
+
 export function createMemoryPhoto(data) {
   console.log("cardTemplate data", data);
   return `
@@ -46,7 +48,7 @@ export function createCardMeta(data) {
 }
 
 /**
- * Generates the HTML for the content section of a card.
+ * Generates the HTML for the content section of a card -- main content area below image
  * @param {Object} data - The data for the memory card.
  * @param {string} data.link - The URL for the memory's external link.
  * @param {string} data.title - The title of the memory.
@@ -70,7 +72,7 @@ export function createCardContent(data) {
 }
 
 /**
- * Generates the complete HTML for a memory card.
+ * Generates the complete HTML for a memory card calling on above helpers.
  * @param {Object} data - The data for the memory card.
  * @returns {string} The HTML string for the memory card.
  */

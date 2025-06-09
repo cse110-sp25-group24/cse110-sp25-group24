@@ -1,8 +1,18 @@
+/* File below implements creating a memory page.
+ * File loads Google Maps Places API, allows user to type in a location,
+ * and stores location information for the card.
+ */
+
 let autocomplete;
-let place;
+let place; //location picked by user
 
 const API_KEY_STORAGE = "googleMapsApiKLey";
 
+/**
+ * Function run upon loading the page -- API key saved in localStorage
+ * is sought after, then initAutocomplete() is run to hook up address search
+ * box
+ */
 export function initCreate() {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
 
@@ -18,6 +28,7 @@ export function initCreate() {
  * Initializes the Google Places Autocomplete widget on the input element with id "location".
  * Configures autocomplete to restrict results to US geocoded addresses and limits the
  * fields returned to optimize performance.
+ * Function sets up search bar, currently set to US locations only.
  */
 function initAutocomplete() {
   const input = document.getElementById("location");
@@ -44,12 +55,18 @@ function onPlaceChanged() {
   }
 
   console.log(place.formatted_address);
+  //latitudanal and longitudanal coordiantes saved specifically
   console.log(place.geometry.location.lat());
   console.log(place.geometry.location.lng());
   console.log(typeof place);
 }
 
-// dupe method, try to refactor if possible
+/**
+ * @param {any} apiKey
+ * @param {any} libraries
+ * Function loads Google Maps if it isn't already loaded.
+ * Potential refactoring needed
+ */
 async function loadGoogleMaps(apiKey, libraries) {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
@@ -69,6 +86,7 @@ async function loadGoogleMaps(apiKey, libraries) {
   });
 }
 
+// place object returned
 export function getPlace() {
   return place;
 }

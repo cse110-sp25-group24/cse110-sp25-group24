@@ -106,15 +106,14 @@ export function addMemory(post, db, post_id) {
       request = store.add(post);
     }
 
-    request.onsuccess = () => {
-      const id = request.result;
+    request.onsuccess = async () => {
+      const id = await request.result;
       console.log(`saved post ${id}`);
       resolve(id);
     };
-
-    request.onerror = () => {
+    request.onerror = async () => {
       console.error("error adding post");
-      reject(request.error);
+      reject(await request.error);
     };
   });
 }

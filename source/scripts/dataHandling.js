@@ -103,6 +103,11 @@ async function submitForm(event) {
     mood: moodTags,
   };
 
+  await dhf.addMemory(post, db, postId);
+  console.table(post); // for debugging, post data is displayed in
+  event.target.reset();
+  window.location.href = "index.html";
+
   if (confirmSafety(post)) {
     // post is valid to submit
     // future considerations; should really clear the form only when the post is successfully added
@@ -142,8 +147,8 @@ function confirmSafety(post) {
         post.title && // title is required
         post.dateCreated && // date is required
         post.location && // location requirements
-        post.latitude &&
-        post.longitude &&
+        // post.latitude &&
+        // post.longitude &&
         post.mood // mood is required
       )
     ) {

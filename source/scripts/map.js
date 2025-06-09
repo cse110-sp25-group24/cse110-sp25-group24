@@ -3,12 +3,29 @@ import { getAllLocations, initDB } from "./dataHandlingFunctions.js";
 
 /*---------Global Variables---------*/
 
+/**
+ * Holds the initialized Google Maps map instance.
+ * @type {google.maps.Map|null}
+ */
 let map = null;
+
+/**
+ * The key used for storing/retrieving the Google Maps API key from localStorage.
+ * @type {string}
+ */
 const API_KEY_STORAGE = "googleMapsApiKLey";
 let db = null;
 
 /*---------General Google Maps API functions---------*/
 
+/**
+ * Dynamically loads the Google Maps JavaScript API.
+ *
+ * @param {string} apiKey - The user's Google Maps API key.
+ * @param {string} [lib=""] - Optional Google Maps libraries to include (e.g., "marker").
+ * @param {boolean} [removeInput=true] - Whether to remove the API key input elements after loading.
+ * @returns {Promise<void>} Resolves when the API is loaded successfully; rejects if it fails.
+ */
 export function loadGoogleMaps(apiKey, lib = "", removeInput = true) {
   return new Promise((resolve, reject) => {
     let script = document.createElement("script");
@@ -35,6 +52,10 @@ export function loadGoogleMaps(apiKey, lib = "", removeInput = true) {
   });
 }
 
+/**
+ * Handles user input of the API key and starts loading the map.
+ * Validates input, stores the key, loads the map, and populates it with markers.
+ */
 export function insertAPIKey() {
   const apiKey = document.getElementById("apiKeyInput").value.trim();
   if (!apiKey) {
@@ -53,6 +74,14 @@ export function insertAPIKey() {
 
 /*---------------Map Specific Functions---------------*/
 
+/**
+ * Initializes the map display by opening the IndexedDB database and rendering saved locations.
+ * Also loads the Google Maps API if an API key is stored.
+ *
+ * @async
+ * @function
+ * @returns {Promise<void>} Resolves when the map is ready.
+ */
 export async function initMapDisplay() {
   return new Promise(async (resolve, reject) => {
     db = await initDB();
