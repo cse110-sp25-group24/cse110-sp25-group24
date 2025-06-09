@@ -9,7 +9,6 @@
  */
 
 export function createMemoryPhoto(data) {
-  console.log("cardTemplate data", data);
   return `
     <memory-photo>
       <button

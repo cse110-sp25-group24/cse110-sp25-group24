@@ -19,10 +19,6 @@ async function init() {
   document.getElementById("imageUpload").addEventListener("change", changeImg);
   postId = await fillForm(db);
 
-  console.log("Curr lat", lat);
-  console.log("Curr lat", long);
-  console.log("PostID:", postId);
-
   initCreate();
 }
 
@@ -72,8 +68,6 @@ async function submitForm(event) {
   const imagePreview = document.getElementById("imagePreview");
   let imageURL;
 
-  console.log("Img", imageInput);
-
   //If the user picked a new image, convert and save it
   if (imageInput.files && imageInput.files.length > 0) {
     imageURL = await dhf.fileToDataUrl(imageInput.files[0]);
@@ -83,8 +77,6 @@ async function submitForm(event) {
   }
 
   let place = getPlace();
-
-  console.log(place);
 
   // if you changed the place
   if (place != null) {
@@ -108,7 +100,6 @@ async function submitForm(event) {
     // future considerations; should really clear the form only when the post is successfully added
     const newPost = dhf.addMemory(post, db, postId);
     if (newPost) {
-      console.log(`new post ${newPost} made`);
       console.table(post); // for debugging, post data is displayed in
       event.target.reset(); // resets form to the original state
       window.location.href = "index.html";
@@ -148,17 +139,14 @@ function confirmSafety(post) {
       )
     ) {
       console.table(post);
-      console.log("required check failed");
       return false;
     }
-    console.log("required check passed");
     // length safety checks
     if (
       post.title.length <= 20 &&
       post.description.length <= 500 &&
       post.mood.length <= 20
     ) {
-      console.log("length passed");
       // double checking
       console.table({
         titleLength: post.title.length,
@@ -188,11 +176,9 @@ async function fillForm(db) {
     const form = document.getElementById("memory-form");
 
     postId = parseInt(postId);
-    console.log("Post Id:", postId);
     localStorage.removeItem("postId");
 
     let memory = await retrieveMemory(postId, db);
-    console.log(memory);
     form.elements["location"].value = memory.location;
     form.elements["title"].value = memory.title;
     form.elements["description"].value = memory.description;

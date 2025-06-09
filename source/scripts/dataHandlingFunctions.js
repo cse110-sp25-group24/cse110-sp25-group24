@@ -11,8 +11,6 @@ export async function initDB() {
     request.onupgradeneeded = (event) => {
       const db = request.result;
 
-      console.log("initializing db");
-
       if (!db.objectStoreNames.contains("memories")) {
         const store = db.createObjectStore("memories", {
           keyPath: "post_id",
@@ -27,7 +25,6 @@ export async function initDB() {
 
     request.onsuccess = (event) => {
       db = event.target.result;
-      console.log("db is up");
       resolve(db);
     };
 
@@ -59,16 +56,10 @@ export function isEmptyDB(db) {
     const numPosts = store.count();
 
     numPosts.onsuccess = () => {
-      if (numPosts.result === 0) {
-        console.log("zero posts");
-      } else {
-        console.log(`${numPosts.result} posts`);
-      }
       resolve(numPosts.result === 0);
     };
 
     numPosts.onerror = () => {
-      console.log("error");
       reject(numPosts.error);
     };
   });
@@ -94,21 +85,16 @@ export function addMemory(post, db, post_id) {
     const tx = db.transaction("memories", "readwrite");
     const store = tx.objectStore("memories");
     let request;
-    console.log("Post:", post);
-    console.log("Post Id:", post_id);
 
     if (post_id != null) {
-      console.log("here!");
       post.post_id = post_id;
       request = store.put(post);
     } else {
-      console.log("there!");
       request = store.add(post);
     }
 
     request.onsuccess = async () => {
       const id = await request.result;
-      console.log(`saved post ${id}`);
       resolve(id);
     };
     request.onerror = async () => {
@@ -138,7 +124,6 @@ export function deleteAllMemories(db) {
     console.error("Error deleting database:", deleteRequest.error);
   };
   deleteRequest.onsuccess = () => {
-    console.log("Database deleted successfully.");
     // reset? VERY rough
     window.location.reload();
   };
@@ -158,8 +143,6 @@ export function fileToDataUrl(file) {
     }
     // starting a new filereader
     const reader = new FileReader();
-
-    console.log(reader.result);
 
     // startinghe promises
     reader.onload = () => resolve(reader.result);
@@ -188,7 +171,6 @@ export function retrieveMemory(post_id, db) {
     } catch (err) {
       reject(err);
     }
-    console.log(post_id);
     // grabbing the post
     const request = store.get(post_id);
 
@@ -199,7 +181,6 @@ export function retrieveMemory(post_id, db) {
         console.error("could not find the memory!");
         reject(null);
       } else {
-        console.log(`retrieved post #${post_id}`);
         resolve(memory);
       }
     };
@@ -232,7 +213,6 @@ export function deleteMemory(post_id, db) {
     // deleting the post
     const request = store.delete(post_id);
     request.onsuccess = () => {
-      console.log(`deleted post #${post_id}`);
       resolve(true);
     };
     request.onerror = () => {

@@ -12,8 +12,6 @@ window.addEventListener("DOMContentLoaded", () => {
   request.onupgradeneeded = (event) => {
     const db = request.result;
 
-    console.log("initializing db"); // debugging message
-
     if (!db.objectStoreNames.contains("memories")) {
       const store = db.createObjectStore("memories", {
         keyPath: "post_id",
@@ -28,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   request.onsuccess = (event) => {
     db = event.target.result;
-    console.log("db is up, displaying all the memories now");
     displayAllMemories(db);
   };
 
@@ -70,7 +67,6 @@ function displayAllMemories(db) {
       } else {
         moodFilter = "All Moods"; // display all by default
       }
-      console.log(moodFilter);
       const tx = db.transaction("memories", "readonly");
       const store = tx.objectStore("memories").index("dateCreated");
       const request = store.openCursor(null, "prev");
@@ -80,7 +76,6 @@ function displayAllMemories(db) {
         if (cursor) {
           cnt += 1;
           const post = cursor.value;
-          console.log(post.mood);
           if (moodFilter == "All Moods" || post.mood == moodFilter) {
             //create a card for the post
             const card = document.createElement("memory-data");
@@ -131,7 +126,6 @@ function deleteListener(cardElement, id, db) {
       if (confirmed) {
         deleteMemory(id, db);
         cardElement.remove(); // Remove from DOM
-        console.log(`Deleted memory with id: ${id}`);
       }
     });
   }
@@ -151,7 +145,6 @@ function editListener(cardElement, id, db) {
       // store post id into local storage
       localStorage.setItem("postId", id);
       window.location.href = "create.html";
-      console.log(`Edited memory with id: ${id}`);
     });
   }
 }

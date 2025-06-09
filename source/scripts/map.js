@@ -92,7 +92,6 @@ export async function initMapDisplay() {
           initMap();
           populateMap(map, db);
         });
-        resolve(console.log("map initialized"));
       }
     } catch (err) {
       reject(err);
@@ -107,7 +106,6 @@ export async function initMapDisplay() {
  *
  */
 function initMap() {
-  console.log("INITIALIZING MAP");
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 32.8802, lng: -117.2392 }, // San Diego
     zoom: 10,
@@ -119,12 +117,10 @@ function initMap() {
 }
 
 function populateMap(map, db) {
-  console.log("POPULATING MAP");
   getAllLocations(db).then((coords) => {
     // coords list from the memories stored in db
     for (let marker of coords) {
       const [lat, long, title] = marker;
-      console.table(marker);
       addMarker(map, lat, long, title);
     }
   });
@@ -138,8 +134,6 @@ function populateMap(map, db) {
  * @param {string} [title=""] - Optional title text for the marker tooltip.
  */
 function addMarker(map, lat, lng, title = "") {
-  console.log("Attempting to add marker", lat, lng, title);
-
   // let marker = new google.maps.Marker({
   //   // legacy code
   //   position: new google.maps.LatLng(lat, lng),

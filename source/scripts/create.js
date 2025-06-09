@@ -17,7 +17,6 @@ export function initCreate() {
   const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
 
   if (savedApiKey) {
-    console.log(savedApiKey);
     loadGoogleMaps(savedApiKey, "places").then(() => {
       initAutocomplete();
     });
@@ -50,15 +49,8 @@ function onPlaceChanged() {
 
   if (!place.geometry) {
     // User entered something that was not suggested
-    console.log("No details available for input: '" + place.name + "'");
     return;
   }
-
-  console.log(place.formatted_address);
-  //latitudanal and longitudanal coordiantes saved specifically
-  console.log(place.geometry.location.lat());
-  console.log(place.geometry.location.lng());
-  console.log(typeof place);
 }
 
 /**
