@@ -100,12 +100,10 @@ async function submitForm(event) {
     // future considerations; should really clear the form only when the post is successfully added
     const newPost = dhf.addMemory(post, db, postId);
     if (newPost) {
-      console.table(post); // for debugging, post data is displayed in
       event.target.reset(); // resets form to the original state
       window.location.href = "index.html";
     } else {
       // post not received by MemoryDB
-      console.error("Post not received by MemoryDB");
       event.target.reset(); // resets form to the original state
       window.location.href = "404.html";
     }
@@ -138,7 +136,6 @@ function confirmSafety(post) {
         post.mood // mood is required
       )
     ) {
-      console.table(post);
       return false;
     }
     // length safety checks
@@ -147,15 +144,8 @@ function confirmSafety(post) {
       post.description.length <= 500 &&
       post.mood.length <= 20
     ) {
-      // double checking
-      console.table({
-        titleLength: post.title.length,
-        descriptionLength: post.description.length,
-        moodLength: post.mood.length,
-      });
       return true;
     } else {
-      console.error("length failed");
       return false;
     }
   } catch (err) {
