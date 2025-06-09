@@ -24,7 +24,7 @@ class MemoryData extends HTMLElement {
       mood: this.getAttribute("mood"),
       title: this.getAttribute("title"),
       link: this.getAttribute("link"),
-      description: this.getAttribute("description"), 
+      description: this.getAttribute("description"),
       location: this.getAttribute("location") || "No Location Provided",
     };
 

@@ -76,18 +76,19 @@
 ## 🔑 **Key Takeaways**
 
 1. **Team bandwidth and participation were uneven, but we changed:**
-   - A small subset of team members was doing most of the work, especially in frontend refactoring and testing. However, by the middle week, the entire team starting picking up, and we were able to meet on Friday in person in order to get ahead on obligations and the code. 
+   - A small subset of team members was doing most of the work, especially in frontend refactoring and testing. However, by the middle week, the entire team starting picking up, and we were able to meet on Friday in person in order to get ahead on obligations and the code.
 2. **Communication needs to improve, period.:**
-   - Despite believing we communicated enough, we still ran into communication issues. We were able to get the tension resolved in the end, and everyone participated what they could, but better communication at the forefront would have made the entire coding process a lot smoother. 
+   - Despite believing we communicated enough, we still ran into communication issues. We were able to get the tension resolved in the end, and everyone participated what they could, but better communication at the forefront would have made the entire coding process a lot smoother.
 3. **We have a MVP, or at least somewhat.:**
-   - Due to various factors including people's exams/finals as well as last minute bugs, it was difficult to implement all the things we wished to implement. Thus, we focused on the basics hat would help our product function, as well as the tests. All in all, we believe we got a basic product going. 
+   - Due to various factors including people's exams/finals as well as last minute bugs, it was difficult to implement all the things we wished to implement. Thus, we focused on the basics hat would help our product function, as well as the tests. All in all, we believe we got a basic product going.
 
 ---
 
 ## 🚀 **Next Sprint Focus**
+
 None! Woo!
 
-**Next Retrospective:** 
+**Next Retrospective:**
 None left!
 
 **Artifacts:**
