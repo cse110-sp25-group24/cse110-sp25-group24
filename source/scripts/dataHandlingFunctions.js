@@ -1,4 +1,44 @@
 /**
+ * This function initializes the IndexedDB and creates object stores if needed.
+ *
+ * @returns {Promise<IDBDatabase>} A promise that resolves with the database instance.
+ */
+export async function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
+
+    // if database does not exist
+    request.onupgradeneeded = (event) => {
+      const db = request.result;
+
+      console.log("initializing db");
+
+      if (!db.objectStoreNames.contains("memories")) {
+        const store = db.createObjectStore("memories", {
+          keyPath: "post_id",
+          autoIncrement: true,
+        });
+
+        store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
+      }
+    };
+
+    let db;
+
+    request.onsuccess = (event) => {
+      db = event.target.result;
+      console.log("db is up");
+      resolve(db);
+    };
+
+    request.onerror = (event) => {
+      console.error("db err");
+      reject(event.target.error);
+    };
+  });
+}
+
+/**
  * This function checks the MemoryDB to see if it is empty or not.
  *
  * @param {IDBDatabase} db
@@ -6,8 +46,16 @@
  */
 export function isEmptyDB(db) {
   return new Promise((resolve, reject) => {
-    const tx = db.transaction("memories", "readonly");
-    const store = tx.objectStore("memories");
+    let tx;
+    let store;
+
+    try {
+      tx = db.transaction("memories", "readonly");
+      store = tx.objectStore("memories");
+    } catch (err) {
+      reject(err);
+    }
+
     const numPosts = store.count();
 
     numPosts.onsuccess = () => {
@@ -84,7 +132,7 @@ export function deleteAllMemories(db) {
 
   deleteRequest.onblocked = () => {
     console.warn(
-      "Database deletion blocked: please close all other tabs using it.",
+      "Database deletion blocked: please close all other tabs using it."
     );
   };
   deleteRequest.onerror = () => {

@@ -1,6 +1,8 @@
 import { initMapDisplay, insertAPIKey } from "./map.js";
 // Run the init() function when the page has loaded
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", async () => {
+  await init();
+});
 document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
 
 async function init() {
@@ -50,5 +52,6 @@ async function init() {
       tag.style.color = "white";
     }
   });
+  console.log("?PEEEPEE");
   initMapDisplay();
 }

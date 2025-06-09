@@ -63,7 +63,13 @@ function displayAllMemories(db) {
       return;
     } else {
       // getting the filters
-      const moodFilter = document.getElementById("mood-search").value;
+      const currentMood = document.getElementById("mood-search");
+      let moodFilter;
+      if (currentMood) {
+        moodFilter = currentMood.value;
+      } else {
+        moodFilter = "All Moods"; // display all by default
+      }
       console.log(moodFilter);
       const tx = db.transaction("memories", "readonly");
       const store = tx.objectStore("memories").index("dateCreated");
