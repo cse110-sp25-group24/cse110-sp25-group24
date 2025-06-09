@@ -1,6 +1,10 @@
+/* 
+Core visual part for constructing and saving memory cards
+*/
 import { cardTemplate } from "./cardTemplate.js";
 import { retrieveMemory } from "./dataHandlingFunctions.js";
 
+// Custom MemoryData tag utilizing Shadow DOM
 class MemoryData extends HTMLElement {
   constructor() {
     super();
@@ -12,15 +16,15 @@ class MemoryData extends HTMLElement {
     const date = new Date(rawDate);
 
     const data = {
-      card_id: this.getAttribute("card_id"), // weird
-      img: this.getAttribute("img"), // weird
-      img_alt: this.getAttribute("img_alt"), // weird...
+      card_id: this.getAttribute("card_id"),
+      img: this.getAttribute("img"),
+      img_alt: this.getAttribute("img_alt"),
       date: this.getAttribute("date"),
       formatted_date: `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
       mood: this.getAttribute("mood"),
       title: this.getAttribute("title"),
-      link: this.getAttribute("link"), // weird
-      description: this.getAttribute("description"), //
+      link: this.getAttribute("link"),
+      description: this.getAttribute("description"),
       location: this.getAttribute("location") || "No Location Provided",
     };
 
@@ -43,13 +47,13 @@ class MemoryData extends HTMLElement {
       const id = button.dataset.id;
       const key = `memory:${id}:${type}`;
 
-      // Get status from localStorage
+      // Get status from localStorage checking if key is active
       const isActive = localStorage.getItem(key) === "true";
       if (isActive) {
         button.classList.add("active");
       }
 
-      // Change status when clicked
+      // Change status when clicked & store to localStorage
       button.addEventListener("click", () => {
         const nowActive = button.classList.toggle("active");
         localStorage.setItem(key, nowActive);

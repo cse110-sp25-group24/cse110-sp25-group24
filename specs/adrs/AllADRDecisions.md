@@ -28,7 +28,6 @@ Each ADR will have a seperate document, but this will be the master document to 
 
 - This proposal outlines the workflow for creating and displaying memory entries using IndexedDB. When a user submits the Memory Creation Form, the data is stored in IndexedDB. Each stored memory is then dynamically displayed on the Memories Page and visually represented as a marker on the Memories Map.
 
-
 [6/3 - View Card Detail ADR](all-decisions/06032025ViewCardDetailADR.md)
 
 - This ADR propose an implementation of card detail and card editing view.
