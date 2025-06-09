@@ -26,6 +26,7 @@ async function init() {
 
   initCreate();
 }
+
 /**
  * This function previews the uploaded image and makes sure only one file is selected.
  */
@@ -114,11 +115,15 @@ async function submitForm(event) {
       window.location.href = "index.html";
     } else {
       // post not received by MemoryDB
-      console.error("this is where we would put a fallback");
+      console.error("Post not received by MemoryDB");
+      event.target.reset(); // resets form to the original state
+      window.location.href = "404.html";
     }
   } else {
     // post is not valid to submit
-    console.error("this is where we would put a fallback");
+    alert(
+      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood."
+    );
   }
 }
 
@@ -193,9 +198,11 @@ async function fillForm(db) {
     form.elements["title"].value = memory.title;
     form.elements["description"].value = memory.description;
     form.elements["mood-text"].value = memory.mood;
-    //show the saved image in the preview
+
+    // show the saved image in the preview
     document.getElementById("imagePreview").src = memory.image;
-    //also keep a backup of that image in the case the user doesn't upload a new one
+
+    // also keep a backup of that image in the case the user doesn't upload a new one
     document.getElementById("imagePreview").dataset.original = memory.image;
 
     lat = memory.latitude;
