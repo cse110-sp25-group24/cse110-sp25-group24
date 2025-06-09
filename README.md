@@ -46,6 +46,8 @@ Then, enable the the following APIs:
 * Maps JavaScript API
 * Places API
 * Places API (New)
+  
+These APIs allow for the creation of the map with its markers, and the autofill of the location in the memory create form.
 
 ---
 
