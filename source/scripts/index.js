@@ -10,7 +10,6 @@ import { initMapDisplay, insertAPIKey } from "./map.js";
  */
 window.addEventListener("DOMContentLoaded", init);
 
-
 /**
  * Adds a click event listener to the "Load Map" button
  * to insert the API key.
