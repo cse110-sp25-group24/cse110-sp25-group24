@@ -11,15 +11,9 @@ import puppeteer from 'puppeteer';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Get __dirname working in ES module context
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 // Define file paths
-const homePage = `file:${path.resolve(__dirname, '../../index.html')}`;
-const memoriesPage = `file:${path.resolve(__dirname, '../../memories.html')}`;
-
-const serveDir = path.resolve(__dirname, '../../'); // adjust if needed
+const currentDir = process.cwd();
+const serveDir = path.resolve(currentDir, './');
 const PORT = 8080;
 
 let server;
@@ -47,69 +41,70 @@ async function stopServer() {
   });
 }
 
-(async () => {
-  await startServer();
-  const browser = await puppeteer.launch({ headless: false });
-  try {
-    // 1. Open homepage
-    const page = await browser.newPage();
+describe('E2E Test: Create Memory', () => {
+  test('should create a new memory and display it in the UI', async () => {
+    await startServer();
+    const browser = await puppeteer.launch({ headless: false });
+    try {
+      // 1. Open homepage
+      const page = await browser.newPage();
 
-    const homePage = `http://localhost:${PORT}/index.html`;
-    const memoriesPage = `http://localhost:${PORT}/memories.html`;
+      const homePage = `http://localhost:${PORT}/index.html`;
+      const memoriesPage = `http://localhost:${PORT}/memories.html`;
 
-    await page.goto(homePage);
+      await page.goto(homePage);
 
-    // 2. Click "Create a New Memory"
-    const [createNav] = await Promise.all([
-      page.waitForNavigation(),
-      page.$$eval('button', (buttons) => {buttons[0].click();}),
-    ]);
+      // 2. Click "Create a New Memory"
+      const [createNav] = await Promise.all([
+        page.waitForNavigation(),
+        page.$$eval('button', (buttons) => {buttons[0].click();}),
+      ]);
 
-    console.log(`Create memory button redirects to: ${createNav.url()}`);
+      console.log(`Create memory button redirects to: ${createNav.url()}`);
 
-    // 3. Wait for form and fill it out
-    await page.waitForSelector('#memory-form');
-    await page.type('#title', 'Test Memory Title');
-    await page.type('#description', 'This is a test description');
-    await page.type('#location', 'Test Location');
-    await page.type('#mood-text', 'Happy');
+      // 3. Wait for form and fill it out
+      await page.waitForSelector('#memory-form');
+      await page.type('#title', 'Test Memory Title');
+      await page.type('#description', 'This is a test description');
+      await page.type('#location', 'Test Location');
+      await page.type('#mood-text', 'Happy');
 
 
-    const imageInput = await page.$('#imageUpload');
-    await imageInput.uploadFile(path.resolve(__dirname, 'image.png'));
+      const imageInput = await page.$('#imageUpload');
+      await imageInput.uploadFile(path.resolve(__dirname, 'image.png'));
 
-    // 4. Submit the form and wait for redirect
-    const [submitNav] = await Promise.all([
-      page.waitForNavigation(),
-      page.$$eval('button', (buttons) => {buttons[0].click();}),
-    ]);
+      // 4. Submit the form and wait for redirect
+      const [submitNav] = await Promise.all([
+        page.waitForNavigation(),
+        page.$$eval('button', (buttons) => {buttons[0].click();}),
+      ]);
 
-    console.log(`Submit button redirects to: ${submitNav.url()}`);
+      console.log(`Submit button redirects to: ${submitNav.url()}`);
 
-    // 5. Navigate to memories.html
-    const [memoryNav] = await Promise.all([
-      page.waitForNavigation(),
-      page.$$eval('a', (a) => {a[2].click();}),
-    ]);
+      // 5. Navigate to memories.html
+      const [memoryNav] = await Promise.all([
+        page.waitForNavigation(),
+        page.$$eval('a', (a) => {a[2].click();}),
+      ]);
 
-    console.log(`My Memories header redirects to: ${memoryNav.url()}`);
+      console.log(`My Memories header redirects to: ${memoryNav.url()}`);
 
-    // 6. Check if memory is present in the UI
-    const grid = await page.$('memory-data');
-    const shadow = await grid.getProperty('shadowRoot');
+      // 6. Check if memory is present in the UI
+      const grid = await page.$('memory-data');
+      const shadow = await grid.getProperty('shadowRoot');
 
-    const memoryVisible = await shadow.$$eval('*', elements => elements.map(el => el.outerHTML));
-    console.log('Memory data in UI:', memoryVisible);
+      const memoryVisible = await shadow.$$eval('*', elements => elements.map(el => el.outerHTML));
+      console.log('Memory data in UI:', memoryVisible);
 
-     // 7. Check for specific fields in memory card
-    const fieldChecks = await shadow.$$eval('*', elements => {
-      const content = elements.map(el => el.textContent).join(' ').toLowerCase();
+      // 7. Check for specific fields in memory card
+      const fieldChecks = await shadow.$$eval('*', elements => {
+        const content = elements.map(el => el.textContent).join(' ').toLowerCase();
 
-       return {
-    hasTitle: content.includes('test memory title'),
-    hasDescription: content.includes('this is a test description'),
-    hasLocation: content.includes('test location'),
-    hasMood: content.includes('happy'),
+        return {
+      hasTitle: content.includes('test memory title'),
+      hasDescription: content.includes('this is a test description'),
+      hasLocation: content.includes('test location'),
+      hasMood: content.includes('happy'),
   };
 });
 
@@ -120,7 +115,7 @@ expect(fieldChecks.hasLocation).toBe(true);
 expect(fieldChecks.hasMood).toBe(true);
 
 
-    await new Promise(resolve => setTimeout(resolve, 20000));
+   // await new Promise(resolve => setTimeout(resolve, 20000));
 
     await console.log(memoryVisible
       ? '✅ Memory successfully displayed in UI!'
@@ -132,4 +127,4 @@ expect(fieldChecks.hasMood).toBe(true);
     await browser.close();
     await stopServer();
   }
-})();
+})});

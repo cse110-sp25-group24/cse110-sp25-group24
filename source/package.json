@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "docs": "jsdoc -r scripts -d docs",
-    "test:e2e": "node tests/e2e/createMemory.test.js"
+    "test:e2e": "jest tests/e2e/createMemory.test.js"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
