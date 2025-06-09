@@ -148,8 +148,8 @@ function confirmSafety(post) {
         post.title && // title is required
         post.dateCreated && // date is required
         post.location && // location requirements
-        post.latitude &&
-        post.longitude &&
+        // post.latitude &&
+        // post.longitude &&
         post.mood // mood is required
       )
     ) {
