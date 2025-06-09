@@ -94,7 +94,7 @@ function displayAllMemories(db) {
             card.setAttribute("description", post.description);
             card.setAttribute(
               "location",
-              post.location || "No Location Provided"
+              post.location || "No Location Provided",
             );
 
             display.appendChild(card);
@@ -126,7 +126,7 @@ function deleteListener(cardElement, id, db) {
   if (deleteBtn) {
     deleteBtn.addEventListener("click", () => {
       const confirmed = window.confirm(
-        "Are you sure you want to delete this memory?"
+        "Are you sure you want to delete this memory?",
       );
       if (confirmed) {
         deleteMemory(id, db);

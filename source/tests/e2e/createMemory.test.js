@@ -105,7 +105,7 @@ describe("E2E Test: Create Memory", () => {
       const shadow = await grid.getProperty("shadowRoot");
 
       const memoryVisible = await shadow.$$eval("*", (elements) =>
-        elements.map((el) => el.outerHTML)
+        elements.map((el) => el.outerHTML),
       );
 
       // 7. Check for specific fields in memory card
@@ -132,7 +132,7 @@ describe("E2E Test: Create Memory", () => {
       await console.log(
         memoryVisible
           ? "✅ Memory successfully displayed in UI!"
-          : "❌ Memory not found in frontend."
+          : "❌ Memory not found in frontend.",
       );
     } catch (err) {
       console.error("❌ Test failed with error:", err);

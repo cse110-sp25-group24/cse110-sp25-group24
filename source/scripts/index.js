@@ -10,7 +10,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   await init();
 });
 
-
 /**
  * Initializes the page's interactive behavior.
  *
@@ -30,8 +29,8 @@ async function init() {
    * Adds a click event listener to the "Load Map" button
    * to insert the API key.
    */
-  document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);  
-  
+  document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
+
   // Show or hide side bar
   const modal = document.getElementById("memoryModal");
   const openBtn = document.getElementById("openModalBtn");
