@@ -1,15 +1,13 @@
 import * as dhf from "./dataHandlingFunctions.js";
 import { getPlace, initCreate } from "./create.js";
-import { retrieveMemory } from "./dataHandlingFunctions.js";
+import { retrieveMemory, initDB } from "./dataHandlingFunctions.js";
 
 let postId;
 let lat = null;
 let long = null;
 let db = null;
 
-window.addEventListener("DOMContentLoaded", init);
-document.getElementById("memory-form").addEventListener("submit", submitForm);
-document.getElementById("imageUpload").addEventListener("change", changeImg);
+window.addEventListener("DOMContentLoaded", await init);
 
 /**
  * This function sets up the database, loads form data, and initializes location input.
@@ -17,7 +15,8 @@ document.getElementById("imageUpload").addEventListener("change", changeImg);
 
 async function init() {
   db = await initDB();
-
+  document.getElementById("memory-form").addEventListener("submit", submitForm);
+  document.getElementById("imageUpload").addEventListener("change", changeImg);
   postId = await fillForm(db);
 
   console.log("Curr lat", lat);
@@ -219,44 +218,4 @@ async function fillForm(db) {
     long = null;
     return null;
   }
-}
-
-/**
- * This function initializes the IndexedDB and creates object stores if needed.
- *
- * @returns {Promise<IDBDatabase>} A promise that resolves with the database instance.
- */
-async function initDB() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
-
-    // if database does not exist
-    request.onupgradeneeded = (event) => {
-      const db = request.result;
-
-      console.log("initializing db");
-
-      if (!db.objectStoreNames.contains("memories")) {
-        const store = db.createObjectStore("memories", {
-          keyPath: "post_id",
-          autoIncrement: true,
-        });
-
-        store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
-      }
-    };
-
-    let db;
-
-    request.onsuccess = (event) => {
-      db = event.target.result;
-      console.log("db is up");
-      resolve(db);
-    };
-
-    request.onerror = (event) => {
-      console.error("db err");
-      reject(event.target.error);
-    };
-  });
 }

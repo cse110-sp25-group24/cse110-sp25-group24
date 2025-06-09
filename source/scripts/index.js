@@ -5,16 +5,10 @@
  */
 import { initMapDisplay, insertAPIKey } from "./map.js";
 
-/**
- * Runs the `init` function when the DOM is fully loaded.
- */
-window.addEventListener("DOMContentLoaded", init);
-
-/**
- * Adds a click event listener to the "Load Map" button
- * to insert the API key.
- */
-document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
+// Run the init() function when the page has loaded
+window.addEventListener("DOMContentLoaded", async () => {
+  await init();
+});
 
 /**
  * Initializes the page's interactive behavior.
@@ -31,6 +25,12 @@ document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
  */
 
 async function init() {
+  /**
+   * Adds a click event listener to the "Load Map" button
+   * to insert the API key.
+   */
+  document.getElementById("loadMapBtn").addEventListener("click", insertAPIKey);
+
   // Show or hide side bar
   const modal = document.getElementById("memoryModal");
   const openBtn = document.getElementById("openModalBtn");

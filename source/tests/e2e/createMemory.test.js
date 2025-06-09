@@ -14,7 +14,7 @@ import { fileURLToPath } from "url";
 // Define file paths
 const currentDir = process.cwd();
 const serveDir = path.resolve(currentDir, "./");
-let PORT; // whichever is free
+let PORT; // going to be whichever port is free
 
 let server;
 
@@ -78,6 +78,8 @@ describe("E2E Test: Create Memory", () => {
       const imageInput = await page.$("#imageUpload");
       await imageInput.uploadFile(path.resolve(__dirname, "image.png"));
 
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       // 4. Submit the form and wait for redirect
       const [submitNav] = await Promise.all([
         page.waitForNavigation(),
@@ -105,7 +107,6 @@ describe("E2E Test: Create Memory", () => {
       const memoryVisible = await shadow.$$eval("*", (elements) =>
         elements.map((el) => el.outerHTML),
       );
-      console.log("Memory data in UI:", memoryVisible);
 
       // 7. Check for specific fields in memory card
       const fieldChecks = await shadow.$$eval("*", (elements) => {
@@ -139,5 +140,5 @@ describe("E2E Test: Create Memory", () => {
       await browser.close();
       await stopServer();
     }
-  });
+  }, 20000);
 });

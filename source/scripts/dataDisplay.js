@@ -37,21 +37,40 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   // event listeners to do the filtering logic
-  const searchBar = document.getElementById("memory-search");
-  const moodBar = document.getElementById("mood-search");
+  const moodChange = document.getElementById("mood-search");
+
+  // filtering logic should only apply if there is a filter bar
+  if (moodChange) {
+    moodChange.addEventListener("change", () => {
+      displayAllMemories(db);
+    });
+  }
 });
 
 /**
  * This function is written to display all the memories from date descending.
  *
+ * There are additional filters--mood and search bar (currently only mood)
+ *
  * @param {IDBDatabase} db Database instance
+ *
  */
 function displayAllMemories(db) {
   isEmptyDB(db).then((empty) => {
     const display = document.querySelector("memories-grid");
+    display.innerHTML = ``; // to clear out the current cards
     if (empty) {
-      display.innerHTML = ``; //`<p> placeholder </p>`;
+      return;
     } else {
+      // getting the filters
+      const currentMood = document.getElementById("mood-search");
+      let moodFilter;
+      if (currentMood) {
+        moodFilter = currentMood.value;
+      } else {
+        moodFilter = "All Moods"; // display all by default
+      }
+      console.log(moodFilter);
       const tx = db.transaction("memories", "readonly");
       const store = tx.objectStore("memories").index("dateCreated");
       const request = store.openCursor(null, "prev");
@@ -61,27 +80,29 @@ function displayAllMemories(db) {
         if (cursor) {
           cnt += 1;
           const post = cursor.value;
-          // console.log(cnt);
-          //create a card for the post
-          const card = document.createElement("memory-data");
-          card.setAttribute("card_id", post.post_id);
-          card.setAttribute("img", post.image);
-          card.setAttribute("img_alt", post.description || "memory image");
-          card.setAttribute("date", post.dateCreated);
-          card.setAttribute("mood", post.mood);
-          card.setAttribute("title", post.title);
-          card.setAttribute("link", post.link);
-          card.setAttribute("description", post.description);
-          card.setAttribute(
-            "location",
-            post.location || "No Location Provided",
-          );
+          console.log(post.mood);
+          if (moodFilter == "All Moods" || post.mood == moodFilter) {
+            //create a card for the post
+            const card = document.createElement("memory-data");
+            card.setAttribute("card_id", post.post_id);
+            card.setAttribute("img", post.image);
+            card.setAttribute("img_alt", post.description || "memory image");
+            card.setAttribute("date", post.dateCreated);
+            card.setAttribute("mood", post.mood);
+            card.setAttribute("title", post.title);
+            card.setAttribute("link", post.link);
+            card.setAttribute("description", post.description);
+            card.setAttribute(
+              "location",
+              post.location || "No Location Provided",
+            );
 
-          display.appendChild(card);
-          setTimeout(() => {
-            deleteListener(card, post.post_id, db);
-            editListener(card, post.post_id, db);
-          }, 0);
+            display.appendChild(card);
+            setTimeout(() => {
+              deleteListener(card, post.post_id, db);
+              editListener(card, post.post_id, db);
+            }, 0);
+          }
           cursor.continue();
         }
       };

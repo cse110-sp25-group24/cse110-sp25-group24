@@ -1,4 +1,4 @@
-import { getAllLocations } from "./dataHandlingFunctions.js";
+import { getAllLocations, initDB } from "./dataHandlingFunctions.js";
 // Implement Base Map Issue #32
 
 /*---------Global Variables---------*/
@@ -14,6 +14,7 @@ let map = null;
  * @type {string}
  */
 const API_KEY_STORAGE = "googleMapsApiKLey";
+let db = null;
 
 /*---------General Google Maps API functions---------*/
 
@@ -67,6 +68,7 @@ export function insertAPIKey() {
   loadGoogleMaps(apiKey, "marker").then(() => {
     initMap();
     populateMap(map, db);
+    // window.location.href = "index.html";
   });
 }
 
@@ -81,43 +83,20 @@ export function insertAPIKey() {
  * @returns {Promise<void>} Resolves when the map is ready.
  */
 export async function initMapDisplay() {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open("MemoryDB", 1); // opening DB version 1
-
-    // if database does not exist
-    request.onupgradeneeded = (event) => {
-      const db = request.result;
-
-      console.log("initializing db"); // debugging message
-
-      if (!db.objectStoreNames.contains("memories")) {
-        const store = db.createObjectStore("memories", {
-          keyPath: "post_id",
-          autoIncrement: true,
-        });
-
-        store.createIndex("dateCreated", "dateCreated", { unique: false }); // for sorting by date/getting most recent
-      }
-    };
-
-    let db; // NOTE FOR DISCUSSION: NOT PERSISTED ATM?
-
+  return new Promise(async (resolve, reject) => {
+    db = await initDB();
     const savedApiKey = localStorage.getItem(API_KEY_STORAGE);
-
-    request.onsuccess = (event) => {
-      db = event.target.result;
-      console.log("db is up, displaying all the memories on the map");
+    try {
       if (savedApiKey) {
         loadGoogleMaps(savedApiKey, "marker").then(() => {
           initMap();
           populateMap(map, db);
         });
+        resolve(console.log("map initialized"));
       }
-    };
-
-    request.onerror = (event) => {
-      console.log("db err for the map"); // works so far, seen
-    };
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 
