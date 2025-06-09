@@ -122,7 +122,7 @@ async function submitForm(event) {
   } else {
     // post is not valid to submit
     alert(
-      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood.",
+      "Your post is not valid to submit! Please double check and make sure you have an image, a title, and a mood."
     );
   }
 }
@@ -155,7 +155,7 @@ function confirmSafety(post) {
     console.log("required check passed");
     // length safety checks
     if (
-      post.title.length <= 50 &&
+      post.title.length <= 20 &&
       post.description.length <= 500 &&
       post.mood.length <= 20
     ) {
