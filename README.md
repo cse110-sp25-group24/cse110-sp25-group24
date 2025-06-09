@@ -24,7 +24,9 @@ cd cse110-sp25-group24/source
 
 and run on live server. Or, checkout our deployed page [here](https://cse110-sp25-group24.github.io/cse110-sp25-group24/)
 
-Since this project is restricted to native web components, we as a team have decided that you will need your own Google Map API key for security reasons. If you would like an API key, you can do one of the following: 
+Since this project is restricted to native web components, we as a team have decided that you will need your own Google Map API key for security reasons. For more information on this decision, please reference this [ADR](./specs/adrs/all-decisions/06062025APIKeyADR.md)
+
+ If you would like an API key, you can do one of the following: 
 
 1. Contact one of the Team Members to aquire a restricted api key.
 
