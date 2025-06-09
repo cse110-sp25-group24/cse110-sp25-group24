@@ -55,8 +55,13 @@
             <p>Drag and drop your photo here...</p>
             <label for="imageUpload">Browse Files</label>
             <!-- safety check for file type -->
-            <!-- safety check for file type -->
-            <input type="file" id="imageUpload" name="image" accept="image/*" />
+            <input
+              type="file"
+              id="imageUpload"
+              name="image"
+              accept="image/*"
+              required
+            />
           </fieldset>
 
           <section class="form-sections">
@@ -70,12 +75,10 @@
                     name="location"
                     placeholder="Search location..."
                     required
-                    required
                   />
                   <span>📍</span>
                 </span>
 
-                <!-- max length of title is 50 characters -->
                 <!-- max length of title is 50 characters -->
                 <label for="title">Title</label>
                 <input
@@ -85,10 +88,7 @@
                   placeholder="Give your memory a title"
                   maxlength="50"
                   required
-                  maxlength="50"
-                  required
                 />
-                <small class="input-note">50 characters max</small>
                 <small class="input-note">50 characters max</small>
 
                 <label for="mood-text">Mood</label>
@@ -110,34 +110,14 @@
               <fieldset>
                 <label for="description">Description</label>
                 <!-- max length of description is 500 characters; description is not required -->
-                <!-- max length of description is 500 characters; description is not required -->
                 <textarea
                   id="description"
                   name="description"
                   placeholder="Share your experience..."
                   maxlength="500"
-                  maxlength="500"
                 ></textarea>
               </fieldset>
-            </left-section>
-
-            <right-section>
-              <fieldset>
-                <label for="mood-text">Mood</label>
-                <select id="mood-text" name="mood-text" required>
-                  <option disabled selected value="">
-                    How does this memory feel?
-                  </option>
-                  <option>Nostalgic</option>
-                  <option>Happy</option>
-                  <option>Excited</option>
-                  <option>Sad</option>
-                  <option>Peaceful</option>
-                  <option>Neutral</option>
-                </select>
-              </fieldset>
             </right-section>
-
           </section>
           <button class="save-btn" type="submit" form="memory-form">
             Save Memory
