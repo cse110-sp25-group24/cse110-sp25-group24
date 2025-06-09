@@ -35,6 +35,10 @@ window.addEventListener("DOMContentLoaded", () => {
   request.onerror = (event) => {
     console.error("db err"); // works so far, seen
   };
+
+  // event listeners to do the filtering logic
+  const searchBar = document.getElementById("memory-search");
+  const moodBar = document.getElementById("mood-search");
 });
 
 /**

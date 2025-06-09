@@ -37,7 +37,7 @@ export function isEmptyDB(db) {
  *   location: string
  * }} post
  * @param {IDBDatabase} db
- * @returns {Promise} Promise that resolves into a post being added.
+ * @returns {Promise} Promise that resolves into a post being added--this would be the post id.
  */
 export function addMemory(post, db, post_id) {
   // change name to save memory?
