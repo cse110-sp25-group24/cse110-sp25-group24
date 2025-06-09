@@ -105,28 +105,19 @@ async function stopServer() {
     const fieldChecks = await shadow.$$eval('*', elements => {
       const content = elements.map(el => el.textContent).join(' ').toLowerCase();
 
-      return {
-        hasTitle: content.includes('test memory title'),
-        hasDescription: content.includes('this is a test description'),
-        hasLocation: content.includes('test location'),
-        hasMood: content.includes('happy'),
-        allMatch:
-          content.includes('test memory title') &&
-          content.includes('this is a test description') &&
-          content.includes('test location') &&
-          content.includes('happy')
-      };
-    });
+       return {
+    hasTitle: content.includes('test memory title'),
+    hasDescription: content.includes('this is a test description'),
+    hasLocation: content.includes('test location'),
+    hasMood: content.includes('happy'),
+  };
+});
 
-     if (fieldChecks.allMatch) {
-      console.log('✅ All memory fields correctly displayed in the UI!');
-    } else {
-      console.log('⚠️ Some fields are missing:');
-      if (!fieldChecks.hasTitle) console.log('❌ Missing: Title');
-      if (!fieldChecks.hasDescription) console.log('❌ Missing: Description');
-      if (!fieldChecks.hasLocation) console.log('❌ Missing: Location');
-      if (!fieldChecks.hasMood) console.log('❌ Missing: Mood');
-    }
+// ✅ Use assertions
+expect(fieldChecks.hasTitle).toBe(true);
+expect(fieldChecks.hasDescription).toBe(true);
+expect(fieldChecks.hasLocation).toBe(true);
+expect(fieldChecks.hasMood).toBe(true);
 
 
     await new Promise(resolve => setTimeout(resolve, 20000));
