@@ -44,7 +44,7 @@ async function stopServer() {
 describe("E2E Test: Create Memory", () => {
   test("should create a new memory and display it in the UI", async () => {
     await startServer();
-    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const browser = await puppeteer.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     try {
       // 1. Open homepage
       const page = await browser.newPage();
@@ -69,7 +69,7 @@ describe("E2E Test: Create Memory", () => {
       await page.type("#title", "Test Memory Title");
       await page.type("#description", "This is a test description");
       await page.type("#location", "Test Location");
-      await page.type("#mood-text", "Happy");
+      await page.select("#mood-text", "Sad");
 
       const imageInput = await page.$("#imageUpload");
       await imageInput.uploadFile(path.resolve(__dirname, "image.png"));
@@ -123,8 +123,6 @@ describe("E2E Test: Create Memory", () => {
       expect(fieldChecks.hasDescription).toBe(true);
       expect(fieldChecks.hasLocation).toBe(true);
       expect(fieldChecks.hasMood).toBe(true);
-
-      // await new Promise(resolve => setTimeout(resolve, 20000));
 
       await console.log(
         memoryVisible
