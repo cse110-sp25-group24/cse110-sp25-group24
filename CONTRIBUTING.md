@@ -18,20 +18,27 @@ The codebase is structured as follows:
 
 ```ascii
 /
+├── admin (documenting our progress)
+├── specs (documenting our big code choices)
 ├── source/
-│   ├── demo/
-│   ├── imgs/
-│   ├── scripts/
-│   ├── styles/
+│   ├── scripts/  html files
+│   ├── styles/   css files
 │   ├── tests/
-│   ├── node_modules/ (this one is hidden in the remote)
+│       ├── e2e
+│       ├── mock (IndexDB clone for unit testing)
+│       └── all test .js files
+│   ├── node_modules/ (add to .gitignore)
 │   ├── package-lock.json
 │   ├── package.json
-│   └── everything else...
+│   ├── index.html
+│   ├── memories.html
+│   ├── create.html
+│   └── other config files...
 ├── .gitignore
 ├── CONTRIBUTING.md
-├── README.md
-└── everything else...
+└── README.md
+ 
+
 ```
 
 The `source/` folder contains all the HTML, CSS, and JavaScript files that make up the project. The `demo/` folder contains demo files for testing purposes. The `imgs/` folder contains images used in the project. The `scripts/` folder contains JavaScript files, while the `styles/` folder contains CSS files. The `tests/` folder is where you can find test files for the project.
@@ -46,7 +53,7 @@ To set up your environment for contributing to this codebase, follow these steps
 2. Clone the repository to your local machine using the following command:
 
    ```bash
-   git clone repo_url_here/repo_ssh_here
+   git clone https://github.com/cse110-sp25-group24/cse110-sp25-group24.git
    ```
 
 3. Navigate to the source code:
@@ -55,47 +62,22 @@ To set up your environment for contributing to this codebase, follow these steps
    cd cse110-sp25-group24/source/
    ```
 
-### Installing Node.js and NVM
+### Installing Node.js + CI/CD dependencies
 
-1. Make sure you have `nvm` (Node Version Manager) installed on your machine. If not, follow [this guide](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/).
+Install [`Node.js`](https://nodejs.org/en) in order to run tests and linters used in CI/CD pipeline
 
-2. Install Node.js version 22 using `nvm`:
+To ensure consistent code formatting and documentation, we use Prettier, JSDocs. 
 
-   ```bash
-   nvm install 22
-   nvm use 22
-   ```
+To test our code, we use Jest, Babel and Puppetteer in our project.
 
-### Installing Prettier, JSDocs, and Jest + Babel
-
-To ensure consistent code formatting and documentation, we use Prettier, JSDocs, Jest, and Babel in our project. Follow these steps to set them up:
-
-1. Make sure you are in the source of the project directory (where `package.json` is located).
-
+Install necessary dependencies:
    ```bash
    cd ~/cse110-sp25-group24/source/
+   npm install
    ```
 
-2. Install the necessary packages:
+If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
 
-   ```bash
-   npm install --save-dev prettier jsdoc jest @babel/core @babel/preset-env babel-jest
-   ```
-
-3. After installing, you can run the following commands to ensure everything is set up correctly:
-
-   ```bash
-   > npx prettier --version
-   [version_number]
-   > npx jsdoc --version
-   JSDoc [version_number]
-   > npx jest --version
-   [version_number]
-   > npx babel --version
-   Babel [version_number]
-   ```
-
-4. If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
 
 ## Committing to the Codebase
 
