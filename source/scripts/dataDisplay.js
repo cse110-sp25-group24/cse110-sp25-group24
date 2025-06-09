@@ -84,7 +84,7 @@ function displayAllMemories(db) {
             card.setAttribute("description", post.description);
             card.setAttribute(
               "location",
-              post.location || "No Location Provided"
+              post.location || "No Location Provided",
             );
 
             display.appendChild(card);
