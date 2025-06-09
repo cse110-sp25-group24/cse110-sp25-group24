@@ -54,6 +54,7 @@ This project hosts a static site on GitHub pages. This is within the scope of th
 ![restrictions](restrictions.png)
 
 ## More Information
+![image](https://github.com/user-attachments/assets/d164108e-cb1e-407e-b9a0-34cf89507d0a)
 
 - [API Keys](https://cloud.google.com/docs/authentication/api-keys?authuser=1#adding_http_restrictions)
 
