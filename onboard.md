@@ -11,7 +11,7 @@ The codebase is structured as follows:
 ├── admin (documenting our progress)
 ├── specs (documenting our big code choices)
 ├── source/
-│   ├── scripts/  html files
+│   ├── scripts/  js files
 │   ├── styles/   css files
 │   ├── tests/
 │       ├── e2e
