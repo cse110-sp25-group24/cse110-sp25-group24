@@ -51,7 +51,7 @@ To set up your environment for contributing to this codebase, follow these steps
 
 ### Installing Node.js + CI/CD dependencies
 
-Install [`Node.js`](https://nodejs.org/en) in order to run tests and linters used in CI/CD pipeline
+Install [`Node.js`](https://nodejs.org/en) in order to run tests and linters used in CI/CD pipeline. We have been using version 22.X.
 
 To ensure consistent code formatting and documentation, we use Prettier, JSDocs. 
 
