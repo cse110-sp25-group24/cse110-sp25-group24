@@ -68,6 +68,8 @@ This will install all dependencies listed in `package.json`. Feel free to check 
 
 ## Committing to the Codebase
 
+> Check out our CI/CD pipeline [here](admin/cipipeline/phase2diagram.png)
+
 1. Make sure you first make a new branch with a name like: `feature_name-issue_number`
 2. Do the work.
 3. Run Prettier to format your code properly (see below for instructions).
