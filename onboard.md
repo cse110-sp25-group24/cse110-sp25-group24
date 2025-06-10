@@ -26,7 +26,7 @@ The codebase is structured as follows:
 │   ├── 404.html
 │   └── other config files...
 ├── .gitignore
-├── CONTRIBUTING.md
+├── onboard.md
 └── README.md
 ```
 
