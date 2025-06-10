@@ -66,7 +66,7 @@ These APIs allow for the creation of the map with its markers, and the autofill 
 Note: Node dependencies are not required to run the app, but are required for linting and testing in our CI/CD pipeline. 
 
 ## 🤝 Contributing
-To learn how to contribute, click [here](./CONTRIBUTING.md)
+To learn how to contribute, click [here](./onboard.md)
 
 Note: we appologise for the large amount of tech debt and inconsistency in our efforts. This is a diverse team with a wide range of relevant skills in development and working experience. While some may have prefered to be 10x devs we wanted to allow the opportunity for our less experienced members to have a chance to learn and contribute; some devs seized this learning opportunity while others had different priorities, which led to procrastination of the project. 
 

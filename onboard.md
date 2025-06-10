@@ -76,7 +76,7 @@ Install necessary dependencies:
    npm install
    ```
 
-If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
+This will install all dependencies listed in `package.json`. Feel free to check them out and `npm install` each of them seperately if you have any concerns. If you encounter any issues, make sure to check the documentation for each tool or ask for help in the project's communication channels.
 
 
 ## Committing to the Codebase
