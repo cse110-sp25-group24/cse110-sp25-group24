@@ -1,15 +1,5 @@
 # How to Contribute
 
-## Table of Contents
-
-- [How to Contribute](#how-to-contribute)
-  - [Table of Contents](#table-of-contents)
-  - [Understanding the Codebase](#understanding-the-codebase)
-  - [Environment Setup](#environment-setup)
-    - [Installing Node.js and NVM](#installing-nodejs-and-nvm)
-    - [Installing Prettier, JSDocs, Jest, and Babel](#installing-prettier-jsdocs-and-jest--babel)
-  - [Committing to the Codebase](#committing-to-the-codebase)
-
 ## Understanding the Codebase
 
 In order to contribute to this codebase, we first need to understand our file structure.

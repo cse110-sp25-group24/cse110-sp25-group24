@@ -37,7 +37,7 @@ Since this project is restricted to `native web components`, we as a team have d
 
 2. Make your own API key (for instructions on how to do so see below). Google Maps API offers a $300 free credit which is more than enough to run our project.
 
-## Creating your own Google Maps API Key
+## 🔑 Creating your own Google Maps API Key
 To make your own API key, navigate to the [Google Maps Platform](https://developers.google.com/maps). 
 
 Click `Get started` to navigate to the console, where you will be able to make your own API key. 
@@ -65,7 +65,7 @@ These APIs allow for the creation of the map with its markers, and the autofill 
 
 Note: Node dependencies are not required to run the app, but are required for linting and testing in our CI/CD pipeline. 
 
-## 🤝 Contributing
+## 🤝 Contributing/Onboard
 To learn how to contribute, click [here](./onboard.md)
 
 Note: we appologise for the large amount of tech debt and inconsistency in our efforts. This is a diverse team with a wide range of relevant skills in development and working experience. While some may have prefered to be 10x devs we wanted to allow the opportunity for our less experienced members to have a chance to learn and contribute; some devs seized this learning opportunity while others had different priorities, which led to procrastination of the project. 
@@ -82,7 +82,7 @@ Note: we appologise for the large amount of tech debt and inconsistency in our e
 
 A few basic commands for running tests:
 
-1. Ensure `npm install` is run to install all dependencies first.
+1. Ensure `npm install` is run to install all dependencies in `package.json`first.
 2. To run a single test file, enter and run `npm test fileName.js` where 'fileName' is the test file you wish to run.
 3. In case of end-to-end ('e2e') tests, run `npm run test:e2e`.
 4. To run all test files at once, enter and run `npx jest`.
