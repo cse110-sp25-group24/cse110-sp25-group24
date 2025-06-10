@@ -23,15 +23,12 @@ The codebase is structured as follows:
 │   ├── index.html
 │   ├── memories.html
 │   ├── create.html
+│   ├── 404.html
 │   └── other config files...
 ├── .gitignore
 ├── CONTRIBUTING.md
 └── README.md
- 
-
 ```
-
-The `source/` folder contains all the HTML, CSS, and JavaScript files that make up the project. The `demo/` folder contains demo files for testing purposes. The `imgs/` folder contains images used in the project. The `scripts/` folder contains JavaScript files, while the `styles/` folder contains CSS files. The `tests/` folder is where you can find test files for the project.
 
 ## Environment Setup
 
