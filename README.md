@@ -1,5 +1,9 @@
 # 📍 MemorySpot — A Card-Based Location Sharing Web App
 
+[Our Private Video](https://youtu.be/3VD4IaUe6MI)
+
+[Our Public Video](https://youtu.be/K_66NU2Qrik)
+
 ## Project Overview
 
 This project was made for our CSE 110: Software Engineering Spring 2025 Course, under supervision of our Professor, Thomas Powell, and our TA, Devanshi Chadha. All developpers on this project were randomly assigned into this group in order for us to practice the AGILE practices that we learned in class. Since our experiences in development differ widely, the course staff have decided to restrict our project to **`LOCAL FIRST`** built with `Native Web-app Components` for a `CRUD` web-app.
