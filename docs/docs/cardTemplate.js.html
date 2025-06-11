@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: cardTemplate.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: cardTemplate.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Generates the HTML for the memory photo section of a card.
+ * Builds top part of card and displays it with image.
+ * @param {Object} data - The data for the memory card.
+ * @param {string} data.post_id - The unique ID of the memory post.
+ * @param {string} data.img - The URL of the image.
+ * @param {string} [data.img_alt] - The alt text for the image.
+ * @returns {string} The HTML string for the memory photo section.
+ */
+
+export function createMemoryPhoto(data) {
+  return `
+    &lt;memory-photo>
+      &lt;button
+        onclick="// showMemoryDetails(${data.post_id})"
+        class="memory-photo"
+      >
+        &lt;img id="" src="${data.img}" alt="${data.img_alt || "Image Not Found"}" />
+      &lt;/button>
+    &lt;/memory-photo>
+  `;
+}
+
+/**
+ * Generates the HTML for the metadata section of a card.
+ * @param {Object} data - The data for the memory card.
+ * @param {string} data.mood - The mood categories for the memory.
+ * @param {string} data.formatted_date - The creation date of the memory.
+ * @returns {string} The HTML string for the metadata section.
+ */
+export function createCardMeta(data) {
+  return `
+    &lt;card-meta>
+      &lt;card-mood
+        id="mood"
+        moodcategory="${data.mood ? data.mood : "none"}"
+      >
+        ${data.mood ? data.mood : "none"}
+      &lt;/card-mood>
+      &lt;card-date id="date">${data.formatted_date}&lt;/card-date>
+      &lt;card-actions>
+        &lt;button onclick="// edit in backend" id="edit-btn">✏️&lt;/button>
+        &lt;button onclick="// delete in backend" id="delete-btn">🗑️&lt;/button>
+      &lt;/card-actions>
+    &lt;/card-meta>
+  `;
+}
+
+/**
+ * Generates the HTML for the content section of a card -- main content area below image
+ * @param {Object} data - The data for the memory card.
+ * @param {string} data.link - The URL for the memory's external link.
+ * @param {string} data.title - The title of the memory.
+ * @param {string} data.description - The description of the memory.
+ * @param {string} data.location - The location associated with the memory.
+ * @returns {string} The HTML string for the content section.
+ */
+export function createCardContent(data) {
+  return `
+    &lt;card-content>
+      ${createCardMeta(data)}
+      &lt;h2 id="title">${data.title}&lt;/h2>
+      &lt;p id="description">
+        ${data.description.length > 0 ? data.description : "No description provided."}
+      &lt;/p>
+      &lt;card-footer>
+        &lt;span id="location">📍 ${data.location}&lt;/span>
+      &lt;/card-footer>
+    &lt;/card-content>
+  `;
+}
+
+/**
+ * Generates the complete HTML for a memory card calling on above helpers.
+ * @param {Object} data - The data for the memory card.
+ * @returns {string} The HTML string for the memory card.
+ */
+export function cardTemplate(data) {
+  return `
+    &lt;memory-card postid="${data.post_id}">
+      ${createMemoryPhoto(data)}
+      ${createCardContent(data)}
+    &lt;/memory-card>
+  `;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#API_KEY_STORAGE">API_KEY_STORAGE</a></li><li><a href="global.html#addMarker">addMarker</a></li><li><a href="global.html#addMemory">addMemory</a></li><li><a href="global.html#cardTemplate">cardTemplate</a></li><li><a href="global.html#changeImg">changeImg</a></li><li><a href="global.html#confirmSafety">confirmSafety</a></li><li><a href="global.html#createCardContent">createCardContent</a></li><li><a href="global.html#createCardMeta">createCardMeta</a></li><li><a href="global.html#createMemoryPhoto">createMemoryPhoto</a></li><li><a href="global.html#deleteAllMemories">deleteAllMemories</a></li><li><a href="global.html#deleteListener">deleteListener</a></li><li><a href="global.html#deleteMemory">deleteMemory</a></li><li><a href="global.html#displayAllMemories">displayAllMemories</a></li><li><a href="global.html#editListener">editListener</a></li><li><a href="global.html#fileToDataUrl">fileToDataUrl</a></li><li><a href="global.html#fillForm">fillForm</a></li><li><a href="global.html#getAllLocations">getAllLocations</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAutocomplete">initAutocomplete</a></li><li><a href="global.html#initCreate">initCreate</a></li><li><a href="global.html#initDB">initDB</a></li><li><a href="global.html#initMap">initMap</a></li><li><a href="global.html#initMapDisplay">initMapDisplay</a></li><li><a href="global.html#insertAPIKey">insertAPIKey</a></li><li><a href="global.html#isEmptyDB">isEmptyDB</a></li><li><a href="global.html#loadGoogleMaps">loadGoogleMaps</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#onPlaceChanged">onPlaceChanged</a></li><li><a href="global.html#retrieveMemory">retrieveMemory</a></li><li><a href="global.html#submitForm">submitForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Jun 11 2025 02:09:43 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
